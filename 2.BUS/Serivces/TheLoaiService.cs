@@ -47,6 +47,11 @@ namespace _2.BUS.Service
             return lsttlv;
         }
 
+        public List<TheLoai> GetAllNoView()
+        {
+            return _itheLoaiRepository.GetAllTheLoai();
+        }
+
         public List<TheLoaiView> TimKiemTheoTen(string s)
         {
             List<TheLoaiView> lsttlv = new List<TheLoaiView>();

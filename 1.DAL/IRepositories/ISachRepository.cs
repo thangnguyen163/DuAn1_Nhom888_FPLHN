@@ -13,5 +13,6 @@ namespace _1.DAL.IRepositoties
         bool UpdateSach(Sach obj);
         bool DeleteSach(Sach obj);
         List<Sach> GetAllSach();
+        List<Sach> TimKiemTheoTen(string s);
     }
 }

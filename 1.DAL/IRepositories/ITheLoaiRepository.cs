@@ -13,5 +13,6 @@ namespace _1.DAL.IRepositoties
         bool UpdateTheLoai(TheLoai obj);
         bool DeleteTheLoai(TheLoai obj);
         List<TheLoai> GetAllTheLoai();
+        List<TheLoai> TimKiemTheoTen(string s);
     }
 }

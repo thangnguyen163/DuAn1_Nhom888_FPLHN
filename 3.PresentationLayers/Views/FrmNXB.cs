@@ -17,18 +17,18 @@ namespace _3.PresentationLayers.Views
 {
     public partial class FrmNXB : Form
     {
-        INSXService _iNSXService;
+        INXBService _iNSXService;
         Nxb _nxb;
         public string TrangThai { get; set; }
         public Guid SelectID { get; set; }
         public FrmNXB()
         {
             InitializeComponent();
-            _iNSXService = new NSXService();
+            _iNSXService = new NXBService();
             _nxb = new Nxb();
             Load();
         }
-        private void LoadDataToDtg(List<NSXView> lst)
+        private void LoadDataToDtg(List<NXBView> lst)
         {
             int stt = 1;
             dtg_Show.Rows.Clear();
