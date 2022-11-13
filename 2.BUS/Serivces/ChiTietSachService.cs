@@ -17,7 +17,7 @@ namespace _2.BUS.Service
         private List<ChiTietSach> _lstChiTietSach;
         private List<ChiTietSachView> _lstChiTietSachView;
         private ISachRepository _iSachRepository;
-        private INSXRepository _iNSXRepository;
+        private INXBRepository _iNSXRepository;
         //private ITacGiaRepository _iTacGiaRepository;
         //private ILoaiBiaRepository _iLoaiBiaRepository;
         private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
@@ -29,7 +29,7 @@ namespace _2.BUS.Service
             _lstChiTietSach = new List<ChiTietSach>();
             _lstChiTietSachView=new List<ChiTietSachView>();
             _iSachRepository =new SachRepository();
-            _iNSXRepository = new NSXRepository();
+            _iNSXRepository = new NXBRepository();
             //_iTacGiaRepository = new TacGiaRepository();
             //_iLoaiBiaRepository = new LoaiBiaRepository();
             //_iNhaPhatHanhRepository = new NhaPhatHanhRepository();

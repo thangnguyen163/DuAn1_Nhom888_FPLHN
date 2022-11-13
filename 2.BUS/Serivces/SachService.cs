@@ -41,7 +41,6 @@ namespace _2.BUS.Service
         public List<SachView> GetAll()
         {
             List<SachView> lstsv = new List<SachView>();
-            // Viết 1 câu LinQ để gán giá trị cho từng prop của SPView
             lstsv =
                 (from a in _isachRepository.GetAllSach()
                  select new SachView()
@@ -54,6 +53,19 @@ namespace _2.BUS.Service
             return lstsv;
         }
 
-
+        public List<SachView> TimKiemTheoTen(string s)
+        {
+            List<SachView> lsttk = new List<SachView>();
+            lsttk =
+                (from a in _isachRepository.TimKiemTheoTen(s)
+                 select new SachView()
+                 {
+                     Id = a.Id,
+                     Ma = a.Ma,
+                     Ten = a.Ten,
+                     TrangThai = a.TrangThai
+                 }).ToList();
+            return lsttk;
+        }
     }
 }

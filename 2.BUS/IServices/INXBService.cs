@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IService
 {
-    public interface INSXService
+    public interface INXBService
     {
         string Add(Nxb obj);
         string Update(Nxb obj);
         string Delete(Nxb obj);
-        List<NSXView> GetAll();
+        List<NXBView> GetAll();
+        List<NXBView> TimKiemTheoTen(string s);
+        List<Nxb> GetAllNoView();
     }
 }

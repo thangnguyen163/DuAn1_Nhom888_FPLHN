@@ -14,5 +14,7 @@ namespace _2.BUS.IService
         string Update(Sach obj);
         string Delete(Sach obj);
         List<SachView> GetAll();
+        List<SachView> TimKiemTheoTen(string s);
+        List<Sach> GetAllNoView();
     }
 }

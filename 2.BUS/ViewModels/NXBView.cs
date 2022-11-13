@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.ViewModels
 {
-    public class NSXView
+    public class NXBView
     {
         public Guid Id { get; set; }
         public string Ma { get; set; }

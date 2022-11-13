@@ -47,6 +47,21 @@ namespace _2.BUS.Service
             return lsttlv;
         }
 
+        public List<TheLoaiView> TimKiemTheoTen(string s)
+        {
+            List<TheLoaiView> lsttlv = new List<TheLoaiView>();
+            lsttlv =
+                (from a in _itheLoaiRepository.TimKiemTheoTen(s)
+                 select new TheLoaiView()
+                 {
+                     Id = a.Id,
+                     Ma = a.Ma,
+                     Ten = a.Ten,
+                     TrangThai = a.TrangThai
+                 }).ToList();
+            return lsttlv;
+        }
+
         public string Update(TheLoai obj)
         {
             if (obj == null) return "Cập nhật không thành công";

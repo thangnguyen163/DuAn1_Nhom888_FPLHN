@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Service
 {
-    public class NSXService : INSXService
+    public class NXBService : INXBService
     {
-        INSXRepository _iNSXRepository;
-        public NSXService()
+        INXBRepository _iNSXRepository;
+        public NXBService()
         {
-            _iNSXRepository = new NSXRepository();
+            _iNSXRepository = new NXBRepository();
         }
 
         public string Add(Nxb obj)
@@ -33,12 +33,12 @@ namespace _2.BUS.Service
             return "Xóa không thành công";
         }
 
-        public List<NSXView> GetAll()
+        public List<NXBView> GetAll()
         {
-            List<NSXView> lstnxbv = new List<NSXView>();
+            List<NXBView> lstnxbv = new List<NXBView>();
             lstnxbv =
                 (from a in _iNSXRepository.GetAllNSX()
-                 select new NSXView
+                 select new NXBView
                  {
                      Id = a.Id,
                      Ma = a.Ma,
@@ -46,6 +46,21 @@ namespace _2.BUS.Service
                      TrangThai = a.TrangThai
                  }).ToList();
             return lstnxbv;
+        }
+
+        public List<NXBView> TimKiemTheoTen(string s)
+        {
+            List<NXBView> lsttimkiem = new List<NXBView>();
+            lsttimkiem =
+                (from a in _iNSXRepository.TimKiemTheoTen(s)
+                 select new NXBView
+                 {
+                     Id = a.Id,
+                     Ma = a.Ma,
+                     Ten = a.Ten,
+                     TrangThai = a.TrangThai
+                 }).ToList();
+            return lsttimkiem;
         }
 
         public string Update(Nxb obj)
