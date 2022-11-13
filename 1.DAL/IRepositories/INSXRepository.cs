@@ -13,6 +13,6 @@ namespace _1.DAL.IRepositoties
         bool UpdateNSX(Nxb obj);
         bool DeleteNSX(Nxb obj);
         List<Nxb> GetAllNSX();
-        //get all
+        //get all 123
     }
 }
