@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    public interface INhanVienService
+    public interface IHoaDonService 
     {
-        
+        public string Add(HoaDon obj);
+        public string Update(HoaDon obj);
+        public string Remove(HoaDon obj);
+        public List<HoadonView> GetAll();
     }
 }
