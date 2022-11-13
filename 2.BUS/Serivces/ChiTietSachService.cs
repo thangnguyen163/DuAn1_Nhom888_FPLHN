@@ -20,8 +20,8 @@ namespace _2.BUS.Service
         private INSXRepository _iNSXRepository;
         //private ITacGiaRepository _iTacGiaRepository;
         //private ILoaiBiaRepository _iLoaiBiaRepository;
-        //private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
-        //private ITheLoaiRepository _iTheLoaiRepository;
+        private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
+        private ITheLoaiRepository _iTheLoaiRepository;
         //private INhaPhatHanhRepository _iNhaPhatHanhRepository;
         public ChiTietSachService()
         {
@@ -29,12 +29,12 @@ namespace _2.BUS.Service
             _lstChiTietSach = new List<ChiTietSach>();
             _lstChiTietSachView=new List<ChiTietSachView>();
             _iSachRepository =new SachRepository();
-            //_iNSXRepository=new NSXRepository();
-            //_iTacGiaRepository=new TacGiaRepository();
-            //_iLoaiBiaRepository=new LoaiBiaRepository();
-            //_iNhaPhatHanhRepository=new NhaPhatHanhRepository();
-            //_iTheLoaiRepository=new TheLoaiRepository();
-            //_iNhaPhatHanhRepository= new NhaPhatHanhRepository();
+            _iNSXRepository = new NSXRepository();
+            //_iTacGiaRepository = new TacGiaRepository();
+            //_iLoaiBiaRepository = new LoaiBiaRepository();
+            //_iNhaPhatHanhRepository = new NhaPhatHanhRepository();
+            _iTheLoaiRepository = new TheLoaiRepository();
+            
         }
         public string Add(ChiTietSach chiTietSach)
         {
@@ -59,6 +59,7 @@ namespace _2.BUS.Service
             return _lstChiTietSachView =
                 (from a in _iChiTietSachRepository.GetAll()
                  join b in _iSachRepository.GetAllSach() on a.IdSach equals b.Id
+                 //join c in _iChiTietTheLoaiRepository.GetAllCTTheLoai() on a.id
                  select new ChiTietSachView()
                  {
 

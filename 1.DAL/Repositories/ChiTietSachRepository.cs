@@ -54,6 +54,7 @@ namespace _1.DAL.Repositoties
             a.Anh = chiTietSach.Anh;
             a.MaVach = chiTietSach.MaVach;
             a.KichThuoc = chiTietSach.KichThuoc;
+            a.SoTrang = chiTietSach.SoTrang;
             a.NamXuatBan = chiTietSach.NamXuatBan;
             a.MoTa = chiTietSach.MoTa;
             a.SoLuong = chiTietSach.SoLuong;

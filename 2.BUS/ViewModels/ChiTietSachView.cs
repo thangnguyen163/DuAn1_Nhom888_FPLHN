@@ -23,6 +23,7 @@ namespace _2.BUS.ViewModels
         public int? SoLuong { get; set; }
         public decimal? GiaNhap { get; set; }
         public decimal? GiaBan { get; set; }
+        public int? SoTrang { get; set; }
         public int? TrangThai { get; set; }
     }
 }
