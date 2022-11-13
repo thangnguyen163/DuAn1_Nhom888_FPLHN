@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Serivces
 {
-    public class NhanVienService 
+    public class NhanVienService { 
        
     }
 }

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.IRepositoties
 {
-    public interface INSXRepository
+    public interface INXBRepository
     {
         bool AddNSX(Nxb obj);
         bool UpdateNSX(Nxb obj);
         bool DeleteNSX(Nxb obj);
         List<Nxb> GetAllNSX();
+        List<Nxb> TimKiemTheoTen(string s);
         //get all 123
     }
 }

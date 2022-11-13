@@ -40,6 +40,11 @@ namespace _1.DAL.Repositoties
             return _context.Saches.ToList();
         }
 
+        public List<Sach> TimKiemTheoTen(string s)
+        {
+            return _context.Saches.ToList().Where(c => c.Ten.ToLower().Contains(s.ToLower())).ToList();
+        }
+
         public bool UpdateSach(Sach obj)
         {
             //public Guid Id { get; set; }

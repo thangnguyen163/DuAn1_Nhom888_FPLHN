@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositoties
 {
-    public class NSXRepository : INSXRepository
+    public class NXBRepository : INXBRepository
     {
         FpolyDBContext _context;
-        public NSXRepository()
+        public NXBRepository()
         {
             _context = new FpolyDBContext();
         }
@@ -38,6 +38,11 @@ namespace _1.DAL.Repositoties
         public List<Nxb> GetAllNSX()
         {
             return _context.Nxbs.ToList();
+        }
+
+        public List<Nxb> TimKiemTheoTen(string s)
+        {
+            return _context.Nxbs.ToList().Where(c=>c.Ten.ToLower().Contains(s.ToLower())).ToList();
         }
 
         public bool UpdateNSX(Nxb obj)

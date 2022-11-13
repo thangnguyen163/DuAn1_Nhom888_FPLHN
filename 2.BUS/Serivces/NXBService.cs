@@ -48,6 +48,11 @@ namespace _2.BUS.Service
             return lstnxbv;
         }
 
+        public List<Nxb> GetAllNoView()
+        {
+            return _iNSXRepository.GetAllNSX();
+        }
+
         public List<NXBView> TimKiemTheoTen(string s)
         {
             List<NXBView> lsttimkiem = new List<NXBView>();

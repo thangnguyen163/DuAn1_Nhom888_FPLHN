@@ -40,6 +40,11 @@ namespace _1.DAL.Repositoties
             return _context.TheLoais.ToList();
         }
 
+        public List<TheLoai> TimKiemTheoTen(string s)
+        {
+            return _context.TheLoais.ToList().Where(c => c.Ten.ToLower().Contains(s.ToLower())).ToList();
+        }
+
         public bool UpdateTheLoai(TheLoai obj)
         {
             //public Guid Id { get; set; }

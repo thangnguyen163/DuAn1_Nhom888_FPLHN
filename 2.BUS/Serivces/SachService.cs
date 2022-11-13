@@ -67,5 +67,10 @@ namespace _2.BUS.Service
                  }).ToList();
             return lsttk;
         }
+
+        public List<Sach> GetAllNoView()
+        {
+            return _isachRepository.GetAllSach();
+        }
     }
 }
