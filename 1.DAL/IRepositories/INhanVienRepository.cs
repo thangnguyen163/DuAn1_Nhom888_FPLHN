@@ -8,6 +8,5 @@ namespace _1.DAL.IRepositories
 {
     internal interface INhanVienRepository
     {
-        // aaádasd 
     }
 }
