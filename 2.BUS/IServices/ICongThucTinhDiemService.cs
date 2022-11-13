@@ -1,4 +1,5 @@
-﻿using _2.BUS.ViewModels;
+﻿using _1.DAL.DomainClass;
+using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace _2.BUS.IServices
 {
     public interface ICongThucTinhDiemService
     {
-        public string Add(CongThucTInhDiemView obj);
-        public string Remove(CongThucTInhDiemView obj);
-        public string Update(CongThucTInhDiemView obj);
+        public string Add(CongThucTinhDiem obj);
+        public string Remove(CongThucTinhDiem obj);
+        public string Update(CongThucTinhDiem obj);
         public List<CongThucTInhDiemView> GetAll();
     }
 }
