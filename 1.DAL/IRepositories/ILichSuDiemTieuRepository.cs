@@ -9,9 +9,9 @@ namespace _1.DAL.IRepositories
 {
     public  interface ILichSuDiemTieuRepository
     {
-        public bool Add(LichSuDiemDung obj);
-        public bool Update(LichSuDiemDung obj);
-        public bool Remove(LichSuDiemDung obj);
-        public List<LichSuDiemDung> GetAll();
+        public bool Add(LichSuDiemTich obj);
+        public bool Update(LichSuDiemTich obj);
+        public bool Remove(LichSuDiemTich obj);
+        public List<LichSuDiemTich> GetAll();
     }
 }
