@@ -28,7 +28,12 @@ namespace _2.BUS.Serivces
             return "Thêm thất bại";
         }
 
-        public List<LichSuDiemDungView> GetAll()
+        public List<LichSuDiemDung> GetAll()
+        {
+           return _ilichSuDiemdungRepository.GetAll();
+        }
+
+        public List<LichSuDiemDungView> GetAllView()
         {
             var templist = (from a in _ilichSuDiemdungRepository.GetAll()
                             join b in _icongThucTinhDiemRepository.GetAll() on a.IdCttinh equals b.Id

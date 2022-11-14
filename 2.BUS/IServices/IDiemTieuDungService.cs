@@ -13,6 +13,7 @@ namespace _2.BUS.IServices
         public string Add(DiemTieuDung obj);
         public string Remove(DiemTieuDung obj);
         public string Update(DiemTieuDung obj);
-        public List<DiemTieuDungView> GetAll();
+        public List<DiemTieuDung> GetAll();
+        public List<DiemTieuDungView> GetAllView();
     }
 }

@@ -13,6 +13,7 @@ namespace _2.BUS.IServices
         public string Add(LichSuDiemDung obj);
         public string Remove(LichSuDiemDung obj);
         public string Update(LichSuDiemDung obj);
-        public List<LichSuDiemDungView> GetAll();
+        public List<LichSuDiemDung> GetAll();
+        public List<LichSuDiemDungView> GetAllView();
     }
 }
