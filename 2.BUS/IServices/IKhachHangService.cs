@@ -10,8 +10,8 @@ namespace _2.BUS.IServices
     public interface IKhachHangService
     {
         bool addKhachHang (KhachHang khachHang);
-        bool updateKhachHang(KhachHang khachHang);
-        bool deleteKhachHang (KhachHang khachHang); 
+        bool updateKhachHang(Guid id, KhachHang khachHang);
+        bool deleteKhachHang (Guid id); 
        
         List<KhachHang> getKhachHangFromDB();
     }

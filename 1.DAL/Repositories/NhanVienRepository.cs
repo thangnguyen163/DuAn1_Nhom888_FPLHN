@@ -12,35 +12,40 @@ namespace _1.DAL.Repositories
     public class NhanVienRepository : INhanVienRepository
     {
         private FpolyDBContext _DBContext;
-        private List<NhanVien> _lstNhanVien;
         public NhanVienRepository()
         {
             _DBContext = new FpolyDBContext();
-            _lstNhanVien = new List<NhanVien>();
         }
         public bool addNhanVien(NhanVien nhanVien)
         {
+            if (nhanVien == null) return false;
             _DBContext.NhanViens.Add(nhanVien);
             _DBContext.SaveChanges();
             return true;
         }
 
-        public bool deleteNhanVien(NhanVien nhanVien)
+        public bool deleteNhanVien(Guid Id)
         {
-            _DBContext.NhanViens.Remove(nhanVien);
+            if (Id == null) return false;
+            var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
+            //a.TrangThai = 1;
             _DBContext.SaveChanges();
             return true;
         }
 
         public List<NhanVien> GetAllNhanVien()
         {
-            _lstNhanVien = _DBContext.NhanViens.ToList();
-            return _lstNhanVien;
+            return _DBContext.NhanViens.ToList();
         }
 
-        public bool updateNhanVien(NhanVien nhanVien)
+        public bool updateNhanVien(Guid Id, NhanVien nhanVien)
         {
-            _DBContext.NhanViens.Update(nhanVien);
+            if (Id == null) return false;
+            var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
+            a.Ma = nhanVien.Ma;
+            a.Ten = nhanVien.Ten;
+            a.TrangThai = nhanVien.TrangThai;
+            _DBContext.NhanViens.Update(a);
             _DBContext.SaveChanges();
             return true;
         }
