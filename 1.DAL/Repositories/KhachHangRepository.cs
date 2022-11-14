@@ -11,38 +11,35 @@ namespace _1.DAL.Repositories
 {
     public class KhachHangRepository : IKhachHangRepository
     {
-        private FpolyDBContext _DBContext;
-        private List<KhachHang> _lstkhachhang;
+        private FpolyDBContext _dbContext;
         public KhachHangRepository()
         {
-            _DBContext = new FpolyDBContext();
-            _lstkhachhang = new List<KhachHang>();
+            _dbContext = new FpolyDBContext();
         }
         public bool addKhachHang(KhachHang khachHang)
         {
-            _DBContext.KhachHangs.Add(khachHang);
-            _DBContext.SaveChanges();
-            return true;    
+            if (khachHang == null) return false;
+            _dbContext.KhachHangs.Add(khachHang);
+            _dbContext.SaveChanges();
+            return true;
         }
 
-        public bool deleteKhachHang(KhachHang khachHang)
+        public bool deleteKhachHang(Guid id)
         {
-            _DBContext.KhachHangs.Remove(khachHang);
-            _DBContext.SaveChanges();
+            if (id == null) return false;
+            var a = _dbContext.KhachHangs.FirstOrDefault(x => x.Id == id);
+            _dbContext.SaveChanges();
             return true;
         }
 
         public List<KhachHang> getall()
         {
-            _lstkhachhang = _DBContext.KhachHangs.ToList();
-            return _lstkhachhang;
+            return _dbContext.KhachHangs.ToList();
         }
 
-        public bool updateKhachHang(KhachHang khachHang)
+        public bool updateKhachHang(Guid id, KhachHang khachHang)
         {
-            _DBContext.KhachHangs.Update(khachHang);
-            _DBContext.SaveChanges();
-            return true;
+            throw new NotImplementedException();
         }
     }
 }

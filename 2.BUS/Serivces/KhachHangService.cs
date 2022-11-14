@@ -2,6 +2,7 @@
 using _1.DAL.IRepositories;
 using _1.DAL.Repositories;
 using _2.BUS.IServices;
+using _2.BUS.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +13,30 @@ namespace _2.BUS.Serivces
 {
     public class KhachHangService : IKhachHangService
     {
-        private IKhachHangRepository _IKhachHangRepository;
-        private List<KhachHang> _lstKhachHang;
+        private IKhachHangRepository khachHangRepository;
         public KhachHangService()
         {
-            _IKhachHangRepository = new KhachHangRepository();
-            _lstKhachHang = new List<KhachHang>();
-        }
-        public bool addKhachHang(KhachHang khachHang)
-        {
-            _IKhachHangRepository.addKhachHang(khachHang);
-            return true;
+            khachHangRepository = new KhachHangRepository();
         }
 
-        public bool deleteKhachHang(KhachHang khachHang)
+        public bool addKhachHang(KhachHang khachHang)
         {
-            _IKhachHangRepository.deleteKhachHang(khachHang);
-            return true;
+            throw new NotImplementedException();
+        }
+
+        public bool deleteKhachHang(Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<KhachHang> getKhachHangFromDB()
         {
-            _lstKhachHang = _IKhachHangRepository.getall();
-            return _lstKhachHang;
+            throw new NotImplementedException();
         }
 
-        public bool updateKhachHang(KhachHang khachHang)
+        public bool updateKhachHang(Guid id, KhachHang khachHang)
         {
-            _IKhachHangRepository.updateKhachHang(khachHang);
-            return true;
+            throw new NotImplementedException();
         }
     }
 }
