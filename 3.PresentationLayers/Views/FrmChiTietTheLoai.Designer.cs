@@ -44,6 +44,10 @@
             this.tb_Timkiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtg_Show = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbb_theloai = new System.Windows.Forms.ComboBox();
+            this.cbb_tensach = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.gB_tt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,6 +75,7 @@
             this.btn_Reset.TabIndex = 3;
             this.btn_Reset.Text = "Reset";
             this.btn_Reset.UseVisualStyleBackColor = true;
+            this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
             // 
             // btn_Xoa
             // 
@@ -80,6 +85,7 @@
             this.btn_Xoa.TabIndex = 2;
             this.btn_Xoa.Text = "Xóa";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Sua
             // 
@@ -89,6 +95,7 @@
             this.btn_Sua.TabIndex = 1;
             this.btn_Sua.Text = "Sửa ";
             this.btn_Sua.UseVisualStyleBackColor = true;
+            this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
             // 
             // btn_Them
             // 
@@ -98,9 +105,14 @@
             this.btn_Them.TabIndex = 0;
             this.btn_Them.Text = "Thêm";
             this.btn_Them.UseVisualStyleBackColor = true;
+            this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // gB_tt
             // 
+            this.gB_tt.Controls.Add(this.cbb_tensach);
+            this.gB_tt.Controls.Add(this.cbb_theloai);
+            this.gB_tt.Controls.Add(this.label6);
+            this.gB_tt.Controls.Add(this.label5);
             this.gB_tt.Controls.Add(this.cbb_trangthai);
             this.gB_tt.Controls.Add(this.label4);
             this.gB_tt.Controls.Add(this.label3);
@@ -126,11 +138,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 140);
+            this.label4.Location = new System.Drawing.Point(34, 175);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 20);
+            this.label4.Size = new System.Drawing.Size(111, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Tên :";
+            this.label4.Text = "Thể loại chi tiết";
             // 
             // label3
             // 
@@ -144,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 44);
+            this.label2.Location = new System.Drawing.Point(36, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 4;
@@ -152,14 +164,14 @@
             // 
             // tb_ten
             // 
-            this.tb_ten.Location = new System.Drawing.Point(206, 139);
+            this.tb_ten.Location = new System.Drawing.Point(206, 174);
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(352, 27);
             this.tb_ten.TabIndex = 3;
             // 
             // tb_ma
             // 
-            this.tb_ma.Location = new System.Drawing.Point(206, 41);
+            this.tb_ma.Location = new System.Drawing.Point(206, 121);
             this.tb_ma.Name = "tb_ma";
             this.tb_ma.Size = new System.Drawing.Size(352, 27);
             this.tb_ma.TabIndex = 0;
@@ -182,6 +194,7 @@
             this.tb_Timkiem.Name = "tb_Timkiem";
             this.tb_Timkiem.Size = new System.Drawing.Size(252, 27);
             this.tb_Timkiem.TabIndex = 2;
+            this.tb_Timkiem.TextChanged += new System.EventHandler(this.tb_Timkiem_TextChanged);
             // 
             // label1
             // 
@@ -203,6 +216,43 @@
             this.dtg_Show.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_Show.Size = new System.Drawing.Size(1040, 176);
             this.dtg_Show.TabIndex = 0;
+            this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Thể loại";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 75);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Tên sách:";
+            // 
+            // cbb_theloai
+            // 
+            this.cbb_theloai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_theloai.FormattingEnabled = true;
+            this.cbb_theloai.Location = new System.Drawing.Point(206, 26);
+            this.cbb_theloai.Name = "cbb_theloai";
+            this.cbb_theloai.Size = new System.Drawing.Size(219, 28);
+            this.cbb_theloai.TabIndex = 12;
+            // 
+            // cbb_tensach
+            // 
+            this.cbb_tensach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_tensach.FormattingEnabled = true;
+            this.cbb_tensach.Location = new System.Drawing.Point(206, 72);
+            this.cbb_tensach.Name = "cbb_tensach";
+            this.cbb_tensach.Size = new System.Drawing.Size(219, 28);
+            this.cbb_tensach.TabIndex = 13;
             // 
             // FrmChiTietTheLoai
             // 
@@ -242,5 +292,9 @@
         private System.Windows.Forms.TextBox tb_Timkiem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtg_Show;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbb_tensach;
+        private System.Windows.Forms.ComboBox cbb_theloai;
     }
 }
