@@ -14,5 +14,6 @@ namespace _2.BUS.IService
         string Update(ChiTietTheLoai obj);
         string Delete(ChiTietTheLoai obj);
         List<ChiTietTheLoaiView> GetAll();
+        List<ChiTietTheLoai> GetAllNoView();
     }
 }
