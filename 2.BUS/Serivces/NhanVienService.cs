@@ -70,6 +70,7 @@ namespace _2.BUS.Serivces
                 nhanVienRepository.updateNhanVien(Id, nhanVien);
                 return "Sửa thành công";
             }
+            //fgfgf
         }
     }
 }
