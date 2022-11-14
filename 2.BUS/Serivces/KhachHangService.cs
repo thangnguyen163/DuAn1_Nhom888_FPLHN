@@ -32,7 +32,7 @@ namespace _2.BUS.Serivces
             var dtd = diemTieuDung;
             dtd.Id = diemTieuDung.Id;
             // dtd.IdKh = khachHang.Id;
-            dtd.Ma = "Ma";
+            dtd.Ma = dtd.Ma;
             dtd.SoDiem = 0;
             dtd.TrangThai = 1;
 
@@ -57,14 +57,14 @@ namespace _2.BUS.Serivces
         public List<KhachhangView> getKhachHangFromDB()
         {
             var templst = (from a in _idiemtieudungRepository.GetAll()
-                           join b in _khachHangRepository.getall() on a.IdKh equals b.Id
+                           join b in _khachHangRepository.getall() on a.Id equals b.IddiemTieuDung
                            select new KhachhangView
                            {
                                ID = b.Id,
                                Ma = b.Ma,
                                Ten = b.Ten,
                                Sodt = b.Sdt,
-                               Idiemtieudung = a.Id,
+                              Madiemtieudung = a.Ma,
                                Trangthai = b.TrangThai,
                            }).ToList();
             return templst;

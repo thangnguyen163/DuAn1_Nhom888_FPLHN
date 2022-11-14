@@ -46,7 +46,7 @@ namespace _1.DAL.Repositories
             a.Ma = khachHang.Ma;
             a.Ten = khachHang.Ten;
             a.Sdt = khachHang.Sdt;
-            a.IddiemTieuDung = khachHang.IddiemTieuDung;
+            //a.IddiemTieuDung = khachHang.IddiemTieuDung;
             a.TrangThai = khachHang.TrangThai;
             _dbContext.KhachHangs.Update(a);
             _dbContext.SaveChanges();

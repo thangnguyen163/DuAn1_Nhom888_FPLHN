@@ -34,9 +34,9 @@
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rd_conhd = new System.Windows.Forms.RadioButton();
+            this.rd_dadung = new System.Windows.Forms.RadioButton();
             this.cbb_iddtd = new System.Windows.Forms.ComboBox();
-            this.cb_khd = new System.Windows.Forms.CheckBox();
-            this.cb_hd = new System.Windows.Forms.CheckBox();
             this.tb_sdt = new System.Windows.Forms.TextBox();
             this.tb_ten = new System.Windows.Forms.TextBox();
             this.tb_ma = new System.Windows.Forms.TextBox();
@@ -83,6 +83,7 @@
             this.btn_xoa.TabIndex = 2;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_sua
             // 
@@ -92,6 +93,7 @@
             this.btn_sua.TabIndex = 1;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = true;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_them
             // 
@@ -101,12 +103,13 @@
             this.btn_them.TabIndex = 0;
             this.btn_them.Text = "Thêm";
             this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rd_conhd);
+            this.groupBox2.Controls.Add(this.rd_dadung);
             this.groupBox2.Controls.Add(this.cbb_iddtd);
-            this.groupBox2.Controls.Add(this.cb_khd);
-            this.groupBox2.Controls.Add(this.cb_hd);
             this.groupBox2.Controls.Add(this.tb_sdt);
             this.groupBox2.Controls.Add(this.tb_ten);
             this.groupBox2.Controls.Add(this.tb_ma);
@@ -122,6 +125,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
             // 
+            // rd_conhd
+            // 
+            this.rd_conhd.AutoSize = true;
+            this.rd_conhd.Location = new System.Drawing.Point(492, 171);
+            this.rd_conhd.Name = "rd_conhd";
+            this.rd_conhd.Size = new System.Drawing.Size(129, 24);
+            this.rd_conhd.TabIndex = 16;
+            this.rd_conhd.TabStop = true;
+            this.rd_conhd.Text = "Còn hoạt động";
+            this.rd_conhd.UseVisualStyleBackColor = true;
+            // 
+            // rd_dadung
+            // 
+            this.rd_dadung.AutoSize = true;
+            this.rd_dadung.Location = new System.Drawing.Point(493, 116);
+            this.rd_dadung.Name = "rd_dadung";
+            this.rd_dadung.Size = new System.Drawing.Size(126, 24);
+            this.rd_dadung.TabIndex = 15;
+            this.rd_dadung.TabStop = true;
+            this.rd_dadung.Text = "Đã tạm ngừng";
+            this.rd_dadung.UseVisualStyleBackColor = true;
+            // 
             // cbb_iddtd
             // 
             this.cbb_iddtd.FormattingEnabled = true;
@@ -129,26 +154,6 @@
             this.cbb_iddtd.Name = "cbb_iddtd";
             this.cbb_iddtd.Size = new System.Drawing.Size(203, 28);
             this.cbb_iddtd.TabIndex = 12;
-            // 
-            // cb_khd
-            // 
-            this.cb_khd.AutoSize = true;
-            this.cb_khd.Location = new System.Drawing.Point(483, 165);
-            this.cb_khd.Name = "cb_khd";
-            this.cb_khd.Size = new System.Drawing.Size(147, 24);
-            this.cb_khd.TabIndex = 11;
-            this.cb_khd.Text = "Không hoạt động";
-            this.cb_khd.UseVisualStyleBackColor = true;
-            // 
-            // cb_hd
-            // 
-            this.cb_hd.AutoSize = true;
-            this.cb_hd.Location = new System.Drawing.Point(483, 114);
-            this.cb_hd.Name = "cb_hd";
-            this.cb_hd.Size = new System.Drawing.Size(103, 24);
-            this.cb_hd.TabIndex = 10;
-            this.cb_hd.Text = "Hoạt động";
-            this.cb_hd.UseVisualStyleBackColor = true;
             // 
             // tb_sdt
             // 
@@ -235,6 +240,7 @@
             this.dtg_Show.RowTemplate.Height = 29;
             this.dtg_Show.Size = new System.Drawing.Size(986, 219);
             this.dtg_Show.TabIndex = 0;
+            this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
             // Form_KhachHang
             // 
@@ -246,6 +252,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_KhachHang";
             this.Text = "Form_KhachHang";
+            this.Load += new System.EventHandler(this.Form_KhachHang_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -264,8 +271,6 @@
         private System.Windows.Forms.Button btn_them;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbb_iddtd;
-        private System.Windows.Forms.CheckBox cb_khd;
-        private System.Windows.Forms.CheckBox cb_hd;
         private System.Windows.Forms.TextBox tb_sdt;
         private System.Windows.Forms.TextBox tb_ten;
         private System.Windows.Forms.TextBox tb_ma;
@@ -276,5 +281,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dtg_Show;
+        private System.Windows.Forms.RadioButton rd_conhd;
+        private System.Windows.Forms.RadioButton rd_dadung;
     }
 }
