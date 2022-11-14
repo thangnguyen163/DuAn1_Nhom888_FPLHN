@@ -15,6 +15,8 @@ namespace _3.PresentationLayers.Views
         public Form_KhachHang()
         {
             InitializeComponent();
+            //test 
+            //lại này
         }
     }
 }

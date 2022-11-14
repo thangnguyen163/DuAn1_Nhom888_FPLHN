@@ -24,10 +24,12 @@ namespace _1.DAL.Repositories
             return true;
         }
 
-        public bool deleteKhachHang(Guid id)
+        public bool deleteKhachHang(KhachHang khachHang)
         {
-            if (id == null) return false;
-            var a = _dbContext.KhachHangs.FirstOrDefault(x => x.Id == id);
+            if (khachHang == null) return false;
+            var a = _dbContext.KhachHangs.FirstOrDefault(x => x.Id == khachHang.Id);
+            a.TrangThai = 0;
+            _dbContext.KhachHangs.Update(a);
             _dbContext.SaveChanges();
             return true;
         }
@@ -37,9 +39,18 @@ namespace _1.DAL.Repositories
             return _dbContext.KhachHangs.ToList();
         }
 
-        public bool updateKhachHang(Guid id, KhachHang khachHang)
+        public bool updateKhachHang( KhachHang khachHang)
         {
-            throw new NotImplementedException();
+            if (khachHang == null) return false;
+            var a = _dbContext.KhachHangs.FirstOrDefault(x => x.Id == khachHang.Id);
+            a.Ma = khachHang.Ma;
+            a.Ten = khachHang.Ten;
+            a.Sdt = khachHang.Sdt;
+            a.IddiemTieuDung = khachHang.IddiemTieuDung;
+            a.TrangThai = khachHang.TrangThai;
+            _dbContext.KhachHangs.Update(a);
+            _dbContext.SaveChanges();
+            return true;
         }
     }
 }
