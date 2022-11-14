@@ -22,7 +22,12 @@ namespace _2.BUS.Serivces
             return "Thêm thất bại";
         }
 
-        public List<DiemTieuDungView> GetAll()
+        public List<DiemTieuDung> GetAll()
+        {
+            return _idiemtieudungRepository.GetAll();
+        }
+
+        public List<DiemTieuDungView> GetAllView()
         {
             var templst = (from a in _idiemtieudungRepository.GetAll()
                           join b in _ikhachHangRepository.getall() on a.IdKh equals b.Id

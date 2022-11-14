@@ -12,6 +12,7 @@ namespace _2.BUS.IServices
         bool addKhachHang (KhachHang khachHang);
         bool updateKhachHang(KhachHang khachHang);
         bool deleteKhachHang (KhachHang khachHang); 
+       
         List<KhachHang> getKhachHangFromDB();
     }
 }
