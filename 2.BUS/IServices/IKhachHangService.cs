@@ -1,4 +1,5 @@
 ﻿using _1.DAL.DomainClass;
+using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace _2.BUS.IServices
 {
     public interface IKhachHangService
     {
-        bool addKhachHang (KhachHang khachHang);
-        bool updateKhachHang(Guid id, KhachHang khachHang);
-        bool deleteKhachHang (Guid id); 
+        string addKhachHang (KhachHang khachHang, DiemTieuDung diemTieuDung);
+        string updateKhachHang( KhachHang khachHang);
+        string deleteKhachHang (KhachHang khachHang); 
        
-        List<KhachHang> getKhachHangFromDB();
+        List<KhachhangView> getKhachHangFromDB();
     }
 }
