@@ -21,12 +21,26 @@ namespace _3.PresentationLayers.Views
         private List<ChiTietSach> _lstChiTietSach;
         private List<ChiTietSachView> _lstChiTietSachView;
         private Guid? SelectedID;
+        private ISachService _iSachService;
+        private ITacGiaService _iTacGiaService;
+        private ITheLoaiService _iTheLoaiService;
+        private IChiTietTheLoaiService _iTietTheLoaiService;
+        private INXBService _iNXBService;
+        private ILoaiBiaService _iLoaiBiaService;
+        private INhaPhatHanhService _iNhaPhatHanhService;
+
         public Form_ChiTietSach()
         {
             InitializeComponent();
             _iChiTietSachService = new ChiTietSachService();
             _lstChiTietSach = new List<ChiTietSach>();
             _lstChiTietSachView = new List<ChiTietSachView>();
+            _iSachService = new SachService();
+            _iTacGiaService = new TacGiaService();
+            _iTheLoaiService = new TheLoaiService();
+            _iNXBService = new NXBService();
+            _iLoaiBiaService = new LoaiBiaService();
+            _iNhaPhatHanhService = new NhaPhatHanhService();
         }
         void LoadData()
         {
