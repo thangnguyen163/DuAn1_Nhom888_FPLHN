@@ -8,6 +8,7 @@ namespace _2.BUS.ViewModels
 {
     public class ChiTietSachView
     {
+        //testáds
         public Guid Id { get; set; }
         public string TenSach { get; set; }
         public string TenNxb { get; set; }
