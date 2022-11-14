@@ -25,7 +25,12 @@ namespace _2.BUS.Serivces
             return "Thêm thất bại";
         }
 
-        public List<CongThucTInhDiemView> GetAll()
+        public List<CongThucTinhDiem> GetAll()
+        {
+            return _icongThucTinhDiemRepository.GetAll();
+        }
+
+        public List<CongThucTInhDiemView> GetAllView()
         {
             var templst = (from a in _icongThucTinhDiemRepository.GetAll()
                            select new CongThucTInhDiemView
