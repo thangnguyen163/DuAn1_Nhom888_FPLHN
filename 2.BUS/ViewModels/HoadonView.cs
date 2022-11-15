@@ -21,5 +21,7 @@ namespace _2.BUS.ViewModels
         public decimal? tongtien { get; set; }
         public string? ghichu { get; set; }
         public int? Trangthai { get; set; }
+        public string Tenkh { get; set; }
+        public string Tennv { get; set; }
     }
 }
