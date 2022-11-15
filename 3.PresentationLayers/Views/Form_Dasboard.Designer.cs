@@ -43,17 +43,19 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtg_hoadon = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tb_tongtien = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.bt_taohoadon = new System.Windows.Forms.Button();
             this.btn_thanhtoan = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tb_tientralai = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_tienkhachdua = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_temnv = new System.Windows.Forms.TextBox();
+            this.tb_manv = new System.Windows.Forms.TextBox();
+            this.tb_tenkh = new System.Windows.Forms.TextBox();
+            this.tb_makh = new System.Windows.Forms.TextBox();
+            this.tb_mahd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -254,17 +256,19 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panel2.Controls.Add(this.tb_tongtien);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.bt_taohoadon);
             this.panel2.Controls.Add(this.btn_thanhtoan);
-            this.panel2.Controls.Add(this.textBox7);
+            this.panel2.Controls.Add(this.tb_tientralai);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.tb_tienkhachdua);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.tb_temnv);
+            this.panel2.Controls.Add(this.tb_manv);
+            this.panel2.Controls.Add(this.tb_tenkh);
+            this.panel2.Controls.Add(this.tb_makh);
+            this.panel2.Controls.Add(this.tb_mahd);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -275,6 +279,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(387, 609);
             this.panel2.TabIndex = 4;
+            // 
+            // tb_tongtien
+            // 
+            this.tb_tongtien.Location = new System.Drawing.Point(127, 381);
+            this.tb_tongtien.Name = "tb_tongtien";
+            this.tb_tongtien.Size = new System.Drawing.Size(204, 27);
+            this.tb_tongtien.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 384);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 20);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Tổng tiền";
             // 
             // bt_taohoadon
             // 
@@ -292,79 +312,82 @@
             this.btn_thanhtoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_thanhtoan.Image = ((System.Drawing.Image)(resources.GetObject("btn_thanhtoan.Image")));
             this.btn_thanhtoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_thanhtoan.Location = new System.Drawing.Point(41, 480);
+            this.btn_thanhtoan.Location = new System.Drawing.Point(41, 520);
             this.btn_thanhtoan.Name = "btn_thanhtoan";
             this.btn_thanhtoan.Size = new System.Drawing.Size(208, 48);
             this.btn_thanhtoan.TabIndex = 14;
             this.btn_thanhtoan.Text = "Thanh toán";
             this.btn_thanhtoan.UseVisualStyleBackColor = true;
+            this.btn_thanhtoan.Click += new System.EventHandler(this.btn_thanhtoan_Click);
             // 
-            // textBox7
+            // tb_tientralai
             // 
-            this.textBox7.Location = new System.Drawing.Point(127, 432);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(204, 27);
-            this.textBox7.TabIndex = 13;
+            this.tb_tientralai.Location = new System.Drawing.Point(127, 472);
+            this.tb_tientralai.Name = "tb_tientralai";
+            this.tb_tientralai.Size = new System.Drawing.Size(204, 27);
+            this.tb_tientralai.TabIndex = 13;
+            this.tb_tientralai.TextChanged += new System.EventHandler(this.tb_tientralai_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 435);
+            this.label8.Location = new System.Drawing.Point(12, 475);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "Tiền trả lại";
             // 
-            // textBox6
+            // tb_tienkhachdua
             // 
-            this.textBox6.Location = new System.Drawing.Point(127, 385);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(204, 27);
-            this.textBox6.TabIndex = 11;
+            this.tb_tienkhachdua.Location = new System.Drawing.Point(127, 425);
+            this.tb_tienkhachdua.Name = "tb_tienkhachdua";
+            this.tb_tienkhachdua.Size = new System.Drawing.Size(204, 27);
+            this.tb_tienkhachdua.TabIndex = 11;
+            this.tb_tienkhachdua.TextChanged += new System.EventHandler(this.tb_tienkhachdua_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 388);
+            this.label7.Location = new System.Drawing.Point(12, 428);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 10;
             this.label7.Text = "Tiền khách đưa";
             // 
-            // textBox5
+            // tb_temnv
             // 
-            this.textBox5.Location = new System.Drawing.Point(127, 337);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(204, 27);
-            this.textBox5.TabIndex = 9;
+            this.tb_temnv.Location = new System.Drawing.Point(127, 337);
+            this.tb_temnv.Name = "tb_temnv";
+            this.tb_temnv.Size = new System.Drawing.Size(204, 27);
+            this.tb_temnv.TabIndex = 9;
             // 
-            // textBox4
+            // tb_manv
             // 
-            this.textBox4.Location = new System.Drawing.Point(127, 285);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 27);
-            this.textBox4.TabIndex = 8;
+            this.tb_manv.Location = new System.Drawing.Point(127, 285);
+            this.tb_manv.Name = "tb_manv";
+            this.tb_manv.Size = new System.Drawing.Size(204, 27);
+            this.tb_manv.TabIndex = 8;
             // 
-            // textBox3
+            // tb_tenkh
             // 
-            this.textBox3.Location = new System.Drawing.Point(127, 243);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(204, 27);
-            this.textBox3.TabIndex = 7;
+            this.tb_tenkh.Location = new System.Drawing.Point(127, 243);
+            this.tb_tenkh.Name = "tb_tenkh";
+            this.tb_tenkh.Size = new System.Drawing.Size(204, 27);
+            this.tb_tenkh.TabIndex = 7;
             // 
-            // textBox2
+            // tb_makh
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 193);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 27);
-            this.textBox2.TabIndex = 6;
+            this.tb_makh.Location = new System.Drawing.Point(127, 193);
+            this.tb_makh.Name = "tb_makh";
+            this.tb_makh.Size = new System.Drawing.Size(204, 27);
+            this.tb_makh.TabIndex = 6;
             // 
-            // textBox1
+            // tb_mahd
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 143);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 27);
-            this.textBox1.TabIndex = 5;
+            this.tb_mahd.Location = new System.Drawing.Point(127, 143);
+            this.tb_mahd.Name = "tb_mahd";
+            this.tb_mahd.Size = new System.Drawing.Size(204, 27);
+            this.tb_mahd.TabIndex = 5;
             // 
             // label6
             // 
@@ -490,15 +513,15 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tb_tientralai;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tb_tienkhachdua;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_temnv;
+        private System.Windows.Forms.TextBox tb_manv;
+        private System.Windows.Forms.TextBox tb_tenkh;
+        private System.Windows.Forms.TextBox tb_makh;
+        private System.Windows.Forms.TextBox tb_mahd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -511,5 +534,7 @@
         private System.Windows.Forms.DataGridView dtg_hoadon;
         private System.Windows.Forms.DataGridView dtg_sanpham;
         private System.Windows.Forms.Button bt_taohoadon;
+        private System.Windows.Forms.TextBox tb_tongtien;
+        private System.Windows.Forms.Label label9;
     }
 }

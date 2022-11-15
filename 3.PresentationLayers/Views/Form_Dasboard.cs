@@ -76,7 +76,7 @@ namespace _3.PresentationLayers.Views
         public void LoaddataToHoadon()
         {
             int i = 1;
-            dtg_hoadon.ColumnCount = 4;
+            dtg_hoadon.ColumnCount = 5;
             dtg_hoadon.Columns[0].Name = "STT";
             dtg_hoadon.Columns[0].Width = 50;
             dtg_hoadon.Columns[1].Name = "ID";
@@ -84,11 +84,12 @@ namespace _3.PresentationLayers.Views
             dtg_hoadon.Columns[2].Name = "Mã";
             dtg_hoadon.Columns[2].Width = 90;
             dtg_hoadon.Columns[3].Name = "Mã khách hàng";
+            dtg_hoadon.Columns[4].Name = "Trạng thái";
             dtg_hoadon.Columns[3].Width = 120;
             dtg_hoadon.Rows.Clear();
             foreach (var x in _ihoaDonService.GetAll())
             {
-                dtg_hoadon.Rows.Add(i++, x.Id, x.Mahd, x.Makh);
+                dtg_hoadon.Rows.Add(i++, x.Id, x.Mahd, x.Makh,x.Trangthai == 0? "Chưa thanh toán":x.Trangthai==1?"Đã thanh toán":"Đã hủy");
             }
         }
         public void LoaddataToChitietHoadon(Guid khoa)
@@ -223,10 +224,21 @@ namespace _3.PresentationLayers.Views
         }
 
         private void dtg_hoadon_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
+        { int count=0;
+           
+                count =Convert.ToInt32(_ihoaDonChiTietService.GetAllbanhang(SelectID).Sum(x => x.Thanhtien));
+            
             SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
             //  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
             LoaddataToChitietHoadon(SelectID);
+            tb_mahd.Text = Convert.ToString(_ihoaDonService.GetAll().Where(x => x.Id == SelectID).Select(x => x.Mahd).FirstOrDefault());
+            tb_makh.Text = Convert.ToString(_ihoaDonService.GetAll().Where(x => x.Id == SelectID).Select(x => x.Makh).FirstOrDefault());
+            tb_tenkh.Text = Convert.ToString(_ihoaDonService.GetAll().Where(x => x.Id == SelectID).Select(x => x.Tenkh).FirstOrDefault());
+            tb_manv.Text = Convert.ToString(_ihoaDonService.GetAll().Where(x => x.Id == SelectID).Select(x => x.Manv).FirstOrDefault());
+            tb_temnv.Text = Convert.ToString(_ihoaDonService.GetAll().Where(x => x.Id == SelectID).Select(x => x.Tennv).FirstOrDefault());
+            tb_tongtien.Text = Convert.ToString(_ihoaDonChiTietService.GetAllbanhang(SelectID).Sum(x => x.Thanhtien));
+          
+
         }
 
         private void dtg_sanpham_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -276,6 +288,8 @@ namespace _3.PresentationLayers.Views
             hoadon.IddiemTich = Guid.Parse("b7a6a7b7-e65b-42fb-a771-819f1df4787e");
             hoadon.IddiemDung = Guid.Parse("50a3d851-bfef-4878-8e15-b7539e63a51d");
             hoadon.MaHd = Convert.ToString("HDTest" + "" + Convert.ToString(count + 10));
+            hoadon.NgayTao = DateTime.Now;
+            hoadon.TrangThai = 0;
             _ihoaDonService.Add(hoadon);
 
             var hdct = new HoaDonChiTiet();
@@ -288,6 +302,30 @@ namespace _3.PresentationLayers.Views
             _ihoaDonChiTietService.Add(hdct);
             // LoaddataToHoadon();
             LoaddataToChitietHoadon(a);
+        }
+
+        private void btn_thanhtoan_Click(object sender, EventArgs e)
+        {
+            if (_ihoaDonService.GetAll().Where(x=>x.Id == SelectID).Select(x=>x.Trangthai).FirstOrDefault()==0)
+            {
+                var tempobj = new HoaDon();
+                tempobj.Id = SelectID;             
+                tempobj.TongTien = Convert.ToInt32(tb_tongtien.Text);              
+                tempobj.TrangThai = 1;
+                _ihoaDonService.Update(tempobj);
+                LoaddataToHoadon();
+               //int? a= _ihoaDonChiTietService.GetAllbanhang(SelectID).Select(x => x.Soluong);
+            }
+        }
+
+        private void tb_tientralai_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
+        {
+            tb_tientralai.Text = Convert.ToString(Convert.ToInt32(Convert.ToInt32(tb_tienkhachdua.Text) - Convert.ToInt32(tb_tongtien.Text)));
+
         }
     }
 }

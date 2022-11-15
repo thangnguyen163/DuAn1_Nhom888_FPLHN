@@ -44,7 +44,10 @@ namespace _2.BUS.Serivces
                            Giamgia = a.GiamGia,
                            tongtien = a.TongTien,
                            ghichu = a.GhiChu,
+                           Tenkh = b.Ten,
+                           Tennv = c.Ten,
                            Trangthai = a.TrangThai
+                           
                        }).ToList();
             return lst;
         }

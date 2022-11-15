@@ -40,7 +40,9 @@ namespace _1.DAL.Repositories
         public bool Update(HoaDonChiTiet obj)
         {
             if (obj == null) return false;
-            var tempobj = dBContext.HoaDonChiTiets.FirstOrDefault(x => x.Id == obj.Id);                       
+            var tempobj = dBContext.HoaDonChiTiets.FirstOrDefault(x => x.IdChiTietSach == obj.IdChiTietSach && x.IdHoaDon == obj.IdHoaDon);  
+            tempobj.SoLuong = obj.SoLuong;
+            tempobj.ThanhTien = obj.ThanhTien;
             dBContext.HoaDonChiTiets.Update(tempobj);
             dBContext.SaveChanges();
             return true;
