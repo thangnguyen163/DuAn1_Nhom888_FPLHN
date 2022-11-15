@@ -247,6 +247,7 @@
             this.dtg_hoadon.RowTemplate.Height = 29;
             this.dtg_hoadon.Size = new System.Drawing.Size(244, 410);
             this.dtg_hoadon.TabIndex = 0;
+            this.dtg_hoadon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_hoadon_CellClick_1);
             // 
             // panel2
             // 
@@ -284,6 +285,7 @@
             this.bt_taohoadon.TabIndex = 15;
             this.bt_taohoadon.Text = "Tạo hóa đơn";
             this.bt_taohoadon.UseVisualStyleBackColor = false;
+            this.bt_taohoadon.Click += new System.EventHandler(this.bt_taohoadon_Click_1);
             // 
             // btn_thanhtoan
             // 
@@ -440,6 +442,7 @@
             this.dtg_sanpham.RowTemplate.Height = 29;
             this.dtg_sanpham.Size = new System.Drawing.Size(866, 221);
             this.dtg_sanpham.TabIndex = 0;
+            this.dtg_sanpham.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_sanpham_CellDoubleClick_1);
             // 
             // Form_Dasboard
             // 
