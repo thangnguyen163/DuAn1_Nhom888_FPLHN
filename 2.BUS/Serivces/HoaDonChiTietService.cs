@@ -61,7 +61,7 @@ namespace _2.BUS.Serivces
                                Thanhtien = a.ThanhTien,
                                Trangthai = a.TrangThai,
                                Idchitietsp = c.Id,
-
+                               IDhoadon = a.IdHoaDon,
                            }).ToList();
             return templst;
         }
@@ -93,6 +93,7 @@ namespace _2.BUS.Serivces
                                 Thanhtien = a.ThanhTien,
                                 Trangthai = a.TrangThai,
                                 Idchitietsp = a.IdChiTietSach,
+                                IDhoadon = a.IdHoaDon,
 
                             }).ToList();
             return templst1;
