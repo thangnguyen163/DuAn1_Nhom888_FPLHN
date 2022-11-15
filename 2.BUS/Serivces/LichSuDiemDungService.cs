@@ -38,7 +38,7 @@ namespace _2.BUS.Serivces
             var templist = (from a in _ilichSuDiemdungRepository.GetAll()
                             join b in _icongThucTinhDiemRepository.GetAll() on a.IdCttinh equals b.Id
                             join c in __idiemtieudungRepository.GetAll() on a.IddiemTieuDung equals c.Id
-                            join d in _ikhachHangRepository.getall() on c.IdKh equals d.Id
+                            join d in _ikhachHangRepository.getall() on c.Id equals d.IddiemTieuDung
                             select new LichSuDiemDungView
                             {
                                 Id = a.Id,

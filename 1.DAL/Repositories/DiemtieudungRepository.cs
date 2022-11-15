@@ -45,7 +45,7 @@ namespace _1.DAL.Repositories
             var tempobj = _DbContext.DiemTieuDungs.FirstOrDefault(x => x.Id == obj.Id);
             tempobj.Ma = obj.Ma;
             tempobj.SoDiem = obj.SoDiem;
-            tempobj.IdKh = obj.IdKh;
+            
             tempobj.TrangThai = obj.TrangThai;
             _DbContext.DiemTieuDungs.Update(tempobj);
             _DbContext.SaveChanges();
