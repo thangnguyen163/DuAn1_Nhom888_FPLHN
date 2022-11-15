@@ -231,28 +231,34 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_sanpham_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
+           
             int i = 100;
-            Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
-            var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
-            int count = _ihoaDonChiTietService.GetAll().Count;
-            if (data == null)
+          //  Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
+            Guid id = Guid.Parse(dtg_sanpham.CurrentRow.Cells[1].Value.ToString()); 
+            
+            var data = _ihoaDonChiTietService.GetAll().Where(x => x.Idchitietsp == id && x.IDhoadon == SelectID).Count();
+            var data1 = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == id && x.IDhoadon == SelectID);
+            int count = _ihoaDonChiTietService.GetAll().Count+100;
+            if (data == 0)
             {
                 var add = new HoaDonChiTiet();
                 add.Id = Guid.NewGuid();
                 add.IdHoaDon = SelectID;
-                add.IdChiTietSach = Guid.Parse(dtg_sanpham.CurrentRow.Cells[1].Value.ToString());
+                add.IdChiTietSach = id;
                 add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
                 add.SoLuong = 1;
-                add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
+                add.DonGia = Convert.ToInt32(1*Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
                 add.ThanhTien = Convert.ToInt32(1 * Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
                 _ihoaDonChiTietService.Add(add);
             }
             else
             {
                 var add1 = new HoaDonChiTiet();
-                add1.Id = data.ID;
-                add1.SoLuong++;
-                add1.ThanhTien = add1.SoLuong * data.Dongia;
+                add1.IdHoaDon = SelectID;
+                add1.IdChiTietSach = id;
+               // data1.Soluong++;
+                add1.SoLuong = data1.Soluong+1;
+                add1.ThanhTien = add1.SoLuong * data1.Dongia;
                 _ihoaDonChiTietService.Update(add1);
             }
             // LoaddataToHoadon();
