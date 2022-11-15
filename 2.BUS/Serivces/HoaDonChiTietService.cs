@@ -24,6 +24,7 @@ namespace _2.BUS.Serivces
         private ISachRepository _isachRepository = new SachRepository();
         private IHoadonRepository _ihoadonRepository = new HoadonRepository();
         private INXBRepository _inXBRepository = new NXBRepository();
+        List<HoaDonChiTietView> _lst = new List<HoaDonChiTietView>();
         public HoaDonChiTietService()
         {
 
@@ -61,6 +62,12 @@ namespace _2.BUS.Serivces
                                Trangthai = a.TrangThai
                            }).ToList();
             return templst;
+        }
+
+        public List<HoaDonChiTietView> GetAllbanhang(Guid id)
+        {
+            
+            return _lst = GetAll().Where(x=>x.ID == id).ToList();
         }
 
         public string Remove(HoaDonChiTiet obj)
