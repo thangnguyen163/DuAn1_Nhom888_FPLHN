@@ -77,18 +77,18 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelMenu.Controls.Add(this.logout);
-            this.panelMenu.Controls.Add(this.btn_manage);
-            this.panelMenu.Controls.Add(this.btn_ThongKe);
-            this.panelMenu.Controls.Add(this.btn_shopping);
-            this.panelMenu.Controls.Add(this.panelLogo);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(228, 794);
-            this.panelMenu.TabIndex = 0;
-            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
+            //this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            //this.panelMenu.Controls.Add(this.logout);
+            //this.panelMenu.Controls.Add(this.btn_manage);
+            //this.panelMenu.Controls.Add(this.btn_ThongKe);
+            //this.panelMenu.Controls.Add(this.btn_shopping);
+            //this.panelMenu.Controls.Add(this.panelLogo);
+            //this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            //this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            //this.panelMenu.Name = "panelMenu";
+            //this.panelMenu.Size = new System.Drawing.Size(228, 794);
+            //this.panelMenu.TabIndex = 0;
+            //this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
             // logout
             // 
@@ -167,26 +167,26 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            //this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            //this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            //this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            //this.pictureBox1.Name = "pictureBox1";
+            //this.pictureBox1.Size = new System.Drawing.Size(228, 100);
+            //this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            //this.pictureBox1.TabIndex = 0;
+            //this.pictureBox1.TabStop = false;
+            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(228, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1356, 80);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            //this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            //this.panel1.Controls.Add(this.label1);
+            //this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.panel1.Location = new System.Drawing.Point(228, 0);
+            //this.panel1.Name = "panel1";
+            //this.panel1.Size = new System.Drawing.Size(1356, 80);
+            //this.panel1.TabIndex = 1;
+            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
