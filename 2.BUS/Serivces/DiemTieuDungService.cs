@@ -34,7 +34,7 @@ namespace _2.BUS.Serivces
                           select new DiemTieuDungView
                           {
                               ID = a.Id,
-                              IDkhachhang = a.IdKh,
+                              IDkhachhang = b.Id,
                               Makh = b.Ma,
                               Madiemtieudung = a.Ma,
                               Sodiem = a.SoDiem,
