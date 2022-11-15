@@ -38,6 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.tbt_GiaNhap = new System.Windows.Forms.TextBox();
             this.tbt_MoTa = new System.Windows.Forms.TextBox();
             this.tbt_KichThuoc = new System.Windows.Forms.TextBox();
+            this.tbt_SoTrang = new System.Windows.Forms.TextBox();
             this.tbt_GiaBan = new System.Windows.Forms.TextBox();
             this.tbt_SoLuong = new System.Windows.Forms.TextBox();
             this.tbt_NamXuatBan = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@
             this.cbb_LocNhaPhatHanh = new System.Windows.Forms.ComboBox();
             this.cbb_LocLoaiBia = new System.Windows.Forms.ComboBox();
             this.tbt_Search = new System.Windows.Forms.TextBox();
-            this.tbt_SoTrang = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -201,6 +201,15 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Tác giả";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(507, 126);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 20);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Số trang";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -276,6 +285,13 @@
             this.tbt_KichThuoc.Name = "tbt_KichThuoc";
             this.tbt_KichThuoc.Size = new System.Drawing.Size(196, 27);
             this.tbt_KichThuoc.TabIndex = 2;
+            // 
+            // tbt_SoTrang
+            // 
+            this.tbt_SoTrang.Location = new System.Drawing.Point(646, 127);
+            this.tbt_SoTrang.Name = "tbt_SoTrang";
+            this.tbt_SoTrang.Size = new System.Drawing.Size(196, 27);
+            this.tbt_SoTrang.TabIndex = 2;
             // 
             // tbt_GiaBan
             // 
@@ -365,6 +381,7 @@
             this.btn_Delete.TabIndex = 0;
             this.btn_Delete.Text = "Xoá";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
@@ -374,6 +391,7 @@
             this.btn_Update.TabIndex = 0;
             this.btn_Update.Text = "Sửa";
             this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Add
             // 
@@ -474,22 +492,6 @@
             this.tbt_Search.TabIndex = 2;
             this.tbt_Search.Text = "   ";
             this.tbt_Search.TextChanged += new System.EventHandler(this.tbt_Search_TextChanged);
-            // 
-            // tbt_SoTrang
-            // 
-            this.tbt_SoTrang.Location = new System.Drawing.Point(646, 127);
-            this.tbt_SoTrang.Name = "tbt_SoTrang";
-            this.tbt_SoTrang.Size = new System.Drawing.Size(196, 27);
-            this.tbt_SoTrang.TabIndex = 2;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(507, 126);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 20);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Số trang";
             // 
             // Form_ChiTietSach
             // 
