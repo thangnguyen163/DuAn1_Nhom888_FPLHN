@@ -1,6 +1,6 @@
 ﻿namespace _3.PresentationLayers.Views
 {
-    partial class FrmChiTietTheLoai
+    partial class Form_ChiTietTheLoai
     {
         /// <summary>
         /// Required designer variable.
