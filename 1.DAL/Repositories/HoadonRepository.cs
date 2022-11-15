@@ -23,17 +23,37 @@ namespace _1.DAL.Repositories
 
         public List<HoaDon> GetAll()
         {
-            throw new NotImplementedException();
+            return dBContext.HoaDons.ToList();
         }
 
         public bool Remove(HoaDon obj)
         {
-            throw new NotImplementedException();
+            if (obj == null) return false;
+            var tempobj = dBContext.HoaDons.FirstOrDefault(x => x.Id == obj.Id);
+            dBContext.HoaDons.Remove(tempobj);
+            dBContext.SaveChanges();
+            return true;
+
         }
 
         public bool Update(HoaDon obj)
         {
-            throw new NotImplementedException();
+            if (obj == null) return false;
+            var tempobj = dBContext.HoaDons.FirstOrDefault(x => x.Id == obj.Id);
+            tempobj.Idkh = obj.Idkh;
+            tempobj.Idnv = obj.Idnv;
+            tempobj.IddiemTich = obj.IddiemTich;
+            tempobj.IddiemDung = obj.IddiemDung;
+            tempobj.MaHd = obj.MaHd;
+            tempobj.NgayTao = obj.NgayTao;
+            tempobj.Thue = obj.Thue;
+            tempobj.GiamGia = obj.GiamGia;
+            tempobj.TongTien = obj.TongTien;
+            tempobj.GhiChu = obj.GhiChu;
+            tempobj.TrangThai = obj.TrangThai;
+            dBContext.HoaDons.Update(tempobj);
+            dBContext.SaveChanges();
+            return true;
         }
     }
 }
