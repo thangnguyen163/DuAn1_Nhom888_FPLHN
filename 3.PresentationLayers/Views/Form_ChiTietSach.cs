@@ -41,6 +41,8 @@ namespace _3.PresentationLayers.Views
             _iNXBService = new NXBService();
             _iLoaiBiaService = new LoaiBiaService();
             _iNhaPhatHanhService = new NhaPhatHanhService();
+            LoadData();
+            LoadCbb();
         }
         void LoadData()
         {
@@ -69,8 +71,29 @@ namespace _3.PresentationLayers.Views
             {
                 dtg_Show.Rows.Add(stt++);
             }
-
-
+        }
+        void LoadCbb()
+        {
+            foreach (var a in _iSachService.GetAll())
+            {
+                cbb_Sach.Items.Add(a.Ten);
+            }
+            foreach (var a in _iNXBService.GetAllNoView())
+            {
+                cbb_NXB.Items.Add(a.Ten);
+            }
+            foreach (var a in _iTacGiaService.GetAll())
+            {
+                cbb_TacGia.Items.Add(a.Ten);
+            }
+            foreach (var a in _iNhaPhatHanhService.GetAll())
+            {
+                cbb_NhaPhatHanh.Items.Add(a.Ten);
+            }
+            foreach (var a in _iLoaiBiaService.GetLoaiBia())
+            {
+                cbb_LoaiBia.Items.Add(a.Ten);
+            }
         }
 
         private void tbt_Search_TextChanged(object sender, EventArgs e)
@@ -87,6 +110,11 @@ namespace _3.PresentationLayers.Views
 
 
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
         {
 
         }
