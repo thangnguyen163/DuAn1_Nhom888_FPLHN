@@ -192,7 +192,7 @@ namespace _3.PresentationLayers.Views
                 add.ThanhTien = data.Soluong * data.Dongia;
                 _ihoaDonChiTietService.Update(add);
             }
-            LoaddataToHoadon();
+          //  LoaddataToHoadon();
             LoaddataToChitietHoadon(SelectID);
         }
 
@@ -218,7 +218,7 @@ namespace _3.PresentationLayers.Views
             hdct.SoLuong = 1;
             _ihoaDonChiTietService.Add(hdct);
 
-            LoaddataToHoadon();
+           // LoaddataToHoadon();
             LoaddataToChitietHoadon(a);
 
         }
