@@ -18,7 +18,7 @@ namespace _3.PresentationLayers
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_NhanVien());
+            Application.Run(new Form_KhachHang());
         }
     }
 }
