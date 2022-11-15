@@ -30,7 +30,7 @@ namespace _2.BUS.Serivces
         public List<DiemTieuDungView> GetAllView()
         {
             var templst = (from a in _idiemtieudungRepository.GetAll()
-                          join b in _ikhachHangRepository.getall() on a.IdKh equals b.Id
+                          join b in _ikhachHangRepository.getall() on a.Id equals b.IddiemTieuDung
                           select new DiemTieuDungView
                           {
                               ID = a.Id,
