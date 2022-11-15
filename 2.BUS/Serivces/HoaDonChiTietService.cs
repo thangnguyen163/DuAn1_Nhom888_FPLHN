@@ -59,15 +59,43 @@ namespace _2.BUS.Serivces
                                Soluong = a.SoLuong,
                                Dongia = a.DonGia,
                                Thanhtien = a.ThanhTien,
-                               Trangthai = a.TrangThai
+                               Trangthai = a.TrangThai,
+                               Idchitietsp = c.Id,
+
                            }).ToList();
             return templst;
         }
 
         public List<HoaDonChiTietView> GetAllbanhang(Guid id)
         {
-            
-            return _lst = GetAll().Where(x=>x.ID == id).ToList();
+
+            var templst1 = (from a in _ichitietHoadonRepository.GetAll()
+                            join b in _ihoadonRepository.GetAll() on a.IdHoaDon equals b.Id
+                            join c in _ichiTietSachRepository.GetAll() on a.IdChiTietSach equals c.Id
+                            join d in _inhaPhatHanhRepository.GetNhaPhatHanhs() on c.IdNhaPhatHanh equals d.Id
+                            join e in _iloaiBiaRepository.GetLoaiBia() on c.IdLoaiBia equals e.Id
+                            join f in _inXBRepository.GetAllNSX() on c.IdNxb equals f.Id
+                            join g in _itacGiaRepository.GetTacGia() on c.IdTacGia equals g.Id
+                            join j in _isachRepository.GetAllSach() on c.IdSach equals j.Id
+                            where a.Id == id
+                            select new HoaDonChiTietView
+                            {
+                                ID = a.Id,
+                                MaHd = b.MaHd,
+                                MactSach = c.Ma,
+                                Ma = a.Ma,
+                                tenbia = e.Ten,
+                                tennxb = f.Ten,
+                                tentg = g.Ten,
+                                Tensach = j.Ten,
+                                Soluong = a.SoLuong,
+                                Dongia = a.DonGia,
+                                Thanhtien = a.ThanhTien,
+                                Trangthai = a.TrangThai,
+                                Idchitietsp = c.Id,
+
+                            }).ToList();
+            return templst1;
         }
 
         public string Remove(HoaDonChiTiet obj)
