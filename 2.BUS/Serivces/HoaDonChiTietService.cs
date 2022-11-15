@@ -77,7 +77,7 @@ namespace _2.BUS.Serivces
                             join f in _inXBRepository.GetAllNSX() on c.IdNxb equals f.Id
                             join g in _itacGiaRepository.GetTacGia() on c.IdTacGia equals g.Id
                             join j in _isachRepository.GetAllSach() on c.IdSach equals j.Id
-                            where a.Id == id
+                            where b.Id == id
                             select new HoaDonChiTietView
                             {
                                 ID = a.Id,
@@ -92,7 +92,7 @@ namespace _2.BUS.Serivces
                                 Dongia = a.DonGia,
                                 Thanhtien = a.ThanhTien,
                                 Trangthai = a.TrangThai,
-                                Idchitietsp = c.Id,
+                                Idchitietsp = a.IdChiTietSach,
 
                             }).ToList();
             return templst1;

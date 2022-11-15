@@ -31,7 +31,7 @@ namespace _3.PresentationLayers.Views
             InitializeComponent();
             random = new Random();
             LoaddataToHoadon();
-            // LoaddataToChitietHoadon();
+            // LoaddataToChitietHoadon(SelectID);
             LoadDataToSanPham();
 
         }
@@ -91,13 +91,13 @@ namespace _3.PresentationLayers.Views
                 dtg_hoadon.Rows.Add(i++, x.Id, x.Mahd, x.Makh);
             }
         }
-        public void LoaddataToChitietHoadon(Guid a)
+        public void LoaddataToChitietHoadon(Guid khoa)
         {
             int i = 1;
             dtg_hdct.ColumnCount = 9;
-            dtg_hdct.Columns[1].Name = "STT";
-            dtg_hdct.Columns[1].Width = 30;
-            dtg_hdct.Columns[0].Name = "ID";
+            dtg_hdct.Columns[0].Name = "STT";
+            dtg_hdct.Columns[0].Width = 30;
+            dtg_hdct.Columns[1].Name = "ID";
             dtg_hdct.Columns[1].Visible = false;
             dtg_hdct.Columns[2].Name = "Mã sách";
             dtg_hdct.Columns[3].Name = "Tên bìa";
@@ -108,11 +108,10 @@ namespace _3.PresentationLayers.Views
             dtg_hdct.Columns[8].Name = "Thành tiền";
             // dtg_hoadon.Columns[9].Name = "Trạng thái";
             dtg_hdct.Rows.Clear();
-            foreach (var x in _ihoaDonChiTietService.GetAllbanhang(a))
+            foreach (var x in _ihoaDonChiTietService.GetAllbanhang(khoa))
             {
                 dtg_hdct.Rows.Add(i++, x.ID, x.MactSach, x.tenbia, x.tennxb, x.tentg, x.Soluong, x.Dongia, x.Thanhtien);
             }
-
         }
         public void LoadDataToSanPham()
         {
@@ -163,14 +162,77 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectID = Guid.Parse(Convert.ToString(dtg_hoadon.CurrentRow.Cells[1].Value.ToString()));
-            LoaddataToChitietHoadon(SelectID);
+          //  SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
+          ////  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
+          //  LoaddataToChitietHoadon(SelectID);
         }
 
         private void dtg_sanpham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //int i = 100;
+            //Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
+            //var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
+            //int count = _ihoaDonChiTietService.GetAll().Count;
+            //if (data == null)
+            //{
+            //    var add = new HoaDonChiTiet();
+            //    add.Id = Guid.NewGuid();
+            //    add.IdHoaDon = SelectID;
+            //    add.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
+            //    add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
+            //    add.SoLuong = 1;
+            //    add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
+            //    add.ThanhTien = Convert.ToInt32(1 * Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
+            //    _ihoaDonChiTietService.Add(add);
+            //}
+            //else
+            //{
+            //    var add = new HoaDonChiTiet();
+            //    add.SoLuong++;
+            //    add.ThanhTien = add.SoLuong * add.DonGia;
+            //    _ihoaDonChiTietService.Update(add);
+            //}
+            //// LoaddataToHoadon();
+            //LoaddataToChitietHoadon(SelectID);
+        }
+
+        private void bt_taohoadon_Click(object sender, EventArgs e)
+        {
+            //Guid a = Guid.NewGuid();
+            //var hoadon = new HoaDon();
+            //hoadon.Id = a;
+            //int count = _ihoaDonService.GetAll().Count + 666;
+            //hoadon.Idkh = Guid.Parse("b118fa3c-d95d-49c9-bb95-2720e280a0b4");
+            //hoadon.Idnv = Guid.Parse("afe66273-5235-4868-9f42-b65daa741f4a");
+            //hoadon.IddiemTich = Guid.Parse("b7a6a7b7-e65b-42fb-a771-819f1df4787e");
+            //hoadon.IddiemDung = Guid.Parse("50a3d851-bfef-4878-8e15-b7539e63a51d");
+            //hoadon.MaHd = Convert.ToString("HDTest" + "" + Convert.ToString(count + 10));
+            //_ihoaDonService.Add(hoadon);
+
+            //var hdct = new HoaDonChiTiet();
+            //hdct.Id = Guid.NewGuid();
+            //hdct.IdHoaDon = a;
+            //hdct.IdChiTietSach = Guid.Parse("74063671-cf31-4b50-94e5-09dfc62b9c5b");
+            //int count1 = _ihoaDonChiTietService.GetAll().Count + 100;
+            //hdct.Ma = Convert.ToString("HDCTTest" + Convert.ToString(count1));
+            //hdct.SoLuong = 1;
+            //_ihoaDonChiTietService.Add(hdct);
+            //// LoaddataToHoadon();
+            //LoaddataToChitietHoadon(a);
+
+        }
+
+        private void dtg_hoadon_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
+            //  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
+            LoaddataToChitietHoadon(SelectID);
+        }
+
+        private void dtg_sanpham_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
             int i = 100;
-            Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value.ToString()));
+            Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
             var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
             int count = _ihoaDonChiTietService.GetAll().Count;
             if (data == null)
@@ -178,7 +240,7 @@ namespace _3.PresentationLayers.Views
                 var add = new HoaDonChiTiet();
                 add.Id = Guid.NewGuid();
                 add.IdHoaDon = SelectID;
-                add.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value.ToString()));
+                add.IdChiTietSach = Guid.Parse(dtg_sanpham.CurrentRow.Cells[1].Value.ToString());
                 add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
                 add.SoLuong = 1;
                 add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
@@ -187,16 +249,17 @@ namespace _3.PresentationLayers.Views
             }
             else
             {
-                var add = new HoaDonChiTiet();
-                add.SoLuong++;
-                add.ThanhTien = data.Soluong * data.Dongia;
-                _ihoaDonChiTietService.Update(add);
+                var add1 = new HoaDonChiTiet();
+                add1.Id = data.ID;
+                add1.SoLuong++;
+                add1.ThanhTien = add1.SoLuong * data.Dongia;
+                _ihoaDonChiTietService.Update(add1);
             }
-          //  LoaddataToHoadon();
+            // LoaddataToHoadon();
             LoaddataToChitietHoadon(SelectID);
         }
 
-        private void bt_taohoadon_Click(object sender, EventArgs e)
+        private void bt_taohoadon_Click_1(object sender, EventArgs e)
         {
             Guid a = Guid.NewGuid();
             var hoadon = new HoaDon();
@@ -214,13 +277,11 @@ namespace _3.PresentationLayers.Views
             hdct.IdHoaDon = a;
             hdct.IdChiTietSach = Guid.Parse("74063671-cf31-4b50-94e5-09dfc62b9c5b");
             int count1 = _ihoaDonChiTietService.GetAll().Count + 100;
-            hdct.Ma = Convert.ToString("HDCTTest" + Convert.ToString(count1));
+            hdct.Ma = Convert.ToString("HDCTTest12" + Convert.ToString(count1));
             hdct.SoLuong = 1;
             _ihoaDonChiTietService.Add(hdct);
-
-           // LoaddataToHoadon();
+            // LoaddataToHoadon();
             LoaddataToChitietHoadon(a);
-
         }
     }
 }
