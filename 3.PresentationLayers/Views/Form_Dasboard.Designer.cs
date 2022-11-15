@@ -105,7 +105,6 @@
             this.logout.TabIndex = 4;
             this.logout.Text = "Logout";
             this.logout.UseVisualStyleBackColor = true;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // btn_manage
             // 
@@ -122,7 +121,6 @@
             this.btn_manage.TabIndex = 3;
             this.btn_manage.Text = "Manage";
             this.btn_manage.UseVisualStyleBackColor = true;
-            this.btn_manage.Click += new System.EventHandler(this.btn_manage_Click);
             // 
             // btn_ThongKe
             // 
@@ -139,7 +137,6 @@
             this.btn_ThongKe.TabIndex = 2;
             this.btn_ThongKe.Text = "Reporting";
             this.btn_ThongKe.UseVisualStyleBackColor = true;
-            this.btn_ThongKe.Click += new System.EventHandler(this.btn_ThongKe_Click);
             // 
             // btn_shopping
             // 
@@ -156,7 +153,6 @@
             this.btn_shopping.TabIndex = 1;
             this.btn_shopping.Text = "Shopping";
             this.btn_shopping.UseVisualStyleBackColor = true;
-            this.btn_shopping.Click += new System.EventHandler(this.btn_shopping_Click);
             // 
             // panelLogo
             // 
@@ -203,7 +199,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "HOME";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -242,7 +237,6 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Tạo hóa đơn";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_thanhtoan
             // 
@@ -255,7 +249,6 @@
             this.btn_thanhtoan.TabIndex = 14;
             this.btn_thanhtoan.Text = "Thanh toán";
             this.btn_thanhtoan.UseVisualStyleBackColor = true;
-            this.btn_thanhtoan.Click += new System.EventHandler(this.btn_thanhtoan_Click);
             // 
             // textBox7
             // 
@@ -263,7 +256,6 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(204, 27);
             this.textBox7.TabIndex = 13;
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label8
             // 
@@ -273,7 +265,6 @@
             this.label8.Size = new System.Drawing.Size(79, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "Tiền trả lại";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox6
             // 
@@ -281,7 +272,6 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(204, 27);
             this.textBox6.TabIndex = 11;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label7
             // 
@@ -291,7 +281,6 @@
             this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 10;
             this.label7.Text = "Tiền khách đưa";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox5
             // 
@@ -299,7 +288,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(204, 27);
             this.textBox5.TabIndex = 9;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox4
             // 
@@ -307,7 +295,6 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(204, 27);
             this.textBox4.TabIndex = 8;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox3
             // 
@@ -315,7 +302,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(204, 27);
             this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox2
             // 
@@ -323,7 +309,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(204, 27);
             this.textBox2.TabIndex = 6;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
@@ -331,7 +316,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(204, 27);
             this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -341,7 +325,6 @@
             this.label6.Size = new System.Drawing.Size(99, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Tên nhân viên";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -351,7 +334,6 @@
             this.label5.Size = new System.Drawing.Size(97, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Mã nhân viên";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -361,7 +343,6 @@
             this.label4.Size = new System.Drawing.Size(109, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Mã khách hàng";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -371,7 +352,6 @@
             this.label3.Size = new System.Drawing.Size(86, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Khách hàng";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -381,7 +361,6 @@
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã hóa đơn";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // sqlCommand1
             // 
