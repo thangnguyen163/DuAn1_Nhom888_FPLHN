@@ -1,6 +1,4 @@
-﻿using _2.BUS.IServices;
-using _2.BUS.Serivces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,15 +17,12 @@ namespace _3.PresentationLayers.Views
         private Random random;
         private int tempIndex;
         private Form activeForm;
-        private IHoaDonService _ihoaDonService = new HoaDonService();
         public Form_Dasboard()
         {
             InitializeComponent();
             random = new Random();
-            LoaddataToHoadon();
 
-
-
+         
         }
         private Color SelectThemeColor()
         {
@@ -87,65 +82,7 @@ namespace _3.PresentationLayers.Views
         {
             ActivateButton(sender);
         }
-        public void LoaddataToHoadon()
-        { int i = 1;
-            dtg_hoadon.ColumnCount = 4;
-            dtg_hoadon.Columns[0].Name = "STT";
-            dtg_hoadon.Columns[0].Width = 50;
-
-            dtg_hoadon.Columns[1].Name = "ID";
-            dtg_hoadon.Columns[1].Visible =false;
-            dtg_hoadon.Columns[2].Name = "Mã";
-            dtg_hoadon.Columns[2].Width = 90;
-            dtg_hoadon.Columns[3].Name = "Mã khách hàng";       
-            dtg_hoadon.Columns[3].Width = 120;       
-            dtg_hoadon.Rows.Clear();
-            foreach (var x in _ihoaDonService.GetAll())
-            {
-                dtg_hoadon.Rows.Add(i++,x.Id,x.Mahd,x.Makh);
-            }
-        }
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dtg_hdct_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dtg_hoadon_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        
-
-        private void panelLogo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
 
        
-
-        
-
-        private void dtg_sanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        
-        
-
-      
     }
 }
