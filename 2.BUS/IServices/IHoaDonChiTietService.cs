@@ -13,7 +13,7 @@ namespace _2.BUS.IServices
         public string Add(HoaDonChiTiet obj);
         public string Remove(HoaDonChiTiet obj);
         public string Update(HoaDonChiTiet obj);
-        public List<HoaDonChiTietView> GetAll();
+        public List<HoaDonChiTiet> GetAll();
         public List<HoaDonChiTietView> GetAllbanhang(Guid id);
         
     }

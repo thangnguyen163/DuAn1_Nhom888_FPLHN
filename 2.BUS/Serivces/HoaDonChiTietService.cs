@@ -36,8 +36,15 @@ namespace _2.BUS.Serivces
             return "Thêm thất bại";                    
         }
 
-        public List<HoaDonChiTietView> GetAll()
+        public List<HoaDonChiTiet> GetAll()
         {
+            
+            return _ichitietHoadonRepository.GetAll().ToList();
+        }
+
+        public List<HoaDonChiTietView> GetAllbanhang(Guid id)
+        {
+
             var templst = (from a in _ichitietHoadonRepository.GetAll()
                            join b in _ihoadonRepository.GetAll() on a.IdHoaDon equals b.Id
                            join c in _ichiTietSachRepository.GetAll() on a.IdChiTietSach equals c.Id
@@ -46,6 +53,7 @@ namespace _2.BUS.Serivces
                            join f in _inXBRepository.GetAllNSX() on c.IdNxb equals f.Id
                            join g in _itacGiaRepository.GetTacGia() on c.IdTacGia equals g.Id
                            join j in _isachRepository.GetAllSach() on c.IdSach equals j.Id
+                           where a.IdHoaDon == id
                            select new HoaDonChiTietView
                            {
                                ID = a.Id,
@@ -59,15 +67,11 @@ namespace _2.BUS.Serivces
                                Soluong = a.SoLuong,
                                Dongia = a.DonGia,
                                Thanhtien = a.ThanhTien,
-                               Trangthai = a.TrangThai
+                               Trangthai = a.TrangThai,
+                               Idctsp= c.Id,
+                               
                            }).ToList();
             return templst;
-        }
-
-        public List<HoaDonChiTietView> GetAllbanhang(Guid id)
-        {
-            
-            return _lst = GetAll().Where(x=>x.ID == id).ToList();
         }
 
         public string Remove(HoaDonChiTiet obj)

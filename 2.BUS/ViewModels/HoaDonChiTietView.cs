@@ -11,6 +11,7 @@ namespace _2.BUS.ViewModels
         public Guid ID { get; set; }
         public  string MaHd { get; set; }
         public string MactSach { get; set; }
+        public Guid Idctsp { get; set; }
         public string Ma { get; set; }
         public string tenbia { get; set; }
         public string tennxb { get; set; }
