@@ -15,7 +15,7 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class FrmChiTietTheLoai : Form
+    public partial class Form_ChiTietTheLoai : Form
     {
         IChiTietTheLoaiService _iCTTLService;
         ITheLoaiService _itheLoaiService;
@@ -23,7 +23,7 @@ namespace _3.PresentationLayers.Views
         IChiTietSachService _ichiTietSachService;
         ChiTietTheLoai _cttl;
         public Guid SelectID { get; set; }
-        public FrmChiTietTheLoai()
+        public Form_ChiTietTheLoai()
         {
             InitializeComponent();
             _iCTTLService = new ChiTietTheLoaiService();

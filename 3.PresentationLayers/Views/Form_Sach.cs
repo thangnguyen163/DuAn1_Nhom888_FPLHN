@@ -15,13 +15,13 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class FrmSach : Form
+    public partial class Form_Sach : Form
     {
         ISachService _iSachService;
         Sach _sach;
         public string TrangThai { get; set; }
         public Guid SelectID { get; set; }
-        public FrmSach()
+        public Form_Sach()
         {
             InitializeComponent();
             _iSachService = new SachService();

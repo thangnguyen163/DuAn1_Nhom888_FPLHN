@@ -8,26 +8,27 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class FrmTheLoai : Form
+    public partial class Form_NXB : Form
     {
-        ITheLoaiService _iTLService;
-        TheLoai _tl;
+        INXBService _iNSXService;
+        Nxb _nxb;
+        public string TrangThai { get; set; }
         public Guid SelectID { get; set; }
-        public FrmTheLoai()
+        public Form_NXB()
         {
             InitializeComponent();
-            _iTLService = new TheLoaiService();
-            _tl = new TheLoai();
+            _iNSXService = new NXBService();
+            _nxb = new Nxb();
             Load();
         }
-        private void LoadDataToDtg(List<TheLoaiView> lst)
+        private void LoadDataToDtg(List<NXBView> lst)
         {
             int stt = 1;
             dtg_Show.Rows.Clear();
@@ -45,10 +46,10 @@ namespace _3.PresentationLayers.Views
         }
         private void Load()
         {
-            LoadDataToDtg(_iTLService.GetAll());
+            LoadDataToDtg(_iNSXService.GetAll());
             // Thêm trạng thái vào cbb
             List<int> lsttt = new List<int>();
-            foreach (var x in _iTLService.GetAll())
+            foreach (var x in _iNSXService.GetAll())
             {
                 lsttt.Add((int)x.TrangThai);
             }
@@ -62,35 +63,33 @@ namespace _3.PresentationLayers.Views
         }
         private void ResetForm()
         {
-            LoadDataToDtg(_iTLService.GetAll());
-            _tl = null;
+            LoadDataToDtg(_iNSXService.GetAll());
+            _nxb = null;
             tb_ma.Text = "";
             tb_ten.Text = "";
             cbb_trangthai.Text = "--Chọn--";
-            tb_Timkiem.Text = "";
         }
-        private TheLoai GetDataFromGui_Them()
+        private Nxb GetDataFromGui_Them()
         {
-            _tl = new TheLoai();
+            _nxb = new Nxb();
             {
-                _tl.Ma = tb_ma.Text;
-                _tl.Ten = tb_ten.Text;
-                _tl.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
+                _nxb.Ma = tb_ma.Text;
+                _nxb.Ten = tb_ten.Text;
+                _nxb.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
             };
-            return _tl;
+            return _nxb;
         }
-        private TheLoai GetDataFromGui_Sua_Xoa()
+        private Nxb GetDataFromGui_Sua_Xoa()
         {
-            _tl = new TheLoai();
+            _nxb = new Nxb();
             {
-                _tl.Id = SelectID;
-                _tl.Ma = tb_ma.Text;
-                _tl.Ten = tb_ten.Text;
-                _tl.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
+                _nxb.Id = SelectID;
+                _nxb.Ma = tb_ma.Text;
+                _nxb.Ten = tb_ten.Text;
+                _nxb.TrangThai = Convert.ToInt32(cbb_trangthai.Text);
             };
-            return _tl;
+            return _nxb;
         }
-        /*=============================================================================*/
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectID = Guid.Parse(dtg_Show.CurrentRow.Cells[1].Value.ToString());
@@ -98,31 +97,28 @@ namespace _3.PresentationLayers.Views
             tb_ten.Text = dtg_Show.CurrentRow.Cells[3].Value.ToString();
             cbb_trangthai.Text = dtg_Show.CurrentRow.Cells[4].Value.ToString();
         }
+
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iTLService.Add(GetDataFromGui_Them()));
+            MessageBox.Show(_iNSXService.Add(GetDataFromGui_Them()));
             ResetForm();
         }
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iTLService.Update(GetDataFromGui_Sua_Xoa()));
+            MessageBox.Show(_iNSXService.Update(GetDataFromGui_Sua_Xoa()));
             ResetForm();
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iTLService.Delete(GetDataFromGui_Sua_Xoa()));
+            MessageBox.Show(_iNSXService.Delete(GetDataFromGui_Sua_Xoa()));
             ResetForm();
         }
 
         private void btn_Reset_Click(object sender, EventArgs e)
         {
             ResetForm();
-        }
-        private void tb_Timkiem_TextChanged_1(object sender, EventArgs e)
-        {
-            LoadDataToDtg(_iTLService.TimKiemTheoTen(tb_Timkiem.Text));
         }
     }
 }

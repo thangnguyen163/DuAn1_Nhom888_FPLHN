@@ -1,6 +1,6 @@
 ﻿namespace _3.PresentationLayers.Views
 {
-    partial class FrmTheLoai
+    partial class Form_NXB
     {
         /// <summary>
         /// Required designer variable.
@@ -56,10 +56,10 @@
             this.groupBox3.Controls.Add(this.btn_Xoa);
             this.groupBox3.Controls.Add(this.btn_Sua);
             this.groupBox3.Controls.Add(this.btn_Them);
-            this.groupBox3.Location = new System.Drawing.Point(737, 284);
+            this.groupBox3.Location = new System.Drawing.Point(739, 288);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(349, 282);
-            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
             // 
@@ -111,16 +111,15 @@
             this.gB_tt.Controls.Add(this.label2);
             this.gB_tt.Controls.Add(this.tb_ten);
             this.gB_tt.Controls.Add(this.tb_ma);
-            this.gB_tt.Location = new System.Drawing.Point(9, 284);
+            this.gB_tt.Location = new System.Drawing.Point(11, 288);
             this.gB_tt.Name = "gB_tt";
             this.gB_tt.Size = new System.Drawing.Size(692, 282);
-            this.gB_tt.TabIndex = 7;
+            this.gB_tt.TabIndex = 4;
             this.gB_tt.TabStop = false;
-            this.gB_tt.Text = "Thông Tin Thể Loại";
+            this.gB_tt.Text = "Thông Tin Chức Vụ";
             // 
             // cbb_trangthai
             // 
-            this.cbb_trangthai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_trangthai.FormattingEnabled = true;
             this.cbb_trangthai.Location = new System.Drawing.Point(206, 225);
             this.cbb_trangthai.Name = "cbb_trangthai";
@@ -173,12 +172,12 @@
             this.groupBox1.Controls.Add(this.tb_Timkiem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtg_Show);
-            this.groupBox1.Location = new System.Drawing.Point(9, 8);
+            this.groupBox1.Location = new System.Drawing.Point(11, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1077, 259);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh Sách Thể Loại";
+            this.groupBox1.Text = "Danh Sách Chức Vụ";
             // 
             // tb_Timkiem
             // 
@@ -186,7 +185,6 @@
             this.tb_Timkiem.Name = "tb_Timkiem";
             this.tb_Timkiem.Size = new System.Drawing.Size(252, 27);
             this.tb_Timkiem.TabIndex = 2;
-            this.tb_Timkiem.TextChanged += new System.EventHandler(this.tb_Timkiem_TextChanged_1);
             // 
             // label1
             // 
@@ -210,16 +208,16 @@
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
-            // FrmTheLoai
+            // FrmNXB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1098, 576);
+            this.ClientSize = new System.Drawing.Size(1098, 582);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gB_tt);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FrmTheLoai";
-            this.Text = "FrmTheLoai";
+            this.Name = "FrmNXB";
+            this.Text = "FrmNXB";
             this.groupBox3.ResumeLayout(false);
             this.gB_tt.ResumeLayout(false);
             this.gB_tt.PerformLayout();
