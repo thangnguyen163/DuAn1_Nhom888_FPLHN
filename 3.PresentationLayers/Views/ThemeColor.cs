@@ -9,7 +9,9 @@ namespace _3.PresentationLayers.Views
 {
     public static class ThemeColor
     {
-       public static List<string> ColorList = new List<string>()
+        public static Color PrimryColor { get; set; }
+        public static Color SecondaryColor { get; set; }
+        public static List<string> ColorList = new List<string>()
         {
                                                                     "#3F51B5",
                                                                     "#009688",
