@@ -283,11 +283,11 @@ namespace _3.PresentationLayers.Views
             var hoadon = new HoaDon();
             hoadon.Id = a;
             int count = _ihoaDonService.GetAll().Count + 666;
-            hoadon.Idkh = Guid.Parse("b118fa3c-d95d-49c9-bb95-2720e280a0b4");
+            hoadon.Idkh = Guid.Parse("733464b2-dfef-40d4-8d62-a722c77aa3b4");
             hoadon.Idnv = Guid.Parse("afe66273-5235-4868-9f42-b65daa741f4a");
             hoadon.IddiemTich = Guid.Parse("b7a6a7b7-e65b-42fb-a771-819f1df4787e");
             hoadon.IddiemDung = Guid.Parse("50a3d851-bfef-4878-8e15-b7539e63a51d");
-            hoadon.MaHd = Convert.ToString("HDTest" + "" + Convert.ToString(count + 10));
+            hoadon.MaHd = Convert.ToString("HDTest123" + "" + Convert.ToString(count + 10));
             hoadon.NgayTao = DateTime.Now;
             hoadon.TrangThai = 0;
             _ihoaDonService.Add(hoadon);
@@ -300,7 +300,7 @@ namespace _3.PresentationLayers.Views
             hdct.Ma = Convert.ToString("HDCTTest12" + Convert.ToString(count1));
             hdct.SoLuong = 1;
             _ihoaDonChiTietService.Add(hdct);
-            // LoaddataToHoadon();
+             LoaddataToHoadon();
             LoaddataToChitietHoadon(a);
         }
 
