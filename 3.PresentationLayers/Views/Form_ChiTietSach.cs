@@ -71,7 +71,7 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
             }
         }
-        void LoadCbb()
+        public void LoadCbb()
         {
             foreach (var a in _iSachService.GetAll())
             {
@@ -166,7 +166,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt Update chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show(_iChiTietSachService.Update(SelectedID,new ChiTietSach()
+                MessageBox.Show(_iChiTietSachService.Update(SelectedID, new ChiTietSach()
                 {
 
                     IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
@@ -204,5 +204,81 @@ namespace _3.PresentationLayers.Views
             //}
             //if (dialogResult == DialogResult.No) return;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+        public void AddNhanh(string a)
+        {
+            Form_AddNhanh AddNhanh = new Form_AddNhanh(a);
+            AddNhanh.ShowDialog();
+            cbb_Sach.Items.Clear();
+            cbb_NXB.Items.Clear();
+            cbb_TacGia.Items.Clear();
+            cbb_NhaPhatHanh.Items.Clear();
+            cbb_LoaiBia.Items.Clear();
+            LoadCbb();
+        }
+        private void ipb_AddSach_Click(object sender, EventArgs e)
+        {
+            AddNhanh("sách");
+        }
+
+        private void ipb_AddNXB_Click(object sender, EventArgs e)
+        {
+            AddNhanh("NXB");
+        }
+
+        private void ipb_AddTacGia_Click(object sender, EventArgs e)
+        {
+            AddNhanh("Tác giả");
+        }
+
+        private void ipb_AddNhaPhatHanh_Click(object sender, EventArgs e)
+        {
+            AddNhanh("nhà phát hành");
+        }
+
+        private void ipb_AddLoaiBia_Click(object sender, EventArgs e)
+        {
+            AddNhanh("Loại bìa");
+        }
+
+
+        private void ptb_AnhSach_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Imaga file: | *.jpg; *.png; *.jpeg";
+            ofd.ShowDialog();
+            DialogResult result = MessageBox.Show("Bạn có muốn chọn ảnh sách không? ", "Đổi ảnh sách", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage; // cho vừa khung 
+                ptb_AnhSach.Image = Image.FromFile(ofd.FileName);
+            }
+            else
+            {
+                MessageBox.Show("Lựa chọn đúng đắn");
+            }
+            // thêm cái này 
+            //= ofd.FileName; // lưu đường dẫn ảnh để lát tạo đối tượng
+        }
+
+        private void Form_ChiTietSach_Load(object sender, EventArgs e)
+        {
+            //LoadCbb();
+        }
+
+        private void btn_Load_Click(object sender, EventArgs e)
+        {
+            LoadData();
+            LoadCbb();
+        }
+
+
+
+
+
     }
 }

@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ChiTietSach));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ptb_AnhSach = new System.Windows.Forms.PictureBox();
+            this.ipb_AddLoaiBia = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_AddNhaPhatHanh = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_AddTacGia = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_AddNXB = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_AddSach = new FontAwesome.Sharp.IconPictureBox();
             this.rdt_KhongBan = new System.Windows.Forms.RadioButton();
             this.rdt_ConBan = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,6 +79,12 @@
             this.cbb_LocLoaiBia = new System.Windows.Forms.ComboBox();
             this.tbt_Search = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNXB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).BeginInit();
@@ -80,6 +93,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ptb_AnhSach);
+            this.groupBox1.Controls.Add(this.ipb_AddLoaiBia);
+            this.groupBox1.Controls.Add(this.ipb_AddNhaPhatHanh);
+            this.groupBox1.Controls.Add(this.ipb_AddTacGia);
+            this.groupBox1.Controls.Add(this.ipb_AddNXB);
+            this.groupBox1.Controls.Add(this.ipb_AddSach);
             this.groupBox1.Controls.Add(this.rdt_KhongBan);
             this.groupBox1.Controls.Add(this.rdt_ConBan);
             this.groupBox1.Controls.Add(this.label7);
@@ -115,11 +134,100 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // ptb_AnhSach
+            // 
+            this.ptb_AnhSach.Location = new System.Drawing.Point(7, 47);
+            this.ptb_AnhSach.Name = "ptb_AnhSach";
+            this.ptb_AnhSach.Size = new System.Drawing.Size(192, 287);
+            this.ptb_AnhSach.TabIndex = 6;
+            this.ptb_AnhSach.TabStop = false;
+            // 
+            // ipb_AddLoaiBia
+            // 
+            this.ipb_AddLoaiBia.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddLoaiBia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddLoaiBia.BackgroundImage")));
+            this.ipb_AddLoaiBia.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddLoaiBia.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddLoaiBia.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddLoaiBia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddLoaiBia.IconSize = 30;
+            this.ipb_AddLoaiBia.Location = new System.Drawing.Point(506, 265);
+            this.ipb_AddLoaiBia.Name = "ipb_AddLoaiBia";
+            this.ipb_AddLoaiBia.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddLoaiBia.TabIndex = 5;
+            this.ipb_AddLoaiBia.TabStop = false;
+            this.ipb_AddLoaiBia.Click += new System.EventHandler(this.ipb_AddLoaiBia_Click);
+            // 
+            // ipb_AddNhaPhatHanh
+            // 
+            this.ipb_AddNhaPhatHanh.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddNhaPhatHanh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddNhaPhatHanh.BackgroundImage")));
+            this.ipb_AddNhaPhatHanh.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddNhaPhatHanh.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddNhaPhatHanh.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddNhaPhatHanh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddNhaPhatHanh.IconSize = 30;
+            this.ipb_AddNhaPhatHanh.Location = new System.Drawing.Point(506, 217);
+            this.ipb_AddNhaPhatHanh.Name = "ipb_AddNhaPhatHanh";
+            this.ipb_AddNhaPhatHanh.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddNhaPhatHanh.TabIndex = 5;
+            this.ipb_AddNhaPhatHanh.TabStop = false;
+            this.ipb_AddNhaPhatHanh.Click += new System.EventHandler(this.ipb_AddNhaPhatHanh_Click);
+            // 
+            // ipb_AddTacGia
+            // 
+            this.ipb_AddTacGia.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddTacGia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddTacGia.BackgroundImage")));
+            this.ipb_AddTacGia.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddTacGia.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddTacGia.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddTacGia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddTacGia.IconSize = 30;
+            this.ipb_AddTacGia.Location = new System.Drawing.Point(506, 172);
+            this.ipb_AddTacGia.Name = "ipb_AddTacGia";
+            this.ipb_AddTacGia.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddTacGia.TabIndex = 5;
+            this.ipb_AddTacGia.TabStop = false;
+            this.ipb_AddTacGia.Click += new System.EventHandler(this.ipb_AddTacGia_Click);
+            // 
+            // ipb_AddNXB
+            // 
+            this.ipb_AddNXB.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddNXB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddNXB.BackgroundImage")));
+            this.ipb_AddNXB.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddNXB.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddNXB.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddNXB.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddNXB.IconSize = 30;
+            this.ipb_AddNXB.Location = new System.Drawing.Point(506, 127);
+            this.ipb_AddNXB.Name = "ipb_AddNXB";
+            this.ipb_AddNXB.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddNXB.TabIndex = 5;
+            this.ipb_AddNXB.TabStop = false;
+            this.ipb_AddNXB.Click += new System.EventHandler(this.ipb_AddNXB_Click);
+            // 
+            // ipb_AddSach
+            // 
+            this.ipb_AddSach.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddSach.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddSach.BackgroundImage")));
+            this.ipb_AddSach.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddSach.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddSach.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddSach.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddSach.IconSize = 30;
+            this.ipb_AddSach.Location = new System.Drawing.Point(506, 83);
+            this.ipb_AddSach.Name = "ipb_AddSach";
+            this.ipb_AddSach.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddSach.TabIndex = 5;
+            this.ipb_AddSach.TabStop = false;
+            this.ipb_AddSach.Click += new System.EventHandler(this.ipb_AddSach_Click);
             // 
             // rdt_KhongBan
             // 
             this.rdt_KhongBan.AutoSize = true;
-            this.rdt_KhongBan.Location = new System.Drawing.Point(770, 320);
+            this.rdt_KhongBan.Location = new System.Drawing.Point(801, 316);
             this.rdt_KhongBan.Name = "rdt_KhongBan";
             this.rdt_KhongBan.Size = new System.Drawing.Size(87, 24);
             this.rdt_KhongBan.TabIndex = 4;
@@ -130,7 +238,7 @@
             // rdt_ConBan
             // 
             this.rdt_ConBan.AutoSize = true;
-            this.rdt_ConBan.Location = new System.Drawing.Point(647, 320);
+            this.rdt_ConBan.Location = new System.Drawing.Point(678, 316);
             this.rdt_ConBan.Name = "rdt_ConBan";
             this.rdt_ConBan.Size = new System.Drawing.Size(85, 24);
             this.rdt_ConBan.TabIndex = 4;
@@ -141,7 +249,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 314);
+            this.label7.Location = new System.Drawing.Point(205, 314);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 3;
@@ -150,7 +258,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 269);
+            this.label6.Location = new System.Drawing.Point(205, 269);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 20);
             this.label6.TabIndex = 3;
@@ -159,7 +267,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(508, 320);
+            this.label13.Location = new System.Drawing.Point(557, 317);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 3;
@@ -168,7 +276,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(508, 261);
+            this.label12.Location = new System.Drawing.Point(557, 258);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 20);
             this.label12.TabIndex = 3;
@@ -177,7 +285,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 217);
+            this.label5.Location = new System.Drawing.Point(205, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 20);
             this.label5.TabIndex = 3;
@@ -186,7 +294,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(508, 215);
+            this.label11.Location = new System.Drawing.Point(557, 212);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 3;
@@ -195,7 +303,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 171);
+            this.label4.Location = new System.Drawing.Point(205, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 3;
@@ -204,7 +312,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(507, 126);
+            this.label14.Location = new System.Drawing.Point(556, 123);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 20);
             this.label14.TabIndex = 3;
@@ -213,7 +321,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(508, 170);
+            this.label10.Location = new System.Drawing.Point(557, 167);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
             this.label10.TabIndex = 3;
@@ -222,7 +330,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 126);
+            this.label3.Location = new System.Drawing.Point(205, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 3;
@@ -231,7 +339,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(508, 82);
+            this.label9.Location = new System.Drawing.Point(557, 79);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 3;
@@ -240,7 +348,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 79);
+            this.label2.Location = new System.Drawing.Point(205, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 20);
             this.label2.TabIndex = 3;
@@ -249,7 +357,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(508, 41);
+            this.label8.Location = new System.Drawing.Point(557, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 20);
             this.label8.TabIndex = 3;
@@ -259,7 +367,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 38);
+            this.label1.Location = new System.Drawing.Point(205, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 20);
             this.label1.TabIndex = 3;
@@ -267,56 +375,56 @@
             // 
             // tbt_GiaNhap
             // 
-            this.tbt_GiaNhap.Location = new System.Drawing.Point(647, 216);
+            this.tbt_GiaNhap.Location = new System.Drawing.Point(678, 212);
             this.tbt_GiaNhap.Name = "tbt_GiaNhap";
             this.tbt_GiaNhap.Size = new System.Drawing.Size(196, 27);
             this.tbt_GiaNhap.TabIndex = 2;
             // 
             // tbt_MoTa
             // 
-            this.tbt_MoTa.Location = new System.Drawing.Point(647, 83);
+            this.tbt_MoTa.Location = new System.Drawing.Point(678, 79);
             this.tbt_MoTa.Name = "tbt_MoTa";
             this.tbt_MoTa.Size = new System.Drawing.Size(196, 27);
             this.tbt_MoTa.TabIndex = 2;
             // 
             // tbt_KichThuoc
             // 
-            this.tbt_KichThuoc.Location = new System.Drawing.Point(175, 311);
+            this.tbt_KichThuoc.Location = new System.Drawing.Point(335, 315);
             this.tbt_KichThuoc.Name = "tbt_KichThuoc";
             this.tbt_KichThuoc.Size = new System.Drawing.Size(196, 27);
             this.tbt_KichThuoc.TabIndex = 2;
             // 
             // tbt_SoTrang
             // 
-            this.tbt_SoTrang.Location = new System.Drawing.Point(646, 127);
+            this.tbt_SoTrang.Location = new System.Drawing.Point(677, 123);
             this.tbt_SoTrang.Name = "tbt_SoTrang";
             this.tbt_SoTrang.Size = new System.Drawing.Size(196, 27);
             this.tbt_SoTrang.TabIndex = 2;
             // 
             // tbt_GiaBan
             // 
-            this.tbt_GiaBan.Location = new System.Drawing.Point(647, 262);
+            this.tbt_GiaBan.Location = new System.Drawing.Point(678, 258);
             this.tbt_GiaBan.Name = "tbt_GiaBan";
             this.tbt_GiaBan.Size = new System.Drawing.Size(196, 27);
             this.tbt_GiaBan.TabIndex = 2;
             // 
             // tbt_SoLuong
             // 
-            this.tbt_SoLuong.Location = new System.Drawing.Point(647, 171);
+            this.tbt_SoLuong.Location = new System.Drawing.Point(678, 167);
             this.tbt_SoLuong.Name = "tbt_SoLuong";
             this.tbt_SoLuong.Size = new System.Drawing.Size(196, 27);
             this.tbt_SoLuong.TabIndex = 2;
             // 
             // tbt_NamXuatBan
             // 
-            this.tbt_NamXuatBan.Location = new System.Drawing.Point(647, 38);
+            this.tbt_NamXuatBan.Location = new System.Drawing.Point(678, 34);
             this.tbt_NamXuatBan.Name = "tbt_NamXuatBan";
             this.tbt_NamXuatBan.Size = new System.Drawing.Size(196, 27);
             this.tbt_NamXuatBan.TabIndex = 2;
             // 
             // tbt_Ma
             // 
-            this.tbt_Ma.Location = new System.Drawing.Point(172, 31);
+            this.tbt_Ma.Location = new System.Drawing.Point(332, 35);
             this.tbt_Ma.Name = "tbt_Ma";
             this.tbt_Ma.Size = new System.Drawing.Size(199, 27);
             this.tbt_Ma.TabIndex = 1;
@@ -324,41 +432,41 @@
             // cbb_LoaiBia
             // 
             this.cbb_LoaiBia.FormattingEnabled = true;
-            this.cbb_LoaiBia.Location = new System.Drawing.Point(175, 261);
+            this.cbb_LoaiBia.Location = new System.Drawing.Point(335, 265);
             this.cbb_LoaiBia.Name = "cbb_LoaiBia";
-            this.cbb_LoaiBia.Size = new System.Drawing.Size(196, 28);
+            this.cbb_LoaiBia.Size = new System.Drawing.Size(165, 28);
             this.cbb_LoaiBia.TabIndex = 0;
             // 
             // cbb_NhaPhatHanh
             // 
             this.cbb_NhaPhatHanh.FormattingEnabled = true;
-            this.cbb_NhaPhatHanh.Location = new System.Drawing.Point(175, 213);
+            this.cbb_NhaPhatHanh.Location = new System.Drawing.Point(335, 217);
             this.cbb_NhaPhatHanh.Name = "cbb_NhaPhatHanh";
-            this.cbb_NhaPhatHanh.Size = new System.Drawing.Size(196, 28);
+            this.cbb_NhaPhatHanh.Size = new System.Drawing.Size(165, 28);
             this.cbb_NhaPhatHanh.TabIndex = 0;
             // 
             // cbb_TacGia
             // 
             this.cbb_TacGia.FormattingEnabled = true;
-            this.cbb_TacGia.Location = new System.Drawing.Point(175, 168);
+            this.cbb_TacGia.Location = new System.Drawing.Point(335, 172);
             this.cbb_TacGia.Name = "cbb_TacGia";
-            this.cbb_TacGia.Size = new System.Drawing.Size(196, 28);
+            this.cbb_TacGia.Size = new System.Drawing.Size(165, 28);
             this.cbb_TacGia.TabIndex = 0;
             // 
             // cbb_NXB
             // 
             this.cbb_NXB.FormattingEnabled = true;
-            this.cbb_NXB.Location = new System.Drawing.Point(175, 123);
+            this.cbb_NXB.Location = new System.Drawing.Point(335, 127);
             this.cbb_NXB.Name = "cbb_NXB";
-            this.cbb_NXB.Size = new System.Drawing.Size(196, 28);
+            this.cbb_NXB.Size = new System.Drawing.Size(165, 28);
             this.cbb_NXB.TabIndex = 0;
             // 
             // cbb_Sach
             // 
             this.cbb_Sach.FormattingEnabled = true;
-            this.cbb_Sach.Location = new System.Drawing.Point(175, 79);
+            this.cbb_Sach.Location = new System.Drawing.Point(335, 83);
             this.cbb_Sach.Name = "cbb_Sach";
-            this.cbb_Sach.Size = new System.Drawing.Size(196, 28);
+            this.cbb_Sach.Size = new System.Drawing.Size(165, 28);
             this.cbb_Sach.TabIndex = 0;
             // 
             // groupBox2
@@ -506,6 +614,12 @@
             this.Text = "Form_ChiTietSach";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNXB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).EndInit();
@@ -560,5 +674,11 @@
         private System.Windows.Forms.TextBox tbt_Search;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbt_SoTrang;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddLoaiBia;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddNhaPhatHanh;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddTacGia;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddNXB;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddSach;
+        private System.Windows.Forms.PictureBox ptb_AnhSach;
     }
 }
