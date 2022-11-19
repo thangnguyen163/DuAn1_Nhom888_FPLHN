@@ -130,6 +130,7 @@
             this.dtg_SanPham.RowTemplate.Height = 29;
             this.dtg_SanPham.Size = new System.Drawing.Size(1120, 248);
             this.dtg_SanPham.TabIndex = 42;
+            this.dtg_SanPham.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_SanPham_CellDoubleClick);
             // 
             // btn_taohoadon
             // 
