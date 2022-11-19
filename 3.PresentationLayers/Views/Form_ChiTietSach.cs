@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using FontAwesome.Sharp;
+using FontAwesome.Sharp;
+using Microsoft.VisualBasic;
 
 namespace _3.PresentationLayers.Views
 {
@@ -28,6 +30,9 @@ namespace _3.PresentationLayers.Views
         private INXBService _iNXBService;
         private ILoaiBiaService _iLoaiBiaService;
         private INhaPhatHanhService _iNhaPhatHanhService;
+        private ChiTietSach ChiTietSach;
+        private string LinkImage ="";
+        
 
         public Form_ChiTietSach()
         {
@@ -43,11 +48,40 @@ namespace _3.PresentationLayers.Views
             _iNhaPhatHanhService = new NhaPhatHanhService();
             LoadData();
             LoadCbb();
+            ChiTietSach = new ChiTietSach();
+            //ptb_AnhSach.Image = Image.FromFile(ChiTietSach.Anh);
+            //dcmmm();
         }
         void LoadData()
         {
+            //int stt = 0;
+            //dtg_Show.ColumnCount = 16;
+            //dtg_Show.Columns[0].Name = "STT";
+            //dtg_Show.Columns[1].Name = "Id";
+            //dtg_Show.Columns[1].Visible = false;
+            //dtg_Show.Columns[2].Name = "Sách";
+            //dtg_Show.Columns[3].Name = "NXB";
+            //dtg_Show.Columns[4].Name = "Tác giả";
+            //dtg_Show.Columns[5].Name = "NPH";
+            //dtg_Show.Columns[6].Name = "Loại bìa";
+            //dtg_Show.Columns[7].Name = "Mã";
+            //dtg_Show.Columns[8].Name = "Kích thước";
+            //dtg_Show.Columns[9].Name = "Năm xuất bản";
+            //dtg_Show.Columns[10].Name = "Mô tả";
+            //dtg_Show.Columns[11].Name = "Số trang";
+            //dtg_Show.Columns[12].Name = "Số lượng";
+            //dtg_Show.Columns[13].Name = "Giá nhập";
+            //dtg_Show.Columns[14].Name = "Giá bán";
+            //dtg_Show.Columns[15].Name = "Trạng thái";
+            //dtg_Show.Rows.Clear();
+            //foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
+            //{
+            //    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
+            //}
+
+
             int stt = 0;
-            dtg_Show.ColumnCount = 16;
+            dtg_Show.ColumnCount = 17;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id";
             dtg_Show.Columns[1].Visible = false;
@@ -65,11 +99,48 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[13].Name = "Giá nhập";
             dtg_Show.Columns[14].Name = "Giá bán";
             dtg_Show.Columns[15].Name = "Trạng thái";
+            dtg_Show.Columns[16].Name = "Đường Dẫn";
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán",a.Anh);
             }
+        }
+
+        void dcmmm()
+        {
+            ////try
+            ////{
+            //    DataGridViewImageColumn img = new DataGridViewImageColumn();
+            //    img.HeaderText = "Ảnh";
+            //    img.Name = "img_sp";
+            //    img.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            //    dtg_Show.Columns.Add(img);
+            //    //dgrid_sanpham.Columns["IDHD"].Width = 200;
+            //    //dgrid_sanpham.RowTemplate.Height = 80;
+            //    //
+            //    for (int i = 0; i < dtg_Show.RowCount; i++)
+            //    {
+            //        Image img1 = Image.FromFile(Convert.ToString(dtg_Show.Rows[i].Cells["Đường Dẫn"].Value));
+
+            //        dtg_Show.Rows[i].Cells["img_sp"].Value = img1;
+
+            //    }
+            ////}
+            ////catch (Exception ex)
+            ////{
+
+            ////    MessageBox.Show(Convert.ToString(ex), "Liên Hệ Với 19008198 để sửa lỗi");
+            ////    return;
+
+            ////}
+
+            DataGridViewImageColumn img = new DataGridViewImageColumn();
+            Image image = Image.FromFile(Convert.ToString(dtg_Show.CurrentRow.Cells["Đường Dẫn"].Value));
+            img.Image = image;
+            dtg_Show.Columns.Add(img);
+            img.HeaderText = "Image";
+            img.Name = "img";
         }
         public void LoadCbb()
         {
@@ -96,6 +167,7 @@ namespace _3.PresentationLayers.Views
         }
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //string Content = Interaction.InputBox("Nhập số lượng ", "","", 500, 300);   nhập số lượng ở màn bán hàng 
             int rd = e.RowIndex;
             if (rd == -1) return;
             SelectedID = Guid.Parse(Convert.ToString(dtg_Show.Rows[rd].Cells[1].Value));
@@ -110,10 +182,12 @@ namespace _3.PresentationLayers.Views
             tbt_MoTa.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[10].Value);
             tbt_SoTrang.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[11].Value);
             tbt_SoLuong.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[12].Value);
+            //Content = Convert.ToString(dtg_Show.Rows[rd].Cells[12].Value);  cái này nx
             tbt_GiaNhap.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[13].Value);
             tbt_GiaBan.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[14].Value);
             rdt_ConBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Còn bán";
             rdt_KhongBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Hết sách";
+
 
         }
 
@@ -137,8 +211,13 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                File.Copy(LinkImage, Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage)), true);
+                LinkImage = Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage));
                 MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
                 {
+
+
                     Id = Guid.NewGuid(),
                     IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
@@ -153,6 +232,7 @@ namespace _3.PresentationLayers.Views
                     SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                     GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
                     GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
+                    Anh=LinkImage,
                     TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
 
                 }));
@@ -248,21 +328,38 @@ namespace _3.PresentationLayers.Views
 
         private void ptb_AnhSach_DoubleClick(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Imaga file: | *.jpg; *.png; *.jpeg";
-            ofd.ShowDialog();
-            DialogResult result = MessageBox.Show("Bạn có muốn chọn ảnh sách không? ", "Đổi ảnh sách", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage; // cho vừa khung 
-                ptb_AnhSach.Image = Image.FromFile(ofd.FileName);
-            }
-            else
-            {
-                MessageBox.Show("Lựa chọn đúng đắn");
-            }
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "Imaga file: | *.jpg; *.png; *.jpeg";
+            //ofd.ShowDialog();
+            //DialogResult result = MessageBox.Show("Bạn có muốn chọn ảnh sách không? ", "Đổi ảnh sách", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.Yes)
+            //{
+            //    ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage; // cho vừa khung 
+            //    ptb_AnhSach.Image = Image.FromFile(ofd.FileName);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lựa chọn đúng đắn");
+            //}
             // thêm cái này 
             //= ofd.FileName; // lưu đường dẫn ảnh để lát tạo đối tượng
+            OpenFileDialog open = new OpenFileDialog();
+            try
+            {
+                
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
+                    ptb_AnhSach.Image = Image.FromFile(open.FileName);
+                    LinkImage = open.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với Thắng để khắc phục");
+            }
+            //ChiTietSach.Anh = open.FileName;
         }
 
         private void Form_ChiTietSach_Load(object sender, EventArgs e)
@@ -275,10 +372,5 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
         }
-
-
-
-
-
     }
 }

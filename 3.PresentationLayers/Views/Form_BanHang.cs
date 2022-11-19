@@ -18,7 +18,7 @@ namespace _3.PresentationLayers.Views
     public partial class Form_BanHang : Form
     {
         private IHoaDonService hoaDonService;
-        private IChiTietSachService chiTietSachService;
+        private IChiTietSachService _iChiTietSachService;
 
         private ISachService sachService;
         private IHoaDonChiTietService hoaDonChiTietService;
@@ -27,37 +27,39 @@ namespace _3.PresentationLayers.Views
         {
             InitializeComponent();
             hoaDonService = new HoaDonService();
-            chiTietSachService = new ChiTietSachService();
+            _iChiTietSachService = new ChiTietSachService();
             sachService = new SachService();
             hoaDonChiTietService = new HoaDonChiTietService();
+            LoadSach();
         }
 
 
         public void LoadSach()
         {
-            int i=0;
-            dtg_SanPham.ColumnCount = 18;
-            dtg_SanPham.Columns[0].Name = "Stt";
-            dtg_SanPham.Columns[1].Name = "ID";
+            int stt = 0;
+            dtg_SanPham.ColumnCount = 16;
+            dtg_SanPham.Columns[0].Name = "STT";
+            dtg_SanPham.Columns[1].Name = "Id";
             dtg_SanPham.Columns[1].Visible = false;
             dtg_SanPham.Columns[2].Name = "Sách";
-            dtg_SanPham.Columns[3].Name = "Nhà xuất bản";
+            dtg_SanPham.Columns[3].Name = "NXB";
             dtg_SanPham.Columns[4].Name = "Tác giả";
-            dtg_SanPham.Columns[5].Name = "Nhà phát hành";
+            dtg_SanPham.Columns[5].Name = "NPH";
             dtg_SanPham.Columns[6].Name = "Loại bìa";
             dtg_SanPham.Columns[7].Name = "Mã";
-            dtg_SanPham.Columns[8].Name = "";
-            dtg_SanPham.Columns[9].Name = "Stt";
-            dtg_SanPham.Columns[10].Name = "Stt";
-            dtg_SanPham.Columns[11].Name = "Stt";
-            dtg_SanPham.Columns[12].Name = "Stt";
-            dtg_SanPham.Columns[13].Name = "Stt";
-            dtg_SanPham.Columns[14].Name = "Stt";
-            dtg_SanPham.Columns[15].Name = "Stt";
-            dtg_SanPham.Columns[16].Name = "Stt";
-            dtg_SanPham.Columns[17].Name = "Stt";
-            
-            
+            dtg_SanPham.Columns[8].Name = "Kích thước";
+            dtg_SanPham.Columns[9].Name = "Năm xuất bản";
+            dtg_SanPham.Columns[10].Name = "Mô tả";
+            dtg_SanPham.Columns[11].Name = "Số trang";
+            dtg_SanPham.Columns[12].Name = "Số lượng";
+            dtg_SanPham.Columns[13].Name = "Giá nhập";
+            dtg_SanPham.Columns[14].Name = "Giá bán";
+            dtg_SanPham.Columns[15].Name = "Trạng thái";
+            dtg_SanPham.Rows.Clear();
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
+            {
+                dtg_SanPham.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
+            }
         }
 
         public void LoadHoaDon()
@@ -73,6 +75,33 @@ namespace _3.PresentationLayers.Views
             dtg_HoaDonChiTiet.Columns[0].Name = "Stt";
         }
 
-      
+        private void dtg_SanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int i = 100;
+            //Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
+            //var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
+            //int count = _ihoaDonChiTietService.GetAll().Count;
+            //if (data == null)
+            //{
+            //    var add = new HoaDonChiTiet();
+            //    add.Id = Guid.NewGuid();
+            //    add.IdHoaDon = SelectID;
+            //    add.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
+            //    add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
+            //    add.SoLuong = 1;
+            //    add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
+            //    add.ThanhTien = Convert.ToInt32(1 * Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
+            //    _ihoaDonChiTietService.Add(add);
+            //}
+            //else
+            //{
+            //    var add = new HoaDonChiTiet();
+            //    add.SoLuong++;
+            //    add.ThanhTien = add.SoLuong * add.DonGia;
+            //    _ihoaDonChiTietService.Update(add);
+            //}
+            //// LoaddataToHoadon();
+            //LoaddataToChitietHoadon(SelectID);
+        }
     }
 }
