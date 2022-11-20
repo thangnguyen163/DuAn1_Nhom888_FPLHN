@@ -63,5 +63,20 @@ namespace _3.PresentationLayers.Views
                 tb_matkhau.PasswordChar = '*';
             }
         }
+
+        private void Form_DangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_DangNhap_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
