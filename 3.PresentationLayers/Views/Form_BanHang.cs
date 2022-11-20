@@ -77,7 +77,7 @@ namespace _3.PresentationLayers.Views
                 fl_ChuaThanhToan.Controls.Clear();
                 foreach (var a in hoaDonService.GetAll().Where(p => p.Trangthai == 0))
                 {
-                    Button btn = new Button() { Width = 80, Height = 60 };
+                    Button btn = new Button() { Width = 80, Height = 80 };
                     fl_ChuaThanhToan.Controls.Add(btn);
 
                     btn.Text = a.Mahd + Environment.NewLine + (a.Trangthai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
@@ -104,31 +104,34 @@ namespace _3.PresentationLayers.Views
 
 
         }
-
+        private void btnsender_Click(object sender, EventArgs e)
+        {
+            Guid id = ((sender as Button).Tag as HoaDon).Id;
+            MessageBox.Show(Convert.ToString(id));
+        }
         public void LoadHoaDonDaThanhToan()
         {
             try
             {
                 fl_DaThanhToan.Controls.Clear();
-                foreach (var a in hoaDonService.GetAll().Where(p => p.Trangthai == 1))
+                foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 1))
                 {
                     Button btn1 = new Button() { Width = 80, Height = 60 };
-                    fl_DaThanhToan.Controls.Add(btn1);
+                    
 
-                    btn1.Text = a.Mahd + Environment.NewLine + (a.Trangthai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
+                    btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
                     btn1.Tag = a;
-
+                    btn1.Click += btnsender_Click;
                     btn1.ForeColor = Color.Blue;
-                    switch (a.Trangthai)
+                    switch (a.TrangThai)
                     {
                         case 0:
                             {
                                 btn1.BackColor = Color.Green;
                                 break;
                             }
-
                     }
-
+                    fl_DaThanhToan.Controls.Add(btn1);
                 }
             }
             catch (Exception ex)
