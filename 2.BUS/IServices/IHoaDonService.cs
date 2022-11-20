@@ -14,5 +14,6 @@ namespace _2.BUS.IServices
         public string Update(HoaDon obj);
         public string Remove(HoaDon obj);
         public List<HoadonView> GetAll();
+        public List<HoaDon> GetAllHoaDon();
     }
 }

@@ -307,10 +307,11 @@
             // 
             // fl_ChuaThanhToan
             // 
+            this.fl_ChuaThanhToan.AutoScroll = true;
             this.fl_ChuaThanhToan.BackColor = System.Drawing.SystemColors.Info;
             this.fl_ChuaThanhToan.Location = new System.Drawing.Point(581, 107);
             this.fl_ChuaThanhToan.Name = "fl_ChuaThanhToan";
-            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(277, 317);
+            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(200, 317);
             this.fl_ChuaThanhToan.TabIndex = 73;
             // 
             // dtg_HoaDon

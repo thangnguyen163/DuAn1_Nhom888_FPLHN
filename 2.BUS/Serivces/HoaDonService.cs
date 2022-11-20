@@ -52,6 +52,11 @@ namespace _2.BUS.Serivces
             return lst;
         }
 
+        public List<HoaDon> GetAllHoaDon()
+        {
+            return _ihoaDonRepository.GetAll();
+        }
+
         public string Remove(HoaDon obj)
         {
             if (obj == null) return "Thêm hóa đơn thất bại";
