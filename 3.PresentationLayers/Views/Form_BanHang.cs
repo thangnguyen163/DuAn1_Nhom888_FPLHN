@@ -21,7 +21,8 @@ namespace _3.PresentationLayers.Views
     {
         private IHoaDonService hoaDonService;
         private IChiTietSachService _iChiTietSachService;
-
+        private INhanVienService _inhanvienService;
+        private IKhachHangService _ikhachHangService;
         private ISachService sachService;
         private IHoaDonChiTietService hoaDonChiTietService;
         private Guid SelectID;
@@ -106,8 +107,23 @@ namespace _3.PresentationLayers.Views
         }
         private void btnsender_Click(object sender, EventArgs e)
         {
-            Guid id = ((sender as Button).Tag as HoaDon).Id;
-            MessageBox.Show(Convert.ToString(id));
+            Guid id = ((sender as Button).Tag as HoaDon).Id; // lấy Id từ button
+            dtg_HoaDonChiTiet.ColumnCount = 6;
+            dtg_HoaDonChiTiet.Columns[0].Name = "Idhdct";
+            dtg_HoaDonChiTiet.Columns[0].Visible = false;
+            dtg_HoaDonChiTiet.Columns[1].Name = "Mã sản phẩm";
+            dtg_HoaDonChiTiet.Columns[2].Name = "Tên sản phẩm";
+            dtg_HoaDonChiTiet.Columns[3].Name = "Số lượng";
+            dtg_HoaDonChiTiet.Columns[4].Name = "Đơn giá";
+            dtg_HoaDonChiTiet.Columns[5].Name = "Thành tiền";
+            dtg_HoaDonChiTiet.Rows.Clear();
+            // tạo cột cho dth hdct
+            foreach (var x in hoaDonChiTietService.GetAll().Where(x=>x.IDhoadon == id))
+            {
+                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, x.Soluong, x.Dongia, x.Thanhtien);
+            }
+            
+
         }
         public void LoadHoaDonDaThanhToan()
         {
@@ -144,26 +160,26 @@ namespace _3.PresentationLayers.Views
         }
         public void LoadHoaDon()
         {
-            int i = 1;
-            dtg_HoaDon.Rows.Clear();
-            dtg_HoaDon.ColumnCount = 13;
-            dtg_HoaDon.Columns[0].Name = "STT";
-            dtg_HoaDon.Columns[1].Name = "ID";
-            dtg_HoaDon.Columns[2].Name = "IDKH";
-            dtg_HoaDon.Columns[3].Name = "IDNV";
-            dtg_HoaDon.Columns[4].Name = "DIEMTICH";
-            dtg_HoaDon.Columns[5].Name = "DIENDUNG";
-            dtg_HoaDon.Columns[6].Name = "MAHD";
-            dtg_HoaDon.Columns[7].Name = "NGAYTAO";
-            dtg_HoaDon.Columns[8].Name = "THUE";
-            dtg_HoaDon.Columns[9].Name = "GIAMGIA";
-            dtg_HoaDon.Columns[10].Name = "TONGTIEN";
-            dtg_HoaDon.Columns[11].Name = "GHICHU";
-            dtg_HoaDon.Columns[12].Name = "TRANGTHAI";
-            foreach(var x in hoaDonService.GetAll())
-            {
-                dtg_HoaDon.Rows.Add(i++,x.Id,x.Mahd,x.Manv,x.sodiemtich,x.Sodiemdung,x.Mahd,x.Ngaytao,x.Thue,x.Giamgia,x.tongtien,x.ghichu,x.Trangthai==0?"Chưa thanh toán" :"Đã thanh toán");
-            }
+            //int i = 1;
+            //dtg_HoaDon.Rows.Clear();
+            //dtg_HoaDon.ColumnCount = 13;
+            //dtg_HoaDon.Columns[0].Name = "STT";
+            //dtg_HoaDon.Columns[1].Name = "ID";
+            //dtg_HoaDon.Columns[2].Name = "IDKH";
+            //dtg_HoaDon.Columns[3].Name = "IDNV";
+            //dtg_HoaDon.Columns[4].Name = "DIEMTICH";
+            //dtg_HoaDon.Columns[5].Name = "DIENDUNG";
+            //dtg_HoaDon.Columns[6].Name = "MAHD";
+            //dtg_HoaDon.Columns[7].Name = "NGAYTAO";
+            //dtg_HoaDon.Columns[8].Name = "THUE";
+            //dtg_HoaDon.Columns[9].Name = "GIAMGIA";
+            //dtg_HoaDon.Columns[10].Name = "TONGTIEN";
+            //dtg_HoaDon.Columns[11].Name = "GHICHU";
+            //dtg_HoaDon.Columns[12].Name = "TRANGTHAI";
+            //foreach(var x in hoaDonService.GetAll())
+            //{
+            //    dtg_HoaDon.Rows.Add(i++,x.Id,x.Mahd,x.Manv,x.sodiemtich,x.Sodiemdung,x.Mahd,x.Ngaytao,x.Thue,x.Giamgia,x.tongtien,x.ghichu,x.Trangthai==0?"Chưa thanh toán" :"Đã thanh toán");
+            //}
 
         }
 
@@ -219,6 +235,17 @@ namespace _3.PresentationLayers.Views
             LoadHoaDonChoThanhToan();
         }
 
-      
+        private void Form_BanHang_Load(object sender, EventArgs e)
+        {
+            foreach (var x in _inhanvienService.getNhanViensFromDB())
+            {
+                cbb_nhanvien.Items.Add(x.Ten);
+            }
+
+            foreach (var x in _ikhachHangService.getKhachHangFromDB())
+            {
+                cbb_nganhang.Items.Add(x.Ten);
+            }
+        }
     }
 }
