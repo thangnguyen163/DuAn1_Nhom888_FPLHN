@@ -23,6 +23,7 @@ namespace _3.PresentationLayers.Views
 
         private ISachService sachService;
         private IHoaDonChiTietService hoaDonChiTietService;
+        private Guid SelectId;
         
         public Form_BanHang()
         {
