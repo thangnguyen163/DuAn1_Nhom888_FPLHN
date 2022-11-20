@@ -38,7 +38,6 @@
             this.rB_hd = new System.Windows.Forms.RadioButton();
             this.tb_namsinh = new System.Windows.Forms.TextBox();
             this.tb_Anh = new System.Windows.Forms.TextBox();
-            this.cbb_gioitinh = new System.Windows.Forms.ComboBox();
             this.cbb_ChucVu = new System.Windows.Forms.ComboBox();
             this.tb_diaChi = new System.Windows.Forms.TextBox();
             this.tb_ten = new System.Windows.Forms.TextBox();
@@ -61,6 +60,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtg_Show = new System.Windows.Forms.DataGridView();
+            this.cb_Nam = new System.Windows.Forms.CheckBox();
+            this.cb_Nu = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -122,11 +123,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cb_Nu);
+            this.groupBox2.Controls.Add(this.cb_Nam);
             this.groupBox2.Controls.Add(this.rB_khd);
             this.groupBox2.Controls.Add(this.rB_hd);
             this.groupBox2.Controls.Add(this.tb_namsinh);
             this.groupBox2.Controls.Add(this.tb_Anh);
-            this.groupBox2.Controls.Add(this.cbb_gioitinh);
             this.groupBox2.Controls.Add(this.cbb_ChucVu);
             this.groupBox2.Controls.Add(this.tb_diaChi);
             this.groupBox2.Controls.Add(this.tb_ten);
@@ -191,14 +193,6 @@
             this.tb_Anh.Name = "tb_Anh";
             this.tb_Anh.Size = new System.Drawing.Size(125, 27);
             this.tb_Anh.TabIndex = 25;
-            // 
-            // cbb_gioitinh
-            // 
-            this.cbb_gioitinh.FormattingEnabled = true;
-            this.cbb_gioitinh.Location = new System.Drawing.Point(586, 193);
-            this.cbb_gioitinh.Name = "cbb_gioitinh";
-            this.cbb_gioitinh.Size = new System.Drawing.Size(286, 28);
-            this.cbb_gioitinh.TabIndex = 21;
             // 
             // cbb_ChucVu
             // 
@@ -386,6 +380,26 @@
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
+            // cb_Nam
+            // 
+            this.cb_Nam.AutoSize = true;
+            this.cb_Nam.Location = new System.Drawing.Point(600, 197);
+            this.cb_Nam.Name = "cb_Nam";
+            this.cb_Nam.Size = new System.Drawing.Size(63, 24);
+            this.cb_Nam.TabIndex = 29;
+            this.cb_Nam.Text = "Nam";
+            this.cb_Nam.UseVisualStyleBackColor = true;
+            // 
+            // cb_Nu
+            // 
+            this.cb_Nu.AutoSize = true;
+            this.cb_Nu.Location = new System.Drawing.Point(771, 194);
+            this.cb_Nu.Name = "cb_Nu";
+            this.cb_Nu.Size = new System.Drawing.Size(51, 24);
+            this.cb_Nu.TabIndex = 30;
+            this.cb_Nu.Text = "Nữ";
+            this.cb_Nu.UseVisualStyleBackColor = true;
+            // 
             // Form_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -417,7 +431,6 @@
         private System.Windows.Forms.RadioButton rB_hd;
         private System.Windows.Forms.TextBox tb_namsinh;
         private System.Windows.Forms.TextBox tb_Anh;
-        private System.Windows.Forms.ComboBox cbb_gioitinh;
         private System.Windows.Forms.ComboBox cbb_ChucVu;
         private System.Windows.Forms.TextBox tb_diaChi;
         private System.Windows.Forms.TextBox tb_ten;
@@ -440,5 +453,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dtg_Show;
+        private System.Windows.Forms.CheckBox cb_Nu;
+        private System.Windows.Forms.CheckBox cb_Nam;
     }
 }

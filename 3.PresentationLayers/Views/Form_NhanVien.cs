@@ -38,8 +38,6 @@ namespace _3.PresentationLayers.Views
             {
                 cbb_ChucVu.Items.Add(item.Ten);
             }
-            cbb_gioitinh.Items.Add("Nam");
-            cbb_gioitinh.Items.Add("Nữ");
         }
         public void loadData()
         {
@@ -66,7 +64,7 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Rows.Add(item.nhanVien.Id,
                     item.nhanVien.Ma,
                     item.nhanVien.Ten,
-                    item.nhanVien.GioiTinh,
+                    item.nhanVien.GioiTinh == 0 ? "Nam" : "Nữ",
                     item.nhanVien.Cccd,
                     item.nhanVien.Sdt,
                     item.nhanVien.Email,
@@ -93,7 +91,8 @@ namespace _3.PresentationLayers.Views
             tb_Anh.Text = "";
             tb_namsinh.Text = "";
             cbb_ChucVu.Text = "";
-            cbb_gioitinh.Text = "";
+            cb_Nam.Checked = true;
+            cb_Nu.Checked = false;
             rB_hd.Checked = true;
             rB_khd.Checked = false;
         }
@@ -106,15 +105,16 @@ namespace _3.PresentationLayers.Views
                 _nv = _nhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString()));
                 tb_ma.Text = r.Cells[1].Value.ToString();
                 tb_ten.Text = r.Cells[2].Value.ToString();
-                tb_matkhau.Text = r.Cells[3].Value.ToString();
+                tb_matkhau.Text = r.Cells[7].Value.ToString();
                 tb_cccd.Text = r.Cells[4].Value.ToString();
                 tb_sdt.Text = r.Cells[5].Value.ToString();
-                tb_diaChi.Text = r.Cells[6].Value.ToString();
-                tb_email.Text = r.Cells[7].Value.ToString();
+                tb_diaChi.Text = r.Cells[10].Value.ToString();
+                tb_email.Text = r.Cells[6].Value.ToString();
                 tb_Anh.Text = r.Cells[8].Value.ToString();
-                tb_namsinh.Text = r.Cells[9].Value.ToString();
+                tb_namsinh.Text = r.Cells[11].Value.ToString();
                 cbb_ChucVu.Text = _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Id == _nv.IdchucVu).Ten;
-                cbb_gioitinh.Text = r.Cells[10].Value.ToString();
+                cb_Nam.Checked = _nv.GioiTinh == 0;
+                cb_Nu.Checked = _nv.GioiTinh == 1;
                 rB_hd.Checked = _nv.TrangThai == 1;
                 rB_khd.Checked = _nv.TrangThai == 0;
             }
