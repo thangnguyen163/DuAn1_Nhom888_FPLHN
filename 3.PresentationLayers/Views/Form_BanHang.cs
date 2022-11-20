@@ -237,15 +237,15 @@ namespace _3.PresentationLayers.Views
 
         private void Form_BanHang_Load(object sender, EventArgs e)
         {
-            foreach (var x in _inhanvienService.getNhanViensFromDB())
-            {
-                cbb_nhanvien.Items.Add(x.Ten);
-            }
+            //foreach (var x in _inhanvienService.getNhanViensFromDB())
+            //{
+            //    cbb_nhanvien.Items.Add(x.Ten);
+            //}
 
-            foreach (var x in _ikhachHangService.getKhachHangFromDB())
-            {
-                cbb_nganhang.Items.Add(x.Ten);
-            }
+            //foreach (var x in _ikhachHangService.getKhachHangFromDB())
+            //{
+            //    cbb_nganhang.Items.Add(x.Ten);
+            //}
         }
     }
 }
