@@ -15,5 +15,6 @@ namespace _2.BUS.IServices
         public string deleteNhanVien(Guid Id);
         List<NhanVien> getNhanViensFromDB();
         List<NhanVienView> getViewNhanViens();
+        public string QuenMatKhau(NhanVien nhanVien);
     }
 }

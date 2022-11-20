@@ -13,5 +13,6 @@ namespace _1.DAL.IRepositories
         bool updateNhanVien(Guid Id, NhanVien nhanVien);
         bool deleteNhanVien(Guid Id);
         List<NhanVien> GetAllNhanVien();
+        bool QuenMatKhau(NhanVien nhanVien);
     }
 }
