@@ -33,6 +33,16 @@ namespace _1.DAL.Repositories
             return true;
         }
 
+        public bool QuenMatKhau(NhanVien nhanVien)
+        {
+            if (nhanVien == null) return false;
+            var x = _DBContext.NhanViens.FirstOrDefault(p => p.Id == nhanVien.Id);
+            x.MatKhau = nhanVien.MatKhau;
+            _DBContext.NhanViens.Update(x);
+            _DBContext.SaveChanges();
+            return true;
+        }
+
         public List<NhanVien> GetAllNhanVien()
         {
             return _DBContext.NhanViens.ToList();

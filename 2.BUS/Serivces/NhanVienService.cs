@@ -2,6 +2,7 @@
 using _1.DAL.IRepositories;
 using _1.DAL.IRepositoties;
 using _1.DAL.Repositories;
+using _1.DAL.Repositoties;
 using _2.BUS.IServices;
 using _2.BUS.ViewModels;
 using System;
@@ -42,6 +43,13 @@ namespace _2.BUS.Serivces
                 nhanVienRepository.deleteNhanVien(Id);
                 return "Xóa thành công";
             }
+        }
+
+        public string QuenMatKhau(NhanVien nhanVien)
+        {
+            if (nhanVien == null) return "Đổi mật khẩu không thành công";
+            if (nhanVienRepository.QuenMatKhau(nhanVien)) return "Đổi mật khẩu thành công";
+            return "Đổi mật khẩu không thành công";
         }
 
         public List<NhanVien> getNhanViensFromDB()
