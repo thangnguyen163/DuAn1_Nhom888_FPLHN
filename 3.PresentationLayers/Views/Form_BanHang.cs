@@ -4,6 +4,7 @@ using _2.BUS.IService;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
 using _2.BUS.Service;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,10 @@ namespace _3.PresentationLayers.Views
 
         private ISachService sachService;
         private IHoaDonChiTietService hoaDonChiTietService;
-        
+        private Guid SelectID;
+        private HoaDonChiTiet hoaDonChiTiet;
+
+
         public Form_BanHang()
         {
             InitializeComponent();
@@ -31,6 +35,7 @@ namespace _3.PresentationLayers.Views
             _iChiTietSachService = new ChiTietSachService();
             sachService = new SachService();
             hoaDonChiTietService = new HoaDonChiTietService();
+            hoaDonChiTiet = new HoaDonChiTiet();
             LoadSach();
             LoadHoaDonChoThanhToan();
             LoadHoaDonDaThanhToan();
@@ -169,31 +174,25 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_SanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int i = 100;
-            //Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
-            //var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
-            //int count = _ihoaDonChiTietService.GetAll().Count;
-            //if (data == null)
-            //{
-            //    var add = new HoaDonChiTiet();
-            //    add.Id = Guid.NewGuid();
-            //    add.IdHoaDon = SelectID;
-            //    add.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
-            //    add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
-            //    add.SoLuong = 1;
-            //    add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
-            //    add.ThanhTien = Convert.ToInt32(1 * Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
-            //    _ihoaDonChiTietService.Add(add);
-            //}
-            //else
-            //{
-            //    var add = new HoaDonChiTiet();
-            //    add.SoLuong++;
-            //    add.ThanhTien = add.SoLuong * add.DonGia;
-            //    _ihoaDonChiTietService.Update(add);
-            //}
+
             //// LoaddataToHoadon();
             //LoaddataToChitietHoadon(SelectID);
+            Guid a = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
+            var data = hoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
+            string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);   //nhập số lượng ở màn bán hàng 
+            if (data == null)
+            {
+                hoaDonChiTietService.Add(new HoaDonChiTiet()
+                {
+                    Id = Guid.NewGuid(),
+                    IdHoaDon = SelectID,
+                    IdChiTietSach = a,
+                    Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 1)),
+                    SoLuong = Convert.ToInt32(Content),
+                    DonGia = Convert.ToInt32(dtg_SanPham.CurrentRow.Cells[14].Value),
+                    ThanhTien = hoaDonChiTiet.SoLuong * hoaDonChiTiet.DonGia,
+                });
+            }
         }
 
         private void btn_taohoadon_Click(object sender, EventArgs e)
