@@ -193,7 +193,6 @@
             this.Controls.Add(this.lb_quenmk);
             this.Controls.Add(this.tb_matkhau);
             this.Controls.Add(this.tb_tendangnhap);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_DangNhap";
             this.Text = "Form_DangNhap";
             this.Load += new System.EventHandler(this.Form_DangNhap_Load_1);

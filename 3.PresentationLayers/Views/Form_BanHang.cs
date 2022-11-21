@@ -210,30 +210,42 @@ namespace _3.PresentationLayers.Views
 
             //// LoaddataToHoadon();
             //LoaddataToChitietHoadon(SelectID);
+            HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+            SelectID = hd.Id;
             Guid a = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
-            var data = hoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
+            HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == a && x.IdHoaDon==SelectID);
             string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);   //nhập số lượng ở màn bán hàng 
             if (data == null)
             {
-                hoaDonChiTietService.Add(new HoaDonChiTiet()
-                {
-                    Id = Guid.NewGuid(),
-                    IdHoaDon = SelectID,
-                    IdChiTietSach = a,
-                    Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 1)),
-                    SoLuong = Convert.ToInt32(Content),
-                    DonGia = Convert.ToInt32(dtg_SanPham.CurrentRow.Cells[14].Value),
-                    ThanhTien = hoaDonChiTiet.SoLuong * hoaDonChiTiet.DonGia,
-                });
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                hdct.Id = Guid.NewGuid();
+                hdct.IdHoaDon = SelectID;
+                hdct.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
+                hdct.Ma = "HDCT00" +""+ Convert.ToString(hoaDonChiTietService.GetAllloadformsp().Count+10);
+                hdct.SoLuong = Convert.ToInt32(Content);
+                hdct.DonGia = Convert.ToInt32(dtg_SanPham.CurrentRow.Cells[14].Value);
+                hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * hoaDonChiTiet.DonGia);
+                hoaDonChiTietService.Add(hdct);
+            }
+            else
+            {
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                hdct.IdHoaDon = SelectID;
+                hdct.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
+                hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x=>x.Id==hdct.IdChiTietSach).Select(x=>x.GiaBan).FirstOrDefault();
+                hoaDonChiTietService.Update(hdct);
+            }
+            LoadHoaDonChiTiet();
+            dtg_HoaDonChiTiet.Rows.Clear();
+            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
+            {
+                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
             }
         }
 
         private void btn_taohoadon_Click(object sender, EventArgs e)
         {
-
-            
-            
-
             DialogResult dialogResult = MessageBox.Show("Bạn muốn tạo hóa đơn chứ", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
