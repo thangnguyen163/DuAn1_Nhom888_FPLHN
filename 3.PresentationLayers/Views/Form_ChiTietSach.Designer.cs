@@ -35,6 +35,8 @@
             this.ipb_AddNhaPhatHanh = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddTacGia = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddNXB = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_TheLoai2 = new FontAwesome.Sharp.IconPictureBox();
+            this.ipb_AddTheLoai = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddSach = new FontAwesome.Sharp.IconPictureBox();
             this.rdt_KhongBan = new System.Windows.Forms.RadioButton();
             this.rdt_ConBan = new System.Windows.Forms.RadioButton();
@@ -49,6 +51,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,6 +68,8 @@
             this.cbb_NhaPhatHanh = new System.Windows.Forms.ComboBox();
             this.cbb_TacGia = new System.Windows.Forms.ComboBox();
             this.cbb_NXB = new System.Windows.Forms.ComboBox();
+            this.cbb_TheLoai2 = new System.Windows.Forms.ComboBox();
+            this.cbb_TheLoai = new System.Windows.Forms.ComboBox();
             this.cbb_Sach = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Delete = new System.Windows.Forms.Button();
@@ -73,7 +79,6 @@
             this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.Lọc = new System.Windows.Forms.GroupBox();
             this.cbb_LocTacGia = new System.Windows.Forms.ComboBox();
-            this.cbb_LocSach = new System.Windows.Forms.ComboBox();
             this.cbb_LocNXB = new System.Windows.Forms.ComboBox();
             this.cbb_LocNhaPhatHanh = new System.Windows.Forms.ComboBox();
             this.cbb_LocLoaiBia = new System.Windows.Forms.ComboBox();
@@ -84,6 +89,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNXB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_TheLoai2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -98,6 +105,8 @@
             this.groupBox1.Controls.Add(this.ipb_AddNhaPhatHanh);
             this.groupBox1.Controls.Add(this.ipb_AddTacGia);
             this.groupBox1.Controls.Add(this.ipb_AddNXB);
+            this.groupBox1.Controls.Add(this.ipb_TheLoai2);
+            this.groupBox1.Controls.Add(this.ipb_AddTheLoai);
             this.groupBox1.Controls.Add(this.ipb_AddSach);
             this.groupBox1.Controls.Add(this.rdt_KhongBan);
             this.groupBox1.Controls.Add(this.rdt_ConBan);
@@ -112,6 +121,8 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
@@ -127,6 +138,8 @@
             this.groupBox1.Controls.Add(this.cbb_NhaPhatHanh);
             this.groupBox1.Controls.Add(this.cbb_TacGia);
             this.groupBox1.Controls.Add(this.cbb_NXB);
+            this.groupBox1.Controls.Add(this.cbb_TheLoai2);
+            this.groupBox1.Controls.Add(this.cbb_TheLoai);
             this.groupBox1.Controls.Add(this.cbb_Sach);
             this.groupBox1.Location = new System.Drawing.Point(24, 20);
             this.groupBox1.Name = "groupBox1";
@@ -154,7 +167,7 @@
             this.ipb_AddLoaiBia.IconColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddLoaiBia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ipb_AddLoaiBia.IconSize = 30;
-            this.ipb_AddLoaiBia.Location = new System.Drawing.Point(506, 265);
+            this.ipb_AddLoaiBia.Location = new System.Drawing.Point(506, 351);
             this.ipb_AddLoaiBia.Name = "ipb_AddLoaiBia";
             this.ipb_AddLoaiBia.Size = new System.Drawing.Size(30, 30);
             this.ipb_AddLoaiBia.TabIndex = 5;
@@ -170,7 +183,7 @@
             this.ipb_AddNhaPhatHanh.IconColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddNhaPhatHanh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ipb_AddNhaPhatHanh.IconSize = 30;
-            this.ipb_AddNhaPhatHanh.Location = new System.Drawing.Point(506, 217);
+            this.ipb_AddNhaPhatHanh.Location = new System.Drawing.Point(506, 303);
             this.ipb_AddNhaPhatHanh.Name = "ipb_AddNhaPhatHanh";
             this.ipb_AddNhaPhatHanh.Size = new System.Drawing.Size(30, 30);
             this.ipb_AddNhaPhatHanh.TabIndex = 5;
@@ -186,7 +199,7 @@
             this.ipb_AddTacGia.IconColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddTacGia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ipb_AddTacGia.IconSize = 30;
-            this.ipb_AddTacGia.Location = new System.Drawing.Point(506, 172);
+            this.ipb_AddTacGia.Location = new System.Drawing.Point(506, 258);
             this.ipb_AddTacGia.Name = "ipb_AddTacGia";
             this.ipb_AddTacGia.Size = new System.Drawing.Size(30, 30);
             this.ipb_AddTacGia.TabIndex = 5;
@@ -202,12 +215,44 @@
             this.ipb_AddNXB.IconColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddNXB.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ipb_AddNXB.IconSize = 30;
-            this.ipb_AddNXB.Location = new System.Drawing.Point(506, 127);
+            this.ipb_AddNXB.Location = new System.Drawing.Point(506, 213);
             this.ipb_AddNXB.Name = "ipb_AddNXB";
             this.ipb_AddNXB.Size = new System.Drawing.Size(30, 30);
             this.ipb_AddNXB.TabIndex = 5;
             this.ipb_AddNXB.TabStop = false;
             this.ipb_AddNXB.Click += new System.EventHandler(this.ipb_AddNXB_Click);
+            // 
+            // ipb_TheLoai2
+            // 
+            this.ipb_TheLoai2.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_TheLoai2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_TheLoai2.BackgroundImage")));
+            this.ipb_TheLoai2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_TheLoai2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_TheLoai2.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_TheLoai2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_TheLoai2.IconSize = 30;
+            this.ipb_TheLoai2.Location = new System.Drawing.Point(506, 171);
+            this.ipb_TheLoai2.Name = "ipb_TheLoai2";
+            this.ipb_TheLoai2.Size = new System.Drawing.Size(30, 30);
+            this.ipb_TheLoai2.TabIndex = 5;
+            this.ipb_TheLoai2.TabStop = false;
+            this.ipb_TheLoai2.Click += new System.EventHandler(this.ipb_TheLoai2_Click);
+            // 
+            // ipb_AddTheLoai
+            // 
+            this.ipb_AddTheLoai.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddTheLoai.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddTheLoai.BackgroundImage")));
+            this.ipb_AddTheLoai.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddTheLoai.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddTheLoai.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddTheLoai.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddTheLoai.IconSize = 30;
+            this.ipb_AddTheLoai.Location = new System.Drawing.Point(506, 133);
+            this.ipb_AddTheLoai.Name = "ipb_AddTheLoai";
+            this.ipb_AddTheLoai.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddTheLoai.TabIndex = 5;
+            this.ipb_AddTheLoai.TabStop = false;
+            this.ipb_AddTheLoai.Click += new System.EventHandler(this.ipb_AddTheLoai_Click);
             // 
             // ipb_AddSach
             // 
@@ -228,7 +273,7 @@
             // rdt_KhongBan
             // 
             this.rdt_KhongBan.AutoSize = true;
-            this.rdt_KhongBan.Location = new System.Drawing.Point(813, 313);
+            this.rdt_KhongBan.Location = new System.Drawing.Point(813, 350);
             this.rdt_KhongBan.Name = "rdt_KhongBan";
             this.rdt_KhongBan.Size = new System.Drawing.Size(87, 24);
             this.rdt_KhongBan.TabIndex = 4;
@@ -239,7 +284,7 @@
             // rdt_ConBan
             // 
             this.rdt_ConBan.AutoSize = true;
-            this.rdt_ConBan.Location = new System.Drawing.Point(690, 313);
+            this.rdt_ConBan.Location = new System.Drawing.Point(690, 350);
             this.rdt_ConBan.Name = "rdt_ConBan";
             this.rdt_ConBan.Size = new System.Drawing.Size(85, 24);
             this.rdt_ConBan.TabIndex = 4;
@@ -250,7 +295,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(225, 318);
+            this.label7.Location = new System.Drawing.Point(569, 307);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 3;
@@ -259,7 +304,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(225, 273);
+            this.label6.Location = new System.Drawing.Point(225, 359);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 20);
             this.label6.TabIndex = 3;
@@ -268,7 +313,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(569, 314);
+            this.label13.Location = new System.Drawing.Point(569, 351);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 3;
@@ -286,7 +331,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(225, 221);
+            this.label5.Location = new System.Drawing.Point(225, 307);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 20);
             this.label5.TabIndex = 3;
@@ -304,7 +349,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 175);
+            this.label4.Location = new System.Drawing.Point(225, 261);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 3;
@@ -331,7 +376,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(225, 130);
+            this.label3.Location = new System.Drawing.Point(225, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 3;
@@ -345,6 +390,24 @@
             this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 3;
             this.label9.Text = "Mô tả";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(225, 171);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 20);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Thể loại 2";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(225, 133);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 20);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Thể loại";
             // 
             // label2
             // 
@@ -390,7 +453,7 @@
             // 
             // tbt_KichThuoc
             // 
-            this.tbt_KichThuoc.Location = new System.Drawing.Point(335, 315);
+            this.tbt_KichThuoc.Location = new System.Drawing.Point(689, 307);
             this.tbt_KichThuoc.Name = "tbt_KichThuoc";
             this.tbt_KichThuoc.Size = new System.Drawing.Size(196, 27);
             this.tbt_KichThuoc.TabIndex = 2;
@@ -433,7 +496,7 @@
             // cbb_LoaiBia
             // 
             this.cbb_LoaiBia.FormattingEnabled = true;
-            this.cbb_LoaiBia.Location = new System.Drawing.Point(335, 265);
+            this.cbb_LoaiBia.Location = new System.Drawing.Point(335, 351);
             this.cbb_LoaiBia.Name = "cbb_LoaiBia";
             this.cbb_LoaiBia.Size = new System.Drawing.Size(165, 28);
             this.cbb_LoaiBia.TabIndex = 0;
@@ -441,7 +504,7 @@
             // cbb_NhaPhatHanh
             // 
             this.cbb_NhaPhatHanh.FormattingEnabled = true;
-            this.cbb_NhaPhatHanh.Location = new System.Drawing.Point(335, 217);
+            this.cbb_NhaPhatHanh.Location = new System.Drawing.Point(335, 303);
             this.cbb_NhaPhatHanh.Name = "cbb_NhaPhatHanh";
             this.cbb_NhaPhatHanh.Size = new System.Drawing.Size(165, 28);
             this.cbb_NhaPhatHanh.TabIndex = 0;
@@ -449,7 +512,7 @@
             // cbb_TacGia
             // 
             this.cbb_TacGia.FormattingEnabled = true;
-            this.cbb_TacGia.Location = new System.Drawing.Point(335, 172);
+            this.cbb_TacGia.Location = new System.Drawing.Point(335, 258);
             this.cbb_TacGia.Name = "cbb_TacGia";
             this.cbb_TacGia.Size = new System.Drawing.Size(165, 28);
             this.cbb_TacGia.TabIndex = 0;
@@ -457,10 +520,27 @@
             // cbb_NXB
             // 
             this.cbb_NXB.FormattingEnabled = true;
-            this.cbb_NXB.Location = new System.Drawing.Point(335, 127);
+            this.cbb_NXB.Location = new System.Drawing.Point(335, 213);
             this.cbb_NXB.Name = "cbb_NXB";
             this.cbb_NXB.Size = new System.Drawing.Size(165, 28);
             this.cbb_NXB.TabIndex = 0;
+            // 
+            // cbb_TheLoai2
+            // 
+            this.cbb_TheLoai2.FormattingEnabled = true;
+            this.cbb_TheLoai2.Location = new System.Drawing.Point(335, 171);
+            this.cbb_TheLoai2.Name = "cbb_TheLoai2";
+            this.cbb_TheLoai2.Size = new System.Drawing.Size(165, 28);
+            this.cbb_TheLoai2.TabIndex = 0;
+            // 
+            // cbb_TheLoai
+            // 
+            this.cbb_TheLoai.FormattingEnabled = true;
+            this.cbb_TheLoai.Location = new System.Drawing.Point(335, 133);
+            this.cbb_TheLoai.Name = "cbb_TheLoai";
+            this.cbb_TheLoai.Size = new System.Drawing.Size(165, 28);
+            this.cbb_TheLoai.TabIndex = 0;
+            this.cbb_TheLoai.SelectedIndexChanged += new System.EventHandler(this.cbb_TheLoai_SelectedIndexChanged);
             // 
             // cbb_Sach
             // 
@@ -536,7 +616,6 @@
             // Lọc
             // 
             this.Lọc.Controls.Add(this.cbb_LocTacGia);
-            this.Lọc.Controls.Add(this.cbb_LocSach);
             this.Lọc.Controls.Add(this.cbb_LocNXB);
             this.Lọc.Controls.Add(this.cbb_LocNhaPhatHanh);
             this.Lọc.Controls.Add(this.cbb_LocLoaiBia);
@@ -551,25 +630,16 @@
             // cbb_LocTacGia
             // 
             this.cbb_LocTacGia.FormattingEnabled = true;
-            this.cbb_LocTacGia.Location = new System.Drawing.Point(31, 231);
+            this.cbb_LocTacGia.Location = new System.Drawing.Point(31, 127);
             this.cbb_LocTacGia.Name = "cbb_LocTacGia";
             this.cbb_LocTacGia.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocTacGia.TabIndex = 0;
             this.cbb_LocTacGia.Text = "            -- Tác giả --";
             // 
-            // cbb_LocSach
-            // 
-            this.cbb_LocSach.FormattingEnabled = true;
-            this.cbb_LocSach.Location = new System.Drawing.Point(31, 142);
-            this.cbb_LocSach.Name = "cbb_LocSach";
-            this.cbb_LocSach.Size = new System.Drawing.Size(196, 28);
-            this.cbb_LocSach.TabIndex = 0;
-            this.cbb_LocSach.Text = "                -- Sách  --";
-            // 
             // cbb_LocNXB
             // 
             this.cbb_LocNXB.FormattingEnabled = true;
-            this.cbb_LocNXB.Location = new System.Drawing.Point(31, 186);
+            this.cbb_LocNXB.Location = new System.Drawing.Point(31, 82);
             this.cbb_LocNXB.Name = "cbb_LocNXB";
             this.cbb_LocNXB.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocNXB.TabIndex = 0;
@@ -578,7 +648,7 @@
             // cbb_LocNhaPhatHanh
             // 
             this.cbb_LocNhaPhatHanh.FormattingEnabled = true;
-            this.cbb_LocNhaPhatHanh.Location = new System.Drawing.Point(31, 276);
+            this.cbb_LocNhaPhatHanh.Location = new System.Drawing.Point(31, 172);
             this.cbb_LocNhaPhatHanh.Name = "cbb_LocNhaPhatHanh";
             this.cbb_LocNhaPhatHanh.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocNhaPhatHanh.TabIndex = 0;
@@ -587,7 +657,7 @@
             // cbb_LocLoaiBia
             // 
             this.cbb_LocLoaiBia.FormattingEnabled = true;
-            this.cbb_LocLoaiBia.Location = new System.Drawing.Point(28, 324);
+            this.cbb_LocLoaiBia.Location = new System.Drawing.Point(31, 218);
             this.cbb_LocLoaiBia.Name = "cbb_LocLoaiBia";
             this.cbb_LocLoaiBia.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocLoaiBia.TabIndex = 0;
@@ -595,7 +665,7 @@
             // 
             // tbt_Search
             // 
-            this.tbt_Search.Location = new System.Drawing.Point(28, 67);
+            this.tbt_Search.Location = new System.Drawing.Point(31, 26);
             this.tbt_Search.Name = "tbt_Search";
             this.tbt_Search.Size = new System.Drawing.Size(196, 27);
             this.tbt_Search.TabIndex = 2;
@@ -620,6 +690,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNXB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_TheLoai2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -668,7 +740,6 @@
         private System.Windows.Forms.DataGridView dtg_Show;
         private System.Windows.Forms.GroupBox Lọc;
         private System.Windows.Forms.ComboBox cbb_LocTacGia;
-        private System.Windows.Forms.ComboBox cbb_LocSach;
         private System.Windows.Forms.ComboBox cbb_LocNXB;
         private System.Windows.Forms.ComboBox cbb_LocNhaPhatHanh;
         private System.Windows.Forms.ComboBox cbb_LocLoaiBia;
@@ -681,5 +752,11 @@
         private FontAwesome.Sharp.IconPictureBox ipb_AddNXB;
         private FontAwesome.Sharp.IconPictureBox ipb_AddSach;
         private System.Windows.Forms.PictureBox ptb_AnhSach;
+        private FontAwesome.Sharp.IconPictureBox ipb_TheLoai2;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddTheLoai;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cbb_TheLoai2;
+        private System.Windows.Forms.ComboBox cbb_TheLoai;
     }
 }
