@@ -43,6 +43,7 @@ namespace _3.PresentationLayers.Views
             _iSachService = new SachService();
             _iTacGiaService = new TacGiaService();
             _iTheLoaiService = new TheLoaiService();
+            _iTietTheLoaiService = new ChiTietTheLoaiService();
             _iNXBService = new NXBService();
             _iLoaiBiaService = new LoaiBiaService();
             _iNhaPhatHanhService = new NhaPhatHanhService();
@@ -50,7 +51,6 @@ namespace _3.PresentationLayers.Views
             LoadCbb();
             ChiTietSach = new ChiTietSach();
             //ptb_AnhSach.Image = Image.FromFile(ChiTietSach.Anh);
-            //dcmmm();
         }
         void LoadData()
         {
@@ -107,41 +107,7 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        void dcmmm()
-        {
-            ////try
-            ////{
-            //    DataGridViewImageColumn img = new DataGridViewImageColumn();
-            //    img.HeaderText = "Ảnh";
-            //    img.Name = "img_sp";
-            //    img.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            //    dtg_Show.Columns.Add(img);
-            //    //dgrid_sanpham.Columns["IDHD"].Width = 200;
-            //    //dgrid_sanpham.RowTemplate.Height = 80;
-            //    //
-            //    for (int i = 0; i < dtg_Show.RowCount; i++)
-            //    {
-            //        Image img1 = Image.FromFile(Convert.ToString(dtg_Show.Rows[i].Cells["Đường Dẫn"].Value));
-
-            //        dtg_Show.Rows[i].Cells["img_sp"].Value = img1;
-
-            //    }
-            ////}
-            ////catch (Exception ex)
-            ////{
-
-            ////    MessageBox.Show(Convert.ToString(ex), "Liên Hệ Với 19008198 để sửa lỗi");
-            ////    return;
-
-            ////}
-
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            Image image = Image.FromFile(Convert.ToString(dtg_Show.CurrentRow.Cells["Đường Dẫn"].Value));
-            img.Image = image;
-            dtg_Show.Columns.Add(img);
-            img.HeaderText = "Image";
-            img.Name = "img";
-        }
+     
         public void LoadCbb()
         {
             foreach (var a in _iSachService.GetAll())
@@ -164,10 +130,15 @@ namespace _3.PresentationLayers.Views
             {
                 cbb_LoaiBia.Items.Add(a.Ten);
             }
+            foreach (var a in _iTheLoaiService.GetAllNoView())
+            {
+                cbb_TheLoai.Items.Add(a.Ten);
+            }
+
+
         }
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //string Content = Interaction.InputBox("Nhập số lượng ", "","", 500, 300);   nhập số lượng ở màn bán hàng 
             int rd = e.RowIndex;
             if (rd == -1) return;
             SelectedID = Guid.Parse(Convert.ToString(dtg_Show.Rows[rd].Cells[1].Value));
@@ -182,7 +153,8 @@ namespace _3.PresentationLayers.Views
             tbt_MoTa.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[10].Value);
             tbt_SoTrang.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[11].Value);
             tbt_SoLuong.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[12].Value);
-            //Content = Convert.ToString(dtg_Show.Rows[rd].Cells[12].Value);  cái này nx
+            ptb_AnhSach.Image = Image.FromStream(new MemoryStream((byte[])dtg_Show.Rows[rd].Cells[16].Value));
+            ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
             tbt_GiaNhap.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[13].Value);
             tbt_GiaBan.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[14].Value);
             rdt_ConBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Còn bán";
@@ -211,9 +183,9 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-                File.Copy(LinkImage, Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage)), true);
-                LinkImage = Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage));
+                //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                //File.Copy(LinkImage, Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage)), true);
+                //LinkImage = Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage));
                 MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
                 {
 
@@ -224,7 +196,8 @@ namespace _3.PresentationLayers.Views
                     IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    Ma = tbt_Ma.Text,
+                    Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
+                      .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
                     KichThuoc = tbt_KichThuoc.Text,
                     NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                     MoTa = tbt_MoTa.Text,
@@ -232,7 +205,7 @@ namespace _3.PresentationLayers.Views
                     SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                     GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
                     GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
-                    Anh=LinkImage,
+                    Anh=(byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image,typeof(byte[]))),
                     TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
 
                 }));
@@ -254,7 +227,8 @@ namespace _3.PresentationLayers.Views
                     IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    Ma = tbt_Ma.Text,
+                    Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
+                      .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
                     KichThuoc = tbt_KichThuoc.Text,
                     NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                     MoTa = tbt_MoTa.Text,
@@ -262,6 +236,7 @@ namespace _3.PresentationLayers.Views
                     SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                     GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
                     GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
+                    Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
                     TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
 
                 }));
@@ -317,12 +292,21 @@ namespace _3.PresentationLayers.Views
 
         private void ipb_AddNhaPhatHanh_Click(object sender, EventArgs e)
         {
-            AddNhanh("nhà phát hành");
+            AddNhanh("Nhà phát hành");
         }
 
         private void ipb_AddLoaiBia_Click(object sender, EventArgs e)
         {
             AddNhanh("Loại bìa");
+        }
+        private void ipb_AddTheLoai_Click(object sender, EventArgs e)
+        {
+            AddNhanh("Thể loại");
+        }
+
+        private void ipb_TheLoai2_Click(object sender, EventArgs e)
+        {
+            AddNhanh("Thể loại chi tiết");
         }
 
 
@@ -372,5 +356,18 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
         }
+
+        private void cbb_TheLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbb_TheLoai2.Items.Clear();
+            foreach (var a in _iTietTheLoaiService.GetAll().Where(x => x.TheLoai == cbb_TheLoai.Text))
+            {
+                cbb_TheLoai2.Items.Add(a.ChiTietTheLoai);
+                
+            }
+            
+        }
+
+
     }
 }

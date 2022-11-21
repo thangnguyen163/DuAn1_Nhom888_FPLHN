@@ -16,7 +16,7 @@ namespace _2.BUS.ViewModels
         public string TenNhaPhatHanh { get; set; }
         public string TenLoaiBia { get; set; }
         public string Ma { get; set; }
-        public string Anh { get; set; }
+        public byte[] Anh { get; set; }
         public string MaVach { get; set; }
         public string KichThuoc { get; set; }
         public int? NamXuatBan { get; set; }
