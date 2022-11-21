@@ -25,7 +25,7 @@ namespace _3.PresentationLayers.Views
         private IKhachHangService _ikhachHangService;
         private ISachService sachService;
         private IHoaDonChiTietService hoaDonChiTietService;
-        private Guid SelectID;
+        public Guid SelectID { get; set; }
         private HoaDonChiTiet hoaDonChiTiet;
 
 
@@ -37,6 +37,8 @@ namespace _3.PresentationLayers.Views
             sachService = new SachService();
             hoaDonChiTietService = new HoaDonChiTietService();
             hoaDonChiTiet = new HoaDonChiTiet();
+            _inhanvienService = new NhanVienService();
+            _ikhachHangService = new KhachHangService();
             LoadSach();
             LoadHoaDonChoThanhToan();
             LoadHoaDonDaThanhToan();
@@ -71,59 +73,46 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        public void LoadHoaDonChoThanhToan()
-        {
-            try
-            {
-                fl_ChuaThanhToan.Controls.Clear();
-                foreach (var a in hoaDonService.GetAll().Where(p => p.Trangthai == 0))
-                {
-                    Button btn = new Button() { Width = 80, Height = 80 };
-                    fl_ChuaThanhToan.Controls.Add(btn);
-
-                    btn.Text = a.Mahd + Environment.NewLine + (a.Trangthai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
-                    btn.Tag = a;
-                    
-                    btn.ForeColor = Color.White;
-                    switch (a.Trangthai)
-                    {
-                        case 0:
-                            {
-                                btn.BackColor = Color.DarkRed;
-                                break;
-                            }
-
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex), "Liên hệ");
-                return;
-            }
-
-
-        }
+        
         private void btnsender_Click(object sender, EventArgs e)
         {
-            Guid id = ((sender as Button).Tag as HoaDon).Id; // lấy Id từ button
-            dtg_HoaDonChiTiet.ColumnCount = 6;
-            dtg_HoaDonChiTiet.Columns[0].Name = "Idhdct";
-            dtg_HoaDonChiTiet.Columns[0].Visible = false;
-            dtg_HoaDonChiTiet.Columns[1].Name = "Mã sản phẩm";
-            dtg_HoaDonChiTiet.Columns[2].Name = "Tên sản phẩm";
-            dtg_HoaDonChiTiet.Columns[3].Name = "Số lượng";
-            dtg_HoaDonChiTiet.Columns[4].Name = "Đơn giá";
-            dtg_HoaDonChiTiet.Columns[5].Name = "Thành tiền";
+            SelectID = ((sender as Button).Tag as HoaDon).Id; // lấy Id từ button           
+            dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
+            dtg_HoaDonChiTiet.Columns[3].Width = 39;
+            dtg_HoaDonChiTiet.Columns[5].Width = 39;
+            dtg_HoaDonChiTiet.Columns[4].Width = 79;
+            dtg_HoaDonChiTiet.Columns[8].Width = 39;
+            //css dtg
             dtg_HoaDonChiTiet.Rows.Clear();
-            // tạo cột cho dth hdct
-            foreach (var x in hoaDonChiTietService.GetAll().Where(x=>x.IDhoadon == id))
+            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
             {
-                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, x.Soluong, x.Dongia, x.Thanhtien);
+                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
             }
-            
-
+            // tạo tabpage từ button ==>V
+            HoaDon hd = new HoaDon();
+            hd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.Id == SelectID);
+            int count=0;
+            for (int i = 0; i < tabHoaDon.TabCount; i++)
+            {
+                
+                if (hd.MaHd == tabHoaDon.TabPages[i].Name)
+                {
+                    count =1;
+                    tabHoaDon.SelectedTab = tabHoaDon.TabPages[i];
+                    break;
+                }    
+                   
+            }
+            if (count==0)
+            {
+                int dem = tabHoaDon.TabCount;
+                TabPage tpage = new TabPage();
+                    tabHoaDon.TabPages.Add(tpage);
+                    tpage.Text = Convert.ToString(hd.MaHd);
+                    tpage.Name = Convert.ToString(hd.MaHd);
+                    
+                tabHoaDon.SelectedTab = tabHoaDon.TabPages[dem];
+            }         
         }
         public void LoadHoaDonDaThanhToan()
         {
@@ -133,17 +122,15 @@ namespace _3.PresentationLayers.Views
                 foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 1))
                 {
                     Button btn1 = new Button() { Width = 80, Height = 60 };
-                    
-
                     btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
                     btn1.Tag = a;
                     btn1.Click += btnsender_Click;
-                    btn1.ForeColor = Color.Blue;
+                    btn1.ForeColor = Color.FromArgb(255, 114, 86);
                     switch (a.TrangThai)
                     {
-                        case 0:
+                        case 1:
                             {
-                                btn1.BackColor = Color.Green;
+                                btn1.BackColor = Color.FromArgb(205, 201 ,201);
                                 break;
                             }
                     }
@@ -157,6 +144,36 @@ namespace _3.PresentationLayers.Views
             }
 
 
+
+        }
+        public void LoadHoaDonChoThanhToan()
+        {
+            try
+            {
+                fl_ChuaThanhToan.Controls.Clear();
+                foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 0))
+                {
+                    Button btn1 = new Button() { Width = 80, Height = 60 };
+                    btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 0 ? "Chờ thanh toán" : "Chưa thanh toán");
+                    btn1.Tag = a;
+                    btn1.Click += btnsender_Click;
+                    btn1.ForeColor = Color.FromArgb(224, 238 ,224);
+                    switch (a.TrangThai)
+                    {
+                        case 0:
+                            {
+                                btn1.BackColor = Color.FromArgb(238, 121, 159);
+                                break;
+                            }
+                    }
+                    fl_ChuaThanhToan.Controls.Add(btn1);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Liên hệ");
+                return;
+            }
         }
         public void LoadHoaDon()
         {
@@ -215,12 +232,13 @@ namespace _3.PresentationLayers.Views
         {
 
             
-            TabPage tpage = new TabPage();
-            tabHoaDon.TabPages.Add(tpage);
+            
 
             DialogResult dialogResult = MessageBox.Show("Bạn muốn tạo hóa đơn chứ", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                TabPage tpage = new TabPage();
+                tabHoaDon.TabPages.Add(tpage);
                 HoaDon hd = new HoaDon();
                 hd.Id = Guid.NewGuid();
                 hd.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAll().Count + 1);
@@ -234,18 +252,37 @@ namespace _3.PresentationLayers.Views
             }
             LoadHoaDonChoThanhToan();
         }
-
+        private void tabHoaDon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string a = tabHoaDon.SelectedTab.Text;
+            SelectID = hoaDonService.GetAllHoaDon().Where(x=>x.MaHd == a).Select(x=>x.Id).FirstOrDefault();
+            dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
+            dtg_HoaDonChiTiet.Columns[3].Width = 39;
+            dtg_HoaDonChiTiet.Columns[5].Width = 39;
+            dtg_HoaDonChiTiet.Columns[4].Width = 79;
+            dtg_HoaDonChiTiet.Columns[8].Width = 39;
+            //css dtg
+            dtg_HoaDonChiTiet.Rows.Clear();
+            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
+            {
+                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
+            }
+            // đưa hdct vào dtg
+          
+        }
         private void Form_BanHang_Load(object sender, EventArgs e)
         {
-            //foreach (var x in _inhanvienService.getNhanViensFromDB())
-            //{
-            //    cbb_nhanvien.Items.Add(x.Ten);
-            //}
+            foreach (var x in _inhanvienService.getNhanViensFromDB())
+            {
+                cbb_nhanvien.Items.Add(x.Ten);
+            }
 
-            //foreach (var x in _ikhachHangService.getKhachHangFromDB())
-            //{
-            //    cbb_nganhang.Items.Add(x.Ten);
-            //}
+            foreach (var x in _ikhachHangService.getKhachHangFromDB())
+            {
+                cbb_nganhang.Items.Add(x.Ten);
+            }
         }
+
+        
     }
 }

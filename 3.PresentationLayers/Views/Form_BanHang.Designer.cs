@@ -33,6 +33,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.lb_HoaDonChiTiet = new System.Windows.Forms.Label();
             this.dtg_HoaDonChiTiet = new System.Windows.Forms.DataGridView();
+            this.IDHDct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.masp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tru = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cong = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lb_SanPham = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dtg_SanPham = new System.Windows.Forms.DataGridView();
@@ -100,12 +109,86 @@
             // dtg_HoaDonChiTiet
             // 
             this.dtg_HoaDonChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(47, 38);
+            this.dtg_HoaDonChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDHDct,
+            this.masp,
+            this.Tensp,
+            this.tru,
+            this.Soluong,
+            this.Cong,
+            this.Dongia,
+            this.Thanhtien,
+            this.Xoa});
+            this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(21, 53);
             this.dtg_HoaDonChiTiet.Name = "dtg_HoaDonChiTiet";
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
-            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(482, 441);
+            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(554, 441);
             this.dtg_HoaDonChiTiet.TabIndex = 40;
+            // 
+            // IDHDct
+            // 
+            this.IDHDct.HeaderText = "Idhdct";
+            this.IDHDct.MinimumWidth = 6;
+            this.IDHDct.Name = "IDHDct";
+            this.IDHDct.Visible = false;
+            this.IDHDct.Width = 125;
+            // 
+            // masp
+            // 
+            this.masp.HeaderText = "Mã sản phẩm";
+            this.masp.MinimumWidth = 6;
+            this.masp.Name = "masp";
+            this.masp.Width = 125;
+            // 
+            // Tensp
+            // 
+            this.Tensp.HeaderText = "Tên sản phẩm";
+            this.Tensp.MinimumWidth = 6;
+            this.Tensp.Name = "Tensp";
+            this.Tensp.Width = 125;
+            // 
+            // tru
+            // 
+            this.tru.HeaderText = "-";
+            this.tru.MinimumWidth = 6;
+            this.tru.Name = "tru";
+            this.tru.Width = 125;
+            // 
+            // Soluong
+            // 
+            this.Soluong.HeaderText = "Số lượng";
+            this.Soluong.MinimumWidth = 6;
+            this.Soluong.Name = "Soluong";
+            this.Soluong.Width = 125;
+            // 
+            // Cong
+            // 
+            this.Cong.HeaderText = "+";
+            this.Cong.MinimumWidth = 6;
+            this.Cong.Name = "Cong";
+            this.Cong.Width = 125;
+            // 
+            // Dongia
+            // 
+            this.Dongia.HeaderText = "Đơn giá";
+            this.Dongia.MinimumWidth = 6;
+            this.Dongia.Name = "Dongia";
+            this.Dongia.Width = 125;
+            // 
+            // Thanhtien
+            // 
+            this.Thanhtien.HeaderText = "Thành tiền";
+            this.Thanhtien.MinimumWidth = 6;
+            this.Thanhtien.Name = "Thanhtien";
+            this.Thanhtien.Width = 125;
+            // 
+            // Xoa
+            // 
+            this.Xoa.HeaderText = "X";
+            this.Xoa.MinimumWidth = 6;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 125;
             // 
             // lb_SanPham
             // 
@@ -142,7 +225,7 @@
             this.btn_taohoadon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_taohoadon.Image = ((System.Drawing.Image)(resources.GetObject("btn_taohoadon.Image")));
             this.btn_taohoadon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_taohoadon.Location = new System.Drawing.Point(599, 5);
+            this.btn_taohoadon.Location = new System.Drawing.Point(629, 2);
             this.btn_taohoadon.Name = "btn_taohoadon";
             this.btn_taohoadon.Size = new System.Drawing.Size(41, 45);
             this.btn_taohoadon.TabIndex = 46;
@@ -153,11 +236,12 @@
             // 
             // tabHoaDon
             // 
-            this.tabHoaDon.Location = new System.Drawing.Point(644, 15);
+            this.tabHoaDon.Location = new System.Drawing.Point(674, 12);
             this.tabHoaDon.Name = "tabHoaDon";
             this.tabHoaDon.SelectedIndex = 0;
             this.tabHoaDon.Size = new System.Drawing.Size(255, 24);
             this.tabHoaDon.TabIndex = 47;
+            this.tabHoaDon.SelectedIndexChanged += new System.EventHandler(this.tabHoaDon_SelectedIndexChanged);
             // 
             // radioButton3
             // 
@@ -309,7 +393,8 @@
             // 
             // fl_DaThanhToan
             // 
-            this.fl_DaThanhToan.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.fl_DaThanhToan.AutoScroll = true;
+            this.fl_DaThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.fl_DaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_DaThanhToan.Location = new System.Drawing.Point(3, 23);
             this.fl_DaThanhToan.Name = "fl_DaThanhToan";
@@ -413,5 +498,14 @@
         private System.Windows.Forms.ComboBox cbb_nhanvien;
         private System.Windows.Forms.ComboBox cbb_nganhang;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDHDct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn masp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tensp;
+        private System.Windows.Forms.DataGridViewButtonColumn tru;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Soluong;
+        private System.Windows.Forms.DataGridViewButtonColumn Cong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dongia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thanhtien;
+        private System.Windows.Forms.DataGridViewButtonColumn Xoa;
     }
 }
