@@ -99,6 +99,11 @@ namespace _2.BUS.Serivces
             return templst1;
         }
 
+        public List<HoaDonChiTiet> GetAllloadformsp()
+        {
+            return _ichitietHoadonRepository.GetAll().ToList();
+        }
+
         public string Remove(HoaDonChiTiet obj)
         {
             if (obj == null) return "Xóa Thất bại";

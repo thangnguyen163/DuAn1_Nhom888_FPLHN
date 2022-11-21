@@ -14,6 +14,7 @@ namespace _2.BUS.IServices
         public string Remove(HoaDonChiTiet obj);
         public string Update(HoaDonChiTiet obj);
         public List<HoaDonChiTietView> GetAll();
+        public List<HoaDonChiTiet> GetAllloadformsp();
         public List<HoaDonChiTietView> GetAllbanhang(Guid id);
         
     }
