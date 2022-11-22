@@ -490,6 +490,7 @@
             // 
             this.tbt_Ma.Location = new System.Drawing.Point(332, 35);
             this.tbt_Ma.Name = "tbt_Ma";
+            this.tbt_Ma.ReadOnly = true;
             this.tbt_Ma.Size = new System.Drawing.Size(199, 27);
             this.tbt_Ma.TabIndex = 1;
             // 
