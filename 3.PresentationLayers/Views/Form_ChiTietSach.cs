@@ -252,7 +252,7 @@ namespace _3.PresentationLayers.Views
             //    MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
             //    {
             //        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-
+             
             //    }));
             //    LoadData();
             //}
