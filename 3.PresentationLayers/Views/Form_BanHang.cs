@@ -27,7 +27,7 @@ namespace _3.PresentationLayers.Views
         private IHoaDonChiTietService hoaDonChiTietService;
         public Guid SelectID { get; set; }
         private HoaDonChiTiet hoaDonChiTiet;
-
+        public int dem { get; set; }
 
         public Form_BanHang()
         {
@@ -42,6 +42,8 @@ namespace _3.PresentationLayers.Views
             LoadSach();
             LoadHoaDonChoThanhToan();
             LoadHoaDonDaThanhToan();
+            Tabhoadondcmm();
+            tabHoaDon.Visible = false;
         }
 
 
@@ -72,10 +74,25 @@ namespace _3.PresentationLayers.Views
                 dtg_SanPham.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
             }
         }
+        public void LoaddataToHoadonChitiet()
+        {
+            HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+            SelectID = hd.Id;
+            dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
+            dtg_HoaDonChiTiet.Columns[3].Width = 39;
+            dtg_HoaDonChiTiet.Columns[5].Width = 39;
+            dtg_HoaDonChiTiet.Columns[4].Width = 79;
+            dtg_HoaDonChiTiet.Columns[8].Width = 39;
+            dtg_HoaDonChiTiet.Rows.Clear();
+            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
+            {
+                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
+            }
+        }
 
-        
         private void btnsender_Click(object sender, EventArgs e)
         {
+            tabHoaDon.Visible = true;
             SelectID = ((sender as Button).Tag as HoaDon).Id; // lấy Id từ button           
             dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
             dtg_HoaDonChiTiet.Columns[3].Width = 39;
@@ -91,28 +108,28 @@ namespace _3.PresentationLayers.Views
             // tạo tabpage từ button ==>V
             HoaDon hd = new HoaDon();
             hd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.Id == SelectID);
-            int count=0;
+            int count = 0;
             for (int i = 0; i < tabHoaDon.TabCount; i++)
             {
-                
+
                 if (hd.MaHd == tabHoaDon.TabPages[i].Name)
                 {
-                    count =1;
+                    count = 1;
                     tabHoaDon.SelectedTab = tabHoaDon.TabPages[i];
                     break;
-                }    
-                   
+                }
+
             }
-            if (count==0)
+            if (count == 0)
             {
-                int dem = tabHoaDon.TabCount;
                 TabPage tpage = new TabPage();
-                    tabHoaDon.TabPages.Add(tpage);
-                    tpage.Text = Convert.ToString(hd.MaHd);
-                    tpage.Name = Convert.ToString(hd.MaHd);
-                    
-                tabHoaDon.SelectedTab = tabHoaDon.TabPages[dem];
-            }         
+                tabHoaDon.TabPages.Add(tpage);
+                tpage.Text = Convert.ToString(hd.MaHd);
+                tpage.Name = Convert.ToString(hd.MaHd);
+                dem = tabHoaDon.TabCount - 1;
+                tabHoaDon.SelectedIndex = dem;
+            }
+            Tabhoadondcmm();
         }
         public void LoadHoaDonDaThanhToan()
         {
@@ -130,7 +147,7 @@ namespace _3.PresentationLayers.Views
                     {
                         case 1:
                             {
-                                btn1.BackColor = Color.FromArgb(205, 201 ,201);
+                                btn1.BackColor = Color.FromArgb(205, 201, 201);
                                 break;
                             }
                     }
@@ -157,7 +174,7 @@ namespace _3.PresentationLayers.Views
                     btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 0 ? "Chờ thanh toán" : "Chưa thanh toán");
                     btn1.Tag = a;
                     btn1.Click += btnsender_Click;
-                    btn1.ForeColor = Color.FromArgb(224, 238 ,224);
+                    btn1.ForeColor = Color.FromArgb(224, 238, 224);
                     switch (a.TrangThai)
                     {
                         case 0:
@@ -202,7 +219,7 @@ namespace _3.PresentationLayers.Views
 
         public void LoadHoaDonChiTiet()
         {
-            
+
         }
 
         private void dtg_SanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -213,7 +230,7 @@ namespace _3.PresentationLayers.Views
             HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
             SelectID = hd.Id;
             Guid a = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
-            HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == a && x.IdHoaDon==SelectID);
+            HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == a && x.IdHoaDon == SelectID);
             string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);   //nhập số lượng ở màn bán hàng 
             if (data == null)
             {
@@ -221,11 +238,43 @@ namespace _3.PresentationLayers.Views
                 hdct.Id = Guid.NewGuid();
                 hdct.IdHoaDon = SelectID;
                 hdct.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
-                hdct.Ma = "HDCT00" +""+ Convert.ToString(hoaDonChiTietService.GetAllloadformsp().Count+10);
-                hdct.SoLuong = Convert.ToInt32(Content);
-                hdct.DonGia = Convert.ToInt32(dtg_SanPham.CurrentRow.Cells[14].Value);
-                hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * hoaDonChiTiet.DonGia);
-                hoaDonChiTietService.Add(hdct);
+                ChiTietSach cts = new ChiTietSach();
+                cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                if (cts.SoLuong>=Convert.ToInt32(Content))
+                {
+                    hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
+                      .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
+                    hdct.SoLuong = Convert.ToInt32(Content);
+                    hdct.DonGia = Convert.ToInt32(dtg_SanPham.CurrentRow.Cells[14].Value);
+                    hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * hoaDonChiTiet.DonGia);
+                    hoaDonChiTietService.Add(hdct);
+                    //update số lượng còn lại 
+
+                    cts.IdSach = cts.IdSach;
+                    cts.IdSach = cts.IdSach;
+                    cts.IdNxb = cts.IdNxb;
+                    cts.IdTacGia = cts.IdTacGia;
+                    cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                    cts.IdLoaiBia = cts.IdLoaiBia;
+                    cts.Ma = cts.Ma;
+                    cts.Anh = cts.Anh;
+                    cts.MaVach = cts.MaVach;
+                    cts.KichThuoc = cts.KichThuoc;
+                    cts.SoTrang = cts.SoTrang;
+                    cts.NamXuatBan = cts.NamXuatBan;
+                    cts.MoTa = cts.MoTa;
+                    cts.GiaNhap = cts.GiaNhap;
+                    cts.GiaBan = cts.GiaBan;
+                    cts.TrangThai = cts.TrangThai;
+                    cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
+                    _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                    //het update
+                    LoadSach();
+                }
+                else
+                {
+                    MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ");
+                }                                
             }
             else
             {
@@ -233,22 +282,54 @@ namespace _3.PresentationLayers.Views
                 hdct.IdHoaDon = SelectID;
                 hdct.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_SanPham.CurrentRow.Cells[1].Value));
                 hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x=>x.Id==hdct.IdChiTietSach).Select(x=>x.GiaBan).FirstOrDefault();
-                hoaDonChiTietService.Update(hdct);
+                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                ChiTietSach cts = new ChiTietSach();
+                cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+
+                if (cts.SoLuong>Convert.ToInt32(Content))
+                {
+                    hoaDonChiTietService.Update(hdct);
+                    //update so luong sach con lai
+
+                    cts.IdSach = cts.IdSach;
+                    cts.IdSach = cts.IdSach;
+                    cts.IdNxb = cts.IdNxb;
+                    cts.IdTacGia = cts.IdTacGia;
+                    cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                    cts.IdLoaiBia = cts.IdLoaiBia;
+                    cts.Ma = cts.Ma;
+                    cts.Anh = cts.Anh;
+                    cts.MaVach = cts.MaVach;
+                    cts.KichThuoc = cts.KichThuoc;
+                    cts.SoTrang = cts.SoTrang;
+                    cts.NamXuatBan = cts.NamXuatBan;
+                    cts.MoTa = cts.MoTa;
+                    cts.GiaNhap = cts.GiaNhap;
+                    cts.GiaBan = cts.GiaBan;
+                    cts.TrangThai = cts.TrangThai;
+                    cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
+                    _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                    //het update
+                    LoadSach();
+                }
+                else
+                {
+
+                    MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ");
+                }    
+                
             }
             LoadHoaDonChiTiet();
-            dtg_HoaDonChiTiet.Rows.Clear();
-            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
-            {
-                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
-            }
+            LoaddataToHoadonChitiet();
         }
 
         private void btn_taohoadon_Click(object sender, EventArgs e)
         {
+            
             DialogResult dialogResult = MessageBox.Show("Bạn muốn tạo hóa đơn chứ", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                tabHoaDon.Visible = true;
                 TabPage tpage = new TabPage();
                 tabHoaDon.TabPages.Add(tpage);
                 HoaDon hd = new HoaDon();
@@ -266,21 +347,40 @@ namespace _3.PresentationLayers.Views
         }
         private void tabHoaDon_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string a = tabHoaDon.SelectedTab.Text;
-            SelectID = hoaDonService.GetAllHoaDon().Where(x=>x.MaHd == a).Select(x=>x.Id).FirstOrDefault();
-            dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
-            dtg_HoaDonChiTiet.Columns[3].Width = 39;
-            dtg_HoaDonChiTiet.Columns[5].Width = 39;
-            dtg_HoaDonChiTiet.Columns[4].Width = 79;
-            dtg_HoaDonChiTiet.Columns[8].Width = 39;
-            //css dtg
-            dtg_HoaDonChiTiet.Rows.Clear();
-            foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
+            // dem =tabHoaDon.TabCount;
+            //if (dem>=1)
+            //{
+            //    lbdtghdct.Visible = false;
+            //    dtg_HoaDonChiTiet.Visible = true;
+            //    LoaddataToHoadonChitiet();
+
+            //}
+            //else if (dem<1)
+            //{
+            //    dtg_HoaDonChiTiet.Visible = false;
+            //    lbdtghdct.Visible = true;
+            //    lbdtghdct.Text = "Chưa có hóa đơn nào được chọn";
+            //}
+
+
+        }
+        private void Tabhoadondcmm()
+        {
+            int a = tabHoaDon.TabCount;
+            if (a>=1)
             {
-                dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
+                lbdtghdct.Visible = false;
+                dtg_HoaDonChiTiet.Visible = true;
+                LoaddataToHoadonChitiet();
+
             }
-            // đưa hdct vào dtg
-          
+            else if (a<1)
+            {
+                dtg_HoaDonChiTiet.Visible = false;
+                lbdtghdct.Visible = true;
+                lbdtghdct.Text = "Chưa có hóa đơn nào được chọn";
+            }
+
         }
         private void Form_BanHang_Load(object sender, EventArgs e)
         {
@@ -295,6 +395,117 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        
+        private void dtg_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dtg_HoaDonChiTiet.Columns["tru"].Index)
+            {
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                Guid id = Guid.Parse(dtg_HoaDonChiTiet.CurrentRow.Cells[0].Value.ToString());
+                hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.Id == id);
+
+                if (hdct.SoLuong == 1)
+                {
+                    DialogResult hoi = MessageBox.Show("Bạn có muốn xóa sản phẩm khỏi giỏ hàng hay không", "Xóa sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (hoi == DialogResult.Yes)
+                    {
+                        hoaDonChiTietService.Remove(hdct);
+                        // cộng lại số lượng vào sp 
+                        ChiTietSach cts = new ChiTietSach();
+                        cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                        cts.IdSach = cts.IdSach;
+                        cts.IdSach = cts.IdSach;
+                        cts.IdNxb = cts.IdNxb;
+                        cts.IdTacGia = cts.IdTacGia;
+                        cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                        cts.IdLoaiBia = cts.IdLoaiBia;
+                        cts.Ma = cts.Ma;
+                        cts.Anh = cts.Anh;
+                        cts.MaVach = cts.MaVach;
+                        cts.KichThuoc = cts.KichThuoc;
+                        cts.SoTrang = cts.SoTrang;
+                        cts.NamXuatBan = cts.NamXuatBan;
+                        cts.MoTa = cts.MoTa;
+                        cts.GiaNhap = cts.GiaNhap;
+                        cts.GiaBan = cts.GiaBan;
+                        cts.TrangThai = cts.TrangThai;
+                        cts.SoLuong = cts.SoLuong + 1;
+                        _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                        //loadhdct
+                        string a = tabHoaDon.SelectedTab.Text;
+                        SelectID = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == a).Select(x => x.Id).FirstOrDefault();
+                        dtg_HoaDonChiTiet.Rows.Clear();
+                        foreach (var x in hoaDonChiTietService.GetAll().Where(x => x.IDhoadon == SelectID))
+                        {
+                            dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
+                        }
+                        LoadSach();
+                    }
+                }
+                else
+                {
+                    hdct.SoLuong = hdct.SoLuong - 1;
+                    hdct.ThanhTien = hdct.SoLuong * hdct.DonGia;
+                    hoaDonChiTietService.Update(hdct);
+                    // cộng lại số lượng vào sp 
+                    ChiTietSach cts = new ChiTietSach();
+                    cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                    cts.IdSach = cts.IdSach;
+                    cts.IdSach = cts.IdSach;
+                    cts.IdNxb = cts.IdNxb;
+                    cts.IdTacGia = cts.IdTacGia;
+                    cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                    cts.IdLoaiBia = cts.IdLoaiBia;
+                    cts.Ma = cts.Ma;
+                    cts.Anh = cts.Anh;
+                    cts.MaVach = cts.MaVach;
+                    cts.KichThuoc = cts.KichThuoc;
+                    cts.SoTrang = cts.SoTrang;
+                    cts.NamXuatBan = cts.NamXuatBan;
+                    cts.MoTa = cts.MoTa;
+                    cts.GiaNhap = cts.GiaNhap;
+                    cts.GiaBan = cts.GiaBan;
+                    cts.TrangThai = cts.TrangThai;
+                    cts.SoLuong = cts.SoLuong + 1;
+                    _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+
+                    //loadhdct
+                    LoaddataToHoadonChitiet();
+                    LoadSach();
+                }
+
+            }
+        }
+
+        private void tabHoaDon_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabHoaDon_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            MouseEventArgs me = (MouseEventArgs)e;
+            if (me.Button == MouseButtons.Right)
+            {
+                if (tabHoaDon.TabCount>1)
+                {
+                    tabHoaDon.TabPages.Remove(tabHoaDon.SelectedTab);
+                    tabHoaDon.SelectedIndex = 0;
+                    
+                }
+                else
+                {
+                    tabHoaDon.TabPages.Remove(tabHoaDon.SelectedTab);
+                    tabHoaDon.SelectedIndex = -1;
+                    tabHoaDon.Visible = false;
+                }
+                Tabhoadondcmm();
+            }
+        }
+
+        private void tabHoaDon_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
