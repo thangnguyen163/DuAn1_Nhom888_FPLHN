@@ -227,8 +227,7 @@ namespace _3.PresentationLayers.Views
                     IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
                     IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
-                      .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
+                    Ma=tbt_Ma.Text,
                     KichThuoc = tbt_KichThuoc.Text,
                     NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                     MoTa = tbt_MoTa.Text,

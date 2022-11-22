@@ -45,6 +45,7 @@ namespace _3.PresentationLayers.Views
             _iNXBService = new NXBService();
             _iNhaPhatHanhService = new NhaPhatHanhService();
             _iLoaiBiaService = new LoaiBiaService();
+            _iTheLoaiService = new TheLoaiService();
             LoadNhomCha();
             
         }
@@ -81,7 +82,7 @@ namespace _3.PresentationLayers.Views
             {
                 lb_NhomCha.Visible = true;
                 cbb_Cha.Visible = true;
-                // LoadCbbCha();
+                LoadCbbCha();
             }
         }
 
