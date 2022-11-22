@@ -5,6 +5,7 @@ using _2.BUS.Serivces;
 using _2.BUS.Service;
 using _2.BUS.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,7 @@ namespace _3.PresentationLayers.Views
         public INhanVienService _nhanVienService;
         public IChucVuService _chucVuService;
         public Guid SelectId;
+        private string FileImageNam = "";
         public NhanVien _nv;
         public List<NhanVienView> _lstNhanVien;
         public Form_NhanVien()
@@ -110,13 +112,15 @@ namespace _3.PresentationLayers.Views
                 tb_sdt.Text = r.Cells[5].Value.ToString();
                 tb_diaChi.Text = r.Cells[10].Value.ToString();
                 tb_email.Text = r.Cells[6].Value.ToString();
-                tb_Anh.Text = r.Cells[8].Value.ToString();
+                
                 tb_namsinh.Text = r.Cells[11].Value.ToString();
                 cbb_ChucVu.Text = _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Id == _nv.IdchucVu).Ten;
                 cb_Nam.Checked = _nv.GioiTinh == 0;
                 cb_Nu.Checked = _nv.GioiTinh == 1;
                 rB_hd.Checked = _nv.TrangThai == 1;
                 rB_khd.Checked = _nv.TrangThai == 0;
+                Image img1 = Image.FromFile(Convert.ToString(r.Cells[9].Value.ToString()));
+                pic_Anh.Image = img1;
             }
         }
 
@@ -136,7 +140,7 @@ namespace _3.PresentationLayers.Views
                     Sdt = tb_sdt.Text,
                     DiaChi = tb_diaChi.Text,
                     Email = tb_email.Text,
-                   // Anh = tb_Anh.Text,
+                    
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
@@ -166,7 +170,7 @@ namespace _3.PresentationLayers.Views
                     DiaChi = tb_diaChi.Text,
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     Email = tb_email.Text,
-                  //  Anh = tb_Anh.Text,
+                    
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
                 }));
@@ -216,5 +220,83 @@ namespace _3.PresentationLayers.Views
             }
             rB_khd.Checked = true;
         }
+        void loadtim_kiem(string ma)
+        {
+            ArrayList row = new ArrayList();
+            row = new ArrayList();
+
+            dtg_Show.ColumnCount = 13;
+            dtg_Show.Columns[0].Name = "Id";
+            dtg_Show.Columns[0].Visible = false;
+            dtg_Show.Columns[1].Name = "Mã";
+            dtg_Show.Columns[2].Name = "Tên";
+            dtg_Show.Columns[3].Name = "Giới Tính";
+            dtg_Show.Columns[4].Name = "CCCD";
+            dtg_Show.Columns[5].Name = "Số ĐT";
+            dtg_Show.Columns[6].Name = "Email";
+            dtg_Show.Columns[7].Name = "Mật khẩu";
+            dtg_Show.Columns[8].Name = "Chức vụ";
+            dtg_Show.Columns[9].Name = "Ảnh";
+            dtg_Show.Columns[10].Name = "Địa chỉ";
+            dtg_Show.Columns[11].Name = "Năm Sinh";
+            dtg_Show.Columns[12].Name = "Trạng thái";
+            dtg_Show.Rows.Clear();
+            foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(ma) || c.Email.StartsWith(ma) || c.DiaChi.StartsWith(ma)))
+
+            {
+                dtg_Show.Rows.Add(item.Id,
+                                    item.Ma,
+                                    item.Ten,
+                                    item.GioiTinh == 0 ? "Nam" : "Nữ",
+                                    item.Cccd,
+                                    item.Sdt,
+                                    item.Email,
+                                    item.MatKhau,
+                                    item.Ten,
+                                    item.Anh,
+                                    item.DiaChi,
+                                    item.NamSinh,
+                                    item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+                                    );
+            }
+
+        }
+        private void tb_Timkiem_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tb_Timkiem.Text == "")
+                {
+                    tb_Timkiem.Text = "Tìm kiếm theo tên, Email, Địa chỉ";
+                    tb_Timkiem.ForeColor = Color.Black;
+                    _nhanVienService.getNhanViensFromDB();
+                    loadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR");
+            }
+        }
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+        void loadimg(ref string imgname)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imgname = fileDialog.FileName;
+                tb_Anh.Text = fileDialog.FileName;
+            }
+        }
+        private void btn_Anh_Click(object sender, EventArgs e)
+        {
+            loadimg(ref FileImageNam);
+            pic_Anh.Image = new Bitmap(FileImageNam);
+        }
+
+        
     }
 }
