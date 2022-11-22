@@ -30,7 +30,6 @@
         {
             this.tbx_mota = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbx_trangthai = new System.Windows.Forms.ComboBox();
             this.tbx_ten = new System.Windows.Forms.TextBox();
             this.tbx_ma = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,8 +42,12 @@
             this.dtg_show = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.lable6 = new System.Windows.Forms.Label();
-            this.tbx_sach = new System.Windows.Forms.TextBox();
-            this.tbx_khuyenmai = new System.Windows.Forms.TextBox();
+            this.cbx_Sach = new System.Windows.Forms.ComboBox();
+            this.cbx_KhuyenMai = new System.Windows.Forms.ComboBox();
+            this.rdo_HoatDong = new System.Windows.Forms.RadioButton();
+            this.rdo_HetHan = new System.Windows.Forms.RadioButton();
+            this.tb_timkiem = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_show)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,17 +66,6 @@
             this.label4.Size = new System.Drawing.Size(48, 20);
             this.label4.TabIndex = 35;
             this.label4.Text = "Mô tả";
-            // 
-            // cbx_trangthai
-            // 
-            this.cbx_trangthai.FormattingEnabled = true;
-            this.cbx_trangthai.Items.AddRange(new object[] {
-            "Tồn tại",
-            "Không tồn tại"});
-            this.cbx_trangthai.Location = new System.Drawing.Point(675, 288);
-            this.cbx_trangthai.Name = "cbx_trangthai";
-            this.cbx_trangthai.Size = new System.Drawing.Size(151, 28);
-            this.cbx_trangthai.TabIndex = 34;
             // 
             // tbx_ten
             // 
@@ -185,32 +177,82 @@
             this.lable6.TabIndex = 38;
             this.lable6.Text = "Sách";
             // 
-            // tbx_sach
+            // cbx_Sach
             // 
-            this.tbx_sach.Location = new System.Drawing.Point(675, 59);
-            this.tbx_sach.Name = "tbx_sach";
-            this.tbx_sach.Size = new System.Drawing.Size(181, 27);
-            this.tbx_sach.TabIndex = 39;
+            this.cbx_Sach.FormattingEnabled = true;
+            this.cbx_Sach.Items.AddRange(new object[] {
+            "Tồn tại",
+            "Không tồn tại"});
+            this.cbx_Sach.Location = new System.Drawing.Point(675, 53);
+            this.cbx_Sach.Name = "cbx_Sach";
+            this.cbx_Sach.Size = new System.Drawing.Size(151, 28);
+            this.cbx_Sach.TabIndex = 39;
             // 
-            // tbx_khuyenmai
+            // cbx_KhuyenMai
             // 
-            this.tbx_khuyenmai.Location = new System.Drawing.Point(674, 101);
-            this.tbx_khuyenmai.Name = "tbx_khuyenmai";
-            this.tbx_khuyenmai.Size = new System.Drawing.Size(182, 27);
-            this.tbx_khuyenmai.TabIndex = 40;
+            this.cbx_KhuyenMai.FormattingEnabled = true;
+            this.cbx_KhuyenMai.Items.AddRange(new object[] {
+            "Tồn tại",
+            "Không tồn tại"});
+            this.cbx_KhuyenMai.Location = new System.Drawing.Point(675, 100);
+            this.cbx_KhuyenMai.Name = "cbx_KhuyenMai";
+            this.cbx_KhuyenMai.Size = new System.Drawing.Size(151, 28);
+            this.cbx_KhuyenMai.TabIndex = 40;
+            // 
+            // rdo_HoatDong
+            // 
+            this.rdo_HoatDong.AutoSize = true;
+            this.rdo_HoatDong.Location = new System.Drawing.Point(665, 291);
+            this.rdo_HoatDong.Name = "rdo_HoatDong";
+            this.rdo_HoatDong.Size = new System.Drawing.Size(116, 24);
+            this.rdo_HoatDong.TabIndex = 41;
+            this.rdo_HoatDong.TabStop = true;
+            this.rdo_HoatDong.Text = "Đang diễn ra";
+            this.rdo_HoatDong.UseVisualStyleBackColor = true;
+            // 
+            // rdo_HetHan
+            // 
+            this.rdo_HetHan.AutoSize = true;
+            this.rdo_HetHan.Location = new System.Drawing.Point(802, 291);
+            this.rdo_HetHan.Name = "rdo_HetHan";
+            this.rdo_HetHan.Size = new System.Drawing.Size(84, 24);
+            this.rdo_HetHan.TabIndex = 42;
+            this.rdo_HetHan.TabStop = true;
+            this.rdo_HetHan.Text = "Kết thúc";
+            this.rdo_HetHan.UseVisualStyleBackColor = true;
+            // 
+            // tb_timkiem
+            // 
+            this.tb_timkiem.Location = new System.Drawing.Point(665, 376);
+            this.tb_timkiem.Name = "tb_timkiem";
+            this.tb_timkiem.Size = new System.Drawing.Size(181, 27);
+            this.tb_timkiem.TabIndex = 44;
+            this.tb_timkiem.TextChanged += new System.EventHandler(this.tb_timkiem_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(552, 383);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 20);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Tìm kiếm";
             // 
             // Form_CTKhuyenMai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 518);
-            this.Controls.Add(this.tbx_khuyenmai);
-            this.Controls.Add(this.tbx_sach);
+            this.Controls.Add(this.tb_timkiem);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.rdo_HetHan);
+            this.Controls.Add(this.rdo_HoatDong);
+            this.Controls.Add(this.cbx_KhuyenMai);
+            this.Controls.Add(this.cbx_Sach);
             this.Controls.Add(this.lable6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbx_mota);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbx_trangthai);
             this.Controls.Add(this.tbx_ten);
             this.Controls.Add(this.tbx_ma);
             this.Controls.Add(this.label3);
@@ -233,7 +275,6 @@
 
         private System.Windows.Forms.TextBox tbx_mota;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbx_trangthai;
         private System.Windows.Forms.TextBox tbx_ten;
         private System.Windows.Forms.TextBox tbx_ma;
         private System.Windows.Forms.Label label3;
@@ -246,7 +287,11 @@
         private System.Windows.Forms.DataGridView dtg_show;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lable6;
-        private System.Windows.Forms.TextBox tbx_sach;
-        private System.Windows.Forms.TextBox tbx_khuyenmai;
+        private System.Windows.Forms.ComboBox cbx_Sach;
+        private System.Windows.Forms.ComboBox cbx_KhuyenMai;
+        private System.Windows.Forms.RadioButton rdo_HoatDong;
+        private System.Windows.Forms.RadioButton rdo_HetHan;
+        private System.Windows.Forms.TextBox tb_timkiem;
+        private System.Windows.Forms.Label label6;
     }
 }

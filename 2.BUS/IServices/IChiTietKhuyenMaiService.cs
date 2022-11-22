@@ -1,4 +1,5 @@
 ﻿using _1.DAL.DomainClass;
+using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace _2.BUS.IService
         public string Update(Guid id, ChiTietKhuyenMai chiTietKhuyenMai);
         public string Delete(Guid id);
         List<ChiTietKhuyenMai> GetAll();
+        List<ChiTietKhuyenMaiView> GetChiTietKhuyenMaiViews();
     }
 }
