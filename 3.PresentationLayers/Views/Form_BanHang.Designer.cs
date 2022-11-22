@@ -67,6 +67,7 @@
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lbdtghdct = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_HoaDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_SanPham)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -125,6 +126,7 @@
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
             this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(554, 441);
             this.dtg_HoaDonChiTiet.TabIndex = 40;
+            this.dtg_HoaDonChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_HoaDonChiTiet_CellClick);
             // 
             // IDHDct
             // 
@@ -150,7 +152,7 @@
             // 
             // tru
             // 
-            this.tru.HeaderText = "-";
+            this.tru.HeaderText = "Trừ";
             this.tru.MinimumWidth = 6;
             this.tru.Name = "tru";
             this.tru.Width = 125;
@@ -164,7 +166,7 @@
             // 
             // Cong
             // 
-            this.Cong.HeaderText = "+";
+            this.Cong.HeaderText = "Cộng";
             this.Cong.MinimumWidth = 6;
             this.Cong.Name = "Cong";
             this.Cong.Width = 125;
@@ -242,6 +244,8 @@
             this.tabHoaDon.Size = new System.Drawing.Size(255, 24);
             this.tabHoaDon.TabIndex = 47;
             this.tabHoaDon.SelectedIndexChanged += new System.EventHandler(this.tabHoaDon_SelectedIndexChanged);
+            this.tabHoaDon.TabIndexChanged += new System.EventHandler(this.tabHoaDon_TabIndexChanged);
+            this.tabHoaDon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabHoaDon_MouseClick);
             // 
             // radioButton3
             // 
@@ -424,11 +428,20 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker1.TabIndex = 80;
             // 
+            // lbdtghdct
+            // 
+            this.lbdtghdct.AutoSize = true;
+            this.lbdtghdct.Location = new System.Drawing.Point(263, 279);
+            this.lbdtghdct.Name = "lbdtghdct";
+            this.lbdtghdct.Size = new System.Drawing.Size(0, 20);
+            this.lbdtghdct.TabIndex = 81;
+            // 
             // Form_BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 897);
+            this.Controls.Add(this.lbdtghdct);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.cbb_nganhang);
             this.Controls.Add(this.cbb_nhanvien);
@@ -507,5 +520,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dongia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanhtien;
         private System.Windows.Forms.DataGridViewButtonColumn Xoa;
+        private System.Windows.Forms.Label lbdtghdct;
     }
 }

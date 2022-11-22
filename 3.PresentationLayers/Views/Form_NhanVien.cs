@@ -136,7 +136,7 @@ namespace _3.PresentationLayers.Views
                     Sdt = tb_sdt.Text,
                     DiaChi = tb_diaChi.Text,
                     Email = tb_email.Text,
-                    Anh = tb_Anh.Text,
+                   // Anh = tb_Anh.Text,
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
@@ -166,7 +166,7 @@ namespace _3.PresentationLayers.Views
                     DiaChi = tb_diaChi.Text,
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     Email = tb_email.Text,
-                    Anh = tb_Anh.Text,
+                  //  Anh = tb_Anh.Text,
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
                 }));
