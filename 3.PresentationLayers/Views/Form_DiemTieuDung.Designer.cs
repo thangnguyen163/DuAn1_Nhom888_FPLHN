@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tb_ma = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.rd_khonghoatdong = new System.Windows.Forms.RadioButton();
+            this.rd_hoatdong = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_sodiem = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tb_ma = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bt_xoa = new System.Windows.Forms.Button();
+            this.bt_sua = new System.Windows.Forms.Button();
+            this.bt_them = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dtg_show = new System.Windows.Forms.DataGridView();
             this.tb_timkiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtg_show = new System.Windows.Forms.DataGridView();
-            this.rd_hoatdong = new System.Windows.Forms.RadioButton();
-            this.rd_khonghoatdong = new System.Windows.Forms.RadioButton();
-            this.bt_them = new System.Windows.Forms.Button();
-            this.bt_sua = new System.Windows.Forms.Button();
-            this.bt_xoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,21 +66,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ";
             // 
-            // tb_ma
+            // rd_khonghoatdong
             // 
-            this.tb_ma.Location = new System.Drawing.Point(134, 39);
-            this.tb_ma.Name = "tb_ma";
-            this.tb_ma.Size = new System.Drawing.Size(342, 27);
-            this.tb_ma.TabIndex = 3;
+            this.rd_khonghoatdong.AutoSize = true;
+            this.rd_khonghoatdong.Location = new System.Drawing.Point(330, 169);
+            this.rd_khonghoatdong.Name = "rd_khonghoatdong";
+            this.rd_khonghoatdong.Size = new System.Drawing.Size(146, 24);
+            this.rd_khonghoatdong.TabIndex = 8;
+            this.rd_khonghoatdong.TabStop = true;
+            this.rd_khonghoatdong.Text = "Không hoạt động";
+            this.rd_khonghoatdong.UseVisualStyleBackColor = true;
+            this.rd_khonghoatdong.CheckedChanged += new System.EventHandler(this.rd_khonghoatdong_CheckedChanged);
             // 
-            // label2
+            // rd_hoatdong
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mã";
+            this.rd_hoatdong.AutoSize = true;
+            this.rd_hoatdong.Location = new System.Drawing.Point(157, 169);
+            this.rd_hoatdong.Name = "rd_hoatdong";
+            this.rd_hoatdong.Size = new System.Drawing.Size(102, 24);
+            this.rd_hoatdong.TabIndex = 7;
+            this.rd_hoatdong.TabStop = true;
+            this.rd_hoatdong.Text = "Hoạt động";
+            this.rd_hoatdong.UseVisualStyleBackColor = true;
+            this.rd_hoatdong.CheckedChanged += new System.EventHandler(this.rd_hoatdong_CheckedChanged);
             // 
             // label3
             // 
@@ -107,6 +115,22 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Số điểm";
             // 
+            // tb_ma
+            // 
+            this.tb_ma.Location = new System.Drawing.Point(134, 39);
+            this.tb_ma.Name = "tb_ma";
+            this.tb_ma.Size = new System.Drawing.Size(342, 27);
+            this.tb_ma.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mã";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bt_xoa);
@@ -118,6 +142,35 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chức năng";
+            // 
+            // bt_xoa
+            // 
+            this.bt_xoa.Location = new System.Drawing.Point(26, 184);
+            this.bt_xoa.Name = "bt_xoa";
+            this.bt_xoa.Size = new System.Drawing.Size(241, 48);
+            this.bt_xoa.TabIndex = 2;
+            this.bt_xoa.Text = "Chuyển trạng thái";
+            this.bt_xoa.UseVisualStyleBackColor = true;
+            // 
+            // bt_sua
+            // 
+            this.bt_sua.Location = new System.Drawing.Point(26, 106);
+            this.bt_sua.Name = "bt_sua";
+            this.bt_sua.Size = new System.Drawing.Size(241, 48);
+            this.bt_sua.TabIndex = 1;
+            this.bt_sua.Text = "Sửa";
+            this.bt_sua.UseVisualStyleBackColor = true;
+            this.bt_sua.Click += new System.EventHandler(this.bt_sua_Click);
+            // 
+            // bt_them
+            // 
+            this.bt_them.Location = new System.Drawing.Point(26, 30);
+            this.bt_them.Name = "bt_them";
+            this.bt_them.Size = new System.Drawing.Size(241, 48);
+            this.bt_them.TabIndex = 0;
+            this.bt_them.Text = "Thêm ";
+            this.bt_them.UseVisualStyleBackColor = true;
+            this.bt_them.Click += new System.EventHandler(this.bt_them_Click);
             // 
             // groupBox3
             // 
@@ -131,22 +184,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dữ liệu ";
             // 
-            // tb_timkiem
-            // 
-            this.tb_timkiem.Location = new System.Drawing.Point(105, 26);
-            this.tb_timkiem.Name = "tb_timkiem";
-            this.tb_timkiem.Size = new System.Drawing.Size(342, 27);
-            this.tb_timkiem.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Tìm kiếm";
-            // 
             // dtg_show
             // 
             this.dtg_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -156,55 +193,24 @@
             this.dtg_show.RowTemplate.Height = 29;
             this.dtg_show.Size = new System.Drawing.Size(899, 216);
             this.dtg_show.TabIndex = 10;
+            this.dtg_show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_show_CellClick);
             // 
-            // rd_hoatdong
+            // tb_timkiem
             // 
-            this.rd_hoatdong.AutoSize = true;
-            this.rd_hoatdong.Location = new System.Drawing.Point(157, 169);
-            this.rd_hoatdong.Name = "rd_hoatdong";
-            this.rd_hoatdong.Size = new System.Drawing.Size(102, 24);
-            this.rd_hoatdong.TabIndex = 7;
-            this.rd_hoatdong.TabStop = true;
-            this.rd_hoatdong.Text = "Hoạt động";
-            this.rd_hoatdong.UseVisualStyleBackColor = true;
+            this.tb_timkiem.Location = new System.Drawing.Point(105, 26);
+            this.tb_timkiem.Name = "tb_timkiem";
+            this.tb_timkiem.Size = new System.Drawing.Size(342, 27);
+            this.tb_timkiem.TabIndex = 9;
+            this.tb_timkiem.Leave += new System.EventHandler(this.tb_timkiem_Leave);
             // 
-            // rd_khonghoatdong
+            // label5
             // 
-            this.rd_khonghoatdong.AutoSize = true;
-            this.rd_khonghoatdong.Location = new System.Drawing.Point(330, 169);
-            this.rd_khonghoatdong.Name = "rd_khonghoatdong";
-            this.rd_khonghoatdong.Size = new System.Drawing.Size(146, 24);
-            this.rd_khonghoatdong.TabIndex = 8;
-            this.rd_khonghoatdong.TabStop = true;
-            this.rd_khonghoatdong.Text = "Không hoạt động";
-            this.rd_khonghoatdong.UseVisualStyleBackColor = true;
-            // 
-            // bt_them
-            // 
-            this.bt_them.Location = new System.Drawing.Point(26, 30);
-            this.bt_them.Name = "bt_them";
-            this.bt_them.Size = new System.Drawing.Size(241, 48);
-            this.bt_them.TabIndex = 0;
-            this.bt_them.Text = "Thêm ";
-            this.bt_them.UseVisualStyleBackColor = true;
-            // 
-            // bt_sua
-            // 
-            this.bt_sua.Location = new System.Drawing.Point(26, 106);
-            this.bt_sua.Name = "bt_sua";
-            this.bt_sua.Size = new System.Drawing.Size(241, 48);
-            this.bt_sua.TabIndex = 1;
-            this.bt_sua.Text = "Sửa";
-            this.bt_sua.UseVisualStyleBackColor = true;
-            // 
-            // bt_xoa
-            // 
-            this.bt_xoa.Location = new System.Drawing.Point(26, 184);
-            this.bt_xoa.Name = "bt_xoa";
-            this.bt_xoa.Size = new System.Drawing.Size(241, 48);
-            this.bt_xoa.TabIndex = 2;
-            this.bt_xoa.Text = "Chuyển trạng thái";
-            this.bt_xoa.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Tìm kiếm";
             // 
             // Form_DiemTieuDung
             // 
@@ -229,8 +235,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rd_khonghoatdong;
-        private System.Windows.Forms.RadioButton rd_hoatdong;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_sodiem;
         private System.Windows.Forms.Label label4;
@@ -244,5 +248,7 @@
         private System.Windows.Forms.DataGridView dtg_show;
         private System.Windows.Forms.TextBox tb_timkiem;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rd_khonghoatdong;
+        private System.Windows.Forms.RadioButton rd_hoatdong;
     }
 }
