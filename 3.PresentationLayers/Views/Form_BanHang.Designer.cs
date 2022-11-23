@@ -47,14 +47,14 @@
             this.dtg_SanPham = new System.Windows.Forms.DataGridView();
             this.btn_taohoadon = new System.Windows.Forms.Button();
             this.tabHoaDon = new System.Windows.Forms.TabControl();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rd_dahuy = new System.Windows.Forms.RadioButton();
+            this.rd_chothanhtoan = new System.Windows.Forms.RadioButton();
+            this.rd_dathanhtoan = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_tientralai = new System.Windows.Forms.TextBox();
+            this.tb_tienkhachdua = new System.Windows.Forms.TextBox();
+            this.tb_tongtien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -247,38 +247,38 @@
             this.tabHoaDon.TabIndexChanged += new System.EventHandler(this.tabHoaDon_TabIndexChanged);
             this.tabHoaDon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabHoaDon_MouseClick);
             // 
-            // radioButton3
+            // rd_dahuy
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(1057, 493);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(79, 24);
-            this.radioButton3.TabIndex = 71;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Đã hủy";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rd_dahuy.AutoSize = true;
+            this.rd_dahuy.Location = new System.Drawing.Point(1057, 493);
+            this.rd_dahuy.Name = "rd_dahuy";
+            this.rd_dahuy.Size = new System.Drawing.Size(79, 24);
+            this.rd_dahuy.TabIndex = 71;
+            this.rd_dahuy.TabStop = true;
+            this.rd_dahuy.Text = "Đã hủy";
+            this.rd_dahuy.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rd_chothanhtoan
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(903, 493);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(138, 24);
-            this.radioButton2.TabIndex = 70;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Chờ thanh toán";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rd_chothanhtoan.AutoSize = true;
+            this.rd_chothanhtoan.Location = new System.Drawing.Point(903, 493);
+            this.rd_chothanhtoan.Name = "rd_chothanhtoan";
+            this.rd_chothanhtoan.Size = new System.Drawing.Size(138, 24);
+            this.rd_chothanhtoan.TabIndex = 70;
+            this.rd_chothanhtoan.TabStop = true;
+            this.rd_chothanhtoan.Text = "Chờ thanh toán";
+            this.rd_chothanhtoan.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rd_dathanhtoan
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(757, 493);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(130, 24);
-            this.radioButton1.TabIndex = 69;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Đã thanh toán";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rd_dathanhtoan.AutoSize = true;
+            this.rd_dathanhtoan.Location = new System.Drawing.Point(757, 493);
+            this.rd_dathanhtoan.Name = "rd_dathanhtoan";
+            this.rd_dathanhtoan.Size = new System.Drawing.Size(130, 24);
+            this.rd_dathanhtoan.TabIndex = 69;
+            this.rd_dathanhtoan.TabStop = true;
+            this.rd_dathanhtoan.Text = "Đã thanh toán";
+            this.rd_dathanhtoan.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -298,26 +298,26 @@
             this.label6.TabIndex = 67;
             this.label6.Text = "Tiền trả lại";
             // 
-            // textBox6
+            // tb_tientralai
             // 
-            this.textBox6.Location = new System.Drawing.Point(790, 745);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(249, 27);
-            this.textBox6.TabIndex = 66;
+            this.tb_tientralai.Location = new System.Drawing.Point(790, 745);
+            this.tb_tientralai.Name = "tb_tientralai";
+            this.tb_tientralai.Size = new System.Drawing.Size(249, 27);
+            this.tb_tientralai.TabIndex = 66;
             // 
-            // textBox7
+            // tb_tienkhachdua
             // 
-            this.textBox7.Location = new System.Drawing.Point(790, 700);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(249, 27);
-            this.textBox7.TabIndex = 64;
+            this.tb_tienkhachdua.Location = new System.Drawing.Point(790, 700);
+            this.tb_tienkhachdua.Name = "tb_tienkhachdua";
+            this.tb_tienkhachdua.Size = new System.Drawing.Size(249, 27);
+            this.tb_tienkhachdua.TabIndex = 64;
             // 
-            // textBox4
+            // tb_tongtien
             // 
-            this.textBox4.Location = new System.Drawing.Point(790, 657);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(249, 27);
-            this.textBox4.TabIndex = 62;
+            this.tb_tongtien.Location = new System.Drawing.Point(790, 657);
+            this.tb_tongtien.Name = "tb_tongtien";
+            this.tb_tongtien.Size = new System.Drawing.Size(249, 27);
+            this.tb_tongtien.TabIndex = 62;
             // 
             // label7
             // 
@@ -447,14 +447,14 @@
             this.Controls.Add(this.cbb_nhanvien);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rd_dahuy);
+            this.Controls.Add(this.rd_chothanhtoan);
+            this.Controls.Add(this.rd_dathanhtoan);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tb_tientralai);
+            this.Controls.Add(this.tb_tienkhachdua);
+            this.Controls.Add(this.tb_tongtien);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -491,14 +491,14 @@
         private System.Windows.Forms.DataGridView dtg_SanPham;
         private System.Windows.Forms.Button btn_taohoadon;
         private System.Windows.Forms.TabControl tabHoaDon;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rd_dahuy;
+        private System.Windows.Forms.RadioButton rd_chothanhtoan;
+        private System.Windows.Forms.RadioButton rd_dathanhtoan;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_tientralai;
+        private System.Windows.Forms.TextBox tb_tienkhachdua;
+        private System.Windows.Forms.TextBox tb_tongtien;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
