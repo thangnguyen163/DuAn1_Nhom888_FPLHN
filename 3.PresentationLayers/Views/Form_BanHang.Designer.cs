@@ -130,7 +130,7 @@
             this.dtg_HoaDonChiTiet.Name = "dtg_HoaDonChiTiet";
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
-            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(554, 441);
+            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(649, 441);
             this.dtg_HoaDonChiTiet.TabIndex = 40;
             this.dtg_HoaDonChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_HoaDonChiTiet_CellClick);
             // 
@@ -223,7 +223,7 @@
             this.dtg_SanPham.Name = "dtg_SanPham";
             this.dtg_SanPham.RowHeadersWidth = 51;
             this.dtg_SanPham.RowTemplate.Height = 29;
-            this.dtg_SanPham.Size = new System.Drawing.Size(508, 248);
+            this.dtg_SanPham.Size = new System.Drawing.Size(649, 397);
             this.dtg_SanPham.TabIndex = 42;
             this.dtg_SanPham.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_SanPham_CellDoubleClick);
             // 
@@ -374,7 +374,7 @@
             // 
             this.groupBox1.Controls.Add(this.fl_ChuaThanhToan);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(1054, 554);
+            this.groupBox1.Location = new System.Drawing.Point(716, 554);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 400);
             this.groupBox1.TabIndex = 76;
@@ -394,7 +394,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.fl_DaThanhToan);
-            this.groupBox2.Location = new System.Drawing.Point(1260, 554);
+            this.groupBox2.Location = new System.Drawing.Point(935, 554);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 400);
             this.groupBox2.TabIndex = 77;
