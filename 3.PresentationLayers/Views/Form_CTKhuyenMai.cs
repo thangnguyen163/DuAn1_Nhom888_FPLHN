@@ -23,8 +23,8 @@ namespace _3.PresentationLayers.Views
         private IChiTietSachService chiTietSachService;
         private IKhuyenMaiService khuyenMaiService;
         private ISachService sachService;
-         List<ChiTietKhuyenMaiView> _lstchiTietKhuyenMaiList = new List<ChiTietKhuyenMaiView>();
-       
+        List<ChiTietKhuyenMaiView> _lstchiTietKhuyenMaiList = new List<ChiTietKhuyenMaiView>();
+
         public Form_CTKhuyenMai()
         {
             InitializeComponent();
@@ -41,7 +41,6 @@ namespace _3.PresentationLayers.Views
         public void LoadData()
         {
             int i = 0;
-            
             dtg_show.ColumnCount = 8;
             dtg_show.Columns[0].Name = "STT";
             dtg_show.Columns[1].Name = "ID";
@@ -53,16 +52,15 @@ namespace _3.PresentationLayers.Views
             dtg_show.Columns[6].Name = "Mô tả";
             dtg_show.Columns[7].Name = "Trạng thái";
             dtg_show.Rows.Clear();
-             _lstchiTietKhuyenMaiList = chiTietKhuyenMaiService.GetChiTietKhuyenMaiViews();
-            if (tb_timkiem.Text!="")
+            _lstchiTietKhuyenMaiList = chiTietKhuyenMaiService.GetChiTietKhuyenMaiViews();
+            if (tb_timkiem.Text != "")
             {
-                _lstchiTietKhuyenMaiList = _lstchiTietKhuyenMaiList.Where(x=>x.TenKhuyenMai.Contains(tb_timkiem.Text)).ToList();
+                _lstchiTietKhuyenMaiList = _lstchiTietKhuyenMaiList.Where(x => x.TenKhuyenMai.Contains(tb_timkiem.Text)).ToList();
             }
             foreach (var a in _lstchiTietKhuyenMaiList)
             {
                 dtg_show.Rows.Add(i++, a.Id, a.TenSach, a.KhuyenMai, a.MaCTKuyenMai, a.TenKhuyenMai, a.MoTa, a.TrangThai == 1 ? "Đang diễn ra" : "Hết hạn");
             }
-
         }
         private void btn_them_Click(object sender, EventArgs e)
         {

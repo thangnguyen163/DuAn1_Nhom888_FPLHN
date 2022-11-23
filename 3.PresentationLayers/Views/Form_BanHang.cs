@@ -49,7 +49,7 @@ namespace _3.PresentationLayers.Views
 
         public void LoadSach()
         {
-            int stt = 0;
+            int stt = 1;
             dtg_SanPham.ColumnCount = 16;
             dtg_SanPham.Columns[0].Name = "STT";
             dtg_SanPham.Columns[1].Name = "Id";
@@ -88,6 +88,7 @@ namespace _3.PresentationLayers.Views
             {
                 dtg_HoaDonChiTiet.Rows.Add(x.ID, x.MactSach, x.Tensach, "-", x.Soluong, "+", x.Dongia, x.Thanhtien, "X");
             }
+            
         }
 
         private void btnsender_Click(object sender, EventArgs e)
