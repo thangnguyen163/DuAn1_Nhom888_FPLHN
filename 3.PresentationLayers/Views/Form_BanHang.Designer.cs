@@ -374,7 +374,7 @@
             // 
             this.groupBox1.Controls.Add(this.fl_ChuaThanhToan);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(716, 554);
+            this.groupBox1.Location = new System.Drawing.Point(702, 554);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 400);
             this.groupBox1.TabIndex = 76;
@@ -394,7 +394,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.fl_DaThanhToan);
-            this.groupBox2.Location = new System.Drawing.Point(935, 554);
+            this.groupBox2.Location = new System.Drawing.Point(908, 554);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 400);
             this.groupBox2.TabIndex = 77;
