@@ -521,5 +521,28 @@ namespace _3.PresentationLayers.Views
         {
 
         }
+
+        private void btn_DatHang_Click(object sender, EventArgs e)
+        {
+
+            lb_TienCoc.Visible = true;
+            lb_TienShip.Visible = true;
+            tbx_TienCoc.Visible = true;
+            tbx_TienShip.Visible = true;
+;
+            btn_DatHang.BackColor = Color.Yellow;
+            btn_TaiQuay.BackColor = Color.White;
+        }
+
+        private void btn_TaiQuay_Click(object sender, EventArgs e)
+        {
+            lb_TienCoc.Visible = false;
+            lb_TienShip.Visible = false;
+            tbx_TienCoc.Visible = false;
+            tbx_TienShip.Visible=false;
+            btn_TaiQuay.BackColor = Color.Pink;
+            btn_DatHang.BackColor = Color.White;
+            
+        }
     }
 }
