@@ -33,10 +33,12 @@ namespace _2.BUS.Serivces
             var lst = (from a in _ihoaDonRepository.GetAll()
                        join b in _ikhachHangRepository.getall() on a.Idkh equals b.Id
                        join c in _inhanVienRepository.GetAllNhanVien() on a.Idnv equals c.Id
+                       join e in _idiemtieudungRepository.GetAll() on b.IddiemTieuDung equals e.Id
                        select new HoadonView()
                        {
                            Id = a.Id,
                            Makh = b.Ma,
+                           Iddiemtieudung = e.Id,
                            Manv = c.Ma,
                            Mahd = a.MaHd,
                            Ngaytao = a.NgayTao,
@@ -46,8 +48,10 @@ namespace _2.BUS.Serivces
                            ghichu = a.GhiChu,
                            Tenkh = b.Ten,
                            Tennv = c.Ten,
-                           Trangthai = a.TrangThai
-                           
+                           Trangthai = a.TrangThai,
+                           Sodiem = e.SoDiem,
+                           tiencoc = a.TienCoc,
+                           tienship = a.TienShip,
                        }).ToList();
             return lst;
         }

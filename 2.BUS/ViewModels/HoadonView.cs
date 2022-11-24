@@ -23,5 +23,9 @@ namespace _2.BUS.ViewModels
         public int? Trangthai { get; set; }
         public string Tenkh { get; set; }
         public string Tennv { get; set; }
+        public int? Sodiem { get; set; }
+        public int ?tiencoc { get; set; }
+        public int ?tienship { get; set; }
+        public Guid Iddiemtieudung { get; set; }
     }
 }
