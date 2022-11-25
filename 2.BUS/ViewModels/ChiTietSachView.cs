@@ -15,6 +15,8 @@ namespace _2.BUS.ViewModels
         public string TenTacGia { get; set; }
         public string TenNhaPhatHanh { get; set; }
         public string TenLoaiBia { get; set; }
+        public string TenTheLoai { get; set; }
+        public string TenChiTietTheLoai { get; set; }
         public string Ma { get; set; }
         public byte[] Anh { get; set; }
         public string MaVach { get; set; }

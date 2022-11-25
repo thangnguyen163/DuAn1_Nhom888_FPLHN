@@ -143,7 +143,7 @@
             this.groupBox1.Controls.Add(this.cbb_Sach);
             this.groupBox1.Location = new System.Drawing.Point(24, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(897, 402);
+            this.groupBox1.Size = new System.Drawing.Size(897, 516);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -596,9 +596,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dtg_Show);
-            this.groupBox3.Location = new System.Drawing.Point(24, 418);
+            this.groupBox3.Location = new System.Drawing.Point(31, 542);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(903, 291);
+            this.groupBox3.Size = new System.Drawing.Size(1242, 400);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data";
@@ -610,7 +610,7 @@
             this.dtg_Show.Name = "dtg_Show";
             this.dtg_Show.RowHeadersWidth = 51;
             this.dtg_Show.RowTemplate.Height = 29;
-            this.dtg_Show.Size = new System.Drawing.Size(891, 253);
+            this.dtg_Show.Size = new System.Drawing.Size(1265, 311);
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
@@ -623,7 +623,7 @@
             this.Lọc.Controls.Add(this.tbt_Search);
             this.Lọc.Location = new System.Drawing.Point(940, 267);
             this.Lọc.Name = "Lọc";
-            this.Lọc.Size = new System.Drawing.Size(250, 405);
+            this.Lọc.Size = new System.Drawing.Size(250, 271);
             this.Lọc.TabIndex = 3;
             this.Lọc.TabStop = false;
             this.Lọc.Text = "Lọc";
@@ -677,7 +677,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 721);
+            this.ClientSize = new System.Drawing.Size(1447, 973);
             this.Controls.Add(this.Lọc);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
