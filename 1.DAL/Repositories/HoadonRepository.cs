@@ -40,6 +40,7 @@ namespace _1.DAL.Repositories
         {
             if (obj == null) return false;
             var tempobj = dBContext.HoaDons.FirstOrDefault(x => x.Id == obj.Id);
+            tempobj = obj;
             //tempobj.Idkh = obj.Idkh;
             //tempobj.Idnv = obj.Idnv;
             //tempobj.IddiemTich = obj.IddiemTich;
@@ -48,9 +49,9 @@ namespace _1.DAL.Repositories
             //tempobj.NgayTao = obj.NgayTao;
             //tempobj.Thue = obj.Thue;
             //tempobj.GiamGia = obj.GiamGia;
-            tempobj.TongTien = obj.TongTien;
+            //tempobj.TongTien = obj.TongTien;
             //tempobj.GhiChu = obj.GhiChu;
-            tempobj.TrangThai = obj.TrangThai;
+           // tempobj.TrangThai = obj.TrangThai;
             dBContext.HoaDons.Update(tempobj);
             dBContext.SaveChanges();
             return true;
