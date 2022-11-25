@@ -19,12 +19,12 @@ namespace _1.DAL.Repositories
         public bool addNhanVien(NhanVien nhanVien)
         {
             if (nhanVien == null) return false;
-            _DBContext.NhanViens.Add(nhanVien);
+            _DBContext.Add(nhanVien);
             _DBContext.SaveChanges();
             return true;
         }
 
-        public bool deleteNhanVien(Guid Id)
+        public bool deleteNhanVien(Guid? Id)
         {
             if (Id == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
@@ -48,13 +48,24 @@ namespace _1.DAL.Repositories
             return _DBContext.NhanViens.ToList();
         }
 
-        public bool updateNhanVien(Guid Id, NhanVien nhanVien)
+        public bool updateNhanVien(Guid? Id, NhanVien nhanVien)
         {
-            if (Id == null) return false;
+            if (nhanVien == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
-            a = nhanVien;
+            a.Ma=nhanVien.Ma;
+            a.Ten=nhanVien.Ten;
+            a.GioiTinh=nhanVien.GioiTinh;
+            a.NamSinh = nhanVien.NamSinh;
+            a.Email = nhanVien.Email;
+            a.DiaChi=nhanVien.DiaChi;
+            a.Sdt=nhanVien.Sdt;
+            a.Cccd = nhanVien.Cccd;
+            a.MatKhau=nhanVien.MatKhau;
+            a.Anh=nhanVien.Anh;
+            a.IdchucVu=nhanVien.IdchucVu;
+            a.TrangThai = nhanVien.TrangThai;
            
-            _DBContext.NhanViens.Update(a);
+            _DBContext.Update(a);
             _DBContext.SaveChanges();
             return true;
         }

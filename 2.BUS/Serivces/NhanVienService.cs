@@ -35,14 +35,10 @@ namespace _2.BUS.Serivces
             }
         }
 
-        public string deleteNhanVien(Guid Id)
+        public string deleteNhanVien(Guid? Id)
         {
-            if (Id == null) return "Xóa không thành công";
-            else
-            {
                 nhanVienRepository.deleteNhanVien(Id);
                 return "Xóa thành công";
-            }
         }
 
         public string QuenMatKhau(NhanVien nhanVien)
@@ -70,7 +66,7 @@ namespace _2.BUS.Serivces
             return _lstViewNhanVien;
         }
 
-        public string updateNhanVien(Guid Id, NhanVien nhanVien)
+        public string updateNhanVien(Guid? Id, NhanVien nhanVien)
         {
             if (nhanVien == null) return "Sửa không thành công";
             else
