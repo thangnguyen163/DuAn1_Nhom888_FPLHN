@@ -52,9 +52,8 @@ namespace _1.DAL.Repositories
         {
             if (Id == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
-            a.Ma = nhanVien.Ma;
-            a.Ten = nhanVien.Ten;
-            a.TrangThai = nhanVien.TrangThai;
+            a = nhanVien;
+           
             _DBContext.NhanViens.Update(a);
             _DBContext.SaveChanges();
             return true;
