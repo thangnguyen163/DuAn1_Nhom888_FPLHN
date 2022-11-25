@@ -74,6 +74,8 @@ namespace _2.BUS.Service
                      TenTacGia = e.Ten,
                      TenNhaPhatHanh = f.Ten,
                      TenLoaiBia = c.Ten,
+                     //TenTheLoai=g.Ten,
+                     //TenChiTietTheLoai=h.Ten,
                      Ma = a.Ma,
                      Anh=a.Anh,
                      MaVach=a.MaVach,
