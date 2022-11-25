@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,7 @@ namespace _3.PresentationLayers.Views
             {
                 DataGridViewRow r = dtg_Show.Rows[e.RowIndex];
                 _nv = _nhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString()));
+                SelectId=Guid.Parse(r.Cells[0].Value.ToString());
                 tb_ma.Text = r.Cells[1].Value.ToString();
                 tb_ten.Text = r.Cells[2].Value.ToString();
                 tb_matkhau.Text = r.Cells[7].Value.ToString();
@@ -119,8 +121,9 @@ namespace _3.PresentationLayers.Views
                 cb_Nu.Checked = _nv.GioiTinh == 1;
                 rB_hd.Checked = _nv.TrangThai == 1;
                 rB_khd.Checked = _nv.TrangThai == 0;
-                Image img1 = Image.FromFile(Convert.ToString(r.Cells[9].Value.ToString()));
-                pic_Anh.Image = img1;
+                pic_Anh.Image = Image.FromStream(new MemoryStream((byte[])r.Cells[9].Value));
+               //  _nhanVienService.getNhanViensFromDB().Where(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString())).Select(x => x.Anh).FirstOrDefault())
+                pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
@@ -131,16 +134,17 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show(_nhanVienService.addNhanVien(new NhanVien()
                 {
-
+                    
                     Id = Guid.NewGuid(),
-                    Ma = tb_ma.Text,
+                    Ma = "NV" + Convert.ToString(_nhanVienService.getNhanViensFromDB()
+                      .Max(c => Convert.ToInt32(c.Ma.Substring(2, c.Ma.Length - 2)) + 1)),
                     Ten = tb_ten.Text,
                     MatKhau = tb_ma.Text,
                     Cccd = Convert.ToDecimal(tb_cccd.Text),
                     Sdt = tb_sdt.Text,
                     DiaChi = tb_diaChi.Text,
                     Email = tb_email.Text,
-                    
+                    Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
@@ -170,7 +174,7 @@ namespace _3.PresentationLayers.Views
                     DiaChi = tb_diaChi.Text,
                     NamSinh = Convert.ToInt32(tb_namsinh.Text),
                     Email = tb_email.Text,
-                    
+                    Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
                     IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
                     TrangThai = rB_hd.Checked ? 1 : 0,
                 }));
@@ -293,10 +297,25 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_Anh_Click(object sender, EventArgs e)
         {
-            loadimg(ref FileImageNam);
-            pic_Anh.Image = new Bitmap(FileImageNam);
-        }
+            //loadimg(ref FileImageNam);
+            //pic_Anh.Image = new Bitmap(FileImageNam);
+            OpenFileDialog open = new OpenFileDialog();
+            try
+            {
 
-        
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pic_Anh.Image = Image.FromFile(open.FileName);
+                    //LinkImage = open.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với Thắng để khắc phục");
+            }
+        }
+        //dđ
     }
 }

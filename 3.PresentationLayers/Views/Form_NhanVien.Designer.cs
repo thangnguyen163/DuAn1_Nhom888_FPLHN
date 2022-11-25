@@ -64,9 +64,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.tb_Timkiem = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Anh)).BeginInit();
@@ -428,17 +428,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Nhân Viên";
             // 
-            // dtg_Show
-            // 
-            this.dtg_Show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_Show.Location = new System.Drawing.Point(16, 54);
-            this.dtg_Show.Name = "dtg_Show";
-            this.dtg_Show.RowHeadersWidth = 51;
-            this.dtg_Show.RowTemplate.Height = 29;
-            this.dtg_Show.Size = new System.Drawing.Size(1508, 225);
-            this.dtg_Show.TabIndex = 0;
-            this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
-            // 
             // tb_Timkiem
             // 
             this.tb_Timkiem.Location = new System.Drawing.Point(1272, 21);
@@ -455,6 +444,17 @@
             this.label14.Size = new System.Drawing.Size(79, 20);
             this.label14.TabIndex = 3;
             this.label14.Text = "Tìm Kiếm: ";
+            // 
+            // dtg_Show
+            // 
+            this.dtg_Show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_Show.Location = new System.Drawing.Point(16, 54);
+            this.dtg_Show.Name = "dtg_Show";
+            this.dtg_Show.RowHeadersWidth = 51;
+            this.dtg_Show.RowTemplate.Height = 29;
+            this.dtg_Show.Size = new System.Drawing.Size(1508, 225);
+            this.dtg_Show.TabIndex = 0;
+            this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
             // Form_NhanVien
             // 
