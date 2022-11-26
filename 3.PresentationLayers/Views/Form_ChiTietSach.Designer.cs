@@ -83,6 +83,9 @@
             this.cbb_LocNhaPhatHanh = new System.Windows.Forms.ComboBox();
             this.cbb_LocLoaiBia = new System.Windows.Forms.ComboBox();
             this.tbt_Search = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).BeginInit();
@@ -96,11 +99,13 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).BeginInit();
             this.Lọc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ptb_AnhSach);
+            this.groupBox1.Controls.Add(this.iconPictureBox1);
             this.groupBox1.Controls.Add(this.ipb_AddLoaiBia);
             this.groupBox1.Controls.Add(this.ipb_AddNhaPhatHanh);
             this.groupBox1.Controls.Add(this.ipb_AddTacGia);
@@ -111,6 +116,7 @@
             this.groupBox1.Controls.Add(this.rdt_KhongBan);
             this.groupBox1.Controls.Add(this.rdt_ConBan);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -128,6 +134,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbt_GiaNhap);
             this.groupBox1.Controls.Add(this.tbt_MoTa);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.tbt_KichThuoc);
             this.groupBox1.Controls.Add(this.tbt_SoTrang);
             this.groupBox1.Controls.Add(this.tbt_GiaBan);
@@ -673,6 +680,38 @@
             this.tbt_Search.Text = "   ";
             this.tbt_Search.TextChanged += new System.EventHandler(this.tbt_Search_TextChanged);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(225, 402);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(64, 20);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Mã vạch";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.iconPictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("iconPictureBox1.BackgroundImage")));
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlText;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 30;
+            this.iconPictureBox1.Location = new System.Drawing.Point(506, 394);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.iconPictureBox1.TabIndex = 5;
+            this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.Click += new System.EventHandler(this.ipb_AddLoaiBia_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(335, 394);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(168, 27);
+            this.textBox1.TabIndex = 2;
+            // 
             // Form_ChiTietSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -699,6 +738,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).EndInit();
             this.Lọc.ResumeLayout(false);
             this.Lọc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -759,5 +799,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbb_TheLoai2;
         private System.Windows.Forms.ComboBox cbb_TheLoai;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
