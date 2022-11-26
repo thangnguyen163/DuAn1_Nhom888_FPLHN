@@ -1,5 +1,6 @@
 ﻿using _2.BUS.IService;
 using _2.BUS.Service;
+using _2.BUS.ViewModels;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using System;
@@ -18,17 +19,30 @@ namespace _3.PresentationLayers.Views
     public partial class Form_QuetMaSach : Form
     {
         IChiTietSachService _ichiTietSachService;
-        ISachService _iSachService;
+        List<ChiTietSachView> _listSachTheoMa;
         public Form_QuetMaSach()
         {
             InitializeComponent();
             _ichiTietSachService = new ChiTietSachService();
-            _iSachService = new SachService();
+
+
         }
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
         public static string mavach;
         public static string tensach;
+        public void GetBookByMa()
+        {
+            if (_ichiTietSachService.GetAllChiTietSachView().Where(p => p.MaVach == tb_mavach.Text).ToList().Count == 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Chưa có sản phẩm này, bạn có muốn thêm sản phẩm mới không ", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
+                    form.Show();
+                }
+            }
+        }
         private void Lammoi()
         {
             try
@@ -65,7 +79,7 @@ namespace _3.PresentationLayers.Views
         private void btn_add_Click(object sender, EventArgs e)
         {
             mavach = tb_mavach.Text;
-            tensach= tb_tensach.Text;
+            tensach = tb_tensach.Text;
             this.Close();
         }
 
@@ -92,7 +106,7 @@ namespace _3.PresentationLayers.Views
                 tb_mavach.Invoke(new MethodInvoker(delegate ()
                 {
                     tb_mavach.Text = result.ToString();
-                    
+
                 }));
             }
             ptb_barcode.Image = bitmap;
@@ -116,10 +130,12 @@ namespace _3.PresentationLayers.Views
 
         private void tb_mavach_TextChanged(object sender, EventArgs e)
         {
-
                 string x = _ichiTietSachService.GetAllChiTietSachView().Where(c => c.MaVach == tb_mavach.Text).Select(x => x.TenSach).FirstOrDefault();
                 tb_tensach.Text = x;
-            
+            if (tb_tensach.Text == "")
+            {
+                GetBookByMa();
+            }
         }
     }
 }
