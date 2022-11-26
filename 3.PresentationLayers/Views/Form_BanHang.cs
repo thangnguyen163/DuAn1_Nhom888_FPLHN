@@ -13,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -58,7 +59,7 @@ namespace _3.PresentationLayers.Views
             tabHoaDon.Visible = false;
             Locktextboxfrombanhang();
             LoadSanphamtoFl();
-
+            LoadBtnQuet();
         }
         private void Locktextboxfrombanhang()
         {
@@ -69,7 +70,11 @@ namespace _3.PresentationLayers.Views
                 tb_tientralai.ReadOnly = true;
             }
         }
-
+        private void LoadBtnQuet()
+        {
+            if (dtg_HoaDonChiTiet.Visible != false) btn_quetma.Enabled = true;
+            else btn_quetma.Enabled = false;
+        }
         //public void LoadSach()
         //{
         //    int stt = 1;
@@ -301,14 +306,14 @@ namespace _3.PresentationLayers.Views
             Image image = Image.FromStream(ms, true);
             return image;
         }
-        public Image byteArrayToImage(byte[] bytesArr)
-        {
-            using (MemoryStream memstr = new MemoryStream(bytesArr))
-            {
-                Image img = Image.FromStream(memstr);
-                return img;
-            }
-        }
+        //public Image byteArrayToImage(byte[] bytesArr)
+        //{
+        //    //using (MemoryStream memstr = new MemoryStream(bytesArr))
+        //    //{
+        //    //    Image img = Image.FromStream(memstr);
+        //    //    return img;
+        //    //}
+        //}
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
@@ -329,10 +334,10 @@ namespace _3.PresentationLayers.Views
                     btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
                     btn1.BackColor = Color.FromArgb(1, 90,90);
                     btn1.TextAlign = ContentAlignment.MiddleLeft;                 
-                    Image img1= Image.FromFile(@"C:\Users\Admin\OneDrive\Desktop\fpoly\4.KI FALL22\2.Block 2\1.PRO131\Icons\purchase_order_50px.png"); ;
-                    Image img2 = byteArrayToImage(x.Anh);
-                    img2 = resizeImage(img2, new Size(60, 110));
-                    btn1.Image = img2; 
+                    //Image img1= Image.FromFile(@"C:\Users\Admin\OneDrive\Desktop\fpoly\4.KI FALL22\2.Block 2\1.PRO131\Icons\purchase_order_50px.png");
+                    //Image img2 = byteArrayToImage(x.Anh);
+                    //img2 = resizeImage(img2, new Size(60, 110));
+                    //btn1.Image = img2; 
                     btn1.Tag = x;
                     btn1.ImageAlign = ContentAlignment.MiddleRight;                                       
                     btn1.ForeColor = Color.FromArgb(224, 238, 224);
@@ -421,9 +426,6 @@ namespace _3.PresentationLayers.Views
         {
         }
 
-        private void dtg_SanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
 
         private void btn_taohoadon_Click(object sender, EventArgs e)
         {
@@ -633,10 +635,6 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        private void tabHoaDon_DoubleClick(object sender, EventArgs e)
-        {
-        }
-
         private void tabHoaDon_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -672,22 +670,6 @@ namespace _3.PresentationLayers.Views
             tbx_TienCoc.Clear();
             tbx_TienShip.Clear();
             tb_tongtienhang.Clear();
-        }
-        private void tabHoaDon_TabIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_DatHang_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void btn_TaiQuay_Click(object sender, EventArgs e)
-        {
-
-
         }
 
         private void dtg_SanPham_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1149,51 +1131,109 @@ namespace _3.PresentationLayers.Views
 
 
         }
-
-        private void label10_Click(object sender, EventArgs e)
+        // 
+        private void btn_quetma_Click(object sender, EventArgs e)
         {
+            Form_QuetMaSach qms = new Form_QuetMaSach();
+            qms.ShowDialog();
 
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb_tientralai_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+            var x = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x=>x.Id).FirstOrDefault();
+                SelectIDSp = x;
+                HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+                SelectID = hd.Id;
+                HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
+                string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);//nhập số lượng ở màn bán hàng
+                if (Content != null)
+                {
+                    if (data == null)
+                    {
+                        HoaDonChiTiet hdct = new HoaDonChiTiet();
+                        hdct.Id = Guid.NewGuid();
+                        hdct.IdHoaDon = SelectID;
+                        hdct.IdChiTietSach = SelectIDSp;
+                        ChiTietSach cts = new ChiTietSach();
+                        cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                        if (cts.SoLuong >= Convert.ToInt32(Content))
+                        {
+                            hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
+                              .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
+                            hdct.SoLuong = Convert.ToInt32(Content);
+                            hdct.DonGia = Convert.ToInt32(cts.GiaBan);
+                            hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * cts.GiaBan);
+                            hoaDonChiTietService.Add(hdct);
+                            //update số lượng còn lại 
+                            cts.IdSach = cts.IdSach;
+                            cts.IdSach = cts.IdSach;
+                            cts.IdNxb = cts.IdNxb;
+                            cts.IdTacGia = cts.IdTacGia;
+                            cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                            cts.IdLoaiBia = cts.IdLoaiBia;
+                            cts.Ma = cts.Ma;
+                            cts.Anh = cts.Anh;
+                            cts.MaVach = cts.MaVach;
+                            cts.KichThuoc = cts.KichThuoc;
+                            cts.SoTrang = cts.SoTrang;
+                            cts.NamXuatBan = cts.NamXuatBan;
+                            cts.MoTa = cts.MoTa;
+                            cts.GiaNhap = cts.GiaNhap;
+                            cts.GiaBan = cts.GiaBan;
+                            cts.TrangThai = cts.TrangThai;
+                            cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
+                            _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                            //het update
+                            LoadSanphamtoFl();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                        }
+                    }
+                    else
+                    {
+                        HoaDonChiTiet hdct = new HoaDonChiTiet();
+                        hdct.IdHoaDon = SelectID;
+                        hdct.IdChiTietSach = SelectIDSp;
+                        hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                        hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                        ChiTietSach cts = new ChiTietSach();
+                        cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                        hdct.DonGia = Convert.ToInt32(cts.GiaBan);
+                        if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
+                        {
+                            hoaDonChiTietService.Update(hdct);
+                            //update so luong sach con lai
+                            cts.IdSach = cts.IdSach;
+                            cts.IdSach = cts.IdSach;
+                            cts.IdNxb = cts.IdNxb;
+                            cts.IdTacGia = cts.IdTacGia;
+                            cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                            cts.IdLoaiBia = cts.IdLoaiBia;
+                            cts.Ma = cts.Ma;
+                            cts.Anh = cts.Anh;
+                            cts.MaVach = cts.MaVach;
+                            cts.KichThuoc = cts.KichThuoc;
+                            cts.SoTrang = cts.SoTrang;
+                            cts.NamXuatBan = cts.NamXuatBan;
+                            cts.MoTa = cts.MoTa;
+                            cts.GiaNhap = cts.GiaNhap;
+                            cts.GiaBan = cts.GiaBan;
+                            cts.TrangThai = cts.TrangThai;
+                            cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
+                            _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                            //het update
+                            LoadSanphamtoFl();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                        }
+                    }
+                }
+                LoaddataToHoadonChitiet();
+                LoadHoaDonChiTiet();
+                LoadSanphamtoFl();
+            }
+        
 
         private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
@@ -1262,5 +1302,7 @@ namespace _3.PresentationLayers.Views
         {
 
         }
+
+
     }
 }

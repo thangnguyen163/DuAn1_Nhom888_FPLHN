@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_quetma = new System.Windows.Forms.Button();
             this.bt_themhdct = new System.Windows.Forms.Button();
             this.bt_xoasp = new System.Windows.Forms.Button();
             this.bt_suasp = new System.Windows.Forms.Button();
@@ -98,6 +99,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
+            this.tb_mavach = new System.Windows.Forms.TextBox();
+            this.tb_tensachtruyen = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -126,6 +129,8 @@
             // panel_nel
             // 
             this.panel_nel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel_nel.Controls.Add(this.tb_tensachtruyen);
+            this.panel_nel.Controls.Add(this.tb_mavach);
             this.panel_nel.Controls.Add(this.panel2);
             this.panel_nel.Controls.Add(this.panel3);
             this.panel_nel.Controls.Add(this.lb_HoaDonChiTiet);
@@ -139,6 +144,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_quetma);
             this.panel2.Controls.Add(this.bt_themhdct);
             this.panel2.Controls.Add(this.bt_xoasp);
             this.panel2.Controls.Add(this.bt_suasp);
@@ -149,6 +155,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1241, 35);
             this.panel2.TabIndex = 107;
+            // 
+            // btn_quetma
+            // 
+            this.btn_quetma.Location = new System.Drawing.Point(905, 6);
+            this.btn_quetma.Name = "btn_quetma";
+            this.btn_quetma.Size = new System.Drawing.Size(113, 29);
+            this.btn_quetma.TabIndex = 110;
+            this.btn_quetma.Text = "Quét mã sách";
+            this.btn_quetma.UseVisualStyleBackColor = true;
+            this.btn_quetma.Click += new System.EventHandler(this.btn_quetma_Click);
             // 
             // bt_themhdct
             // 
@@ -787,6 +803,20 @@
             this.cbb_nganhang.Size = new System.Drawing.Size(251, 28);
             this.cbb_nganhang.TabIndex = 102;
             // 
+            // tb_mavach
+            // 
+            this.tb_mavach.Location = new System.Drawing.Point(880, 390);
+            this.tb_mavach.Name = "tb_mavach";
+            this.tb_mavach.Size = new System.Drawing.Size(249, 27);
+            this.tb_mavach.TabIndex = 125;
+            // 
+            // tb_tensachtruyen
+            // 
+            this.tb_tensachtruyen.Location = new System.Drawing.Point(880, 459);
+            this.tb_tensachtruyen.Name = "tb_tensachtruyen";
+            this.tb_tensachtruyen.Size = new System.Drawing.Size(249, 27);
+            this.tb_tensachtruyen.TabIndex = 126;
+            // 
             // Form_BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -889,5 +919,8 @@
         private System.Windows.Forms.Button bt_xoasp;
         private System.Windows.Forms.Button bt_suasp;
         private System.Windows.Forms.FlowLayoutPanel fl_sanpham;
+        private System.Windows.Forms.Button btn_quetma;
+        private System.Windows.Forms.TextBox tb_tensachtruyen;
+        private System.Windows.Forms.TextBox tb_mavach;
     }
 }
