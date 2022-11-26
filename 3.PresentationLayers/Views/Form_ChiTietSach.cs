@@ -50,6 +50,26 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
             ChiTietSach = new ChiTietSach();
+            //ptb_AnhSach.Image=
+        }
+        public Form_ChiTietSach(string tbt_maVach)
+        {
+            InitializeComponent();
+            _iChiTietSachService = new ChiTietSachService();
+            _lstChiTietSach = new List<ChiTietSach>();
+            _lstChiTietSachView = new List<ChiTietSachView>();
+            _iSachService = new SachService();
+            _iTacGiaService = new TacGiaService();
+            _iTheLoaiService = new TheLoaiService();
+            _iTietTheLoaiService = new ChiTietTheLoaiService();
+            _iNXBService = new NXBService();
+            _iLoaiBiaService = new LoaiBiaService();
+            _iNhaPhatHanhService = new NhaPhatHanhService();
+            LoadData();
+            LoadCbb();
+            ChiTietSach = new ChiTietSach();
+            //ptb_AnhSach.Image=
+            tbt_MaVach.Text = tbt_maVach;
         }
         void LoadData()
         {
