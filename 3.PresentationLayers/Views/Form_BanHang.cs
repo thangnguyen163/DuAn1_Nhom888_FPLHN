@@ -59,7 +59,6 @@ namespace _3.PresentationLayers.Views
             tabHoaDon.Visible = false;
             Locktextboxfrombanhang();
             LoadSanphamtoFl();
-            LoadBtnQuet();
         }
         private void Locktextboxfrombanhang()
         {
@@ -72,8 +71,17 @@ namespace _3.PresentationLayers.Views
         }
         private void LoadBtnQuet()
         {
-            if (dtg_HoaDonChiTiet.Visible != false) btn_quetma.Enabled = true;
-            else btn_quetma.Enabled = false;
+            if (lbdtghdct.Text == "Chưa có hóa đơn nào được chọn")
+            {
+                btn_quetma.Enabled = false;
+                return;
+            }
+            if (lbdtghdct.Text == "")
+            {
+                btn_quetma.Enabled = true;
+                return;
+            }
+            
         }
         //public void LoadSach()
         //{
@@ -488,6 +496,7 @@ namespace _3.PresentationLayers.Views
             if (a >= 1)
             {
                 lbdtghdct.Visible = false;
+                lbdtghdct.Text = "";
                 dtg_HoaDonChiTiet.Visible = true;
                 LoaddataToHoadonChitiet();
             }
@@ -1303,6 +1312,9 @@ namespace _3.PresentationLayers.Views
 
         }
 
-
+        private void lbdtghdct_TextChanged(object sender, EventArgs e)
+        {
+            LoadBtnQuet();
+        }
     }
 }

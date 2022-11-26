@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
+            this.tb_tensachtruyen = new System.Windows.Forms.TextBox();
+            this.tb_mavach = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_quetma = new System.Windows.Forms.Button();
             this.bt_themhdct = new System.Windows.Forms.Button();
@@ -99,8 +101,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
-            this.tb_mavach = new System.Windows.Forms.TextBox();
-            this.tb_tensachtruyen = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -141,6 +141,20 @@
             this.panel_nel.Name = "panel_nel";
             this.panel_nel.Size = new System.Drawing.Size(1241, 1055);
             this.panel_nel.TabIndex = 94;
+            // 
+            // tb_tensachtruyen
+            // 
+            this.tb_tensachtruyen.Location = new System.Drawing.Point(880, 459);
+            this.tb_tensachtruyen.Name = "tb_tensachtruyen";
+            this.tb_tensachtruyen.Size = new System.Drawing.Size(249, 27);
+            this.tb_tensachtruyen.TabIndex = 126;
+            // 
+            // tb_mavach
+            // 
+            this.tb_mavach.Location = new System.Drawing.Point(880, 390);
+            this.tb_mavach.Name = "tb_mavach";
+            this.tb_mavach.Size = new System.Drawing.Size(249, 27);
+            this.tb_mavach.TabIndex = 125;
             // 
             // panel2
             // 
@@ -417,6 +431,7 @@
             this.lbdtghdct.Name = "lbdtghdct";
             this.lbdtghdct.Size = new System.Drawing.Size(0, 20);
             this.lbdtghdct.TabIndex = 103;
+            this.lbdtghdct.TextChanged += new System.EventHandler(this.lbdtghdct_TextChanged);
             // 
             // groupBox3
             // 
@@ -802,20 +817,6 @@
             this.cbb_nganhang.Name = "cbb_nganhang";
             this.cbb_nganhang.Size = new System.Drawing.Size(251, 28);
             this.cbb_nganhang.TabIndex = 102;
-            // 
-            // tb_mavach
-            // 
-            this.tb_mavach.Location = new System.Drawing.Point(880, 390);
-            this.tb_mavach.Name = "tb_mavach";
-            this.tb_mavach.Size = new System.Drawing.Size(249, 27);
-            this.tb_mavach.TabIndex = 125;
-            // 
-            // tb_tensachtruyen
-            // 
-            this.tb_tensachtruyen.Location = new System.Drawing.Point(880, 459);
-            this.tb_tensachtruyen.Name = "tb_tensachtruyen";
-            this.tb_tensachtruyen.Size = new System.Drawing.Size(249, 27);
-            this.tb_tensachtruyen.TabIndex = 126;
             // 
             // Form_BanHang
             // 
