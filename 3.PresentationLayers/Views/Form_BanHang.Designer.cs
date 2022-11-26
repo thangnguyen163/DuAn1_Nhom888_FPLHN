@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
-            this.tb_tensachtruyen = new System.Windows.Forms.TextBox();
-            this.tb_mavach = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_quetma = new System.Windows.Forms.Button();
             this.bt_themhdct = new System.Windows.Forms.Button();
@@ -129,8 +127,6 @@
             // panel_nel
             // 
             this.panel_nel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel_nel.Controls.Add(this.tb_tensachtruyen);
-            this.panel_nel.Controls.Add(this.tb_mavach);
             this.panel_nel.Controls.Add(this.panel2);
             this.panel_nel.Controls.Add(this.panel3);
             this.panel_nel.Controls.Add(this.lb_HoaDonChiTiet);
@@ -141,20 +137,6 @@
             this.panel_nel.Name = "panel_nel";
             this.panel_nel.Size = new System.Drawing.Size(1241, 1055);
             this.panel_nel.TabIndex = 94;
-            // 
-            // tb_tensachtruyen
-            // 
-            this.tb_tensachtruyen.Location = new System.Drawing.Point(880, 459);
-            this.tb_tensachtruyen.Name = "tb_tensachtruyen";
-            this.tb_tensachtruyen.Size = new System.Drawing.Size(249, 27);
-            this.tb_tensachtruyen.TabIndex = 126;
-            // 
-            // tb_mavach
-            // 
-            this.tb_mavach.Location = new System.Drawing.Point(880, 390);
-            this.tb_mavach.Name = "tb_mavach";
-            this.tb_mavach.Size = new System.Drawing.Size(249, 27);
-            this.tb_mavach.TabIndex = 125;
             // 
             // panel2
             // 
@@ -921,7 +903,5 @@
         private System.Windows.Forms.Button bt_suasp;
         private System.Windows.Forms.FlowLayoutPanel fl_sanpham;
         private System.Windows.Forms.Button btn_quetma;
-        private System.Windows.Forms.TextBox tb_tensachtruyen;
-        private System.Windows.Forms.TextBox tb_mavach;
     }
 }
