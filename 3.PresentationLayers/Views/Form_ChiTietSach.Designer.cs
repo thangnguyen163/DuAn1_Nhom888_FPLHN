@@ -30,8 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ChiTietSach));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Reset = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.ptb_AnhSach = new System.Windows.Forms.PictureBox();
+            this.btn_Update = new System.Windows.Forms.Button();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.btn_Add = new System.Windows.Forms.Button();
             this.ipb_AddLoaiBia = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddNhaPhatHanh = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddTacGia = new FontAwesome.Sharp.IconPictureBox();
@@ -74,10 +78,6 @@
             this.cbb_TheLoai2 = new System.Windows.Forms.ComboBox();
             this.cbb_TheLoai = new System.Windows.Forms.ComboBox();
             this.cbb_Sach = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_Update = new System.Windows.Forms.Button();
-            this.btn_Add = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.Lọc = new System.Windows.Forms.GroupBox();
@@ -86,6 +86,11 @@
             this.cbb_LocNhaPhatHanh = new System.Windows.Forms.ComboBox();
             this.cbb_LocLoaiBia = new System.Windows.Forms.ComboBox();
             this.tbt_Search = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -96,7 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ipb_TheLoai2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).BeginInit();
             this.Lọc.SuspendLayout();
@@ -104,8 +108,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_Reset);
+            this.groupBox1.Controls.Add(this.btn_Delete);
             this.groupBox1.Controls.Add(this.ptb_AnhSach);
+            this.groupBox1.Controls.Add(this.btn_Update);
             this.groupBox1.Controls.Add(this.iconPictureBox1);
+            this.groupBox1.Controls.Add(this.btn_Add);
             this.groupBox1.Controls.Add(this.ipb_AddLoaiBia);
             this.groupBox1.Controls.Add(this.ipb_AddNhaPhatHanh);
             this.groupBox1.Controls.Add(this.ipb_AddTacGia);
@@ -150,15 +158,35 @@
             this.groupBox1.Controls.Add(this.cbb_Sach);
             this.groupBox1.Location = new System.Drawing.Point(31, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(890, 516);
+            this.groupBox1.Size = new System.Drawing.Size(903, 516);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btn_Reset
+            // 
+            this.btn_Reset.Location = new System.Drawing.Point(659, 465);
+            this.btn_Reset.Name = "btn_Reset";
+            this.btn_Reset.Size = new System.Drawing.Size(116, 32);
+            this.btn_Reset.TabIndex = 0;
+            this.btn_Reset.Text = "Reset";
+            this.btn_Reset.UseVisualStyleBackColor = true;
+            this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(528, 465);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(116, 32);
+            this.btn_Delete.TabIndex = 0;
+            this.btn_Delete.Text = "Xoá";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
             // ptb_AnhSach
             // 
-            //this.ptb_AnhSach.Image = global::_3.PresentationLayers.Properties.Resources.icon_add;
+            this.ptb_AnhSach.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ptb_AnhSach.Location = new System.Drawing.Point(6, 94);
             this.ptb_AnhSach.Name = "ptb_AnhSach";
             this.ptb_AnhSach.Size = new System.Drawing.Size(227, 287);
@@ -167,9 +195,19 @@
             this.ptb_AnhSach.TabStop = false;
             this.ptb_AnhSach.DoubleClick += new System.EventHandler(this.ptb_AnhSach_DoubleClick);
             // 
+            // btn_Update
+            // 
+            this.btn_Update.Location = new System.Drawing.Point(407, 465);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(106, 32);
+            this.btn_Update.TabIndex = 0;
+            this.btn_Update.Text = "Sửa";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
+            // 
             // iconPictureBox1
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.iconPictureBox1.BackColor = System.Drawing.Color.LightBlue;
             this.iconPictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("iconPictureBox1.BackgroundImage")));
             this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -183,9 +221,19 @@
             this.iconPictureBox1.TabStop = false;
             this.iconPictureBox1.Click += new System.EventHandler(this.ipb_AddLoaiBia_Click);
             // 
+            // btn_Add
+            // 
+            this.btn_Add.Location = new System.Drawing.Point(279, 465);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(110, 32);
+            this.btn_Add.TabIndex = 0;
+            this.btn_Add.Text = "Thêm";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
             // ipb_AddLoaiBia
             // 
-            this.ipb_AddLoaiBia.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddLoaiBia.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddLoaiBia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddLoaiBia.BackgroundImage")));
             this.ipb_AddLoaiBia.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddLoaiBia.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -201,7 +249,7 @@
             // 
             // ipb_AddNhaPhatHanh
             // 
-            this.ipb_AddNhaPhatHanh.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddNhaPhatHanh.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddNhaPhatHanh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddNhaPhatHanh.BackgroundImage")));
             this.ipb_AddNhaPhatHanh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddNhaPhatHanh.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -217,7 +265,7 @@
             // 
             // ipb_AddTacGia
             // 
-            this.ipb_AddTacGia.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddTacGia.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddTacGia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddTacGia.BackgroundImage")));
             this.ipb_AddTacGia.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddTacGia.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -233,7 +281,7 @@
             // 
             // ipb_AddNXB
             // 
-            this.ipb_AddNXB.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddNXB.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddNXB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddNXB.BackgroundImage")));
             this.ipb_AddNXB.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddNXB.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -249,7 +297,7 @@
             // 
             // ipb_TheLoai2
             // 
-            this.ipb_TheLoai2.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_TheLoai2.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_TheLoai2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_TheLoai2.BackgroundImage")));
             this.ipb_TheLoai2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_TheLoai2.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -265,7 +313,7 @@
             // 
             // ipb_AddTheLoai
             // 
-            this.ipb_AddTheLoai.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddTheLoai.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddTheLoai.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddTheLoai.BackgroundImage")));
             this.ipb_AddTheLoai.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddTheLoai.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -281,7 +329,7 @@
             // 
             // ipb_AddSach
             // 
-            this.ipb_AddSach.BackColor = System.Drawing.SystemColors.Control;
+            this.ipb_AddSach.BackColor = System.Drawing.Color.LightBlue;
             this.ipb_AddSach.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddSach.BackgroundImage")));
             this.ipb_AddSach.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ipb_AddSach.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -592,54 +640,12 @@
             this.cbb_Sach.Size = new System.Drawing.Size(165, 28);
             this.cbb_Sach.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btn_Delete);
-            this.groupBox2.Controls.Add(this.btn_Update);
-            this.groupBox2.Controls.Add(this.btn_Add);
-            this.groupBox2.Location = new System.Drawing.Point(938, 20);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(248, 241);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chức năng";
-            // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Location = new System.Drawing.Point(33, 171);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(184, 62);
-            this.btn_Delete.TabIndex = 0;
-            this.btn_Delete.Text = "Xoá";
-            this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
-            // 
-            // btn_Update
-            // 
-            this.btn_Update.Location = new System.Drawing.Point(33, 98);
-            this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(184, 63);
-            this.btn_Update.TabIndex = 0;
-            this.btn_Update.Text = "Sửa";
-            this.btn_Update.UseVisualStyleBackColor = true;
-            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
-            // 
-            // btn_Add
-            // 
-            this.btn_Add.Location = new System.Drawing.Point(33, 26);
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(184, 56);
-            this.btn_Add.TabIndex = 0;
-            this.btn_Add.Text = "Thêm";
-            this.btn_Add.UseVisualStyleBackColor = true;
-            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dtg_Show);
             this.groupBox3.Location = new System.Drawing.Point(31, 542);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1242, 400);
+            this.groupBox3.Size = new System.Drawing.Size(1159, 400);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data";
@@ -652,7 +658,7 @@
             this.dtg_Show.Name = "dtg_Show";
             this.dtg_Show.RowHeadersWidth = 51;
             this.dtg_Show.RowTemplate.Height = 29;
-            this.dtg_Show.Size = new System.Drawing.Size(1265, 311);
+            this.dtg_Show.Size = new System.Drawing.Size(1153, 368);
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
@@ -663,9 +669,14 @@
             this.Lọc.Controls.Add(this.cbb_LocNhaPhatHanh);
             this.Lọc.Controls.Add(this.cbb_LocLoaiBia);
             this.Lọc.Controls.Add(this.tbt_Search);
-            this.Lọc.Location = new System.Drawing.Point(940, 267);
+            this.Lọc.Controls.Add(this.label18);
+            this.Lọc.Controls.Add(this.label19);
+            this.Lọc.Controls.Add(this.label20);
+            this.Lọc.Controls.Add(this.label21);
+            this.Lọc.Controls.Add(this.label22);
+            this.Lọc.Location = new System.Drawing.Point(940, 20);
             this.Lọc.Name = "Lọc";
-            this.Lọc.Size = new System.Drawing.Size(250, 271);
+            this.Lọc.Size = new System.Drawing.Size(384, 518);
             this.Lọc.TabIndex = 3;
             this.Lọc.TabStop = false;
             this.Lọc.Text = "Lọc";
@@ -673,56 +684,102 @@
             // cbb_LocTacGia
             // 
             this.cbb_LocTacGia.FormattingEnabled = true;
-            this.cbb_LocTacGia.Location = new System.Drawing.Point(31, 127);
+            this.cbb_LocTacGia.Location = new System.Drawing.Point(178, 143);
             this.cbb_LocTacGia.Name = "cbb_LocTacGia";
             this.cbb_LocTacGia.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocTacGia.TabIndex = 0;
-            this.cbb_LocTacGia.Text = "            -- Tác giả --";
+            this.cbb_LocTacGia.TextChanged += new System.EventHandler(this.cbb_LocTacGia_TextChanged);
             // 
             // cbb_LocNXB
             // 
             this.cbb_LocNXB.FormattingEnabled = true;
-            this.cbb_LocNXB.Location = new System.Drawing.Point(31, 82);
+            this.cbb_LocNXB.Location = new System.Drawing.Point(178, 98);
             this.cbb_LocNXB.Name = "cbb_LocNXB";
             this.cbb_LocNXB.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocNXB.TabIndex = 0;
-            this.cbb_LocNXB.Text = "        -- Nhà xuất bản--";
+            this.cbb_LocNXB.TextChanged += new System.EventHandler(this.cbb_LocNXB_TextChanged);
             // 
             // cbb_LocNhaPhatHanh
             // 
             this.cbb_LocNhaPhatHanh.FormattingEnabled = true;
-            this.cbb_LocNhaPhatHanh.Location = new System.Drawing.Point(31, 172);
+            this.cbb_LocNhaPhatHanh.Location = new System.Drawing.Point(178, 188);
             this.cbb_LocNhaPhatHanh.Name = "cbb_LocNhaPhatHanh";
             this.cbb_LocNhaPhatHanh.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocNhaPhatHanh.TabIndex = 0;
-            this.cbb_LocNhaPhatHanh.Text = "         -- Nhà phát hành --";
+            this.cbb_LocNhaPhatHanh.TextChanged += new System.EventHandler(this.cbb_LocNhaPhatHanh_TextChanged);
             // 
             // cbb_LocLoaiBia
             // 
             this.cbb_LocLoaiBia.FormattingEnabled = true;
-            this.cbb_LocLoaiBia.Location = new System.Drawing.Point(31, 218);
+            this.cbb_LocLoaiBia.Location = new System.Drawing.Point(178, 234);
             this.cbb_LocLoaiBia.Name = "cbb_LocLoaiBia";
             this.cbb_LocLoaiBia.Size = new System.Drawing.Size(196, 28);
             this.cbb_LocLoaiBia.TabIndex = 0;
-            this.cbb_LocLoaiBia.Text = "              -- Loại bìa --";
+            this.cbb_LocLoaiBia.TextChanged += new System.EventHandler(this.cbb_LocLoaiBia_TextChanged);
             // 
             // tbt_Search
             // 
-            this.tbt_Search.Location = new System.Drawing.Point(31, 26);
+            this.tbt_Search.Location = new System.Drawing.Point(178, 42);
             this.tbt_Search.Name = "tbt_Search";
             this.tbt_Search.Size = new System.Drawing.Size(196, 27);
             this.tbt_Search.TabIndex = 2;
             this.tbt_Search.Text = "   ";
             this.tbt_Search.TextChanged += new System.EventHandler(this.tbt_Search_TextChanged);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 49);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 20);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Tìm kiếm";
+            this.label18.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 101);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(99, 20);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Lọc theo NXB";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 189);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(167, 20);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Lọc theo Nhà phát hành";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(5, 145);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(115, 20);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Lọc theo tác giả";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 234);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(120, 20);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Lọc theo loại bìa";
+            // 
             // Form_ChiTietSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1447, 973);
+            this.BackColor = System.Drawing.Color.LightBlue;
+            this.ClientSize = new System.Drawing.Size(1326, 952);
             this.Controls.Add(this.Lọc);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_ChiTietSach";
             this.Text = "Form_ChiTietSach";
@@ -737,7 +794,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ipb_TheLoai2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Show)).EndInit();
             this.Lọc.ResumeLayout(false);
@@ -749,7 +805,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdt_KhongBan;
         private System.Windows.Forms.RadioButton rdt_ConBan;
@@ -805,5 +860,11 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbt_MaVach;
+        private System.Windows.Forms.Button btn_Reset;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }

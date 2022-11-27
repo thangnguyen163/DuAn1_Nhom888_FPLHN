@@ -73,32 +73,6 @@ namespace _3.PresentationLayers.Views
         }
         void LoadData()
         {
-            //int stt = 0;
-            //dtg_Show.ColumnCount = 16;
-            //dtg_Show.Columns[0].Name = "STT";
-            //dtg_Show.Columns[1].Name = "Id";
-            //dtg_Show.Columns[1].Visible = false;
-            //dtg_Show.Columns[2].Name = "Sách";
-            //dtg_Show.Columns[3].Name = "NXB";
-            //dtg_Show.Columns[4].Name = "Tác giả";
-            //dtg_Show.Columns[5].Name = "NPH";
-            //dtg_Show.Columns[6].Name = "Loại bìa";
-            //dtg_Show.Columns[7].Name = "Mã";
-            //dtg_Show.Columns[8].Name = "Kích thước";
-            //dtg_Show.Columns[9].Name = "Năm xuất bản";
-            //dtg_Show.Columns[10].Name = "Mô tả";
-            //dtg_Show.Columns[11].Name = "Số trang";
-            //dtg_Show.Columns[12].Name = "Số lượng";
-            //dtg_Show.Columns[13].Name = "Giá nhập";
-            //dtg_Show.Columns[14].Name = "Giá bán";
-            //dtg_Show.Columns[15].Name = "Trạng thái";
-            //dtg_Show.Rows.Clear();
-            //foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
-            //{
-            //    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán");
-            //}
-
-
             int stt = 0;
             dtg_Show.ColumnCount = 17;
             dtg_Show.Columns[0].Name = "STT";
@@ -213,13 +187,13 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[14].Name = "Giá bán";
             dtg_Show.Columns[15].Name = "Trạng thái";
             dtg_Show.Columns[16].Name = "Đường Dẫn";
-            dtg_Show.Columns[17].Name = "Thể loại 1";
-            dtg_Show.Columns[18].Name = "Thể loại 2";
+            //dtg_Show.Columns[17].Name = "Thể loại 1";
+            //dtg_Show.Columns[18].Name = "Thể loại 2";
 
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x=>x.TenSach.Contains(tbt_Search.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh, a.TenTheLoai, a.TenChiTietTheLoai);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/);
             }
         }
 
@@ -235,71 +209,205 @@ namespace _3.PresentationLayers.Views
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            #region CheckNull
+            if (cbb_Sach.Text == "")
             {
-                //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-                //File.Copy(LinkImage, Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage)), true);
-                //LinkImage = Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage));
-                MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
-                {
-
-
-                    Id = Guid.NewGuid(),
-                    IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
-                      .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
-                    KichThuoc = tbt_KichThuoc.Text,
-                    NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
-                    MoTa = tbt_MoTa.Text,
-                    SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
-                    SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
-                    GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
-                    GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
-                    Anh=(byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image,typeof(byte[]))),
-                    TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-
-                }));
-                LoadData();
+                MessageBox.Show("Sách không được để trống!!!!", "ERROR");
             }
-            if (dialogResult == DialogResult.No) return;
+            if (cbb_TheLoai.Text == "")
+            {
+                MessageBox.Show("Thể loại không được để trống!!!!", "ERROR");
+            }
+            if (cbb_NXB.Text == "")
+            {
+                MessageBox.Show("NXb không được để trống!!!!", "ERROR");
+            }
+            if (cbb_TacGia.Text == "")
+            {
+                MessageBox.Show("Tác giả không được để trống!!!!", "ERROR");
+            }
+            if (cbb_NhaPhatHanh.Text == "")
+            {
+                MessageBox.Show("Nhà phát hành không được để trống!!!!", "ERROR");
+            }
+            if (cbb_LoaiBia.Text == "")
+            {
+                MessageBox.Show("Loại bìa không được để trống!!!!", "ERROR");
+            }
+            if (tbt_MaVach.Text == "")
+            {
+                MessageBox.Show("Mã vạch không được để trống!!!!", "ERROR");
+            }
+            if (tbt_NamXuatBan.Text == "")
+            {
+                MessageBox.Show("Năm xuất bản không được để trống!!!!", "ERROR");
+            }
+            if (tbt_SoTrang.Text == "")
+            {
+                MessageBox.Show("Số trang không được để trống!!!!", "ERROR");
+            }
+            if (tbt_SoLuong.Text == "")
+            {
+                MessageBox.Show("Số lượng không được để trống!!!!", "ERROR");
+            }
+            if (tbt_GiaNhap.Text == "")
+            {
+                MessageBox.Show("Giá nhập không được để trống!!!!", "ERROR");
+            }
+            if (tbt_GiaBan.Text == "")
+            {
+                MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
+            }
+            if (tbt_KichThuoc.Text == "")
+            {
+                MessageBox.Show("Kích thước không được để trống!!!!", "ERROR");
+            }
+            if (rdt_ConBan.Checked = false)
+            {
+                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+            }
+            if (rdt_KhongBan.Checked = false)
+            {
+                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+            }
+
+            #endregion
+
+
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                    //File.Copy(LinkImage, Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage)), true);
+                    //LinkImage = Path.Combine(projectDirectory, "Image", Path.GetFileName(LinkImage));
+                    MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
+                    {
+
+
+                        Id = Guid.NewGuid(),
+                        IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
+                        Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
+                          .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
+                        KichThuoc = tbt_KichThuoc.Text,
+                        NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
+                        MoTa = tbt_MoTa.Text,
+                        SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
+                        SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
+                        GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
+                        GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
+                        Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
+                        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
+
+                    }));
+                    LoadData();
+                }
+                if (dialogResult == DialogResult.No) return;
+            }
         }
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt Update chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            #region CheckNull
+            if (cbb_Sach.Text == "")
             {
-                MessageBox.Show(_iChiTietSachService.Update(SelectedID, new ChiTietSach()
-                {
-
-                    IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
-                    IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    //IdTheLoai = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                    //IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-
-                    Ma=tbt_Ma.Text,
-                    KichThuoc = tbt_KichThuoc.Text,
-                    NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
-                    MoTa = tbt_MoTa.Text,
-                    SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
-                    SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
-                    GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
-                    GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
-                    Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
-                    TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-
-                }));
-                LoadData();
+                MessageBox.Show("Sách không được để trống!!!!", "ERROR");
             }
-            if (dialogResult == DialogResult.No) return;
+            if (cbb_TheLoai.Text == "")
+            {
+                MessageBox.Show("Thể loại không được để trống!!!!", "ERROR");
+            }
+            if (cbb_NXB.Text == "")
+            {
+                MessageBox.Show("NXb không được để trống!!!!", "ERROR");
+            }
+            if (cbb_TacGia.Text == "")
+            {
+                MessageBox.Show("Tác giả không được để trống!!!!", "ERROR");
+            }
+            if (cbb_NhaPhatHanh.Text == "")
+            {
+                MessageBox.Show("Nhà phát hành không được để trống!!!!", "ERROR");
+            }
+            if (cbb_LoaiBia.Text == "")
+            {
+                MessageBox.Show("Loại bìa không được để trống!!!!", "ERROR");
+            }
+            if (tbt_MaVach.Text == "")
+            {
+                MessageBox.Show("Mã vạch không được để trống!!!!", "ERROR");
+            }
+            if (tbt_NamXuatBan.Text == "")
+            {
+                MessageBox.Show("Năm xuất bản không được để trống!!!!", "ERROR");
+            }
+            if (tbt_SoTrang.Text == "")
+            {
+                MessageBox.Show("Số trang không được để trống!!!!", "ERROR");
+            }
+            if (tbt_SoLuong.Text == "")
+            {
+                MessageBox.Show("Số lượng không được để trống!!!!", "ERROR");
+            }
+            if (tbt_GiaNhap.Text == "")
+            {
+                MessageBox.Show("Giá nhập không được để trống!!!!", "ERROR");
+            }
+            if (tbt_GiaBan.Text == "")
+            {
+                MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
+            }
+            if (tbt_KichThuoc.Text == "")
+            {
+                MessageBox.Show("Kích thước không được để trống!!!!", "ERROR");
+            }
+            if (rdt_ConBan.Checked = false)
+            {
+                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+            }
+            if (rdt_KhongBan.Checked = false)
+            {
+                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+            }
+
+            #endregion
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt Update chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show(_iChiTietSachService.Update(SelectedID, new ChiTietSach()
+                    {
+
+                        IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
+                        IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
+                        //IdTheLoai = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
+                        //IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
+
+                        Ma = tbt_Ma.Text,
+                        KichThuoc = tbt_KichThuoc.Text,
+                        NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
+                        MoTa = tbt_MoTa.Text,
+                        SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
+                        SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
+                        GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
+                        GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
+                        Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
+                        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
+
+                    }));
+                    LoadData();
+                }
+                if (dialogResult == DialogResult.No) return;
+            }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -425,6 +533,151 @@ namespace _3.PresentationLayers.Views
             
         }
 
+        private void btn_Reset_Click(object sender, EventArgs e)
+        {
+            tbt_Ma.Clear();
+            cbb_Sach.Text = "";
+            cbb_TheLoai.Text = "";
+            cbb_TheLoai2.Text = "";
+            cbb_NXB.Text = "";
+            cbb_TacGia.Text = "";
+            cbb_NhaPhatHanh.Text = "";
+            cbb_LoaiBia.Text = "";
+            tbt_MaVach.Clear();
+            tbt_NamXuatBan.Clear();
+            tbt_MoTa.Clear();
+            tbt_SoTrang.Clear();
+            tbt_SoLuong.Clear();
+            tbt_GiaNhap.Clear();
+            tbt_GiaBan.Clear();
+            tbt_KichThuoc.Clear();
+            rdt_ConBan.Checked = false;
+            rdt_KhongBan.Checked = false;
+            //ptb_AnhSach.Image=Image()
+        }
 
+        private void cbb_LocNXB_TextChanged(object sender, EventArgs e)
+        {
+            int stt = 0;
+            dtg_Show.ColumnCount = 17;
+            dtg_Show.Columns[0].Name = "STT";
+            dtg_Show.Columns[1].Name = "Id";
+            dtg_Show.Columns[1].Visible = false;
+            dtg_Show.Columns[2].Name = "Sách";
+            dtg_Show.Columns[3].Name = "NXB";
+            dtg_Show.Columns[4].Name = "Tác giả";
+            dtg_Show.Columns[5].Name = "NPH";
+            dtg_Show.Columns[6].Name = "Loại bìa";
+            dtg_Show.Columns[7].Name = "Mã";
+            dtg_Show.Columns[8].Name = "Kích thước";
+            dtg_Show.Columns[9].Name = "Năm xuất bản";
+            dtg_Show.Columns[10].Name = "Mô tả";
+            dtg_Show.Columns[11].Name = "Số trang";
+            dtg_Show.Columns[12].Name = "Số lượng";
+            dtg_Show.Columns[13].Name = "Giá nhập";
+            dtg_Show.Columns[14].Name = "Giá bán";
+            dtg_Show.Columns[15].Name = "Trạng thái";
+            dtg_Show.Columns[16].Name = "Đường Dẫn";
+            //dtg_Show.Columns[17].Name = "Thể loại 1";
+            //dtg_Show.Columns[18].Name = "Thể loại 2";
+            dtg_Show.Rows.Clear();
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)))
+            {
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+            }
+        }
+
+        private void cbb_LocTacGia_TextChanged(object sender, EventArgs e)
+        {
+            int stt = 0;
+            dtg_Show.ColumnCount = 17;
+            dtg_Show.Columns[0].Name = "STT";
+            dtg_Show.Columns[1].Name = "Id";
+            dtg_Show.Columns[1].Visible = false;
+            dtg_Show.Columns[2].Name = "Sách";
+            dtg_Show.Columns[3].Name = "NXB";
+            dtg_Show.Columns[4].Name = "Tác giả";
+            dtg_Show.Columns[5].Name = "NPH";
+            dtg_Show.Columns[6].Name = "Loại bìa";
+            dtg_Show.Columns[7].Name = "Mã";
+            dtg_Show.Columns[8].Name = "Kích thước";
+            dtg_Show.Columns[9].Name = "Năm xuất bản";
+            dtg_Show.Columns[10].Name = "Mô tả";
+            dtg_Show.Columns[11].Name = "Số trang";
+            dtg_Show.Columns[12].Name = "Số lượng";
+            dtg_Show.Columns[13].Name = "Giá nhập";
+            dtg_Show.Columns[14].Name = "Giá bán";
+            dtg_Show.Columns[15].Name = "Trạng thái";
+            dtg_Show.Columns[16].Name = "Đường Dẫn";
+            //dtg_Show.Columns[17].Name = "Thể loại 1";
+            //dtg_Show.Columns[18].Name = "Thể loại 2";
+            dtg_Show.Rows.Clear();
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)))
+            {
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+            }
+        }
+
+        private void cbb_LocNhaPhatHanh_TextChanged(object sender, EventArgs e)
+        {
+            int stt = 0;
+            dtg_Show.ColumnCount = 17;
+            dtg_Show.Columns[0].Name = "STT";
+            dtg_Show.Columns[1].Name = "Id";
+            dtg_Show.Columns[1].Visible = false;
+            dtg_Show.Columns[2].Name = "Sách";
+            dtg_Show.Columns[3].Name = "NXB";
+            dtg_Show.Columns[4].Name = "Tác giả";
+            dtg_Show.Columns[5].Name = "NPH";
+            dtg_Show.Columns[6].Name = "Loại bìa";
+            dtg_Show.Columns[7].Name = "Mã";
+            dtg_Show.Columns[8].Name = "Kích thước";
+            dtg_Show.Columns[9].Name = "Năm xuất bản";
+            dtg_Show.Columns[10].Name = "Mô tả";
+            dtg_Show.Columns[11].Name = "Số trang";
+            dtg_Show.Columns[12].Name = "Số lượng";
+            dtg_Show.Columns[13].Name = "Giá nhập";
+            dtg_Show.Columns[14].Name = "Giá bán";
+            dtg_Show.Columns[15].Name = "Trạng thái";
+            dtg_Show.Columns[16].Name = "Đường Dẫn";
+            //dtg_Show.Columns[17].Name = "Thể loại 1";
+            //dtg_Show.Columns[18].Name = "Thể loại 2";
+            dtg_Show.Rows.Clear();
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)))
+            {
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+            }
+        }
+
+        private void cbb_LocLoaiBia_TextChanged(object sender, EventArgs e)
+        {
+            int stt = 0;
+            dtg_Show.ColumnCount = 17;
+            dtg_Show.Columns[0].Name = "STT";
+            dtg_Show.Columns[1].Name = "Id";
+            dtg_Show.Columns[1].Visible = false;
+            dtg_Show.Columns[2].Name = "Sách";
+            dtg_Show.Columns[3].Name = "NXB";
+            dtg_Show.Columns[4].Name = "Tác giả";
+            dtg_Show.Columns[5].Name = "NPH";
+            dtg_Show.Columns[6].Name = "Loại bìa";
+            dtg_Show.Columns[7].Name = "Mã";
+            dtg_Show.Columns[8].Name = "Kích thước";
+            dtg_Show.Columns[9].Name = "Năm xuất bản";
+            dtg_Show.Columns[10].Name = "Mô tả";
+            dtg_Show.Columns[11].Name = "Số trang";
+            dtg_Show.Columns[12].Name = "Số lượng";
+            dtg_Show.Columns[13].Name = "Giá nhập";
+            dtg_Show.Columns[14].Name = "Giá bán";
+            dtg_Show.Columns[15].Name = "Trạng thái";
+            dtg_Show.Columns[16].Name = "Đường Dẫn";
+            //dtg_Show.Columns[17].Name = "Thể loại 1";
+            //dtg_Show.Columns[18].Name = "Thể loại 2";
+            dtg_Show.Rows.Clear();
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)))
+            {
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+            }
+        }
     }
 }
