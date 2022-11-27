@@ -54,6 +54,11 @@ namespace _2.BUS.Serivces
             return "Chuyển trạng thái thất bại";
         }
 
+        public List<KhachHang> getAll()
+        {
+            return _khachHangRepository.getall();
+        }
+
         public List<KhachhangView> getKhachHangFromDB()
         {
             var templst = (from a in _idiemtieudungRepository.GetAll()

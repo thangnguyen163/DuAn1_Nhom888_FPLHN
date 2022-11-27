@@ -15,5 +15,6 @@ namespace _2.BUS.IServices
         string deleteKhachHang (KhachHang khachHang); 
        
         List<KhachhangView> getKhachHangFromDB();
+        List<KhachHang> getAll();
     }
 }
