@@ -99,6 +99,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
+            this.cbx_Loc = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -140,6 +141,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbx_Loc);
             this.panel2.Controls.Add(this.btn_quetma);
             this.panel2.Controls.Add(this.bt_themhdct);
             this.panel2.Controls.Add(this.bt_xoasp);
@@ -800,6 +802,19 @@
             this.cbb_nganhang.Size = new System.Drawing.Size(251, 28);
             this.cbb_nganhang.TabIndex = 102;
             // 
+            // cbx_Loc
+            // 
+            this.cbx_Loc.FormattingEnabled = true;
+            this.cbx_Loc.Items.AddRange(new object[] {
+            "Đã thanh toán",
+            "Chờ giao",
+            "Đang giao"});
+            this.cbx_Loc.Location = new System.Drawing.Point(1061, 4);
+            this.cbx_Loc.Name = "cbx_Loc";
+            this.cbx_Loc.Size = new System.Drawing.Size(151, 28);
+            this.cbx_Loc.TabIndex = 111;
+            this.cbx_Loc.SelectedIndexChanged += new System.EventHandler(this.cbx_Loc_SelectedIndexChanged);
+            // 
             // Form_BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -903,5 +918,6 @@
         private System.Windows.Forms.Button bt_suasp;
         private System.Windows.Forms.FlowLayoutPanel fl_sanpham;
         private System.Windows.Forms.Button btn_quetma;
+        private System.Windows.Forms.ComboBox cbx_Loc;
     }
 }

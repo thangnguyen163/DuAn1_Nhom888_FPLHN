@@ -1917,5 +1917,88 @@ namespace _3.PresentationLayers.Views
         {
             LoadBtnQuet();
         }
+        public void LoadHoaDonDatHang()
+        {
+            try
+            {
+                if (cbx_Loc.Text == "Đã thanh toán")
+                {
+                    groupBox2.Text = "Hóa đã thanh toán";
+                    fl_DaThanhToan.Controls.Clear();
+
+                    foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 1))
+                    {
+                        Button btn1 = new Button() { Width = 80, Height = 60 };
+                        btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 1 ? "Đã thanh toán" : "");
+                        btn1.Tag = a;
+                        btn1.Click += btnsender_Click;
+                        btn1.ForeColor = Color.FromArgb(255, 114, 86);
+                        switch (a.TrangThai)
+                        {
+                            case 1:
+                                {
+                                    btn1.BackColor = Color.FromArgb(205, 201, 201);
+                                    break;
+                                }
+                        }
+                        fl_DaThanhToan.Controls.Add(btn1);
+                    }
+                }
+                else if (cbx_Loc.Text == "Chờ giao")
+                {
+                    fl_DaThanhToan.Controls.Clear();
+                    groupBox2.Text = "Hóa đơn chờ giao";
+                    foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 2))
+                    {
+                        Button btn1 = new Button() { Width = 80, Height = 60 };
+                        btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 2 ? "Chờ giao" : "");
+                        btn1.Tag = a;
+                        btn1.Click += btnsender_Click;
+                        btn1.ForeColor = Color.FromArgb(255, 114, 86);
+                        switch (a.TrangThai)
+                        {
+                            case 1:
+                                {
+                                    btn1.BackColor = Color.FromArgb(205, 201, 201);
+                                    break;
+                                }
+                        }
+                        fl_DaThanhToan.Controls.Add(btn1);
+                    }
+                }
+                else
+                {
+                    groupBox2.Text = "Hóa đơn đang giao";
+                    fl_DaThanhToan.Controls.Clear();
+                    foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 3))
+                    {
+                        Button btn1 = new Button() { Width = 80, Height = 60 };
+                        btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 3 ? "Đang giao" : "");
+                        btn1.Tag = a;
+                        btn1.Click += btnsender_Click;
+                        btn1.ForeColor = Color.FromArgb(255, 114, 86);
+                        switch (a.TrangThai)
+                        {
+                            case 1:
+                                {
+                                    btn1.BackColor = Color.FromArgb(205, 201, 201);
+                                    break;
+                                }
+                        }
+                        fl_DaThanhToan.Controls.Add(btn1);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(Convert.ToString(e), "Liên hệ");
+            }
+        }
+
+        private void cbx_Loc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadHoaDonDatHang();
+        }
     }
 }
