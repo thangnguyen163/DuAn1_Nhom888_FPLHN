@@ -49,6 +49,8 @@ namespace _2.BUS.Service
                  select new ChiTietTheLoaiView()
                  {
                      Id = cttl.Id,
+                     IDCTS= cts.Id,
+                     IDTL= tl.Id,
                      TheLoai = tl.Ten,
                      TenSach = sach.Ten,
                      Ma = cttl.Ma,

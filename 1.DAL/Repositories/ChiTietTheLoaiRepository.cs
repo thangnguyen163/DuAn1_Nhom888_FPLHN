@@ -20,7 +20,7 @@ namespace _1.DAL.Repositoties
         public bool AddCTTheLoai(ChiTietTheLoai obj)
         {
             if (obj == null) return false;
-            _context.ChiTietTheLoais.Add(obj);
+            _context.Add(obj);
             _context.SaveChanges();
             return true;
         }
@@ -34,12 +34,6 @@ namespace _1.DAL.Repositoties
             _context.SaveChanges();
             return true;
         }
-
-        public List<ChiTietTheLoai> GetAllCTTheLoai()
-        {
-            return _context.ChiTietTheLoais.ToList();
-        }
-
         public bool UpdateCTTheLoai(ChiTietTheLoai obj)
         {
             //public Guid Id { get; set; }
@@ -58,6 +52,10 @@ namespace _1.DAL.Repositoties
             _context.Update(tempobj);
             _context.SaveChanges();
             return true;
+        }
+        public List<ChiTietTheLoai> GetAllCTTheLoai()
+        {
+            return _context.ChiTietTheLoais.ToList();
         }
     }
 }
