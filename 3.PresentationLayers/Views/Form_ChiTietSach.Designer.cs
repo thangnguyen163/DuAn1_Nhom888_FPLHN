@@ -265,7 +265,7 @@
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.Black;
-            this.panel17.Location = new System.Drawing.Point(631, 381);
+            this.panel17.Location = new System.Drawing.Point(624, 437);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(310, 2);
             this.panel17.TabIndex = 4;
@@ -273,7 +273,7 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Black;
-            this.panel15.Location = new System.Drawing.Point(632, 285);
+            this.panel15.Location = new System.Drawing.Point(631, 331);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(310, 2);
             this.panel15.TabIndex = 4;
@@ -281,7 +281,7 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Black;
-            this.panel13.Location = new System.Drawing.Point(633, 194);
+            this.panel13.Location = new System.Drawing.Point(632, 240);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(310, 2);
             this.panel13.TabIndex = 4;
@@ -289,7 +289,7 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.Black;
-            this.panel11.Location = new System.Drawing.Point(634, 111);
+            this.panel11.Location = new System.Drawing.Point(634, 125);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(310, 2);
             this.panel11.TabIndex = 4;
@@ -297,7 +297,7 @@
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.Black;
-            this.panel16.Location = new System.Drawing.Point(632, 340);
+            this.panel16.Location = new System.Drawing.Point(631, 386);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(310, 2);
             this.panel16.TabIndex = 4;
@@ -305,7 +305,7 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.Black;
-            this.panel14.Location = new System.Drawing.Point(633, 239);
+            this.panel14.Location = new System.Drawing.Point(632, 285);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(310, 2);
             this.panel14.TabIndex = 4;
@@ -313,7 +313,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.Black;
-            this.panel12.Location = new System.Drawing.Point(634, 153);
+            this.panel12.Location = new System.Drawing.Point(635, 190);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(310, 2);
             this.panel12.TabIndex = 4;
@@ -528,7 +528,7 @@
             // rdt_KhongBan
             // 
             this.rdt_KhongBan.AutoSize = true;
-            this.rdt_KhongBan.Location = new System.Drawing.Point(871, 357);
+            this.rdt_KhongBan.Location = new System.Drawing.Point(864, 413);
             this.rdt_KhongBan.Name = "rdt_KhongBan";
             this.rdt_KhongBan.Size = new System.Drawing.Size(87, 24);
             this.rdt_KhongBan.TabIndex = 4;
@@ -539,7 +539,7 @@
             // rdt_ConBan
             // 
             this.rdt_ConBan.AutoSize = true;
-            this.rdt_ConBan.Location = new System.Drawing.Point(748, 357);
+            this.rdt_ConBan.Location = new System.Drawing.Point(741, 413);
             this.rdt_ConBan.Name = "rdt_ConBan";
             this.rdt_ConBan.Size = new System.Drawing.Size(85, 24);
             this.rdt_ConBan.TabIndex = 4;
@@ -550,7 +550,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(627, 314);
+            this.label7.Location = new System.Drawing.Point(626, 360);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 3;
@@ -577,7 +577,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(627, 358);
+            this.label13.Location = new System.Drawing.Point(620, 414);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 3;
@@ -586,7 +586,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(627, 262);
+            this.label12.Location = new System.Drawing.Point(626, 308);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 20);
             this.label12.TabIndex = 3;
@@ -604,7 +604,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(627, 216);
+            this.label11.Location = new System.Drawing.Point(626, 262);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 3;
@@ -622,7 +622,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(626, 127);
+            this.label14.Location = new System.Drawing.Point(627, 164);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 20);
             this.label14.TabIndex = 3;
@@ -631,7 +631,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(627, 171);
+            this.label10.Location = new System.Drawing.Point(626, 217);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
             this.label10.TabIndex = 3;
@@ -649,7 +649,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(627, 79);
+            this.label9.Location = new System.Drawing.Point(627, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 3;
@@ -705,7 +705,7 @@
             // 
             this.tbt_GiaNhap.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_GiaNhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_GiaNhap.Location = new System.Drawing.Point(748, 216);
+            this.tbt_GiaNhap.Location = new System.Drawing.Point(747, 262);
             this.tbt_GiaNhap.Name = "tbt_GiaNhap";
             this.tbt_GiaNhap.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaNhap.TabIndex = 2;
@@ -714,7 +714,7 @@
             // 
             this.tbt_MoTa.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_MoTa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_MoTa.Location = new System.Drawing.Point(748, 83);
+            this.tbt_MoTa.Location = new System.Drawing.Point(748, 97);
             this.tbt_MoTa.Name = "tbt_MoTa";
             this.tbt_MoTa.Size = new System.Drawing.Size(196, 20);
             this.tbt_MoTa.TabIndex = 2;
@@ -732,7 +732,7 @@
             // 
             this.tbt_KichThuoc.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_KichThuoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_KichThuoc.Location = new System.Drawing.Point(747, 314);
+            this.tbt_KichThuoc.Location = new System.Drawing.Point(746, 360);
             this.tbt_KichThuoc.Name = "tbt_KichThuoc";
             this.tbt_KichThuoc.Size = new System.Drawing.Size(196, 20);
             this.tbt_KichThuoc.TabIndex = 2;
@@ -741,7 +741,7 @@
             // 
             this.tbt_SoTrang.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_SoTrang.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_SoTrang.Location = new System.Drawing.Point(747, 127);
+            this.tbt_SoTrang.Location = new System.Drawing.Point(748, 164);
             this.tbt_SoTrang.Name = "tbt_SoTrang";
             this.tbt_SoTrang.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoTrang.TabIndex = 2;
@@ -750,7 +750,7 @@
             // 
             this.tbt_GiaBan.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_GiaBan.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_GiaBan.Location = new System.Drawing.Point(748, 262);
+            this.tbt_GiaBan.Location = new System.Drawing.Point(747, 308);
             this.tbt_GiaBan.Name = "tbt_GiaBan";
             this.tbt_GiaBan.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaBan.TabIndex = 2;
@@ -759,7 +759,7 @@
             // 
             this.tbt_SoLuong.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_SoLuong.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_SoLuong.Location = new System.Drawing.Point(748, 171);
+            this.tbt_SoLuong.Location = new System.Drawing.Point(747, 217);
             this.tbt_SoLuong.Name = "tbt_SoLuong";
             this.tbt_SoLuong.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoLuong.TabIndex = 2;
