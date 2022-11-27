@@ -107,23 +107,30 @@ namespace _3.PresentationLayers.Views
             OpenChildForm(new Form_BanHang(), sender);
 
         }
-
-
-
-        private void btn_ThongKe_Click(object sender, EventArgs e)
-        {
-            //ActivateButton(sender);
-        }
-        private void btn_sanpham_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Form_Sach(), sender);
-        }
-
-
-        private void logout_Click(object sender, EventArgs e)
+        private void btn_LogOut_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void btn_NhanVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form_NhanVien(), sender);
+        }
+
+        private void btn_KhachHang_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form_KhachHang(), sender);
+        }
+        private void btn_sanpham_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form_ChiTietSach(), sender);
+        }
+
+
+        //private void logout_Click(object sender, EventArgs e)
+        //{
+        //    Application.Exit();
+        //}
 
         private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -162,12 +169,5 @@ namespace _3.PresentationLayers.Views
         }
 
 
-       
-      
-
-      
-
-     
-        
     }
 }
