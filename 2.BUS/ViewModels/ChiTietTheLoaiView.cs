@@ -10,6 +10,8 @@ namespace _2.BUS.ViewModels
     public class ChiTietTheLoaiView
     {
         public Guid Id { get; set; }
+        public Guid IDCTS { get; set; }
+        public Guid IDTL { get; set; }
         public string TheLoai { get; set; }
         public string TenSach { get; set; }
         public string Ma { get; set; }

@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace _3.PresentationLayers.Views
 {
@@ -35,6 +34,7 @@ namespace _3.PresentationLayers.Views
         }
         private void LoadDataToDtg(List<ChiTietTheLoaiView> lst)
         {
+
             int stt = 1;
             dtg_Show.Rows.Clear();
             dtg_Show.ColumnCount = 7;
@@ -50,6 +50,7 @@ namespace _3.PresentationLayers.Views
             {
                 dtg_Show.Rows.Add(stt++, x.Id, x.TheLoai, x.TenSach, x.Ma, x.ChiTietTheLoai, x.TrangThai == 0 ? "Không hoạt động" : "Hoạt động");
             }
+            dtg_Show.AllowUserToAddRows = false;
         }
         private void Load()
         {
@@ -97,13 +98,10 @@ namespace _3.PresentationLayers.Views
         }
         private ChiTietTheLoai GetDataFromGui_Them()
         {
-            //Guid IdSach = _iSachService.GetAllNoView().FirstOrDefault(c => c.Ten == cbb_tensach.Text).Id;
-            Guid IdSach = _iSachService.GetAllNoView().Where(c => c.Ten == cbb_tensach.Text).Select(c => c.Id).FirstOrDefault();
             _cttl = new ChiTietTheLoai();
             {
-                _cttl.IdTheLoai = _itheLoaiService.GetAllNoView().FirstOrDefault(c => c.Ten == cbb_theloai.Text).Id;
-                //_cttl.IdChiTietSach = _ichiTietSachService.GetAll().FirstOrDefault(c => c.Id == IdSach).Id;
-                _cttl.IdChiTietSach = _ichiTietSachService.GetAll().Where(c => c.Id == IdSach).Select(c => c.Id).FirstOrDefault();
+                _cttl.IdTheLoai = _iCTTLService.GetAll().Where(c => c.TheLoai == cbb_theloai.Text).Select(x => x.IDTL).FirstOrDefault();
+                _cttl.IdChiTietSach = _iCTTLService.GetAll().Where(c => c.TenSach == cbb_tensach.Text).Select(x => x.IDCTS).FirstOrDefault();
                 _cttl.Ma = tb_ma.Text;
                 _cttl.Ten = tb_ten.Text;
                 _cttl.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
@@ -112,14 +110,11 @@ namespace _3.PresentationLayers.Views
         }
         private ChiTietTheLoai GetDataFromGui_Sua_Xoa()
         {
-            Guid IdSach = _iSachService.GetAllNoView().FirstOrDefault(c => c.Ten == cbb_tensach.Text).Id;
-            //Guid IdSach = _iSachService.GetAllNoView().Where(c => c.Ten == cbb_tensach.Text).Select(c => c.Id).FirstOrDefault();
             _cttl = new ChiTietTheLoai();
             {
                 _cttl.Id = SelectID;
-                _cttl.IdTheLoai = _itheLoaiService.GetAllNoView().FirstOrDefault(c => c.Ten == cbb_theloai.Text).Id;
-                //_cttl.IdChiTietSach = _ichiTietSachService.GetAll().FirstOrDefault(c => c.Id == IdSach).Id;
-                _cttl.IdChiTietSach = _ichiTietSachService.GetAll().Where(c => c.Id == IdSach).Select(c => c.Id).FirstOrDefault();
+                _cttl.IdTheLoai = _iCTTLService.GetAll().Where(c => c.TheLoai == cbb_theloai.Text).Select(x => x.IDTL).FirstOrDefault();
+                _cttl.IdChiTietSach = _iCTTLService.GetAll().Where(c => c.TenSach == cbb_tensach.Text).Select(x => x.IDCTS).FirstOrDefault();
                 _cttl.Ma = tb_ma.Text;
                 _cttl.Ten = tb_ten.Text;
                 _cttl.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
@@ -129,6 +124,7 @@ namespace _3.PresentationLayers.Views
         /*==============================================================================*/
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             SelectID = Guid.Parse(dtg_Show.CurrentRow.Cells[1].Value.ToString());
             cbb_theloai.Text = dtg_Show.CurrentRow.Cells[2].Value.ToString();
             cbb_tensach.Text = dtg_Show.CurrentRow.Cells[3].Value.ToString();
@@ -138,20 +134,46 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iCTTLService.Add(GetDataFromGui_Them()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thêm đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                {
+                    MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                MessageBox.Show(_iCTTLService.Add(GetDataFromGui_Them()));
+                ResetForm();
+            }
+            else return;
         }
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iCTTLService.Update(GetDataFromGui_Sua_Xoa()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                {
+                    MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                MessageBox.Show(_iCTTLService.Update(GetDataFromGui_Sua_Xoa()));
+                ResetForm();
+            }
+            else return;
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iCTTLService.Delete(GetDataFromGui_Sua_Xoa()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show(_iCTTLService.Delete(GetDataFromGui_Sua_Xoa()));
+                ResetForm();
+            }
+            else return;
+
         }
 
         private void btn_Reset_Click(object sender, EventArgs e)
@@ -161,9 +183,7 @@ namespace _3.PresentationLayers.Views
 
         private void tb_Timkiem_TextChanged(object sender, EventArgs e)
         {
-
+            LoadDataToDtg(_iCTTLService.GetAll().Where(c => c.ChiTietTheLoai.ToLower().Contains(tb_Timkiem.Text.ToLower())).ToList());
         }
-
-
     }
 }
