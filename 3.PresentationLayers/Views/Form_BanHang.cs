@@ -344,14 +344,14 @@ namespace _3.PresentationLayers.Views
             Image image = Image.FromStream(ms, true);
             return image;
         }
-        //public Image byteArrayToImage(byte[] bytesArr)
-        //{
-        //    //using (MemoryStream memstr = new MemoryStream(bytesArr))
-        //    //{
-        //    //    Image img = Image.FromStream(memstr);
-        //    //    return img;
-        //    //}
-        //}
+        public Image byteArrayToImage(byte[] bytesArr)
+        {
+            using (MemoryStream memstr = new MemoryStream(bytesArr))
+            {
+                Image img = Image.FromStream(memstr);
+                return img;
+            }
+        }
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
@@ -374,9 +374,9 @@ namespace _3.PresentationLayers.Views
                     btn1.BackColor = Color.FromArgb(1, 90, 90);
                     btn1.TextAlign = ContentAlignment.MiddleLeft;
                     //Image img1= Image.FromFile(@"C:\Users\Admin\OneDrive\Desktop\fpoly\4.KI FALL22\2.Block 2\1.PRO131\Icons\purchase_order_50px.png");
-                    //Image img2 = byteArrayToImage(x.Anh);
-                    //img2 = resizeImage(img2, new Size(60, 110));
-                    //btn1.Image = img2; 
+                    Image img2 = byteArrayToImage(x.Anh);
+                    img2 = resizeImage(img2, new Size(60, 110));
+                    btn1.Image = img2;
                     btn1.Tag = x;
                     btn1.ImageAlign = ContentAlignment.MiddleRight;
                     btn1.ForeColor = Color.FromArgb(224, 238, 224);
