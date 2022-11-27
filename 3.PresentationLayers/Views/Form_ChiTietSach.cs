@@ -506,7 +506,7 @@ namespace _3.PresentationLayers.Views
                     ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
                     ptb_AnhSach.Image = Image.FromFile(open.FileName);
                     LinkImage = open.FileName;
-                }
+                } 
             }
             catch (Exception ex)
             {
