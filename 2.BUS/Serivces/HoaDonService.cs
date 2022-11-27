@@ -63,16 +63,16 @@ namespace _2.BUS.Serivces
 
         public string Remove(HoaDon obj)
         {
-            if (obj == null) return "Thêm hóa đơn thất bại";
-            if (_ihoaDonRepository.Remove(obj)) return "Thêm thành công";
-            return "Thêm thất bại";
+            if (obj == null) return "Xoa hóa đơn thất bại";
+            if (_ihoaDonRepository.Remove(obj)) return "Xoa thành công";
+            return "Xoa thất bại";
         }
 
         public string Update(HoaDon obj)
         {
-            if (obj == null) return "Thêm hóa đơn thất bại";
-            if (_ihoaDonRepository.Update(obj)) return "Thêm thành công";
-            return "Thêm thất bại";
+            if (obj == null) return "Sua hóa đơn thất bại";
+            if (_ihoaDonRepository.Update(obj)) return "Sua thành công";
+            return "Sua thất bại";
         }
     }
 }
