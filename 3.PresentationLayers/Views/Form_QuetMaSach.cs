@@ -78,9 +78,18 @@ namespace _3.PresentationLayers.Views
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            mavach = tb_mavach.Text;
-            tensach = tb_tensach.Text;
-            this.Close();
+            if (tb_tensach.Text != "")
+            {
+                mavach = tb_mavach.Text;
+                tensach = tb_tensach.Text;
+                this.Close();
+                return;
+            }
+            if (tb_tensach.Text == "")
+            {
+                GetBookByMa();
+                return;
+            }
         }
 
         private void Form_QuetMaSach_Load(object sender, EventArgs e)
@@ -130,12 +139,8 @@ namespace _3.PresentationLayers.Views
 
         private void tb_mavach_TextChanged(object sender, EventArgs e)
         {
-                string x = _ichiTietSachService.GetAllChiTietSachView().Where(c => c.MaVach == tb_mavach.Text).Select(x => x.TenSach).FirstOrDefault();
-                tb_tensach.Text = x;
-            if (tb_tensach.Text == "")
-            {
-                GetBookByMa();
-            }
+            string x = _ichiTietSachService.GetAllChiTietSachView().Where(c => c.MaVach == tb_mavach.Text).Select(x => x.TenSach).FirstOrDefault();
+            tb_tensach.Text = x;
         }
     }
 }
