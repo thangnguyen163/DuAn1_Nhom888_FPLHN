@@ -1747,6 +1747,7 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_quetma_Click(object sender, EventArgs e)
         {
+            Form_QuetMaSach.mavach = null;
             Form_QuetMaSach qms = new Form_QuetMaSach();
             qms.ShowDialog();
             if (Form_QuetMaSach.mavach == null) return;
