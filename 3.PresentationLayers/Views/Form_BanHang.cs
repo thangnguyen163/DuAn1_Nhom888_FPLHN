@@ -478,21 +478,28 @@ namespace _3.PresentationLayers.Views
                     hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == NameIndex);
                     if (hd != null)
                     {
-                        if (hd.TrangThai == 0)
+                        if (hd.TrangThai == 0 )
                         {
-
                             hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
                             hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
                             hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
                             hoaDonService.Update(hd);
                             Tabhoadondcmm();
                         }
+                        else
+                        {
+                            Tabhoadondcmm();
+                        }    
+
+                       
                     }
+                    
                 }
                 Index = tabHoaDon.SelectedIndex;
                 NameIndex = tabHoaDon.SelectedTab.Name;
-            }
 
+            }
+            
 
         }
         private void Tabhoadondcmm()
@@ -871,6 +878,10 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show("Vui lòng chọn trạng thái bán của đơn hàng");
             }
+            else if (tb_tienkhachdua.Text == "")
+            {
+                lb_checktienkhachdua.Text = "Khách chưa đưa tiền";
+            }
             else if (btn_DatHang.BackColor == Color.Yellow)
             {
                 if (cbb_nhanvien.SelectedIndex < 0)
@@ -966,10 +977,11 @@ namespace _3.PresentationLayers.Views
                             hd.TienShip = Convert.ToInt32(tbx_TienShip.Text);
                             hd.DiaChi = tb_diachi.Text;
                             hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
-                            hd.TrangThai = 1;
+                            hd.TrangThai = 2;
                             MessageBox.Show(hoaDonService.Update(hd));
                             LoadHoaDonChoThanhToan();
                             LoadHoaDonDaThanhToan();
+                            Tabhoadondcmm();
                         }
                     }
                     else if (tb_dungdiem.Text == "0")
@@ -1052,10 +1064,11 @@ namespace _3.PresentationLayers.Views
                             hd.TienShip = Convert.ToInt32(tbx_TienShip.Text);
                             hd.DiaChi = tb_diachi.Text;
                             hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
-                            hd.TrangThai = 1;
+                            hd.TrangThai = 2;
                             MessageBox.Show(hoaDonService.Update(hd));
                             LoadHoaDonChoThanhToan();
                             LoadHoaDonDaThanhToan();
+                            Tabhoadondcmm();
                         }
                     }
                     else
@@ -1068,7 +1081,7 @@ namespace _3.PresentationLayers.Views
                         {
                             lb_checkdungdiem.Text = "Số tiền được quy đổi quá tiền hàng";
                         }
-                        else if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+                        else if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                         {
                             lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                         }
@@ -1123,7 +1136,7 @@ namespace _3.PresentationLayers.Views
                             lichsudiemdung.SoDiemDung = Convert.ToInt32(tb_dungdiem.Text);
                             lichsudiemdung.NgaySuDung = DateTime.Now;
                             lichsudiemdung.TongTien = Convert.ToInt32(tb_diemquydoi.Text);
-                            lichsudiemdung.TrangThai = 1;
+                            lichsudiemdung.TrangThai = 2;
                             _ilichSuDiemDungService.Add(lichsudiemdung);
 
 
@@ -1146,10 +1159,11 @@ namespace _3.PresentationLayers.Views
                             hd.TienShip = Convert.ToInt32(tbx_TienShip.Text);
                             hd.DiaChi = tb_diachi.Text;
                             hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
-                            hd.TrangThai = 1;
+                            hd.TrangThai = 2;
                             MessageBox.Show(hoaDonService.Update(hd));
                             LoadHoaDonChoThanhToan();
                             LoadHoaDonDaThanhToan();
+                            Tabhoadondcmm();
                         }
 
                     }
@@ -1157,7 +1171,7 @@ namespace _3.PresentationLayers.Views
                 else if (cb_dungdiem.Checked == false)
                 {
                     // 
-                    if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+                    if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                     {
                         lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                     }
@@ -1235,10 +1249,11 @@ namespace _3.PresentationLayers.Views
                         hd.TienShip = Convert.ToInt32(tbx_TienShip.Text);
                         hd.DiaChi = tb_diachi.Text;
                         hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
-                        hd.TrangThai = 1;
+                        hd.TrangThai = 2;
                         MessageBox.Show(hoaDonService.Update(hd));
                         LoadHoaDonChoThanhToan();
                         LoadHoaDonDaThanhToan();
+                        Tabhoadondcmm();
                     }
                 }
                 // thanh toán hóa đơn tại quầy
@@ -1260,7 +1275,7 @@ namespace _3.PresentationLayers.Views
                     // checked = true nma người dùng không nhập điểm
                     if (tb_dungdiem.Text == "")
                     {
-                        if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+                        if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                         {
                             lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                         }
@@ -1326,11 +1341,12 @@ namespace _3.PresentationLayers.Views
                             MessageBox.Show(hoaDonService.Update(hd));
                             LoadHoaDonChoThanhToan();
                             LoadHoaDonDaThanhToan();
+                            Tabhoadondcmm();
                         }
                     }
                     else if (tb_dungdiem.Text == "0")
                     {
-                        if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+                        if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                         {
                             lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                         }
@@ -1408,7 +1424,7 @@ namespace _3.PresentationLayers.Views
                         {
                             lb_checkdungdiem.Text = "Số tiền được quy đổi quá tiền hàng";
                         }
-                        else if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+                        else if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                         {
                             lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                         }
@@ -1480,15 +1496,8 @@ namespace _3.PresentationLayers.Views
                 }
                 else if (cb_dungdiem.Checked == false)
                 {
-                    if (Convert.ToInt32(tb_dungdiem.Text) > Convert.ToInt32(tb_vidiem.Text))
-                    {
-                        lb_checkdungdiem.Text = "Điểm dùng vượt quá số điểm trong ví";
-                    }
-                    else if (Convert.ToInt32(tb_diemquydoi.Text) > Convert.ToInt32(tb_tongtien.Text))
-                    {
-                        lb_checkdungdiem.Text = "Số tiền được quy đổi quá tiền hàng";
-                    }
-                    else if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien))
+
+                    if (Convert.ToInt32(tb_tienkhachdua.Text) < Convert.ToInt32(tb_tongtien.Text))
                     {
                         lb_checktienkhachdua.Text = "Tiền khách đưa không thỏa mãn";
                     }
@@ -1507,7 +1516,7 @@ namespace _3.PresentationLayers.Views
                         KhachHang kh = new KhachHang();
                         kh = _ikhachHangService.getAll().FirstOrDefault(x => x.Id == _ikhachHangService.getAll().Where(c => c.Ten == cbb_nganhang.SelectedItem).Select(x => x.Id).FirstOrDefault());
 
-                        //  lichsuđiemtich
+                        // lichsuđiemtich
                         lichSuDiemTich.Id = Guid.NewGuid();
                         lichSuDiemTich.IddiemTieuDung = hoaDonService.GetAll().Where(x => x.Id == hd.Id).Select(x => x.Iddiemtieudung).FirstOrDefault();
                         lichSuDiemTich.Ma = "LST" + Convert.ToString(_ilichSuDiemTichService.GetAll()
@@ -1520,21 +1529,21 @@ namespace _3.PresentationLayers.Views
 
 
                         //  lish sử điểm dùng
-                        lichsudiemdung.Id = Guid.NewGuid();
-                        lichsudiemdung.IddiemTieuDung = hoaDonService.GetAll().Where(x => x.Id == hd.Id).Select(x => x.Iddiemtieudung).FirstOrDefault();
-                        lichsudiemdung.Ma = "LSD" + Convert.ToString(_ilichSuDiemTichService.GetAll()
-                                  .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1));
-                        lichsudiemdung.SoDiemDung = Convert.ToInt32(tb_dungdiem.Text);
-                        lichsudiemdung.NgaySuDung = DateTime.Now;
-                        lichsudiemdung.TongTien = Convert.ToInt32(tb_diemquydoi.Text);
-                        lichsudiemdung.TrangThai = 1;
-                        _ilichSuDiemDungService.Add(lichsudiemdung);
+                        //lichsudiemdung.Id = Guid.NewGuid();
+                        //lichsudiemdung.IddiemTieuDung = hoaDonService.GetAll().Where(x => x.Id == hd.Id).Select(x => x.Iddiemtieudung).FirstOrDefault();
+                        //lichsudiemdung.Ma = "LSD" + Convert.ToString(_ilichSuDiemTichService.GetAll()
+                        //          .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1));
+                        //lichsudiemdung.SoDiemDung = Convert.ToInt32(tb_dungdiem.Text);
+                        //lichsudiemdung.NgaySuDung = DateTime.Now;
+                        //lichsudiemdung.TongTien = Convert.ToInt32(tb_diemquydoi.Text);
+                        //lichsudiemdung.TrangThai = 1;
+                        //_ilichSuDiemDungService.Add(lichsudiemdung);
 
 
                         // thay đổi điểm ví điểm
                         DiemTieuDung dtd = new DiemTieuDung();
                         dtd = _idiemTieuDungService.GetAll().FirstOrDefault(z => z.Id == kh.IddiemTieuDung);
-                        dtd.SoDiem = dtd.SoDiem - Convert.ToInt32(lichsudiemdung.SoDiemDung) + Convert.ToInt32(lichSuDiemTich.SoDiemTich);
+                        dtd.SoDiem = dtd.SoDiem + Convert.ToInt32(lichSuDiemTich.SoDiemTich);
                         _idiemTieuDungService.Update(dtd);
 
                         //hóa đơn
@@ -1543,7 +1552,7 @@ namespace _3.PresentationLayers.Views
                         hd.MaHd = tabHoaDon.SelectedTab.Name;
                         hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(c => c.Ten == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
                         hd.Idkh = _ikhachHangService.getAll().Where(c => c.Ten == cbb_nganhang.SelectedItem).Select(x => x.Id).FirstOrDefault();
-                        hd.IddiemDung = lichsudiemdung.Id;
+                        // hd.IddiemDung = lichsudiemdung.Id;
                         hd.IddiemTich = lichSuDiemTich.Id;
                         //hd.NgayShip = DateTime.Now;
                         //hd.TienCoc = Convert.ToInt32(tbx_TienCoc.Text);
