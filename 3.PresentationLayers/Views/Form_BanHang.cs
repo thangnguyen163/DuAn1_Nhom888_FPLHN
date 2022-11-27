@@ -52,13 +52,15 @@ namespace _3.PresentationLayers.Views
             _inhanvienService = new NhanVienService();
             _ikhachHangService = new KhachHangService();
             ChiTietSach = new ChiTietSach();
-            
+
             LoadHoaDonChoThanhToan();
             LoadHoaDonDaThanhToan();
             Tabhoadondcmm();
             tabHoaDon.Visible = false;
             Locktextboxfrombanhang();
             LoadSanphamtoFl();
+            btn_TaiQuay.BackColor = Color.Pink;
+            panel_tiencoc.Visible = false;
         }
         private void Locktextboxfrombanhang()
         {
@@ -81,7 +83,7 @@ namespace _3.PresentationLayers.Views
                 btn_quetma.Enabled = true;
                 return;
             }
-            
+
         }
         //public void LoadSach()
         //{
@@ -174,18 +176,41 @@ namespace _3.PresentationLayers.Views
         }
         private void btnsender_Click1(object sender, EventArgs e)
         {
-            
+
             if (dtg_HoaDonChiTiet.Visible == false)
             {
                 MessageBox.Show("Bạn chưa chọn hóa đơn cần thêm sản phẩm");
             }
             else
             {
-                SelectIDSp = ((sender as Button).Tag as ChiTietSach).Id;                
+                SelectIDSp = ((sender as Button).Tag as ChiTietSach).Id;
                 HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
-                SelectID = hd.Id;            
+                SelectID = hd.Id;
                 HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-                string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);//nhập số lượng ở màn bán hàng
+                string Content = Interaction.InputBox("Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+
+                if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
+                {
+
+                    MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
+                    return;
+                }
+                if (Regex.IsMatch(Content, @"^\d+$") == false)
+                {
+
+                    MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
+                    return;
+                }
+                if (Content.Length > 6)
+                {
+                    MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
+                    return;
+                }
+                if (Convert.ToInt32(Content) < 0)
+                {
+                    MessageBox.Show("Số Lượng Không Cho Phép Âm", "ERR");
+                    return;
+                }
                 if (Content == string.Empty)
                 {
                     MessageBox.Show("Bạn cần nhập số lượng muốn thêm", "Thông báo", MessageBoxButtons.OK);
@@ -241,7 +266,7 @@ namespace _3.PresentationLayers.Views
                         HoaDonChiTiet hdct = new HoaDonChiTiet();
                         hdct.IdHoaDon = SelectID;
                         hdct.IdChiTietSach = SelectIDSp;
-                        hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);                       
+                        hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
                         hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
                         ChiTietSach cts = new ChiTietSach();
                         cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
@@ -340,19 +365,20 @@ namespace _3.PresentationLayers.Views
             try
             {
                 fl_sanpham.Controls.Clear();
-                foreach (var x in _iChiTietSachService.GetAll())
+                foreach (var x in _iChiTietSachService.GetAll().OrderBy(x => x.Ma))
                 {
+                    var Ten = _iChiTietSachService.GetAllChiTietSachView().Where(b => b.Id == x.Id).Select(c => c.TenSach).FirstOrDefault();
                     Button btn1 = new Button() { Width = 200, Height = 150 };
-                    btn1.Text = x.Ma + Environment.NewLine + "Gía bán:" + x.GiaBan + Environment.NewLine + "Số lượng:" + x.SoLuong;
+                    btn1.Text = x.Ma + Environment.NewLine + "Tên: " + Ten + Environment.NewLine + "Gía bán:" + x.GiaBan + Environment.NewLine + "Số lượng:" + x.SoLuong;
                     btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
-                    btn1.BackColor = Color.FromArgb(1, 90,90);
-                    btn1.TextAlign = ContentAlignment.MiddleLeft;                 
+                    btn1.BackColor = Color.FromArgb(1, 90, 90);
+                    btn1.TextAlign = ContentAlignment.MiddleLeft;
                     //Image img1= Image.FromFile(@"C:\Users\Admin\OneDrive\Desktop\fpoly\4.KI FALL22\2.Block 2\1.PRO131\Icons\purchase_order_50px.png");
                     //Image img2 = byteArrayToImage(x.Anh);
                     //img2 = resizeImage(img2, new Size(60, 110));
                     //btn1.Image = img2; 
                     btn1.Tag = x;
-                    btn1.ImageAlign = ContentAlignment.MiddleRight;                                       
+                    btn1.ImageAlign = ContentAlignment.MiddleRight;
                     btn1.ForeColor = Color.FromArgb(224, 238, 224);
                     btn1.Click += btnsender_Click1;
                     fl_sanpham.Controls.Add(btn1);
@@ -376,8 +402,8 @@ namespace _3.PresentationLayers.Views
             form.ShowDialog();
             LoadSanphamtoFl();
         }
-        
-       
+
+
         public static Image resizeImage(Image imgToResize, Size size)
         {
             return (Image)(new Bitmap(imgToResize, size));
@@ -478,7 +504,7 @@ namespace _3.PresentationLayers.Views
                     hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == NameIndex);
                     if (hd != null)
                     {
-                        if (hd.TrangThai == 0 )
+                        if (hd.TrangThai == 0)
                         {
                             hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
                             hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
@@ -489,17 +515,17 @@ namespace _3.PresentationLayers.Views
                         else
                         {
                             Tabhoadondcmm();
-                        }    
+                        }
 
-                       
+
                     }
-                    
+
                 }
                 Index = tabHoaDon.SelectedIndex;
                 NameIndex = tabHoaDon.SelectedTab.Name;
 
             }
-            
+
 
         }
         private void Tabhoadondcmm()
@@ -829,6 +855,7 @@ namespace _3.PresentationLayers.Views
             tbx_TienCoc.Text = Convert.ToString(hd.tiencoc);
             tbx_TienShip.Text = Convert.ToString(hd.tienship);
             tb_tongtien.Text = tb_tongtienhang.Text;
+            tbt_MaHD.Text = hd.Mahd;
         }
         private void btn_TaiQuay_Click_1(object sender, EventArgs e)
         {
@@ -905,19 +932,19 @@ namespace _3.PresentationLayers.Views
                         }
                         else if (tbx_TienCoc.Text == "")
                         {
-                            lb_TienCoc.Text = "Vui lòng nhập tiền cọc";
+                            lb_CheckCoc.Text = "Vui lòng nhập tiền cọc";
                         }
                         else if (tbx_TienShip.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập tiền ship";
+                            lb_CheckShip.Text = "Vui lòng nhập tiền ship";
                         }
                         else if (tb_diachi.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập địa chỉ";
+                            lb_CheckDiaChi.Text = "Vui lòng nhập địa chỉ";
                         }
                         else if (Convert.ToInt32(tbx_TienCoc.Text) < Convert.ToInt32(tbx_TienShip.Text))
                         {
-                            lb_TienCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
+                            lb_CheckCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
                         }
                         else
                         {
@@ -992,19 +1019,19 @@ namespace _3.PresentationLayers.Views
                         }
                         else if (tbx_TienCoc.Text == "")
                         {
-                            lb_TienCoc.Text = "Vui lòng nhập tiền cọc";
+                            lb_CheckCoc.Text = "Vui lòng nhập tiền cọc";
                         }
                         else if (tbx_TienShip.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập tiền ship";
+                            lb_CheckShip.Text = "Vui lòng nhập tiền ship";
                         }
                         else if (tb_diachi.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập địa chỉ";
+                            lb_CheckDiaChi.Text = "Vui lòng nhập địa chỉ";
                         }
                         else if (Convert.ToInt32(tbx_TienCoc.Text) < Convert.ToInt32(tbx_TienShip.Text))
                         {
-                            lb_TienCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
+                            lb_CheckCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
                         }
                         else
                         {
@@ -1087,19 +1114,19 @@ namespace _3.PresentationLayers.Views
                         }
                         else if (tbx_TienCoc.Text == "")
                         {
-                            lb_TienCoc.Text = "Vui lòng nhập tiền cọc";
+                            lb_CheckCoc.Text = "Vui lòng nhập tiền cọc";
                         }
                         else if (tbx_TienShip.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập tiền ship";
+                            lb_CheckShip.Text = "Vui lòng nhập tiền ship";
                         }
                         else if (tb_diachi.Text == "")
                         {
-                            lb_TienShip.Text = "Vui lòng nhập địa chỉ";
+                            lb_CheckDiaChi.Text = "Vui lòng nhập địa chỉ";
                         }
                         else if (Convert.ToInt32(tbx_TienCoc.Text) < Convert.ToInt32(tbx_TienShip.Text))
                         {
-                            lb_TienCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
+                            lb_CheckCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
                         }
                         else
                         {
@@ -1177,19 +1204,19 @@ namespace _3.PresentationLayers.Views
                     }
                     else if (tbx_TienCoc.Text == "")
                     {
-                        lb_TienCoc.Text = "Vui lòng nhập tiền cọc";
+                        lb_CheckCoc.Text = "Vui lòng nhập tiền cọc";
                     }
                     else if (tbx_TienShip.Text == "")
                     {
-                        lb_TienShip.Text = "Vui lòng nhập tiền ship";
+                        lb_CheckShip.Text = "Vui lòng nhập tiền ship";
                     }
                     else if (tb_diachi.Text == "")
                     {
-                        lb_TienShip.Text = "Vui lòng nhập địa chỉ";
+                        lb_CheckDiaChi.Text = "Vui lòng nhập địa chỉ";
                     }
                     else if (Convert.ToInt32(tbx_TienCoc.Text) < Convert.ToInt32(tbx_TienShip.Text))
                     {
-                        lb_TienCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
+                        lb_CheckCoc.Text = "Tiền cọc phải lớn hơn tiền ship";
                     }
                     else
                     {
@@ -1752,12 +1779,12 @@ namespace _3.PresentationLayers.Views
             qms.ShowDialog();
             if (Form_QuetMaSach.mavach == null) return;
 
-            var x = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x=>x.Id).FirstOrDefault();
-                SelectIDSp = x;
-                HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
-                SelectID = hd.Id;
-                HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-                string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);//nhập số lượng ở màn bán hàng
+            var x = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x => x.Id).FirstOrDefault();
+            SelectIDSp = x;
+            HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+            SelectID = hd.Id;
+            HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
+            string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);//nhập số lượng ở màn bán hàng
             if (Content == string.Empty)
             {
                 MessageBox.Show("Bạn cần nhập số lượng muốn thêm", "Thông báo", MessageBoxButtons.OK);
@@ -1849,11 +1876,11 @@ namespace _3.PresentationLayers.Views
                     }
                 }
             }
-                LoaddataToHoadonChitiet();
-                LoadHoaDonChiTiet();
-                LoadSanphamtoFl();
-            }
-        
+            LoaddataToHoadonChitiet();
+            LoadHoaDonChiTiet();
+            LoadSanphamtoFl();
+        }
+
 
         private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
@@ -1879,7 +1906,7 @@ namespace _3.PresentationLayers.Views
             if (cb_dungdiem.Checked == true && tb_dungdiem.Text != "")
             {
                 CongThucTinhDiem cttd = new CongThucTinhDiem();
-                cttd = _icongThucTinhDiemService.GetAll().Where(x => x.Ma == "CTT1").FirstOrDefault();
+                cttd = _icongThucTinhDiemService.GetAll().Where(x => x.Ma == "CTT2").FirstOrDefault();
                 tb_diemquydoi.Text = Convert.ToString(Convert.ToInt32(cttd.HeSo) * Convert.ToInt32(tb_dungdiem.Text));
                 if (Convert.ToInt32(tb_tongtienhang.Text) - Convert.ToInt32(tb_diemquydoi.Text) > 0)
                 {
@@ -2010,5 +2037,6 @@ namespace _3.PresentationLayers.Views
         {
             LoadHoaDonDatHang();
         }
+
     }
 }
