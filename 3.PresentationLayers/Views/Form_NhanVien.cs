@@ -62,7 +62,7 @@ namespace _3.PresentationLayers.Views
 
             dtg_Show.Rows.Clear();
 
-            foreach (var item in _nhanVienService.getViewNhanViens())
+            foreach (var item in _nhanVienService.getViewNhanViens().OrderBy(x => x.nhanVien.Ma))
             {
                 dtg_Show.Rows.Add(item.nhanVien.Id,
                     item.nhanVien.Ma,
