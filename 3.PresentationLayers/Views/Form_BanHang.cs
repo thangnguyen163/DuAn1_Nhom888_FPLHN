@@ -1647,7 +1647,30 @@ namespace _3.PresentationLayers.Views
             HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
             SelectID = hd.Id;
             HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-            string Content = Interaction.InputBox("Nhập số lượng ", "", "", 500, 300);//nhập số lượng ở màn bán hàng
+            string Content = Interaction.InputBox("Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+
+            if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
+            {
+
+                MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
+                return;
+            }
+            if (Regex.IsMatch(Content, @"^\d+$") == false)
+            {
+
+                MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
+                return;
+            }
+            if (Content.Length > 6)
+            {
+                MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
+                return;
+            }
+            if (Convert.ToInt32(Content) < 0)
+            {
+                MessageBox.Show("Số Lượng Không Cho Phép Âm", "ERR");
+                return;
+            }
             if (Content == string.Empty)
             {
                 MessageBox.Show("Bạn cần nhập số lượng muốn thêm", "Thông báo", MessageBoxButtons.OK);
