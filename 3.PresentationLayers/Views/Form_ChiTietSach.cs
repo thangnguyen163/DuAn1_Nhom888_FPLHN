@@ -74,7 +74,7 @@ namespace _3.PresentationLayers.Views
         void LoadData()
         {
             int stt = 0;
-            dtg_Show.ColumnCount = 17;
+            dtg_Show.ColumnCount = 18;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id";
             dtg_Show.Columns[1].Visible = false;
@@ -93,13 +93,15 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[14].Name = "Giá bán";
             dtg_Show.Columns[15].Name = "Trạng thái";
             dtg_Show.Columns[16].Name = "Đường Dẫn";
+            dtg_Show.Columns[16].Visible = false;
+            dtg_Show.Columns[17].Name = "Mã vạch";
             //dtg_Show.Columns[17].Name = "Thể loại 1";
             //dtg_Show.Columns[18].Name = "Thể loại 2";
 
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán",a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán",a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/,a.MaVach);
             }
         }
 
@@ -161,6 +163,7 @@ namespace _3.PresentationLayers.Views
             ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
             //cbb_TheLoai.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[17].Value);
             //cbb_TheLoai2.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[18].Value);
+            tbt_MaVach.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[17].Value);
 
 
         }
@@ -193,7 +196,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x=>x.TenSach.Contains(tbt_Search.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
 
@@ -295,6 +298,7 @@ namespace _3.PresentationLayers.Views
                         Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
                           .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
                         KichThuoc = tbt_KichThuoc.Text,
+                        MaVach=tbt_MaVach.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                         MoTa = tbt_MoTa.Text,
                         SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
@@ -396,6 +400,7 @@ namespace _3.PresentationLayers.Views
                         KichThuoc = tbt_KichThuoc.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                         MoTa = tbt_MoTa.Text,
+                        MaVach=tbt_MaVach.Text,
                         SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
                         SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                         GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
@@ -501,7 +506,7 @@ namespace _3.PresentationLayers.Views
                     ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
                     ptb_AnhSach.Image = Image.FromFile(open.FileName);
                     LinkImage = open.FileName;
-                }
+                } 
             }
             catch (Exception ex)
             {
@@ -583,7 +588,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
 
@@ -614,7 +619,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
 
@@ -645,7 +650,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
 
@@ -676,7 +681,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
     }
