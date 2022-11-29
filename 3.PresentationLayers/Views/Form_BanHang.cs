@@ -64,6 +64,29 @@ namespace _3.PresentationLayers.Views
             panel_tiencoc.Visible = false;
             panel_capnhat.Visible = false;
         }
+        public Form_BanHang(string a)
+        {
+            InitializeComponent();
+            hoaDonService = new HoaDonService();
+            _iChiTietSachService = new ChiTietSachService();
+            sachService = new SachService();
+            hoaDonChiTietService = new HoaDonChiTietService();
+            hoaDonChiTiet = new HoaDonChiTiet();
+            _inhanvienService = new NhanVienService();
+            _ikhachHangService = new KhachHangService();
+            ChiTietSach = new ChiTietSach();
+
+            LoadHoaDonChoThanhToan();
+            //LoadHoaDonDaThanhToan();
+            Tabhoadondcmm();
+            tabHoaDon.Visible = false;
+            Locktextboxfrombanhang();
+            LoadSanphamtoFl();
+            cbx_Loc.SelectedIndex = 1;
+            panel_tiencoc.Visible = false;
+            panel_capnhat.Visible = false;
+            this.cbb_nhanvien.Text = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == a).Select(a => a.Ma).FirstOrDefault();
+        }
         private void Locktextboxfrombanhang()
         {
             if (tabHoaDon.SelectedIndex < 0)
