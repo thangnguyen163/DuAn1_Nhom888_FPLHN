@@ -41,6 +41,13 @@ namespace _3.PresentationLayers.Views
                     Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
                     form.Show();
                 }
+                if (dialogResult == DialogResult.No)
+                {
+                    tb_mavach.Text = String.Empty;
+                    tb_tensach.Text = String.Empty;
+                    Lammoi();
+                    return;
+                }
             }
         }
         private void Lammoi()
@@ -68,30 +75,6 @@ namespace _3.PresentationLayers.Views
 
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tb_mavach.Text = "";
-            tb_tensach.Text = "";
-            Lammoi();
-        }
-
-        private void btn_add_Click(object sender, EventArgs e)
-        {
-            if (tb_tensach.Text != "")
-            {
-                mavach = tb_mavach.Text;
-                tensach = tb_tensach.Text;
-                this.Close();
-                return;
-            }
-            if (tb_tensach.Text == "")
-            {
-                GetBookByMa();
-                return;
-            }
-        }
-
         private void Form_QuetMaSach_Load(object sender, EventArgs e)
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -141,6 +124,18 @@ namespace _3.PresentationLayers.Views
         {
             string x = _ichiTietSachService.GetAllChiTietSachView().Where(c => c.MaVach == tb_mavach.Text).Select(x => x.TenSach).FirstOrDefault();
             tb_tensach.Text = x;
+            if (tb_tensach.Text != String.Empty)
+            {
+                mavach = tb_mavach.Text;
+                tensach = tb_tensach.Text;
+                this.Close();
+                return;
+            }
+            if (tb_tensach.Text == String.Empty && tb_mavach.Text != String.Empty)
+            {
+                GetBookByMa();
+                return;
+            }
         }
     }
 }
