@@ -31,6 +31,7 @@ namespace _1.DAL.Repositoties
             if (id == null) return false;
             var a = context.ChiTietKhuyenMais.FirstOrDefault(p => p.Id == id);
             a.TrangThai = 0;
+            context.ChiTietKhuyenMais.Update(a);
             context.SaveChanges();
             return true;
         }
