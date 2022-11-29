@@ -42,7 +42,7 @@ namespace _3.PresentationLayers.Views
                 }
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
-                    Form_Dasboard fdb = new Form_Dasboard();
+                    Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);
                     fdb.Show();
                     this.Hide();
                     MessageBox.Show($"Xin chào: {_iNhanVienSercvice.getNhanViensFromDB()[i].Ten}", "Đăng nhập thành công", MessageBoxButtons.OK);
