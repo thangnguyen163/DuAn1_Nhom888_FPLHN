@@ -209,11 +209,7 @@ namespace _3.PresentationLayers.Views
                 string tenclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).TenSach;
                 decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
                 string Content = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
-                if (Content == string.Empty)
-                {
-                    MessageBox.Show("Bạn cần nhập số lượng muốn thêm", "Thông báo", MessageBoxButtons.OK);
-                    return;
-                }
+                if (Content == string.Empty) return;
 
                 if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
                 {
@@ -1654,11 +1650,7 @@ namespace _3.PresentationLayers.Views
             string ctsquet = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).Ma;
             decimal giabanquet = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
             string Content = Interaction.InputBox($"Mã: {ctsquet}" + Environment.NewLine + $"Tên: {Form_QuetMaSach.tensach}" + Environment.NewLine + $"Giá bán: {giabanquet}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
-            if (Content == string.Empty)
-            {
-                MessageBox.Show("Bạn cần nhập số lượng muốn thêm", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
+            if (Content == string.Empty) return;
             if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
             {
 
