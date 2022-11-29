@@ -79,7 +79,7 @@ namespace _3.PresentationLayers.Views
                 btn_quetma.Enabled = false;
                 return;
             }
-            if (lbdtghdct.Text == "")
+            if (lbdtghdct.Text == string.Empty)
             {
                 btn_quetma.Enabled = true;
                 return;
@@ -549,7 +549,7 @@ namespace _3.PresentationLayers.Views
             if (a >= 1)
             {
                 lbdtghdct.Visible = false;
-                lbdtghdct.Text = "";
+                lbdtghdct.Text = string.Empty;
                 dtg_HoaDonChiTiet.Visible = true;
                 LoaddataToHoadonChitiet();
             }
@@ -1767,7 +1767,7 @@ namespace _3.PresentationLayers.Views
 
         private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
-            if (tb_tienkhachdua.Text != "" && tb_tongtienhang.Text != "")
+            if (tb_tienkhachdua.Text != string.Empty && tb_tongtienhang.Text != string.Empty)
             {
                 tb_tientralai.Text = Convert.ToString(Convert.ToInt64(tb_tienkhachdua.Text) - Convert.ToInt64(tb_tongtien.Text));
             }
