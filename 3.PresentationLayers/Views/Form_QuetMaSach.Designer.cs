@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.cbb_tenmay = new System.Windows.Forms.ComboBox();
-            this.btn_add = new System.Windows.Forms.Button();
             this.tb_mavach = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ptb_barcode = new System.Windows.Forms.PictureBox();
             this.tb_tensach = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_barcode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,21 +47,11 @@
             this.cbb_tenmay.Size = new System.Drawing.Size(268, 28);
             this.cbb_tenmay.TabIndex = 17;
             // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(666, 441);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(122, 29);
-            this.btn_add.TabIndex = 16;
-            this.btn_add.Text = "Thêm sách";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
             // tb_mavach
             // 
             this.tb_mavach.Location = new System.Drawing.Point(99, 394);
             this.tb_mavach.Name = "tb_mavach";
-            this.tb_mavach.Size = new System.Drawing.Size(561, 27);
+            this.tb_mavach.Size = new System.Drawing.Size(689, 27);
             this.tb_mavach.TabIndex = 15;
             this.tb_mavach.TextChanged += new System.EventHandler(this.tb_mavach_TextChanged);
             // 
@@ -100,7 +88,7 @@
             this.tb_tensach.Location = new System.Drawing.Point(99, 442);
             this.tb_tensach.Name = "tb_tensach";
             this.tb_tensach.ReadOnly = true;
-            this.tb_tensach.Size = new System.Drawing.Size(561, 27);
+            this.tb_tensach.Size = new System.Drawing.Size(689, 27);
             this.tb_tensach.TabIndex = 23;
             // 
             // label3
@@ -112,26 +100,14 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Tên sách";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(666, 392);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 29);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Quét lại";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form_QuetMaSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 483);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tb_tensach);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbb_tenmay);
-            this.Controls.Add(this.btn_add);
             this.Controls.Add(this.tb_mavach);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -150,13 +126,11 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cbb_tenmay;
-        private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox tb_mavach;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox ptb_barcode;
         private System.Windows.Forms.TextBox tb_tensach;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
     }
 }

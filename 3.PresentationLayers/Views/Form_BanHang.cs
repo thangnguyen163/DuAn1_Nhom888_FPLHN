@@ -184,7 +184,7 @@ namespace _3.PresentationLayers.Views
             {
                 tabtrangthaimuahang.SelectedIndex = 1;
             }
-            if (hd.TrangThai==0)
+            if (hd.TrangThai == 0)
             {
                 tabtrangthaimuahang.SelectedIndex = 0;
             }
@@ -200,11 +200,15 @@ namespace _3.PresentationLayers.Views
             }
             else
             {
-                SelectIDSp = ((sender as Button).Tag as ChiTietSach).Id;
+                var x = ((sender as Button).Tag as ChiTietSach).Id;
+                SelectIDSp = x;
                 HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
                 SelectID = hd.Id;
                 HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-                string Content = Interaction.InputBox("Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+                string ctsclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).Ma;
+                string tenclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).TenSach;
+                decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
+                string Content = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
 
                 if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
                 {
@@ -541,7 +545,7 @@ namespace _3.PresentationLayers.Views
                 Index = tabHoaDon.SelectedIndex;
                 NameIndex = tabHoaDon.SelectedTab.Name;
 
-            }           
+            }
         }
         private void Tabhoadondcmm()
         {
@@ -703,9 +707,9 @@ namespace _3.PresentationLayers.Views
                 ChiTietSach cts = new ChiTietSach();
                 cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
                 DialogResult hoi = MessageBox.Show("Bạn có muốn xóa hay không", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (DialogResult.Yes==hoi)
-                {                                        
-                                
+                if (DialogResult.Yes == hoi)
+                {
+
                     cts.IdSach = cts.IdSach;
                     cts.IdSach = cts.IdSach;
                     cts.IdNxb = cts.IdNxb;
@@ -725,7 +729,7 @@ namespace _3.PresentationLayers.Views
                     cts.SoLuong = cts.SoLuong + hdct.SoLuong;
                     _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
                     hoaDonChiTietService.Remove(hdct);
-                    
+
                 }
                 LoadSanphamtoFl();
                 LoaddataToHoadonChitiet();
@@ -1633,7 +1637,7 @@ namespace _3.PresentationLayers.Views
                         LoadHoaDonDaThanhToan();
                     }
                 }
-            }         
+            }
         }
         private void btn_quetma_Click(object sender, EventArgs e)
         {
@@ -1647,7 +1651,9 @@ namespace _3.PresentationLayers.Views
             HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
             SelectID = hd.Id;
             HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-            string Content = Interaction.InputBox("Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+            string ctsquet = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).Ma;
+            decimal giabanquet = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
+            string Content = Interaction.InputBox($"Mã: {ctsquet}" + Environment.NewLine + $"Tên: {Form_QuetMaSach.tensach}" + Environment.NewLine + $"Giá bán: {giabanquet}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
 
             if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
             {
@@ -1938,12 +1944,12 @@ namespace _3.PresentationLayers.Views
                 panel_capnhat.Visible = true;
                 panel_thanhtoan.Visible = false;
             }
-            
+
         }
 
         private void bt_capnhat_Click(object sender, EventArgs e)
         {
-            if (tabHoaDon.SelectedIndex>=0)
+            if (tabHoaDon.SelectedIndex >= 0)
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
@@ -1966,12 +1972,12 @@ namespace _3.PresentationLayers.Views
             else
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn");
-            }    
+            }
         }
 
         private void bt_hoanthanh_Click(object sender, EventArgs e)
         {
-            if (tabHoaDon.SelectedIndex>=0)
+            if (tabHoaDon.SelectedIndex >= 0)
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
@@ -1985,12 +1991,12 @@ namespace _3.PresentationLayers.Views
             else
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn");
-            }    
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (tabHoaDon.SelectedIndex>=0)
+            if (tabHoaDon.SelectedIndex >= 0)
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
