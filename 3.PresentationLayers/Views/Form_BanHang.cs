@@ -230,9 +230,9 @@ namespace _3.PresentationLayers.Views
                     MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
                     return;
                 }
-                if (Convert.ToInt32(Content) < 0)
+                if (Convert.ToInt32(Content) <= 0)
                 {
-                    MessageBox.Show("Số Lượng Không Cho Phép Âm", "ERR");
+                    MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
                     return;
                 }
                 if (Content != null)
@@ -1674,9 +1674,9 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
                 return;
             }
-            if (Convert.ToInt32(Content) < 0)
+            if (Convert.ToInt32(Content) <= 0)
             {
-                MessageBox.Show("Số Lượng Không Cho Phép Âm", "ERR");
+                MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
                 return;
             }
             if (Content != null)
