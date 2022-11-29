@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dasboard));
             this.PanelTitel = new System.Windows.Forms.Panel();
+            this.lb_XinChao = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.labelTite = new System.Windows.Forms.Label();
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.PanelDesktopPanel = new System.Windows.Forms.Panel();
@@ -45,8 +47,6 @@
             this.btn_HoaDon = new System.Windows.Forms.Button();
             this.btn_sanpham = new System.Windows.Forms.Button();
             this.btn_shopping = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lb_XinChao = new System.Windows.Forms.Label();
             this.PanelTitel.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +64,29 @@
             this.PanelTitel.Name = "PanelTitel";
             this.PanelTitel.Size = new System.Drawing.Size(1158, 100);
             this.PanelTitel.TabIndex = 1;
+            // 
+            // lb_XinChao
+            // 
+            this.lb_XinChao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_XinChao.AutoSize = true;
+            this.lb_XinChao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_XinChao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lb_XinChao.Location = new System.Drawing.Point(951, 64);
+            this.lb_XinChao.Name = "lb_XinChao";
+            this.lb_XinChao.Size = new System.Drawing.Size(0, 20);
+            this.lb_XinChao.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(879, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Xin chào : ";
             // 
             // labelTite
             // 
@@ -291,27 +314,6 @@
             this.btn_shopping.Text = "Bán Hàng";
             this.btn_shopping.UseVisualStyleBackColor = true;
             this.btn_shopping.Click += new System.EventHandler(this.btn_shopping_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(879, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Xin chào : ";
-            // 
-            // lb_XinChao
-            // 
-            this.lb_XinChao.AutoSize = true;
-            this.lb_XinChao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_XinChao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lb_XinChao.Location = new System.Drawing.Point(951, 64);
-            this.lb_XinChao.Name = "lb_XinChao";
-            this.lb_XinChao.Size = new System.Drawing.Size(0, 20);
-            this.lb_XinChao.TabIndex = 1;
             // 
             // Form_Dasboard
             // 
