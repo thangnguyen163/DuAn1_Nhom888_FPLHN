@@ -25,18 +25,26 @@ namespace _3.PresentationLayers.Views
         private Random random;
         private int tempIndex;
         private Form activeForm;
+        private INhanVienService _iNhanVienService;
         public Guid SelectID { get; set; }
         public Form_Dasboard()
         {
             InitializeComponent();
             random = new Random();
             this.Text = string.Empty;
-            
-            
             // LoaddataToChitietHoadon(SelectID);
-           
-
+            _iNhanVienService = new NhanVienService();
         }
+        public Form_Dasboard(string a)
+        {
+            InitializeComponent();
+            random = new Random();
+            this.Text = string.Empty;
+            // LoaddataToChitietHoadon(SelectID);
+            _iNhanVienService = new NhanVienService();
+            this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
+        }
+
         private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
