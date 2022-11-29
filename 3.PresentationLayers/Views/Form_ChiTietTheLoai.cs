@@ -92,8 +92,8 @@ namespace _3.PresentationLayers.Views
             _cttl = null;
             cbb_theloai.Text = "--Chọn--";
             cbb_tensach.Text = "--Chọn--";
-            tb_ma.Text = "";
-            tb_ten.Text = "";
+            tb_ma.Text = string.Empty;
+            tb_ten.Text = string.Empty;
             cbb_trangthai.Text = "--Chọn--";
         }
         private ChiTietTheLoai GetDataFromGui_Them()
@@ -137,7 +137,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thêm đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == string.Empty || tb_ten.Text == string.Empty || cbb_trangthai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
                     return;
@@ -153,7 +153,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                if (cbb_theloai.Text == "--Chọn--" || cbb_tensach.Text == "--Chọn--" || tb_ma.Text == string.Empty || tb_ten.Text == string.Empty || cbb_trangthai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
                     return;

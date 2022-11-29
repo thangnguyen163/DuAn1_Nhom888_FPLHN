@@ -65,11 +65,11 @@
             // 
             this.labelTite.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTite.AutoSize = true;
-            this.labelTite.Font = new System.Drawing.Font("Source Sans Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTite.ForeColor = System.Drawing.Color.White;
             this.labelTite.Location = new System.Drawing.Point(549, 44);
             this.labelTite.Name = "labelTite";
-            this.labelTite.Size = new System.Drawing.Size(65, 25);
+            this.labelTite.Size = new System.Drawing.Size(76, 25);
             this.labelTite.TabIndex = 0;
             this.labelTite.Text = "HOME";
             // 
@@ -300,6 +300,7 @@
             this.ForeColor = System.Drawing.Color.MediumVioletRed;
             this.Name = "Form_Dasboard";
             this.Text = "Form_Dasboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.PanelTitel.ResumeLayout(false);
             this.PanelTitel.PerformLayout();
             this.panelLogo.ResumeLayout(false);

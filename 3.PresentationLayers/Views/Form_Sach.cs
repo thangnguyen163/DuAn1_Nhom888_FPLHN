@@ -66,10 +66,10 @@ namespace _3.PresentationLayers.Views
         {
             LoadDataToDtg(_iSachService.GetAll());
             _sach = null;
-            tb_ma.Text = "";
-            tb_ten.Text = "";
+            tb_ma.Text = string.Empty;
+            tb_ten.Text = string.Empty;
             cbb_trangthai.Text = "--Chọn--";
-            tb_Timkiem.Text = "";
+            tb_Timkiem.Text = string.Empty;
         }
         private Sach GetDataFromGui_Them()
         {
@@ -106,7 +106,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thêm đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                if (tb_ma.Text == string.Empty || tb_ten.Text == string.Empty || cbb_trangthai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
                     return;
@@ -122,7 +122,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (tb_ma.Text == "" || tb_ten.Text == "" || cbb_trangthai.Text == "--Chọn--")
+                if (tb_ma.Text == string.Empty   || tb_ten.Text == string.Empty || cbb_trangthai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
                     return;
