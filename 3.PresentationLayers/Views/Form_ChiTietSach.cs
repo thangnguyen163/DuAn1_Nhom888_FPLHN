@@ -31,8 +31,8 @@ namespace _3.PresentationLayers.Views
         private ILoaiBiaService _iLoaiBiaService;
         private INhaPhatHanhService _iNhaPhatHanhService;
         private ChiTietSach ChiTietSach;
-        private string LinkImage ="";
-        
+        private string LinkImage = "";
+
 
         public Form_ChiTietSach()
         {
@@ -101,11 +101,11 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán",a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/,a.MaVach);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
         }
 
-     
+
         public void LoadCbb()
         {
             foreach (var a in _iSachService.GetAll())
@@ -194,7 +194,7 @@ namespace _3.PresentationLayers.Views
             //dtg_Show.Columns[18].Name = "Thể loại 2";
 
             dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x=>x.TenSach.Contains(tbt_Search.Text)))
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenSach.Contains(tbt_Search.Text)))
             {
                 dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/, a.MaVach);
             }
@@ -213,73 +213,82 @@ namespace _3.PresentationLayers.Views
         private void btn_Add_Click(object sender, EventArgs e)
         {
             #region CheckNull
-            if (cbb_Sach.Text == "")
+            if (cbb_Sach.Text == string.Empty)
             {
                 MessageBox.Show("Sách không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_TheLoai.Text == "")
+            else if (cbb_TheLoai.Text == string.Empty)
             {
                 MessageBox.Show("Thể loại không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_NXB.Text == "")
+            else if (cbb_NXB.Text == string.Empty)
             {
                 MessageBox.Show("NXb không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_TacGia.Text == "")
+            else if (cbb_TacGia.Text == string.Empty)
             {
                 MessageBox.Show("Tác giả không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_NhaPhatHanh.Text == "")
+            else if (cbb_NhaPhatHanh.Text == string.Empty)
             {
                 MessageBox.Show("Nhà phát hành không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_LoaiBia.Text == "")
+            else if (cbb_LoaiBia.Text == string.Empty)
             {
                 MessageBox.Show("Loại bìa không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_MaVach.Text == "")
+            else if (tbt_MaVach.Text == string.Empty)
             {
                 MessageBox.Show("Mã vạch không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_NamXuatBan.Text == "")
+            else if (tbt_NamXuatBan.Text == string.Empty)
             {
                 MessageBox.Show("Năm xuất bản không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_SoTrang.Text == "")
+            else if (tbt_SoTrang.Text == string.Empty)
             {
                 MessageBox.Show("Số trang không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_SoLuong.Text == "")
+            else if (tbt_SoLuong.Text == string.Empty)
             {
                 MessageBox.Show("Số lượng không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_GiaNhap.Text == "")
+            else if (tbt_GiaNhap.Text == string.Empty)
             {
                 MessageBox.Show("Giá nhập không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_GiaBan.Text == "")
+            else if (tbt_GiaBan.Text == string.Empty)
             {
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_KichThuoc.Text == "")
-            {
-                MessageBox.Show("Kích thước không được để trống!!!!", "ERROR");
-            }
-            if (rdt_ConBan.Checked = false)
+            else if (rdt_ConBan.Checked = false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+                return;
             }
-            if (rdt_KhongBan.Checked = false)
+            else if (rdt_KhongBan.Checked = false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+                return ;
             }
 
             #endregion
 
-
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tthêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
@@ -298,7 +307,7 @@ namespace _3.PresentationLayers.Views
                         Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
                           .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
                         KichThuoc = tbt_KichThuoc.Text,
-                        MaVach=tbt_MaVach.Text,
+                        MaVach = tbt_MaVach.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                         MoTa = tbt_MoTa.Text,
                         SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
@@ -309,6 +318,7 @@ namespace _3.PresentationLayers.Views
                         TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
 
                     }));
+
                     LoadData();
                 }
                 if (dialogResult == DialogResult.No) return;
@@ -318,66 +328,80 @@ namespace _3.PresentationLayers.Views
         private void btn_Update_Click(object sender, EventArgs e)
         {
             #region CheckNull
-            if (cbb_Sach.Text == "")
+            if (cbb_Sach.Text == string.Empty)
             {
                 MessageBox.Show("Sách không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_TheLoai.Text == "")
+            else if (cbb_TheLoai.Text == string.Empty)
             {
                 MessageBox.Show("Thể loại không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_NXB.Text == "")
+            else if (cbb_NXB.Text == string.Empty)
             {
                 MessageBox.Show("NXb không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_TacGia.Text == "")
+            else if (cbb_TacGia.Text == string.Empty)
             {
                 MessageBox.Show("Tác giả không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_NhaPhatHanh.Text == "")
+            else if (cbb_NhaPhatHanh.Text == string.Empty)
             {
                 MessageBox.Show("Nhà phát hành không được để trống!!!!", "ERROR");
+                return;
             }
-            if (cbb_LoaiBia.Text == "")
+            else if (cbb_LoaiBia.Text == string.Empty)
             {
                 MessageBox.Show("Loại bìa không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_MaVach.Text == "")
+            else if (tbt_MaVach.Text == string.Empty)
             {
                 MessageBox.Show("Mã vạch không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_NamXuatBan.Text == "")
+            else if (tbt_NamXuatBan.Text == string.Empty)
             {
                 MessageBox.Show("Năm xuất bản không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_SoTrang.Text == "")
+            else if (tbt_SoTrang.Text == string.Empty)
             {
                 MessageBox.Show("Số trang không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_SoLuong.Text == "")
+            else if (tbt_SoLuong.Text == string.Empty)
             {
                 MessageBox.Show("Số lượng không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_GiaNhap.Text == "")
+            else if (tbt_GiaNhap.Text == string.Empty)
             {
                 MessageBox.Show("Giá nhập không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_GiaBan.Text == "")
+            else if (tbt_GiaBan.Text == string.Empty)
             {
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
+                return;
             }
-            if (tbt_KichThuoc.Text == "")
-            {
-                MessageBox.Show("Kích thước không được để trống!!!!", "ERROR");
-            }
-            if (rdt_ConBan.Checked = false)
+            else if (rdt_ConBan.Checked = false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+                return;
             }
-            if (rdt_KhongBan.Checked = false)
+            else if (rdt_KhongBan.Checked = false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
+                return;
             }
+            else if(tbt_Ma.Text==string.Empty)
+            {
+                MessageBox.Show("Chọn hoá đơn muốn sửa, PLEAR","ERROR");
+            }    
 
             #endregion
             else
@@ -400,7 +424,7 @@ namespace _3.PresentationLayers.Views
                         KichThuoc = tbt_KichThuoc.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                         MoTa = tbt_MoTa.Text,
-                        MaVach=tbt_MaVach.Text,
+                        MaVach = tbt_MaVach.Text,
                         SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
                         SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                         GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
@@ -423,7 +447,7 @@ namespace _3.PresentationLayers.Views
             //    MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
             //    {
             //        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-             
+
             //    }));
             //    LoadData();
             //}
@@ -500,13 +524,13 @@ namespace _3.PresentationLayers.Views
             OpenFileDialog open = new OpenFileDialog();
             try
             {
-                
+
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
                     ptb_AnhSach.Image = Image.FromFile(open.FileName);
                     LinkImage = open.FileName;
-                } 
+                }
             }
             catch (Exception ex)
             {
@@ -533,9 +557,9 @@ namespace _3.PresentationLayers.Views
             foreach (var a in _iTietTheLoaiService.GetAll().Where(x => x.TheLoai == cbb_TheLoai.Text))
             {
                 cbb_TheLoai2.Items.Add(a.ChiTietTheLoai);
-                
+
             }
-            
+
         }
 
         private void btn_Reset_Click(object sender, EventArgs e)
@@ -563,125 +587,151 @@ namespace _3.PresentationLayers.Views
 
         private void cbb_LocNXB_TextChanged(object sender, EventArgs e)
         {
-            int stt = 0;
-            dtg_Show.ColumnCount = 17;
-            dtg_Show.Columns[0].Name = "STT";
-            dtg_Show.Columns[1].Name = "Id";
-            dtg_Show.Columns[1].Visible = false;
-            dtg_Show.Columns[2].Name = "Sách";
-            dtg_Show.Columns[3].Name = "NXB";
-            dtg_Show.Columns[4].Name = "Tác giả";
-            dtg_Show.Columns[5].Name = "NPH";
-            dtg_Show.Columns[6].Name = "Loại bìa";
-            dtg_Show.Columns[7].Name = "Mã";
-            dtg_Show.Columns[8].Name = "Kích thước";
-            dtg_Show.Columns[9].Name = "Năm xuất bản";
-            dtg_Show.Columns[10].Name = "Mô tả";
-            dtg_Show.Columns[11].Name = "Số trang";
-            dtg_Show.Columns[12].Name = "Số lượng";
-            dtg_Show.Columns[13].Name = "Giá nhập";
-            dtg_Show.Columns[14].Name = "Giá bán";
-            dtg_Show.Columns[15].Name = "Trạng thái";
-            dtg_Show.Columns[16].Name = "Đường Dẫn";
-            //dtg_Show.Columns[17].Name = "Thể loại 1";
-            //dtg_Show.Columns[18].Name = "Thể loại 2";
-            dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)))
+            if (cbb_LocNXB.Text!=null)
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                int stt = 0;
+                dtg_Show.ColumnCount = 17;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                //dtg_Show.Columns[17].Name = "Thể loại 1";
+                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                }
+                cbb_LocTacGia.Text = "";
+                cbb_LocNhaPhatHanh.Text = "";
+                cbb_LocLoaiBia.Text = "";
+                
             }
+            
         }
 
         private void cbb_LocTacGia_TextChanged(object sender, EventArgs e)
         {
-            int stt = 0;
-            dtg_Show.ColumnCount = 17;
-            dtg_Show.Columns[0].Name = "STT";
-            dtg_Show.Columns[1].Name = "Id";
-            dtg_Show.Columns[1].Visible = false;
-            dtg_Show.Columns[2].Name = "Sách";
-            dtg_Show.Columns[3].Name = "NXB";
-            dtg_Show.Columns[4].Name = "Tác giả";
-            dtg_Show.Columns[5].Name = "NPH";
-            dtg_Show.Columns[6].Name = "Loại bìa";
-            dtg_Show.Columns[7].Name = "Mã";
-            dtg_Show.Columns[8].Name = "Kích thước";
-            dtg_Show.Columns[9].Name = "Năm xuất bản";
-            dtg_Show.Columns[10].Name = "Mô tả";
-            dtg_Show.Columns[11].Name = "Số trang";
-            dtg_Show.Columns[12].Name = "Số lượng";
-            dtg_Show.Columns[13].Name = "Giá nhập";
-            dtg_Show.Columns[14].Name = "Giá bán";
-            dtg_Show.Columns[15].Name = "Trạng thái";
-            dtg_Show.Columns[16].Name = "Đường Dẫn";
-            //dtg_Show.Columns[17].Name = "Thể loại 1";
-            //dtg_Show.Columns[18].Name = "Thể loại 2";
-            dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)))
+            if (cbb_LocTacGia.Text != "")
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                int stt = 0;
+                dtg_Show.ColumnCount = 17;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                //dtg_Show.Columns[17].Name = "Thể loại 1";
+                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                }
+                cbb_LocNXB.Text = "";
+                cbb_LocNhaPhatHanh.Text = "";
+                cbb_LocLoaiBia.Text = "";
             }
         }
 
         private void cbb_LocNhaPhatHanh_TextChanged(object sender, EventArgs e)
         {
-            int stt = 0;
-            dtg_Show.ColumnCount = 17;
-            dtg_Show.Columns[0].Name = "STT";
-            dtg_Show.Columns[1].Name = "Id";
-            dtg_Show.Columns[1].Visible = false;
-            dtg_Show.Columns[2].Name = "Sách";
-            dtg_Show.Columns[3].Name = "NXB";
-            dtg_Show.Columns[4].Name = "Tác giả";
-            dtg_Show.Columns[5].Name = "NPH";
-            dtg_Show.Columns[6].Name = "Loại bìa";
-            dtg_Show.Columns[7].Name = "Mã";
-            dtg_Show.Columns[8].Name = "Kích thước";
-            dtg_Show.Columns[9].Name = "Năm xuất bản";
-            dtg_Show.Columns[10].Name = "Mô tả";
-            dtg_Show.Columns[11].Name = "Số trang";
-            dtg_Show.Columns[12].Name = "Số lượng";
-            dtg_Show.Columns[13].Name = "Giá nhập";
-            dtg_Show.Columns[14].Name = "Giá bán";
-            dtg_Show.Columns[15].Name = "Trạng thái";
-            dtg_Show.Columns[16].Name = "Đường Dẫn";
-            //dtg_Show.Columns[17].Name = "Thể loại 1";
-            //dtg_Show.Columns[18].Name = "Thể loại 2";
-            dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)))
+            if (cbb_LocNhaPhatHanh.Text != "")
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                int stt = 0;
+                dtg_Show.ColumnCount = 17;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                //dtg_Show.Columns[17].Name = "Thể loại 1";
+                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                }
+                cbb_LocNXB.Text = "";
+                cbb_LocTacGia.Text = "";
+                cbb_LocLoaiBia.Text = "";
             }
         }
 
         private void cbb_LocLoaiBia_TextChanged(object sender, EventArgs e)
         {
-            int stt = 0;
-            dtg_Show.ColumnCount = 17;
-            dtg_Show.Columns[0].Name = "STT";
-            dtg_Show.Columns[1].Name = "Id";
-            dtg_Show.Columns[1].Visible = false;
-            dtg_Show.Columns[2].Name = "Sách";
-            dtg_Show.Columns[3].Name = "NXB";
-            dtg_Show.Columns[4].Name = "Tác giả";
-            dtg_Show.Columns[5].Name = "NPH";
-            dtg_Show.Columns[6].Name = "Loại bìa";
-            dtg_Show.Columns[7].Name = "Mã";
-            dtg_Show.Columns[8].Name = "Kích thước";
-            dtg_Show.Columns[9].Name = "Năm xuất bản";
-            dtg_Show.Columns[10].Name = "Mô tả";
-            dtg_Show.Columns[11].Name = "Số trang";
-            dtg_Show.Columns[12].Name = "Số lượng";
-            dtg_Show.Columns[13].Name = "Giá nhập";
-            dtg_Show.Columns[14].Name = "Giá bán";
-            dtg_Show.Columns[15].Name = "Trạng thái";
-            dtg_Show.Columns[16].Name = "Đường Dẫn";
-            //dtg_Show.Columns[17].Name = "Thể loại 1";
-            //dtg_Show.Columns[18].Name = "Thể loại 2";
-            dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)))
+            if (cbb_LocLoaiBia.Text != "")
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                int stt = 0;
+                dtg_Show.ColumnCount = 17;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                //dtg_Show.Columns[17].Name = "Thể loại 1";
+                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                }
+                cbb_LocNXB.Text = "";
+                cbb_LocNhaPhatHanh.Text = "";
+                cbb_LocTacGia.Text = "";
             }
         }
     }

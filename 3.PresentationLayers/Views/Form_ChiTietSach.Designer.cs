@@ -100,7 +100,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.tbt_Search = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.Lọc = new System.Windows.Forms.GroupBox();
             this.cbb_LocTacGia = new System.Windows.Forms.ComboBox();
             this.cbb_LocNXB = new System.Windows.Forms.ComboBox();
@@ -110,6 +109,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -267,7 +267,7 @@
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.Black;
-            this.panel17.Location = new System.Drawing.Point(624, 437);
+            this.panel17.Location = new System.Drawing.Point(630, 439);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(310, 2);
             this.panel17.TabIndex = 4;
@@ -365,6 +365,7 @@
             // ptb_AnhSach
             // 
             this.ptb_AnhSach.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptb_AnhSach.Image = ((System.Drawing.Image)(resources.GetObject("ptb_AnhSach.Image")));
             this.ptb_AnhSach.Location = new System.Drawing.Point(6, 94);
             this.ptb_AnhSach.Name = "ptb_AnhSach";
             this.ptb_AnhSach.Size = new System.Drawing.Size(227, 287);
@@ -530,7 +531,7 @@
             // rdt_KhongBan
             // 
             this.rdt_KhongBan.AutoSize = true;
-            this.rdt_KhongBan.Location = new System.Drawing.Point(864, 413);
+            this.rdt_KhongBan.Location = new System.Drawing.Point(870, 415);
             this.rdt_KhongBan.Name = "rdt_KhongBan";
             this.rdt_KhongBan.Size = new System.Drawing.Size(87, 24);
             this.rdt_KhongBan.TabIndex = 4;
@@ -541,7 +542,7 @@
             // rdt_ConBan
             // 
             this.rdt_ConBan.AutoSize = true;
-            this.rdt_ConBan.Location = new System.Drawing.Point(741, 413);
+            this.rdt_ConBan.Location = new System.Drawing.Point(747, 415);
             this.rdt_ConBan.Name = "rdt_ConBan";
             this.rdt_ConBan.Size = new System.Drawing.Size(85, 24);
             this.rdt_ConBan.TabIndex = 4;
@@ -579,7 +580,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(620, 414);
+            this.label13.Location = new System.Drawing.Point(626, 416);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 3;
@@ -851,9 +852,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.dtg_Show);
             this.groupBox3.Controls.Add(this.tbt_Search);
-            this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Location = new System.Drawing.Point(31, 604);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1330, 337);
@@ -897,16 +898,6 @@
             this.tbt_Search.TabIndex = 2;
             this.tbt_Search.Text = "   ";
             this.tbt_Search.TextChanged += new System.EventHandler(this.tbt_Search_TextChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(770, 20);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 20);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Tìm kiếm";
-            this.label18.Click += new System.EventHandler(this.label8_Click);
             // 
             // Lọc
             // 
@@ -996,6 +987,15 @@
             this.label22.Size = new System.Drawing.Size(120, 20);
             this.label22.TabIndex = 3;
             this.label22.Text = "Lọc theo loại bìa";
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(1067, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 31);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form_ChiTietSach
             // 
@@ -1087,7 +1087,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbt_MaVach;
         private System.Windows.Forms.Button btn_Reset;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
@@ -1109,5 +1108,6 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button1;
     }
 }
