@@ -40,6 +40,7 @@ namespace _3.PresentationLayers.Views
         public Guid SelectIDSp { get; set; }
         private HoaDonChiTiet hoaDonChiTiet;
         private ChiTietSach ChiTietSach;
+        private Guid SelectNhanVien;
         public int dem { get; set; }
 
         public Form_BanHang()
@@ -86,6 +87,8 @@ namespace _3.PresentationLayers.Views
             panel_tiencoc.Visible = false;
             panel_capnhat.Visible = false;
             this.cbb_nhanvien.Text = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == a).Select(a => a.Ma).FirstOrDefault();
+            SelectNhanVien = Guid.Parse(Convert.ToString(_inhanvienService.getNhanViensFromDB().Where(x => x.Ten == a).Select(a => a.Id).FirstOrDefault()));
+            
         }
         private void Locktextboxfrombanhang()
         {
@@ -520,7 +523,7 @@ namespace _3.PresentationLayers.Views
                 hd.Id = Guid.NewGuid();
                 hd.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAll().Count + 1);
 
-                hd.Idnv = Guid.Parse("8f6fdc53-1d3a-403f-8074-28ebf0f6405f");
+                hd.Idnv = SelectNhanVien;
                 hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
                 hd.NgayTao = DateTime.Now;
                 MessageBox.Show(hoaDonService.Add(hd));
@@ -548,7 +551,7 @@ namespace _3.PresentationLayers.Views
                     {
                         if (hd.TrangThai == 0)
                         {
-                            hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
+                            hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ma == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
                             hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
                             hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
                             hoaDonService.Update(hd);
@@ -589,7 +592,7 @@ namespace _3.PresentationLayers.Views
         {
             foreach (var x in _inhanvienService.getNhanViensFromDB())
             {
-                cbb_nhanvien.Items.Add(x.Ten);
+                cbb_nhanvien.Items.Add(x.Ma);
             }
 
             foreach (var x in _ikhachHangService.getKhachHangFromDB())
@@ -910,7 +913,7 @@ namespace _3.PresentationLayers.Views
         {
             //  HoaDon hd = new HoaDon();
             var hd = hoaDonService.GetAll().Where(x => x.Id == id).FirstOrDefault();
-            cbb_nhanvien.SelectedItem = hd.Tennv;
+            cbb_nhanvien.SelectedItem = hd.Manv;
             /*khach hang*/
             cbb_nganhang.SelectedItem = hd.Tenkh;
             tb_vidiem.Text = Convert.ToString(hd.Sodiem);
