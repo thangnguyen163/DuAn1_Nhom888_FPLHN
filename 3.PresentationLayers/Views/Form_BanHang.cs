@@ -31,6 +31,7 @@ namespace _3.PresentationLayers.Views
         private ILichSuDiemTichService _ilichSuDiemTichService = new LichSuDiemTichService();
         private IDiemTieuDungService _idiemTieuDungService = new DiemTieuDungService();
         private ICongThucTinhDiemService _icongThucTinhDiemService = new CongThucTinhDiemService();
+        private IPhuongThucThanhToanService _iphuongThucThanhToanService = new PhuongThucThanhToanService();
         private Button currentButton;
         private Random random;
         private int tempIndex;
@@ -54,12 +55,12 @@ namespace _3.PresentationLayers.Views
             ChiTietSach = new ChiTietSach();
 
             LoadHoaDonChoThanhToan();
-            LoadHoaDonDaThanhToan();
+            //LoadHoaDonDaThanhToan();
             Tabhoadondcmm();
             tabHoaDon.Visible = false;
             Locktextboxfrombanhang();
             LoadSanphamtoFl();
-
+            cbx_Loc.SelectedIndex = 1;
             panel_tiencoc.Visible = false;
             panel_capnhat.Visible = false;
         }
@@ -68,7 +69,7 @@ namespace _3.PresentationLayers.Views
             if (tabHoaDon.SelectedIndex < 0)
             {
                 tb_dungdiem.ReadOnly = true;
-                tb_tienkhachdua.ReadOnly = true;
+                cbb_phuongthucthanhtoan.SelectedIndex = -1;
                 tb_tientralai.ReadOnly = true;
             }
         }
@@ -79,7 +80,7 @@ namespace _3.PresentationLayers.Views
                 btn_quetma.Enabled = false;
                 return;
             }
-            if (lbdtghdct.Text == string.Empty)
+            if (lbdtghdct.Text == "")
             {
                 btn_quetma.Enabled = true;
                 return;
@@ -180,6 +181,7 @@ namespace _3.PresentationLayers.Views
                 dem = tabHoaDon.TabCount - 1;
                 tabHoaDon.SelectedIndex = dem;
             }
+           
             if (hd.TrangThai == 2 || hd.TrangThai == 3)
             {
                 tabtrangthaimuahang.SelectedIndex = 1;
@@ -549,7 +551,7 @@ namespace _3.PresentationLayers.Views
             if (a >= 1)
             {
                 lbdtghdct.Visible = false;
-                lbdtghdct.Text = string.Empty;
+                lbdtghdct.Text = "";
                 dtg_HoaDonChiTiet.Visible = true;
                 LoaddataToHoadonChitiet();
             }
@@ -570,6 +572,10 @@ namespace _3.PresentationLayers.Views
             foreach (var x in _ikhachHangService.getKhachHangFromDB())
             {
                 cbb_nganhang.Items.Add(x.Ten);
+            }
+            foreach (var x in _iphuongThucThanhToanService.GetAllNoView())
+            {
+                cbb_phuongthucthanhtoan.Items.Add(x.Ten);
             }
         }
 
@@ -761,9 +767,9 @@ namespace _3.PresentationLayers.Views
         {
             tb_vidiem.Clear();
             tb_dungdiem.Clear();
-            dtp_ngaytao.ResetText();
+            
             tb_tongtien.Clear();
-            tb_tienkhachdua.Clear();
+            cbb_phuongthucthanhtoan.SelectedIndex = -1; 
             tb_tientralai.Clear();
             tbx_TienCoc.Clear();
             tbx_TienShip.Clear();
@@ -1767,10 +1773,10 @@ namespace _3.PresentationLayers.Views
 
         private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
-            if (tb_tienkhachdua.Text != string.Empty && tb_tongtienhang.Text != string.Empty)
-            {
-                tb_tientralai.Text = Convert.ToString(Convert.ToInt64(tb_tienkhachdua.Text) - Convert.ToInt64(tb_tongtien.Text));
-            }
+            //if (tb_tienkhachdua.Text != "" && tb_tongtienhang.Text != "")
+            //{
+            //    tb_tientralai.Text = Convert.ToString(Convert.ToInt64(tb_tienkhachdua.Text) - Convert.ToInt64(tb_tongtien.Text));
+            //}
         }
 
         private void tb_tienkhachdua_KeyPress(object sender, KeyPressEventArgs e)
@@ -2004,6 +2010,31 @@ namespace _3.PresentationLayers.Views
         {
             Notification dialog = new Notification();
             dialog.showAlert(msg, Color.Red);
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbb_phuongthucthanhtoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbb_phuongthucthanhtoan.SelectedIndex == 0)
+            {
+                panel_chuyenkhoan.Visible = false;
+                panel_tienmat.Visible = true;
+                
+            }
+            else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
+            {
+                panel_tienmat.Visible = false;
+                panel_chuyenkhoan.Visible = true;
+            }
+            else
+            {
+                panel_tienmat.Visible = true;
+                panel_chuyenkhoan.Visible = true;
+            }    
         }
     }
 }
