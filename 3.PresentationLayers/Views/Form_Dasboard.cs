@@ -112,7 +112,7 @@ namespace _3.PresentationLayers.Views
 
         private void btn_shopping_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Form_BanHang(), sender);
+            OpenChildForm(new Form_BanHang(lb_XinChao.Text), sender);
 
         }
         private void btn_LogOut_Click(object sender, EventArgs e)
