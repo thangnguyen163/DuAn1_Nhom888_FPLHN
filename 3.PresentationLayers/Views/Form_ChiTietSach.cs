@@ -73,7 +73,7 @@ namespace _3.PresentationLayers.Views
         }
         void LoadData()
         {
-            int stt = 0;
+            int stt = 1;
             dtg_Show.ColumnCount = 18;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id";
@@ -99,7 +99,7 @@ namespace _3.PresentationLayers.Views
             //dtg_Show.Columns[18].Name = "Thể loại 2";
 
             dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView())
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().OrderBy(x=>x.Ma))
             {
                 dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
             }
@@ -170,7 +170,7 @@ namespace _3.PresentationLayers.Views
 
         private void tbt_Search_TextChanged(object sender, EventArgs e)
         {
-            int stt = 0;
+            int stt = 1;
             dtg_Show.ColumnCount = 19;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id";
@@ -194,7 +194,7 @@ namespace _3.PresentationLayers.Views
             //dtg_Show.Columns[18].Name = "Thể loại 2";
 
             dtg_Show.Rows.Clear();
-            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenSach.Contains(tbt_Search.Text)))
+            foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenSach.Contains(tbt_Search.Text)).OrderBy(x => x.Ma))
             {
                 dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/, a.MaVach);
             }
@@ -589,7 +589,7 @@ namespace _3.PresentationLayers.Views
         {
             if (cbb_LocNXB.Text!=null)
             {
-                int stt = 0;
+                int stt = 1;
                 dtg_Show.ColumnCount = 17;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
@@ -612,7 +612,7 @@ namespace _3.PresentationLayers.Views
                 //dtg_Show.Columns[17].Name = "Thể loại 1";
                 //dtg_Show.Columns[18].Name = "Thể loại 2";
                 dtg_Show.Rows.Clear();
-                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)))
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)).OrderBy(x => x.Ma))
                 {
                     dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
                 }
@@ -628,7 +628,7 @@ namespace _3.PresentationLayers.Views
         {
             if (cbb_LocTacGia.Text != "")
             {
-                int stt = 0;
+                int stt = 1;
                 dtg_Show.ColumnCount = 17;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
@@ -651,7 +651,7 @@ namespace _3.PresentationLayers.Views
                 //dtg_Show.Columns[17].Name = "Thể loại 1";
                 //dtg_Show.Columns[18].Name = "Thể loại 2";
                 dtg_Show.Rows.Clear();
-                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)))
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)).OrderBy(x => x.Ma))
                 {
                     dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
                 }
@@ -665,7 +665,7 @@ namespace _3.PresentationLayers.Views
         {
             if (cbb_LocNhaPhatHanh.Text != "")
             {
-                int stt = 0;
+                int stt = 1;
                 dtg_Show.ColumnCount = 17;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
@@ -688,7 +688,7 @@ namespace _3.PresentationLayers.Views
                 //dtg_Show.Columns[17].Name = "Thể loại 1";
                 //dtg_Show.Columns[18].Name = "Thể loại 2";
                 dtg_Show.Rows.Clear();
-                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)))
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)).OrderBy(x => x.Ma))
                 {
                     dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
                 }
@@ -702,7 +702,7 @@ namespace _3.PresentationLayers.Views
         {
             if (cbb_LocLoaiBia.Text != "")
             {
-                int stt = 0;
+                int stt = 1;
                 dtg_Show.ColumnCount = 17;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
@@ -725,7 +725,7 @@ namespace _3.PresentationLayers.Views
                 //dtg_Show.Columns[17].Name = "Thể loại 1";
                 //dtg_Show.Columns[18].Name = "Thể loại 2";
                 dtg_Show.Rows.Clear();
-                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)))
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)).OrderBy(x => x.Ma))
                 {
                     dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
                 }
