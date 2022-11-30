@@ -35,17 +35,16 @@ namespace _3.PresentationLayers.Views
         {
             if (_ichiTietSachService.GetAllChiTietSachView().Where(p => p.MaVach == tb_mavach.Text).ToList().Count == 0)
             {
+                Lammoi();
                 DialogResult dialogResult = MessageBox.Show("Chưa có sản phẩm này, bạn có muốn thêm sản phẩm mới không ", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Lammoi();
                     Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
                     form.Show();
                 }
                 if (dialogResult == DialogResult.No)
                 {
-                    tb_mavach.Text = String.Empty;
-                    tb_tensach.Text = String.Empty;
-                    Lammoi();
                     return;
                 }
             }

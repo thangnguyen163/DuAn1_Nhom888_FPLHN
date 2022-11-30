@@ -65,10 +65,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel_tiencoc = new System.Windows.Forms.Panel();
+            this.rd_dathanhtoan = new System.Windows.Forms.RadioButton();
             this.rd_danggiao = new System.Windows.Forms.RadioButton();
             this.rd_chogiao = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
-            this.lb_CheckDiaChi = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tb_diachi = new System.Windows.Forms.TextBox();
             this.tbx_TienCoc = new System.Windows.Forms.TextBox();
@@ -504,10 +504,10 @@
             // 
             // panel_tiencoc
             // 
+            this.panel_tiencoc.Controls.Add(this.rd_dathanhtoan);
             this.panel_tiencoc.Controls.Add(this.rd_danggiao);
             this.panel_tiencoc.Controls.Add(this.rd_chogiao);
             this.panel_tiencoc.Controls.Add(this.label12);
-            this.panel_tiencoc.Controls.Add(this.lb_CheckDiaChi);
             this.panel_tiencoc.Controls.Add(this.label11);
             this.panel_tiencoc.Controls.Add(this.tb_diachi);
             this.panel_tiencoc.Controls.Add(this.tbx_TienCoc);
@@ -520,10 +520,21 @@
             this.panel_tiencoc.Size = new System.Drawing.Size(426, 214);
             this.panel_tiencoc.TabIndex = 107;
             // 
+            // rd_dathanhtoan
+            // 
+            this.rd_dathanhtoan.AutoSize = true;
+            this.rd_dathanhtoan.Location = new System.Drawing.Point(141, 176);
+            this.rd_dathanhtoan.Name = "rd_dathanhtoan";
+            this.rd_dathanhtoan.Size = new System.Drawing.Size(130, 24);
+            this.rd_dathanhtoan.TabIndex = 114;
+            this.rd_dathanhtoan.TabStop = true;
+            this.rd_dathanhtoan.Text = "Đã thanh toán";
+            this.rd_dathanhtoan.UseVisualStyleBackColor = true;
+            // 
             // rd_danggiao
             // 
             this.rd_danggiao.AutoSize = true;
-            this.rd_danggiao.Location = new System.Drawing.Point(278, 180);
+            this.rd_danggiao.Location = new System.Drawing.Point(273, 146);
             this.rd_danggiao.Name = "rd_danggiao";
             this.rd_danggiao.Size = new System.Drawing.Size(101, 24);
             this.rd_danggiao.TabIndex = 113;
@@ -534,7 +545,7 @@
             // rd_chogiao
             // 
             this.rd_chogiao.AutoSize = true;
-            this.rd_chogiao.Location = new System.Drawing.Point(148, 180);
+            this.rd_chogiao.Location = new System.Drawing.Point(142, 146);
             this.rd_chogiao.Name = "rd_chogiao";
             this.rd_chogiao.Size = new System.Drawing.Size(91, 24);
             this.rd_chogiao.TabIndex = 112;
@@ -545,24 +556,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 180);
+            this.label12.Location = new System.Drawing.Point(9, 146);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 20);
             this.label12.TabIndex = 111;
             this.label12.Text = "Trạng thái";
             // 
-            // lb_CheckDiaChi
-            // 
-            this.lb_CheckDiaChi.AutoSize = true;
-            this.lb_CheckDiaChi.Location = new System.Drawing.Point(198, 150);
-            this.lb_CheckDiaChi.Name = "lb_CheckDiaChi";
-            this.lb_CheckDiaChi.Size = new System.Drawing.Size(0, 20);
-            this.lb_CheckDiaChi.TabIndex = 110;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 140);
+            this.label11.Location = new System.Drawing.Point(23, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 20);
             this.label11.TabIndex = 108;
@@ -570,14 +573,14 @@
             // 
             // tb_diachi
             // 
-            this.tb_diachi.Location = new System.Drawing.Point(145, 139);
+            this.tb_diachi.Location = new System.Drawing.Point(144, 93);
             this.tb_diachi.Name = "tb_diachi";
             this.tb_diachi.Size = new System.Drawing.Size(252, 27);
             this.tb_diachi.TabIndex = 109;
             // 
             // tbx_TienCoc
             // 
-            this.tbx_TienCoc.Location = new System.Drawing.Point(144, 20);
+            this.tbx_TienCoc.Location = new System.Drawing.Point(142, 6);
             this.tbx_TienCoc.Name = "tbx_TienCoc";
             this.tbx_TienCoc.Size = new System.Drawing.Size(251, 27);
             this.tbx_TienCoc.TabIndex = 106;
@@ -585,7 +588,7 @@
             // lb_TienCoc
             // 
             this.lb_TienCoc.AutoSize = true;
-            this.lb_TienCoc.Location = new System.Drawing.Point(13, 21);
+            this.lb_TienCoc.Location = new System.Drawing.Point(11, 7);
             this.lb_TienCoc.Name = "lb_TienCoc";
             this.lb_TienCoc.Size = new System.Drawing.Size(66, 20);
             this.lb_TienCoc.TabIndex = 104;
@@ -594,7 +597,7 @@
             // lb_TienShip
             // 
             this.lb_TienShip.AutoSize = true;
-            this.lb_TienShip.Location = new System.Drawing.Point(13, 83);
+            this.lb_TienShip.Location = new System.Drawing.Point(17, 51);
             this.lb_TienShip.Name = "lb_TienShip";
             this.lb_TienShip.Size = new System.Drawing.Size(72, 20);
             this.lb_TienShip.TabIndex = 105;
@@ -602,7 +605,7 @@
             // 
             // tbx_TienShip
             // 
-            this.tbx_TienShip.Location = new System.Drawing.Point(143, 80);
+            this.tbx_TienShip.Location = new System.Drawing.Point(143, 48);
             this.tbx_TienShip.Name = "tbx_TienShip";
             this.tbx_TienShip.Size = new System.Drawing.Size(252, 27);
             this.tbx_TienShip.TabIndex = 107;
@@ -621,6 +624,7 @@
             // 
             this.tb_tientralai.Location = new System.Drawing.Point(142, 6);
             this.tb_tientralai.Name = "tb_tientralai";
+            this.tb_tientralai.ReadOnly = true;
             this.tb_tientralai.Size = new System.Drawing.Size(249, 27);
             this.tb_tientralai.TabIndex = 95;
             // 
@@ -649,6 +653,7 @@
             this.tb_chuyenkhoan.Name = "tb_chuyenkhoan";
             this.tb_chuyenkhoan.Size = new System.Drawing.Size(249, 27);
             this.tb_chuyenkhoan.TabIndex = 127;
+            this.tb_chuyenkhoan.TextChanged += new System.EventHandler(this.tb_chuyenkhoan_TextChanged);
             // 
             // lb_chuyenkhoan
             // 
@@ -675,6 +680,7 @@
             this.tb_tienmat.Name = "tb_tienmat";
             this.tb_tienmat.Size = new System.Drawing.Size(249, 27);
             this.tb_tienmat.TabIndex = 125;
+            this.tb_tienmat.TextChanged += new System.EventHandler(this.tb_tienkhachdua_TextChanged);
             // 
             // lb_tienmat
             // 
@@ -927,6 +933,7 @@
             this.cbb_nganhang.Name = "cbb_nganhang";
             this.cbb_nganhang.Size = new System.Drawing.Size(217, 28);
             this.cbb_nganhang.TabIndex = 102;
+            this.cbb_nganhang.SelectedIndexChanged += new System.EventHandler(this.cbb_nganhang_SelectedIndexChanged);
             // 
             // Form_BanHang
             // 
@@ -1030,7 +1037,6 @@
         private System.Windows.Forms.ComboBox cbx_Loc;
         private System.Windows.Forms.TextBox tbt_MaHD;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lb_CheckDiaChi;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TabControl tabtrangthaimuahang;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1050,5 +1056,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel_chuyenkhoan;
         private System.Windows.Forms.Panel panel_tienmat;
+        private System.Windows.Forms.RadioButton rd_dathanhtoan;
     }
 }
