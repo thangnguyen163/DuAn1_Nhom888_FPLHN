@@ -98,6 +98,7 @@
             this.cbb_TheLoai = new System.Windows.Forms.ComboBox();
             this.cbb_Sach = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.tbt_Search = new System.Windows.Forms.TextBox();
             this.Lọc = new System.Windows.Forms.GroupBox();
@@ -109,7 +110,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -192,7 +192,7 @@
             this.groupBox1.Controls.Add(this.cbb_TheLoai2);
             this.groupBox1.Controls.Add(this.cbb_TheLoai);
             this.groupBox1.Controls.Add(this.cbb_Sach);
-            this.groupBox1.Location = new System.Drawing.Point(31, 20);
+            this.groupBox1.Location = new System.Drawing.Point(31, -2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(969, 567);
             this.groupBox1.TabIndex = 0;
@@ -855,12 +855,21 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.dtg_Show);
             this.groupBox3.Controls.Add(this.tbt_Search);
-            this.groupBox3.Location = new System.Drawing.Point(31, 604);
+            this.groupBox3.Location = new System.Drawing.Point(31, 571);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1330, 337);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data";
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(1067, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 31);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dtg_Show
             // 
@@ -909,7 +918,7 @@
             this.Lọc.Controls.Add(this.label20);
             this.Lọc.Controls.Add(this.label21);
             this.Lọc.Controls.Add(this.label22);
-            this.Lọc.Location = new System.Drawing.Point(1006, 20);
+            this.Lọc.Location = new System.Drawing.Point(1006, -2);
             this.Lọc.Name = "Lọc";
             this.Lọc.Size = new System.Drawing.Size(355, 567);
             this.Lọc.TabIndex = 3;
@@ -987,15 +996,6 @@
             this.label22.Size = new System.Drawing.Size(120, 20);
             this.label22.TabIndex = 3;
             this.label22.Text = "Lọc theo loại bìa";
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1067, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 31);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form_ChiTietSach
             // 
