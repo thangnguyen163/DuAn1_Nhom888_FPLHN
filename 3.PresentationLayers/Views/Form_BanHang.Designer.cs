@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
-            this.btn_quetma = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_quetma = new System.Windows.Forms.Button();
             this.tbt_SearchProducts = new System.Windows.Forms.TextBox();
             this.lb_SanPham = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -68,9 +68,7 @@
             this.rd_danggiao = new System.Windows.Forms.RadioButton();
             this.rd_chogiao = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
-            this.lb_CheckShip = new System.Windows.Forms.Label();
             this.lb_CheckDiaChi = new System.Windows.Forms.Label();
-            this.lb_CheckCoc = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tb_diachi = new System.Windows.Forms.TextBox();
             this.tbx_TienCoc = new System.Windows.Forms.TextBox();
@@ -145,7 +143,6 @@
             // panel_nel
             // 
             this.panel_nel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel_nel.Controls.Add(this.btn_quetma);
             this.panel_nel.Controls.Add(this.panel2);
             this.panel_nel.Controls.Add(this.panel3);
             this.panel_nel.Controls.Add(this.btn_taohoadon);
@@ -159,18 +156,9 @@
             this.panel_nel.Size = new System.Drawing.Size(1247, 1055);
             this.panel_nel.TabIndex = 94;
             // 
-            // btn_quetma
-            // 
-            this.btn_quetma.Location = new System.Drawing.Point(653, 637);
-            this.btn_quetma.Name = "btn_quetma";
-            this.btn_quetma.Size = new System.Drawing.Size(166, 32);
-            this.btn_quetma.TabIndex = 110;
-            this.btn_quetma.Text = "Quét mã sách";
-            this.btn_quetma.UseVisualStyleBackColor = true;
-            this.btn_quetma.Click += new System.EventHandler(this.btn_quetma_Click);
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_quetma);
             this.panel2.Controls.Add(this.tbt_SearchProducts);
             this.panel2.Controls.Add(this.lb_SanPham);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -178,6 +166,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1247, 35);
             this.panel2.TabIndex = 107;
+            // 
+            // btn_quetma
+            // 
+            this.btn_quetma.Location = new System.Drawing.Point(659, 3);
+            this.btn_quetma.Name = "btn_quetma";
+            this.btn_quetma.Size = new System.Drawing.Size(166, 32);
+            this.btn_quetma.TabIndex = 110;
+            this.btn_quetma.Text = "Quét mã sách";
+            this.btn_quetma.UseVisualStyleBackColor = true;
+            this.btn_quetma.Click += new System.EventHandler(this.btn_quetma_Click);
             // 
             // tbt_SearchProducts
             // 
@@ -245,9 +243,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.fl_DaThanhToan);
-            this.groupBox2.Location = new System.Drawing.Point(216, 49);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(212, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 400);
+            this.groupBox2.Size = new System.Drawing.Size(200, 326);
             this.groupBox2.TabIndex = 79;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa đơn đã thanh toán";
@@ -257,18 +256,18 @@
             this.fl_DaThanhToan.AutoScroll = true;
             this.fl_DaThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.fl_DaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fl_DaThanhToan.Location = new System.Drawing.Point(3, 23);
+            this.fl_DaThanhToan.Location = new System.Drawing.Point(3, 21);
             this.fl_DaThanhToan.Name = "fl_DaThanhToan";
-            this.fl_DaThanhToan.Size = new System.Drawing.Size(194, 374);
+            this.fl_DaThanhToan.Size = new System.Drawing.Size(194, 302);
             this.fl_DaThanhToan.TabIndex = 73;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.fl_ChuaThanhToan);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(10, 49);
+            this.groupBox1.Location = new System.Drawing.Point(6, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 400);
+            this.groupBox1.Size = new System.Drawing.Size(200, 326);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hóa đơn chưa thanh toán";
@@ -280,7 +279,7 @@
             this.fl_ChuaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_ChuaThanhToan.Location = new System.Drawing.Point(3, 21);
             this.fl_ChuaThanhToan.Name = "fl_ChuaThanhToan";
-            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(194, 376);
+            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(194, 302);
             this.fl_ChuaThanhToan.TabIndex = 74;
             // 
             // btn_taohoadon
@@ -508,9 +507,7 @@
             this.panel_tiencoc.Controls.Add(this.rd_danggiao);
             this.panel_tiencoc.Controls.Add(this.rd_chogiao);
             this.panel_tiencoc.Controls.Add(this.label12);
-            this.panel_tiencoc.Controls.Add(this.lb_CheckShip);
             this.panel_tiencoc.Controls.Add(this.lb_CheckDiaChi);
-            this.panel_tiencoc.Controls.Add(this.lb_CheckCoc);
             this.panel_tiencoc.Controls.Add(this.label11);
             this.panel_tiencoc.Controls.Add(this.tb_diachi);
             this.panel_tiencoc.Controls.Add(this.tbx_TienCoc);
@@ -554,14 +551,6 @@
             this.label12.TabIndex = 111;
             this.label12.Text = "Trạng thái";
             // 
-            // lb_CheckShip
-            // 
-            this.lb_CheckShip.AutoSize = true;
-            this.lb_CheckShip.Location = new System.Drawing.Point(198, 100);
-            this.lb_CheckShip.Name = "lb_CheckShip";
-            this.lb_CheckShip.Size = new System.Drawing.Size(0, 20);
-            this.lb_CheckShip.TabIndex = 110;
-            // 
             // lb_CheckDiaChi
             // 
             this.lb_CheckDiaChi.AutoSize = true;
@@ -569,14 +558,6 @@
             this.lb_CheckDiaChi.Name = "lb_CheckDiaChi";
             this.lb_CheckDiaChi.Size = new System.Drawing.Size(0, 20);
             this.lb_CheckDiaChi.TabIndex = 110;
-            // 
-            // lb_CheckCoc
-            // 
-            this.lb_CheckCoc.AutoSize = true;
-            this.lb_CheckCoc.Location = new System.Drawing.Point(198, 46);
-            this.lb_CheckCoc.Name = "lb_CheckCoc";
-            this.lb_CheckCoc.Size = new System.Drawing.Size(0, 20);
-            this.lb_CheckCoc.TabIndex = 110;
             // 
             // label11
             // 
@@ -1049,9 +1030,7 @@
         private System.Windows.Forms.ComboBox cbx_Loc;
         private System.Windows.Forms.TextBox tbt_MaHD;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lb_CheckShip;
         private System.Windows.Forms.Label lb_CheckDiaChi;
-        private System.Windows.Forms.Label lb_CheckCoc;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TabControl tabtrangthaimuahang;
         private System.Windows.Forms.TabPage tabPage1;
