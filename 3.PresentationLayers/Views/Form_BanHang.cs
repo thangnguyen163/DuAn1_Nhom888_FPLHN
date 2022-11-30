@@ -88,7 +88,7 @@ namespace _3.PresentationLayers.Views
             panel_capnhat.Visible = false;
             this.cbb_nhanvien.Text = _inhanvienService.getNhanViensFromDB().Where(x => x.Ten == a).Select(a => a.Ma).FirstOrDefault();
             SelectNhanVien = Guid.Parse(Convert.ToString(_inhanvienService.getNhanViensFromDB().Where(x => x.Ten == a).Select(a => a.Id).FirstOrDefault()));
-            
+
         }
         private void Locktextboxfrombanhang()
         {
@@ -207,7 +207,7 @@ namespace _3.PresentationLayers.Views
                 dem = tabHoaDon.TabCount - 1;
                 tabHoaDon.SelectedIndex = dem;
             }
-           
+
             if (hd.TrangThai == 2 || hd.TrangThai == 3)
             {
                 tabtrangthaimuahang.SelectedIndex = 1;
@@ -224,7 +224,26 @@ namespace _3.PresentationLayers.Views
 
             if (dtg_HoaDonChiTiet.Visible == false)
             {
-                MessageBox.Show("Bạn chưa chọn hóa đơn cần thêm sản phẩm");
+                DialogResult hoi = MessageBox.Show("Bạn chưa chọn hóa đơn, Bạn có muốn tạo hóa đơn mới không", "Tạo hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DialogResult.Yes == hoi)
+                {
+                    tabHoaDon.Visible = true;
+                    TabPage tpage = new TabPage();
+                    tabHoaDon.TabPages.Add(tpage);
+                    HoaDon hd = new HoaDon();
+                    hd.Id = Guid.NewGuid();
+                    hd.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAllHoaDon().Count + 1);
+                    hd.Idnv = SelectNhanVien;
+                    //hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
+                    hd.NgayTao = DateTime.Now;
+                    MessageBox.Show(hoaDonService.Add(hd));
+                    tpage.Text = Convert.ToString(hd.MaHd);
+                    tpage.Name = Convert.ToString(hd.MaHd);
+                    tabHoaDon.SelectedIndex = tabHoaDon.TabCount;
+                    LoaddataToTextbox(hd.Id);
+                }
+                LoadHoaDonChoThanhToan();
+                LoaddataToHoadonChitiet();
             }
             else
             {
@@ -413,7 +432,7 @@ namespace _3.PresentationLayers.Views
                 foreach (var x in _iChiTietSachService.GetAll().OrderBy(x => x.Ma))
                 {
                     var Ten = _iChiTietSachService.GetAllChiTietSachView().Where(b => b.Id == x.Id).Select(c => c.TenSach).FirstOrDefault();
-                    Button btn1 = new Button() { Width = 200, Height = 150 };
+                    Button btn1 = new Button() { Width = 260, Height = 180 };
                     btn1.Text = x.Ma + Environment.NewLine + "Tên: " + Ten + Environment.NewLine + "Gía bán:" + x.GiaBan + Environment.NewLine + "Số lượng:" + x.SoLuong;
                     btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
                     btn1.BackColor = Color.FromArgb(1, 90, 90);
@@ -521,10 +540,10 @@ namespace _3.PresentationLayers.Views
                 tabHoaDon.TabPages.Add(tpage);
                 HoaDon hd = new HoaDon();
                 hd.Id = Guid.NewGuid();
-                hd.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAll().Count + 1);
+                hd.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAllHoaDon().Count + 1);
 
                 hd.Idnv = SelectNhanVien;
-                hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
+                //hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
                 hd.NgayTao = DateTime.Now;
                 MessageBox.Show(hoaDonService.Add(hd));
                 tpage.Text = Convert.ToString(hd.MaHd);
@@ -552,7 +571,10 @@ namespace _3.PresentationLayers.Views
                         if (hd.TrangThai == 0)
                         {
                             hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ma == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
-                            hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                            if (hd.Idkh != null)
+                            {
+                                hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                            }
                             hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
                             hoaDonService.Update(hd);
                             Tabhoadondcmm();
@@ -793,9 +815,9 @@ namespace _3.PresentationLayers.Views
         {
             tb_vidiem.Clear();
             tb_dungdiem.Clear();
-            
+
             tb_tongtien.Clear();
-            cbb_phuongthucthanhtoan.SelectedIndex = -1; 
+            cbb_phuongthucthanhtoan.SelectedIndex = -1;
             tb_tientralai.Clear();
             tbx_TienCoc.Clear();
             tbx_TienShip.Clear();
@@ -912,11 +934,15 @@ namespace _3.PresentationLayers.Views
         private void LoaddataToTextbox(Guid id)
         {
             //  HoaDon hd = new HoaDon();
-            var hd = hoaDonService.GetAll().Where(x => x.Id == id).FirstOrDefault();
-            cbb_nhanvien.SelectedItem = hd.Manv;
-            /*khach hang*/
-            cbb_nganhang.SelectedItem = hd.Tenkh;
-            tb_vidiem.Text = Convert.ToString(hd.Sodiem);
+            var hd = hoaDonService.GetAllHoaDon().Where(x => x.Id == id).FirstOrDefault();
+            cbb_nhanvien.SelectedItem = _inhanvienService.getNhanViensFromDB().Where(x=>x.Id == hd.Idnv).Select(x=>x.Ma).FirstOrDefault();
+            /*khach hang*/  
+            var kh = _ikhachHangService.getAll().Where(x => x.Id == hd.Idkh).FirstOrDefault();
+            if (hd.Idkh != null)
+            {
+                cbb_nganhang.SelectedItem = _ikhachHangService.getAll().Where(x => x.Id == hd.Idkh).Select(x => x.Ten).FirstOrDefault();
+                tb_vidiem.Text = Convert.ToString(_idiemTieuDungService.GetAll().Where(x => x.Id == kh.IddiemTieuDung).Select(x => x.SoDiem).FirstOrDefault());
+            }           
             // dtp_ngaytao.Value = Convert.ToDateTime(hd.Ngaytao);
             int count = 0;
             foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(x => x.IdHoaDon == id))
@@ -924,17 +950,17 @@ namespace _3.PresentationLayers.Views
                 count = count + Convert.ToInt32(x.ThanhTien);
             }
             tb_tongtienhang.Text = Convert.ToString(count);
-            tbx_TienCoc.Text = Convert.ToString(hd.tiencoc);
-            tbx_TienShip.Text = Convert.ToString(hd.tienship);
+            tbx_TienCoc.Text = Convert.ToString(hd.TienCoc);
+            tbx_TienShip.Text = Convert.ToString(hd.TienShip);
             tb_tongtien.Text = tb_tongtienhang.Text;
-            tbt_MaHD.Text = hd.Mahd;
-            if (hd.Trangthai == 2 || hd.Trangthai == 3)
+            tbt_MaHD.Text = hd.MaHd;
+            if (hd.TrangThai == 2 || hd.TrangThai == 3)
             {
-                if (hd.Trangthai == 2)
+                if (hd.TrangThai == 2)
                 {
                     rd_chogiao.Checked = true;
                 }
-                else if (hd.Trangthai == 3)
+                else if (hd.TrangThai == 3)
                 {
                     rd_danggiao.Checked = true;
                 }
@@ -2049,7 +2075,7 @@ namespace _3.PresentationLayers.Views
             {
                 panel_chuyenkhoan.Visible = false;
                 panel_tienmat.Visible = true;
-                
+
             }
             else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
             {
@@ -2060,7 +2086,7 @@ namespace _3.PresentationLayers.Views
             {
                 panel_tienmat.Visible = true;
                 panel_chuyenkhoan.Visible = true;
-            }    
+            }
         }
     }
 }
