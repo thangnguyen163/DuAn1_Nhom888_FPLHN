@@ -546,10 +546,9 @@ namespace _3.PresentationLayers.Views
                     btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
                     btn1.BackColor = Color.FromArgb(1, 90, 90);
                     btn1.TextAlign = ContentAlignment.MiddleLeft;
-                    //Image img1= Image.FromFile(@"C:\Users\Admin\OneDrive\Desktop\fpoly\4.KI FALL22\2.Block 2\1.PRO131\Icons\purchase_order_50px.png");
-                    //Image img2 = byteArrayToImage(x.Anh);
-                    //img2 = resizeImage(img2, new Size(60, 110));
-                    //btn1.Image = img2;
+                    Image img2 = byteArrayToImage(x.Anh);
+                    img2 = resizeImage(img2, new Size(60, 110));
+                    btn1.Image = img2;
                     btn1.Tag = x;
                     btn1.ImageAlign = ContentAlignment.MiddleRight;
                     btn1.ForeColor = Color.FromArgb(224, 238, 224);
@@ -2225,24 +2224,6 @@ namespace _3.PresentationLayers.Views
                 }
             }
         }
-        private void bt_hoanthanh_Click(object sender, EventArgs e)
-        {
-            if (tabHoaDon.SelectedIndex >= 0)
-            {
-                HoaDon hd = new HoaDon();
-                hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
-                hd.TrangThai = 1;
-                hoaDonService.Update(hd);
-                MessageBox.Show("Đơn hàng đã hoàn thành, cảm ơn bạn");
-                Tabhoadondcmm();
-                LoadHoaDonChoThanhToan();
-                LoadHoaDonDaThanhToan();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn hóa đơn");
-            }
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -2694,6 +2675,77 @@ namespace _3.PresentationLayers.Views
 
                 }
 
+            }
+        }
+        void LoadKhachHang()
+        {
+            try
+            {
+                fl_KhachHang.Controls.Clear();
+                foreach (var x in _ikhachHangService.getAll().Where(x => x.Sdt.Contains(cbb_nganhang.Text)))
+                {
+                    Button btn1 = new Button() { Width = 200, Height = 70 };
+                    btn1.Text = x.Ten + Environment.NewLine + "SĐT " + x.Sdt;
+                    btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
+                    btn1.BackColor = Color.FromArgb(1, 90, 90);
+                    btn1.TextAlign = ContentAlignment.MiddleLeft;
+                    btn1.Tag = x;
+                    btn1.ForeColor = Color.FromArgb(224, 238, 224);
+                    btn1.Click += ClickKhachHang;
+                    fl_KhachHang.Controls.Add(btn1);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void cbb_nganhang_TextChanged(object sender, EventArgs e)
+        {
+            LoadKhachHang();
+        }
+        private void ClickKhachHang(object sender, EventArgs e)
+        {
+            cbb_nganhang.SelectedItem = ((sender as Button).Tag as KhachHang).Ten;
+
+
+        }
+
+        private void tbt_SearchProducts_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                fl_sanpham.Controls.Clear();
+                foreach (var x in _iChiTietSachService.GetAllChiTietSachView().Where(a => a.TenSach.Contains(tbt_SearchProducts.Text)).OrderBy(x => x.Ma))
+                {
+                    var Ten = _iChiTietSachService.GetAllChiTietSachView().Where(b => b.Id == x.Id).Select(c => c.TenSach).FirstOrDefault();
+                    Button btn1 = new Button() { Width = 200, Height = 150 };
+                    btn1.Text = x.Ma + Environment.NewLine + "Tên: " + Ten + Environment.NewLine + "Gía bán:" + x.GiaBan + Environment.NewLine + "Số lượng:" + x.SoLuong;
+                    btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
+                    btn1.BackColor = Color.FromArgb(1, 90, 90);
+                    btn1.TextAlign = ContentAlignment.MiddleLeft;
+                    Image img2 = byteArrayToImage(x.Anh);
+                    img2 = resizeImage(img2, new Size(60, 110));
+                    btn1.Image = img2;
+                    btn1.Tag = x;
+                    btn1.ImageAlign = ContentAlignment.MiddleRight;
+                    btn1.ForeColor = Color.FromArgb(224, 238, 224);
+                    btn1.Click += btnsender_Click1;
+                    fl_sanpham.Controls.Add(btn1);
+                }
+                Button btn2 = new Button() { Width = 200, Height = 150 };
+                btn2.Text = "+";
+                btn2.TextAlign = ContentAlignment.TopCenter;
+                btn2.Font = new Font(btn2.Font.FontFamily, 69);
+                btn2.Click += btnsender_click3;
+                fl_sanpham.Controls.Add(btn2);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

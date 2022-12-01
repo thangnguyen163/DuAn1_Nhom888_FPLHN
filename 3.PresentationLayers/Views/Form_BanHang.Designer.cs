@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
+            this.fl_KhachHang = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_quetma = new System.Windows.Forms.Button();
             this.tbt_SearchProducts = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.lbdtghdct = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel_capnhat = new System.Windows.Forms.Panel();
-            this.bt_hoanthanh = new System.Windows.Forms.Button();
             this.bt_capnhat = new System.Windows.Forms.Button();
             this.panel_thanhtoan = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -109,6 +109,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -143,6 +144,7 @@
             // panel_nel
             // 
             this.panel_nel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel_nel.Controls.Add(this.fl_KhachHang);
             this.panel_nel.Controls.Add(this.panel2);
             this.panel_nel.Controls.Add(this.panel3);
             this.panel_nel.Controls.Add(this.btn_taohoadon);
@@ -156,40 +158,49 @@
             this.panel_nel.Size = new System.Drawing.Size(1247, 1055);
             this.panel_nel.TabIndex = 94;
             // 
+            // fl_KhachHang
+            // 
+            this.fl_KhachHang.AutoScroll = true;
+            this.fl_KhachHang.Location = new System.Drawing.Point(1023, 147);
+            this.fl_KhachHang.Name = "fl_KhachHang";
+            this.fl_KhachHang.Size = new System.Drawing.Size(225, 125);
+            this.fl_KhachHang.TabIndex = 108;
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btn_quetma);
             this.panel2.Controls.Add(this.tbt_SearchProducts);
             this.panel2.Controls.Add(this.lb_SanPham);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 637);
+            this.panel2.Location = new System.Drawing.Point(0, 620);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1247, 35);
+            this.panel2.Size = new System.Drawing.Size(1247, 52);
             this.panel2.TabIndex = 107;
             // 
             // btn_quetma
             // 
-            this.btn_quetma.Location = new System.Drawing.Point(659, 3);
+            this.btn_quetma.Image = ((System.Drawing.Image)(resources.GetObject("btn_quetma.Image")));
+            this.btn_quetma.Location = new System.Drawing.Point(376, 3);
             this.btn_quetma.Name = "btn_quetma";
-            this.btn_quetma.Size = new System.Drawing.Size(166, 32);
+            this.btn_quetma.Size = new System.Drawing.Size(68, 49);
             this.btn_quetma.TabIndex = 110;
-            this.btn_quetma.Text = "Quét mã sách";
             this.btn_quetma.UseVisualStyleBackColor = true;
             this.btn_quetma.Click += new System.EventHandler(this.btn_quetma_Click);
             // 
             // tbt_SearchProducts
             // 
-            this.tbt_SearchProducts.Location = new System.Drawing.Point(110, 2);
+            this.tbt_SearchProducts.Location = new System.Drawing.Point(110, 14);
             this.tbt_SearchProducts.Name = "tbt_SearchProducts";
             this.tbt_SearchProducts.Size = new System.Drawing.Size(206, 27);
             this.tbt_SearchProducts.TabIndex = 105;
-            this.tbt_SearchProducts.Text = "Tìm kiếm sản phẩm";
+            this.tbt_SearchProducts.TextChanged += new System.EventHandler(this.tbt_SearchProducts_TextChanged);
             // 
             // lb_SanPham
             // 
             this.lb_SanPham.AutoSize = true;
             this.lb_SanPham.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_SanPham.Location = new System.Drawing.Point(13, 3);
+            this.lb_SanPham.Location = new System.Drawing.Point(13, 15);
             this.lb_SanPham.Name = "lb_SanPham";
             this.lb_SanPham.Size = new System.Drawing.Size(91, 23);
             this.lb_SanPham.TabIndex = 106;
@@ -288,9 +299,9 @@
             this.btn_taohoadon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_taohoadon.Image = ((System.Drawing.Image)(resources.GetObject("btn_taohoadon.Image")));
             this.btn_taohoadon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_taohoadon.Location = new System.Drawing.Point(96, 3);
+            this.btn_taohoadon.Location = new System.Drawing.Point(60, 3);
             this.btn_taohoadon.Name = "btn_taohoadon";
-            this.btn_taohoadon.Size = new System.Drawing.Size(41, 45);
+            this.btn_taohoadon.Size = new System.Drawing.Size(77, 63);
             this.btn_taohoadon.TabIndex = 101;
             this.btn_taohoadon.Tag = "";
             this.btn_taohoadon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -299,7 +310,7 @@
             // 
             // tabHoaDon
             // 
-            this.tabHoaDon.Location = new System.Drawing.Point(141, 13);
+            this.tabHoaDon.Location = new System.Drawing.Point(143, 23);
             this.tabHoaDon.Name = "tabHoaDon";
             this.tabHoaDon.SelectedIndex = 0;
             this.tabHoaDon.Size = new System.Drawing.Size(444, 24);
@@ -315,7 +326,7 @@
             // 
             this.lb_HoaDonChiTiet.AutoSize = true;
             this.lb_HoaDonChiTiet.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_HoaDonChiTiet.Location = new System.Drawing.Point(122, 57);
+            this.lb_HoaDonChiTiet.Location = new System.Drawing.Point(110, 84);
             this.lb_HoaDonChiTiet.Name = "lb_HoaDonChiTiet";
             this.lb_HoaDonChiTiet.Size = new System.Drawing.Size(144, 23);
             this.lb_HoaDonChiTiet.TabIndex = 100;
@@ -337,11 +348,11 @@
             this.Dongia,
             this.Thanhtien,
             this.Xoa});
-            this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(96, 95);
+            this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(60, 124);
             this.dtg_HoaDonChiTiet.Name = "dtg_HoaDonChiTiet";
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
-            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(870, 365);
+            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(957, 365);
             this.dtg_HoaDonChiTiet.TabIndex = 99;
             this.dtg_HoaDonChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_HoaDonChiTiet_CellClick);
             // 
@@ -440,7 +451,6 @@
             // 
             // panel_capnhat
             // 
-            this.panel_capnhat.Controls.Add(this.bt_hoanthanh);
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_capnhat.Location = new System.Drawing.Point(3, 939);
@@ -448,24 +458,18 @@
             this.panel_capnhat.Size = new System.Drawing.Size(426, 84);
             this.panel_capnhat.TabIndex = 108;
             // 
-            // bt_hoanthanh
-            // 
-            this.bt_hoanthanh.Location = new System.Drawing.Point(238, 20);
-            this.bt_hoanthanh.Name = "bt_hoanthanh";
-            this.bt_hoanthanh.Size = new System.Drawing.Size(168, 50);
-            this.bt_hoanthanh.TabIndex = 1;
-            this.bt_hoanthanh.Text = "Hoàn thành";
-            this.bt_hoanthanh.UseVisualStyleBackColor = true;
-            this.bt_hoanthanh.Click += new System.EventHandler(this.bt_hoanthanh_Click);
-            // 
             // bt_capnhat
             // 
-            this.bt_capnhat.Location = new System.Drawing.Point(30, 20);
+            this.bt_capnhat.BackColor = System.Drawing.Color.SpringGreen;
+            this.bt_capnhat.Image = ((System.Drawing.Image)(resources.GetObject("bt_capnhat.Image")));
+            this.bt_capnhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_capnhat.Location = new System.Drawing.Point(144, 6);
             this.bt_capnhat.Name = "bt_capnhat";
-            this.bt_capnhat.Size = new System.Drawing.Size(168, 50);
+            this.bt_capnhat.Size = new System.Drawing.Size(136, 56);
             this.bt_capnhat.TabIndex = 0;
             this.bt_capnhat.Text = "Cập nhật";
-            this.bt_capnhat.UseVisualStyleBackColor = true;
+            this.bt_capnhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_capnhat.UseVisualStyleBackColor = false;
             this.bt_capnhat.Click += new System.EventHandler(this.bt_capnhat_Click);
             // 
             // panel_thanhtoan
@@ -480,26 +484,30 @@
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.OrangeRed;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(238, 36);
+            this.button5.Location = new System.Drawing.Point(254, 19);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(127, 50);
+            this.button5.Size = new System.Drawing.Size(104, 50);
             this.button5.TabIndex = 111;
             this.button5.Text = "Hủy ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.SpringGreen;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(62, 36);
+            this.button4.Location = new System.Drawing.Point(49, 19);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(133, 50);
+            this.button4.Size = new System.Drawing.Size(146, 50);
             this.button4.TabIndex = 110;
             this.button4.Text = "Thanh Toán";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.bt_thanhtoan_Click);
             // 
             // panel_tiencoc
@@ -937,6 +945,16 @@
             this.cbb_nganhang.Size = new System.Drawing.Size(217, 28);
             this.cbb_nganhang.TabIndex = 102;
             this.cbb_nganhang.SelectedIndexChanged += new System.EventHandler(this.cbb_nganhang_SelectedIndexChanged);
+            this.cbb_nganhang.TextChanged += new System.EventHandler(this.cbb_nganhang_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(313, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 31);
+            this.button1.TabIndex = 111;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form_BanHang
             // 
@@ -1049,7 +1067,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel_capnhat;
         private System.Windows.Forms.Button bt_capnhat;
-        private System.Windows.Forms.Button bt_hoanthanh;
         private System.Windows.Forms.TextBox tb_chuyenkhoan;
         private System.Windows.Forms.Label lb_chuyenkhoan;
         private System.Windows.Forms.TextBox tb_tienmat;
@@ -1060,5 +1077,7 @@
         private System.Windows.Forms.Panel panel_chuyenkhoan;
         private System.Windows.Forms.Panel panel_tienmat;
         private System.Windows.Forms.RadioButton rd_dathanhtoan;
+        private System.Windows.Forms.FlowLayoutPanel fl_KhachHang;
+        private System.Windows.Forms.Button button1;
     }
 }
