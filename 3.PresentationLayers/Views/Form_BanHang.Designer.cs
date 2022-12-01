@@ -33,6 +33,7 @@
             this.panel_nel = new System.Windows.Forms.Panel();
             this.fl_KhachHang = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_quetma = new System.Windows.Forms.Button();
             this.tbt_SearchProducts = new System.Windows.Forms.TextBox();
             this.lb_SanPham = new System.Windows.Forms.Label();
@@ -65,6 +66,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel_tiencoc = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
             this.rd_dathanhtoan = new System.Windows.Forms.RadioButton();
             this.rd_danggiao = new System.Windows.Forms.RadioButton();
             this.rd_chogiao = new System.Windows.Forms.RadioButton();
@@ -76,15 +80,23 @@
             this.lb_TienShip = new System.Windows.Forms.Label();
             this.tbx_TienShip = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
             this.tb_tientralai = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel_chuyenkhoan = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
             this.tb_chuyenkhoan = new System.Windows.Forms.TextBox();
             this.lb_chuyenkhoan = new System.Windows.Forms.Label();
             this.panel_tienmat = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
             this.tb_tienmat = new System.Windows.Forms.TextBox();
             this.lb_tienmat = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbb_phuongthucthanhtoan = new System.Windows.Forms.ComboBox();
@@ -101,6 +113,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.tbt_MaHD = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tb_vidiem = new System.Windows.Forms.TextBox();
@@ -109,7 +125,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_nhanvien = new System.Windows.Forms.ComboBox();
             this.cbb_nganhang = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ipb_AddSach = new FontAwesome.Sharp.IconPictureBox();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -129,6 +145,7 @@
             this.panel7.SuspendLayout();
             this.tabtrangthaimuahang.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -157,6 +174,7 @@
             this.panel_nel.Name = "panel_nel";
             this.panel_nel.Size = new System.Drawing.Size(1247, 1055);
             this.panel_nel.TabIndex = 94;
+            this.panel_nel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_nel_Paint);
             // 
             // fl_KhachHang
             // 
@@ -177,6 +195,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1247, 52);
             this.panel2.TabIndex = 107;
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(313, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 31);
+            this.button1.TabIndex = 111;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btn_quetma
             // 
@@ -337,6 +364,7 @@
             this.dtg_HoaDonChiTiet.AllowUserToAddRows = false;
             this.dtg_HoaDonChiTiet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtg_HoaDonChiTiet.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtg_HoaDonChiTiet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtg_HoaDonChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_HoaDonChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDHDct,
@@ -512,6 +540,9 @@
             // 
             // panel_tiencoc
             // 
+            this.panel_tiencoc.Controls.Add(this.panel23);
+            this.panel_tiencoc.Controls.Add(this.panel22);
+            this.panel_tiencoc.Controls.Add(this.panel21);
             this.panel_tiencoc.Controls.Add(this.rd_dathanhtoan);
             this.panel_tiencoc.Controls.Add(this.rd_danggiao);
             this.panel_tiencoc.Controls.Add(this.rd_chogiao);
@@ -527,6 +558,31 @@
             this.panel_tiencoc.Name = "panel_tiencoc";
             this.panel_tiencoc.Size = new System.Drawing.Size(426, 214);
             this.panel_tiencoc.TabIndex = 107;
+            this.panel_tiencoc.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tiencoc_Paint);
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.Black;
+            this.panel23.Location = new System.Drawing.Point(116, 117);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(280, 2);
+            this.panel23.TabIndex = 123;
+            // 
+            // panel22
+            // 
+            this.panel22.BackColor = System.Drawing.Color.Black;
+            this.panel22.Location = new System.Drawing.Point(116, 72);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(280, 2);
+            this.panel22.TabIndex = 123;
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.Black;
+            this.panel21.Location = new System.Drawing.Point(116, 30);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(280, 2);
+            this.panel21.TabIndex = 123;
             // 
             // rd_dathanhtoan
             // 
@@ -581,16 +637,22 @@
             // 
             // tb_diachi
             // 
+            this.tb_diachi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_diachi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_diachi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diachi.Location = new System.Drawing.Point(144, 93);
             this.tb_diachi.Name = "tb_diachi";
-            this.tb_diachi.Size = new System.Drawing.Size(252, 27);
+            this.tb_diachi.Size = new System.Drawing.Size(252, 20);
             this.tb_diachi.TabIndex = 109;
             // 
             // tbx_TienCoc
             // 
+            this.tbx_TienCoc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tbx_TienCoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbx_TienCoc.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienCoc.Location = new System.Drawing.Point(142, 6);
             this.tbx_TienCoc.Name = "tbx_TienCoc";
-            this.tbx_TienCoc.Size = new System.Drawing.Size(251, 27);
+            this.tbx_TienCoc.Size = new System.Drawing.Size(251, 20);
             this.tbx_TienCoc.TabIndex = 106;
             // 
             // lb_TienCoc
@@ -613,13 +675,17 @@
             // 
             // tbx_TienShip
             // 
+            this.tbx_TienShip.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tbx_TienShip.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbx_TienShip.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienShip.Location = new System.Drawing.Point(143, 48);
             this.tbx_TienShip.Name = "tbx_TienShip";
-            this.tbx_TienShip.Size = new System.Drawing.Size(252, 27);
+            this.tbx_TienShip.Size = new System.Drawing.Size(252, 20);
             this.tbx_TienShip.TabIndex = 107;
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.panel20);
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
@@ -627,13 +693,25 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(426, 40);
             this.panel10.TabIndex = 110;
+            this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.Black;
+            this.panel20.Location = new System.Drawing.Point(113, 34);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(280, 2);
+            this.panel20.TabIndex = 123;
             // 
             // tb_tientralai
             // 
+            this.tb_tientralai.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tientralai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_tientralai.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tientralai.Location = new System.Drawing.Point(142, 6);
             this.tb_tientralai.Name = "tb_tientralai";
             this.tb_tientralai.ReadOnly = true;
-            this.tb_tientralai.Size = new System.Drawing.Size(249, 27);
+            this.tb_tientralai.Size = new System.Drawing.Size(249, 20);
             this.tb_tientralai.TabIndex = 95;
             // 
             // label6
@@ -647,6 +725,7 @@
             // 
             // panel_chuyenkhoan
             // 
+            this.panel_chuyenkhoan.Controls.Add(this.panel19);
             this.panel_chuyenkhoan.Controls.Add(this.tb_chuyenkhoan);
             this.panel_chuyenkhoan.Controls.Add(this.lb_chuyenkhoan);
             this.panel_chuyenkhoan.Dock = System.Windows.Forms.DockStyle.Top;
@@ -655,11 +734,22 @@
             this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 41);
             this.panel_chuyenkhoan.TabIndex = 109;
             // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.Black;
+            this.panel19.Location = new System.Drawing.Point(116, 32);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(280, 2);
+            this.panel19.TabIndex = 123;
+            // 
             // tb_chuyenkhoan
             // 
+            this.tb_chuyenkhoan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_chuyenkhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_chuyenkhoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_chuyenkhoan.Location = new System.Drawing.Point(142, 6);
             this.tb_chuyenkhoan.Name = "tb_chuyenkhoan";
-            this.tb_chuyenkhoan.Size = new System.Drawing.Size(249, 27);
+            this.tb_chuyenkhoan.Size = new System.Drawing.Size(249, 20);
             this.tb_chuyenkhoan.TabIndex = 127;
             this.tb_chuyenkhoan.TextChanged += new System.EventHandler(this.tb_chuyenkhoan_TextChanged);
             this.tb_chuyenkhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_chuyenkhoan_KeyPress);
@@ -675,6 +765,7 @@
             // 
             // panel_tienmat
             // 
+            this.panel_tienmat.Controls.Add(this.panel18);
             this.panel_tienmat.Controls.Add(this.tb_tienmat);
             this.panel_tienmat.Controls.Add(this.lb_tienmat);
             this.panel_tienmat.Dock = System.Windows.Forms.DockStyle.Top;
@@ -683,11 +774,22 @@
             this.panel_tienmat.Size = new System.Drawing.Size(426, 43);
             this.panel_tienmat.TabIndex = 108;
             // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Black;
+            this.panel18.Location = new System.Drawing.Point(114, 37);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(280, 2);
+            this.panel18.TabIndex = 123;
+            // 
             // tb_tienmat
             // 
+            this.tb_tienmat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tienmat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_tienmat.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tienmat.Location = new System.Drawing.Point(141, 9);
             this.tb_tienmat.Name = "tb_tienmat";
-            this.tb_tienmat.Size = new System.Drawing.Size(249, 27);
+            this.tb_tienmat.Size = new System.Drawing.Size(249, 20);
             this.tb_tienmat.TabIndex = 125;
             this.tb_tienmat.TextChanged += new System.EventHandler(this.tb_tienkhachdua_TextChanged);
             this.tb_tienmat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tienmat_KeyPress);
@@ -703,6 +805,11 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.panel17);
+            this.panel6.Controls.Add(this.panel16);
+            this.panel6.Controls.Add(this.panel15);
+            this.panel6.Controls.Add(this.panel14);
+            this.panel6.Controls.Add(this.panel13);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.label10);
             this.panel6.Controls.Add(this.cbb_phuongthucthanhtoan);
@@ -719,6 +826,47 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(426, 239);
             this.panel6.TabIndex = 107;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.Black;
+            this.panel17.Location = new System.Drawing.Point(113, 239);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(280, 3);
+            this.panel17.TabIndex = 123;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Black;
+            this.panel16.Location = new System.Drawing.Point(112, 185);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(280, 2);
+            this.panel16.TabIndex = 123;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.Black;
+            this.panel15.Location = new System.Drawing.Point(113, 140);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(280, 2);
+            this.panel15.TabIndex = 123;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Black;
+            this.panel14.Location = new System.Drawing.Point(114, 90);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(280, 2);
+            this.panel14.TabIndex = 123;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.Black;
+            this.panel13.Location = new System.Drawing.Point(112, 46);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(280, 2);
+            this.panel13.TabIndex = 123;
+            this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
             // 
             // label7
             // 
@@ -740,6 +888,8 @@
             // 
             // cbb_phuongthucthanhtoan
             // 
+            this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbb_phuongthucthanhtoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cbb_phuongthucthanhtoan.FormattingEnabled = true;
             this.cbb_phuongthucthanhtoan.Location = new System.Drawing.Point(142, 209);
             this.cbb_phuongthucthanhtoan.Name = "cbb_phuongthucthanhtoan";
@@ -749,10 +899,13 @@
             // 
             // tb_tongtien
             // 
+            this.tb_tongtien.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tongtien.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_tongtien.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtien.Location = new System.Drawing.Point(142, 161);
             this.tb_tongtien.Name = "tb_tongtien";
             this.tb_tongtien.ReadOnly = true;
-            this.tb_tongtien.Size = new System.Drawing.Size(249, 27);
+            this.tb_tongtien.Size = new System.Drawing.Size(249, 20);
             this.tb_tongtien.TabIndex = 91;
             this.tb_tongtien.TextChanged += new System.EventHandler(this.tb_tongtien_TextChanged);
             // 
@@ -767,18 +920,24 @@
             // 
             // tb_tongtienhang
             // 
+            this.tb_tongtienhang.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tongtienhang.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_tongtienhang.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtienhang.Location = new System.Drawing.Point(144, 20);
             this.tb_tongtienhang.Name = "tb_tongtienhang";
             this.tb_tongtienhang.ReadOnly = true;
-            this.tb_tongtienhang.Size = new System.Drawing.Size(249, 27);
+            this.tb_tongtienhang.Size = new System.Drawing.Size(249, 20);
             this.tb_tongtienhang.TabIndex = 104;
             // 
             // tb_diemquydoi
             // 
+            this.tb_diemquydoi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_diemquydoi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_diemquydoi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diemquydoi.Location = new System.Drawing.Point(139, 116);
             this.tb_diemquydoi.Name = "tb_diemquydoi";
             this.tb_diemquydoi.ReadOnly = true;
-            this.tb_diemquydoi.Size = new System.Drawing.Size(252, 27);
+            this.tb_diemquydoi.Size = new System.Drawing.Size(252, 20);
             this.tb_diemquydoi.TabIndex = 116;
             // 
             // label9
@@ -802,10 +961,13 @@
             // 
             // tb_dungdiem
             // 
+            this.tb_dungdiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_dungdiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_dungdiem.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_dungdiem.Location = new System.Drawing.Point(142, 65);
             this.tb_dungdiem.Name = "tb_dungdiem";
             this.tb_dungdiem.ReadOnly = true;
-            this.tb_dungdiem.Size = new System.Drawing.Size(252, 27);
+            this.tb_dungdiem.Size = new System.Drawing.Size(252, 20);
             this.tb_dungdiem.TabIndex = 113;
             this.tb_dungdiem.TextChanged += new System.EventHandler(this.tb_dungdiem_TextChanged);
             this.tb_dungdiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_dungdiem_KeyPress);
@@ -863,6 +1025,11 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.DarkSalmon;
+            this.panel5.Controls.Add(this.ipb_AddSach);
+            this.panel5.Controls.Add(this.panel12);
+            this.panel5.Controls.Add(this.panel11);
+            this.panel5.Controls.Add(this.panel9);
+            this.panel5.Controls.Add(this.panel8);
             this.panel5.Controls.Add(this.tbt_MaHD);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.tb_vidiem);
@@ -878,11 +1045,49 @@
             this.panel5.TabIndex = 107;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.Black;
+            this.panel12.Location = new System.Drawing.Point(112, 180);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(280, 2);
+            this.panel12.TabIndex = 123;
+            this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.Black;
+            this.panel11.Location = new System.Drawing.Point(110, 137);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(280, 2);
+            this.panel11.TabIndex = 123;
+            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.Black;
+            this.panel9.Location = new System.Drawing.Point(111, 84);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(280, 2);
+            this.panel9.TabIndex = 123;
+            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Black;
+            this.panel8.Location = new System.Drawing.Point(111, 44);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(280, 2);
+            this.panel8.TabIndex = 123;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
+            // 
             // tbt_MaHD
             // 
+            this.tbt_MaHD.BackColor = System.Drawing.Color.DarkSalmon;
+            this.tbt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbt_MaHD.Location = new System.Drawing.Point(141, 60);
             this.tbt_MaHD.Name = "tbt_MaHD";
-            this.tbt_MaHD.Size = new System.Drawing.Size(217, 27);
+            this.tbt_MaHD.Size = new System.Drawing.Size(217, 20);
             this.tbt_MaHD.TabIndex = 122;
             // 
             // label13
@@ -896,10 +1101,12 @@
             // 
             // tb_vidiem
             // 
+            this.tb_vidiem.BackColor = System.Drawing.Color.DarkSalmon;
+            this.tb_vidiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_vidiem.Location = new System.Drawing.Point(140, 156);
             this.tb_vidiem.Name = "tb_vidiem";
             this.tb_vidiem.ReadOnly = true;
-            this.tb_vidiem.Size = new System.Drawing.Size(252, 27);
+            this.tb_vidiem.Size = new System.Drawing.Size(252, 20);
             this.tb_vidiem.TabIndex = 111;
             // 
             // label1
@@ -931,6 +1138,7 @@
             // 
             // cbb_nhanvien
             // 
+            this.cbb_nhanvien.BackColor = System.Drawing.Color.DarkSalmon;
             this.cbb_nhanvien.FormattingEnabled = true;
             this.cbb_nhanvien.Location = new System.Drawing.Point(141, 14);
             this.cbb_nhanvien.Name = "cbb_nhanvien";
@@ -939,6 +1147,7 @@
             // 
             // cbb_nganhang
             // 
+            this.cbb_nganhang.BackColor = System.Drawing.Color.DarkSalmon;
             this.cbb_nganhang.FormattingEnabled = true;
             this.cbb_nganhang.Location = new System.Drawing.Point(141, 108);
             this.cbb_nganhang.Name = "cbb_nganhang";
@@ -947,14 +1156,20 @@
             this.cbb_nganhang.SelectedIndexChanged += new System.EventHandler(this.cbb_nganhang_SelectedIndexChanged);
             this.cbb_nganhang.TextChanged += new System.EventHandler(this.cbb_nganhang_TextChanged);
             // 
-            // button1
+            // ipb_AddSach
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(313, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 31);
-            this.button1.TabIndex = 111;
-            this.button1.UseVisualStyleBackColor = true;
+            this.ipb_AddSach.BackColor = System.Drawing.Color.DarkSalmon;
+            this.ipb_AddSach.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ipb_AddSach.BackgroundImage")));
+            this.ipb_AddSach.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddSach.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ipb_AddSach.IconColor = System.Drawing.SystemColors.ControlText;
+            this.ipb_AddSach.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipb_AddSach.IconSize = 30;
+            this.ipb_AddSach.Location = new System.Drawing.Point(366, 104);
+            this.ipb_AddSach.Name = "ipb_AddSach";
+            this.ipb_AddSach.Size = new System.Drawing.Size(30, 30);
+            this.ipb_AddSach.TabIndex = 109;
+            this.ipb_AddSach.TabStop = false;
             // 
             // Form_BanHang
             // 
@@ -992,6 +1207,7 @@
             this.tabtrangthaimuahang.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipb_AddSach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1079,5 +1295,21 @@
         private System.Windows.Forms.RadioButton rd_dathanhtoan;
         private System.Windows.Forms.FlowLayoutPanel fl_KhachHang;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private FontAwesome.Sharp.IconPictureBox ipb_AddSach;
     }
 }
