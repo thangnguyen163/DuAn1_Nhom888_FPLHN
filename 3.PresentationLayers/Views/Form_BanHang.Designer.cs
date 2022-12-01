@@ -654,6 +654,7 @@
             this.tb_chuyenkhoan.Size = new System.Drawing.Size(249, 27);
             this.tb_chuyenkhoan.TabIndex = 127;
             this.tb_chuyenkhoan.TextChanged += new System.EventHandler(this.tb_chuyenkhoan_TextChanged);
+            this.tb_chuyenkhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_chuyenkhoan_KeyPress);
             // 
             // lb_chuyenkhoan
             // 
@@ -681,6 +682,7 @@
             this.tb_tienmat.Size = new System.Drawing.Size(249, 27);
             this.tb_tienmat.TabIndex = 125;
             this.tb_tienmat.TextChanged += new System.EventHandler(this.tb_tienkhachdua_TextChanged);
+            this.tb_tienmat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tienmat_KeyPress);
             // 
             // lb_tienmat
             // 
@@ -744,6 +746,7 @@
             this.tb_tongtien.ReadOnly = true;
             this.tb_tongtien.Size = new System.Drawing.Size(249, 27);
             this.tb_tongtien.TabIndex = 91;
+            this.tb_tongtien.TextChanged += new System.EventHandler(this.tb_tongtien_TextChanged);
             // 
             // label4
             // 
