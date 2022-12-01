@@ -346,9 +346,11 @@ namespace _3.PresentationLayers.Views
                     LoadHoaDonChiTiet();
                     LoadSanphamtoFl();
                 }
-                LoadHoaDonChoThanhToan();
-                LoaddataToHoadonChitiet();
-                Tabhoadondcmm();
+                else if (DialogResult.No == hoi)
+                {
+                    return;
+                }
+                
             }
             else
             {
@@ -653,7 +655,11 @@ namespace _3.PresentationLayers.Views
                             {
                                 hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
                             }
-                            hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
+                            if (!string.IsNullOrEmpty(tb_tongtienhang.Text))
+                            {
+                                hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
+                            }
+                            
                             hoaDonService.Update(hd);
                             Tabhoadondcmm();
                         }
@@ -942,6 +948,7 @@ namespace _3.PresentationLayers.Views
             tb_tongtienhang.Text = Convert.ToString(count);
             tbx_TienCoc.Text = Convert.ToString(hd.TienCoc);
             tbx_TienShip.Text = Convert.ToString(hd.TienShip);
+            tb_diachi.Text = Convert.ToString(hd.DiaChi);
             
             if (hd.TrangThai==0)
             {
@@ -1244,7 +1251,7 @@ namespace _3.PresentationLayers.Views
                 AlertFail("Vui lòng chọn hóa đơn cần thanh toán");
                 return;
             }
-            else if (hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name).TrangThai != 0)
+            else if (hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name).TrangThai == 1)
             {
                 AlertFail("Hóa đơn này đã được thanh toán trước đó");
                 return;
@@ -1264,7 +1271,7 @@ namespace _3.PresentationLayers.Views
                 AlertFail("Vui lòng chọn phương thức thanh toán");
                 return;
             }
-            else
+            else            
             {
                 BanShipHang();
             }
@@ -1324,7 +1331,7 @@ namespace _3.PresentationLayers.Views
                         AlertFail("Vui lòng nhập số tiền");
                         return;
                     }
-                    else if (Convert.ToInt32(tb_tientralai.Text) < 0)
+                    else if ((Convert.ToInt32(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text)))<0)
                     {
                         AlertFail("Số tiền chưa thỏa mãn");
                         return;
@@ -1341,7 +1348,7 @@ namespace _3.PresentationLayers.Views
                         AlertFail("Vui lòng nhập số tiền");
                         return;
                     }
-                    else if (Convert.ToInt32(tb_tientralai.Text) < 0)
+                    else if ((Convert.ToInt32(Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text)))  < 0)
                     {
                         AlertFail("Số tiền chưa thỏa mãn");
                         return;
@@ -1364,7 +1371,7 @@ namespace _3.PresentationLayers.Views
                         AlertFail("Vui lòng nhập số tiền");
                         return;
                     }
-                    else if (Convert.ToInt32(tb_tientralai.Text) < 0)
+                    else if (Convert.ToInt32(Convert.ToInt32(tb_tienmat.Text) + Convert.ToInt32(tbx_TienShip.Text) - Convert.ToInt32(tb_tongtien.Text) - Convert.ToInt32(tbx_TienCoc.Text) + Convert.ToInt32(tbx_TienShip.Text)) < 0)
                     {
                         AlertFail("Số tiền chưa thỏa mãn");
                         return;
@@ -1421,7 +1428,7 @@ namespace _3.PresentationLayers.Views
                 }
                 // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
-                AlertSuccess("Thanh toán thành công");
+                AlertSuccess("Cập nhật thành công");
             }
             else
             {
@@ -1521,7 +1528,7 @@ namespace _3.PresentationLayers.Views
                 hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
                 hd.TrangThai = 2; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
-                AlertSuccess("Thanh toán thành công");
+                AlertSuccess("Cập nhật thành công");
             }
 
 
