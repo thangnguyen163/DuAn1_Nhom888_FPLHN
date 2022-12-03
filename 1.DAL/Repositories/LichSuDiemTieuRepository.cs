@@ -34,7 +34,7 @@ namespace _1.DAL.Repositories
             if (obj == null) return false;
             var tempobj = _DbContext.LichSuDiemTiches.FirstOrDefault(x => x.Id == obj.Id);
             tempobj.TrangThai = 0;
-            _DbContext.LichSuDiemTiches.Update(tempobj);
+            _DbContext.LichSuDiemTiches.Remove(tempobj);
             _DbContext.SaveChanges();
             return true;
         }
