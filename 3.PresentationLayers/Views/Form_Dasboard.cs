@@ -68,7 +68,7 @@ namespace _3.PresentationLayers.Views
                     currentButton.BackColor = color;
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    PanelTitel.BackColor = color;
+                    PanelTitel.BackColor = Color.FromArgb(95, 141, 78);
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
@@ -113,6 +113,7 @@ namespace _3.PresentationLayers.Views
         private void btn_shopping_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_BanHang(lb_XinChao.Text), sender);
+             btn_shopping.BackColor = Color.FromArgb(63, 0, 113);
 
         }
         private void btn_LogOut_Click(object sender, EventArgs e)
@@ -123,15 +124,18 @@ namespace _3.PresentationLayers.Views
         private void btn_NhanVien_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_NhanVien(), sender);
+            btn_NhanVien.BackColor = Color.FromArgb(206, 119, 119);
         }
 
         private void btn_KhachHang_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_KhachHang(), sender);
+            btn_KhachHang.BackColor = Color.FromArgb(0, 2, 161);
         }
         private void btn_sanpham_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_ChiTietSach(), sender);
+            btn_sanpham.BackColor = Color.FromArgb(251, 37, 118);
         }
 
 
