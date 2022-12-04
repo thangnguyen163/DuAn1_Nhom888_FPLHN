@@ -751,6 +751,22 @@ namespace _3.PresentationLayers.Views
                 cbb_phuongthucthanhtoan.Items.Add(x.Ten);
             }
             cbb_phuongthucthanhtoan.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            panel24.BackColor= Color.FromArgb(189, 189, 189);
+            panel2.BackColor = Color.FromArgb(102, 187, 106);
+            fl_sanpham.BackColor = Color.FromArgb(189, 189, 189);
+            panel5.BackColor = Color.FromArgb(102, 187, 106);
+            panel6.BackColor= Color.FromArgb(189, 189, 189);
+            panel4.BackColor = Color.FromArgb(189, 189, 189);
+            panel_tienmat.BackColor = Color.FromArgb(189, 189, 189);
+            panel_chuyenkhoan.BackColor = Color.FromArgb(189, 189, 189);
+            panel10.BackColor = Color.FromArgb(189, 189, 189);
+            panel25.BackColor = Color.FromArgb(189, 189, 189);
+            panel_thanhtoan.BackColor = Color.FromArgb(189, 189, 189);
+            panel_capnhat.BackColor = Color.FromArgb(189, 189, 189);
+            groupBox3.BackColor = Color.FromArgb(189, 189, 189);
+            button4.BackColor = Color.FromArgb(102, 187, 106);
+            dtg_HoaDonChiTiet.BackgroundColor = Color.FromArgb(189, 189, 189);
         }
 
         private void dtg_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
