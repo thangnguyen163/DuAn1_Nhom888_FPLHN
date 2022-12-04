@@ -665,8 +665,9 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show(hoaDonService.Add(hd));
                 tpage.Text = Convert.ToString(hd.MaHd);
                 tpage.Name = Convert.ToString(hd.MaHd);
-                tabHoaDon.SelectedIndex = tabHoaDon.TabCount;
+                tabHoaDon.SelectedIndex = tabHoaDon.TabCount-1;
                 LoaddataToTextbox(hd.Id);
+                Tabhoadondcmm();
             }
             LoadHoaDonChoThanhToan();
         }
@@ -2652,12 +2653,43 @@ namespace _3.PresentationLayers.Views
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (tabHoaDon.SelectedIndex >= 0)
+            try
             {
-                HoaDon hd = new HoaDon();
-                hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
-                hd.TrangThai = 4;
-                MessageBox.Show("Hủy hóa đơn thành công");
+                if (tabHoaDon.SelectedIndex >= 0)
+                {
+                    if (string.IsNullOrEmpty(tb_ghichu.Text))
+                    {
+                        AlertFail("Vui lòng nhập lý do hủy đơn hàng");
+                        return;
+                    }
+                    HoaDon hd = new HoaDon();
+                    hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
+                    if (Convert.ToInt32(hoaDonChiTietService.GetAllloadformsp().Where(x => x.IdHoaDon == hd.Id).Count()) > 0)
+                    {
+                        foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id))
+                        {
+                            foreach (var v in _iChiTietSachService.GetAll().Where(z => z.Id == x.IdChiTietSach))
+                            {
+                                var c = hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id && a.IdChiTietSach == v.Id).FirstOrDefault();
+                                v.SoLuong = v.SoLuong + c.SoLuong;
+                                _iChiTietSachService.Update(v.Id, v);
+                            }
+                        }
+                    }
+                    hd.TrangThai = 4;
+                    hd.GhiChu = tb_ghichu.Text;
+                    hoaDonService.Update(hd);
+                    AlertSuccess("Hủy hóa đơn thành công");
+                    LoadHoaDonChoThanhToan();
+                    LoadHoaDonDatHang();
+                    Tabhoadondcmm();
+                    LoadSanphamtoFl();
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Liên hệ FanPage BeeBooks để góp ý và sửa lỗi");
             }
         }
         private void AlertSuccess(string msg)
