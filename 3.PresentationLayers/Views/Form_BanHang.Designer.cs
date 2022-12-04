@@ -718,6 +718,7 @@
             this.tbx_TienCoc.Name = "tbx_TienCoc";
             this.tbx_TienCoc.Size = new System.Drawing.Size(251, 20);
             this.tbx_TienCoc.TabIndex = 106;
+            this.tbx_TienCoc.TextChanged += new System.EventHandler(this.tbx_TienCoc_TextChanged);
             // 
             // lb_TienCoc
             // 
@@ -746,6 +747,7 @@
             this.tbx_TienShip.Name = "tbx_TienShip";
             this.tbx_TienShip.Size = new System.Drawing.Size(252, 20);
             this.tbx_TienShip.TabIndex = 107;
+            this.tbx_TienShip.TextChanged += new System.EventHandler(this.tbx_TienShip_TextChanged);
             // 
             // panel10
             // 
@@ -1127,6 +1129,7 @@
             this.ipb_AddSach.Size = new System.Drawing.Size(30, 30);
             this.ipb_AddSach.TabIndex = 109;
             this.ipb_AddSach.TabStop = false;
+            this.ipb_AddSach.Click += new System.EventHandler(this.ipb_AddSach_Click);
             // 
             // panel12
             // 
