@@ -2657,33 +2657,47 @@ namespace _3.PresentationLayers.Views
             {
                 if (tabHoaDon.SelectedIndex >= 0)
                 {
-                    if (string.IsNullOrEmpty(tb_ghichu.Text))
+                    DialogResult hoi = MessageBox.Show("Bạn có chắn chắn muốn hủy không", "Hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (DialogResult.Yes == hoi)
                     {
-                        AlertFail("Vui lòng nhập lý do hủy đơn hàng");
-                        return;
-                    }
-                    HoaDon hd = new HoaDon();
-                    hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
-                    if (Convert.ToInt32(hoaDonChiTietService.GetAllloadformsp().Where(x => x.IdHoaDon == hd.Id).Count()) > 0)
-                    {
-                        foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id))
+                        if (string.IsNullOrEmpty(tb_ghichu.Text))
                         {
-                            foreach (var v in _iChiTietSachService.GetAll().Where(z => z.Id == x.IdChiTietSach))
+                            AlertFail("Vui lòng nhập lý do hủy đơn hàng");
+                            return;
+                        }
+                        HoaDon hd = new HoaDon();
+                        hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
+                        if (hd.TrangThai != 0)
+                        {
+                            AlertFail("Bạn không thể hủy hóa đơn, Vui lòng chuyển về chờ thanh toán");
+                            return;
+                        }
+                        if (Convert.ToInt32(hoaDonChiTietService.GetAllloadformsp().Where(x => x.IdHoaDon == hd.Id).Count()) > 0)
+                        {
+                            foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id))
                             {
-                                var c = hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id && a.IdChiTietSach == v.Id).FirstOrDefault();
-                                v.SoLuong = v.SoLuong + c.SoLuong;
-                                _iChiTietSachService.Update(v.Id, v);
+                                foreach (var v in _iChiTietSachService.GetAll().Where(z => z.Id == x.IdChiTietSach))
+                                {
+                                    var c = hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id && a.IdChiTietSach == v.Id).FirstOrDefault();
+                                    v.SoLuong = v.SoLuong + c.SoLuong;
+                                    _iChiTietSachService.Update(v.Id, v);
+                                }
                             }
                         }
+                        hd.TrangThai = 4;
+                        hd.GhiChu = tb_ghichu.Text;
+                        hoaDonService.Update(hd);
+                        AlertSuccess("Hủy hóa đơn thành công");
+                        LoadHoaDonChoThanhToan();
+                        LoadHoaDonDatHang();
+                        Tabhoadondcmm();
+                        LoadSanphamtoFl();
                     }
-                    hd.TrangThai = 4;
-                    hd.GhiChu = tb_ghichu.Text;
-                    hoaDonService.Update(hd);
-                    AlertSuccess("Hủy hóa đơn thành công");
-                    LoadHoaDonChoThanhToan();
-                    LoadHoaDonDatHang();
-                    Tabhoadondcmm();
-                    LoadSanphamtoFl();
+                    else { return; }
+                }
+                else
+                {
+                    AlertFail("Vui lòng chọn hóa đơn");
                 }
             }
             catch (Exception)
