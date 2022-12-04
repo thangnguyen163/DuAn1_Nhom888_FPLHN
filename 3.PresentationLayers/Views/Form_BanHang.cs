@@ -1926,71 +1926,206 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_quetma_Click(object sender, EventArgs e)
         {
-            Form_QuetMaSach.mavach = null;
+            Form_QuetMaSach.mavach = string.Empty;
             Form_QuetMaSach qms = new Form_QuetMaSach();
             qms.ShowDialog();
-            if (Form_QuetMaSach.mavach == null || Form_QuetMaSach.mavach == string.Empty) qms.ShowDialog();
-
-            if (dtg_HoaDonChiTiet.Visible == false)
+            if ( Form_QuetMaSach.mavach == string.Empty)
             {
-                DialogResult hoi = MessageBox.Show("Bạn chưa chọn hóa đơn, Bạn có muốn tạo hóa đơn mới không", "Tạo hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (DialogResult.Yes == hoi)
+                //Form_QuetMaSach.mavach = null;
+                //qms.ShowDialog();
+                return;
+            }
+            if (Form_QuetMaSach.mavach != string.Empty && Form_QuetMaSach.tensach!=null)            
+            {
+                if (dtg_HoaDonChiTiet.Visible == false)
                 {
-                    tabHoaDon.Visible = true;
-                    TabPage tpage = new TabPage();
-                    tabHoaDon.TabPages.Add(tpage);
-                    HoaDon hd1 = new HoaDon();
-                    hd1.Id = Guid.NewGuid();
-                    hd1.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAllHoaDon().Count + 1);
-                    hd1.Idnv = SelectNhanVien;
-                    //hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
-                    hd1.NgayTao = DateTime.Now;
-                    MessageBox.Show(hoaDonService.Add(hd1));
-                    tpage.Text = Convert.ToString(hd1.MaHd);
-                    tpage.Name = Convert.ToString(hd1.MaHd);
-                    tabHoaDon.SelectedIndex = tabHoaDon.TabCount;
-                    LoaddataToHoadonChitiet();
-                    LoadHoaDonChiTiet();
-                    LoaddataToTextbox(hd1.Id);
-                    Tabhoadondcmm();
+                    DialogResult hoi = MessageBox.Show("Bạn chưa chọn hóa đơn, Bạn có muốn tạo hóa đơn mới không", "Tạo hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (DialogResult.Yes == hoi)
+                    {
+                        tabHoaDon.Visible = true;
+                        TabPage tpage = new TabPage();
+                        tabHoaDon.TabPages.Add(tpage);
+                        HoaDon hd1 = new HoaDon();
+                        hd1.Id = Guid.NewGuid();
+                        hd1.MaHd = "HD" + "" + Convert.ToString(hoaDonService.GetAllHoaDon().Count + 1);
+                        hd1.Idnv = SelectNhanVien;
+                        //hd.Idkh = Guid.Parse("56303832-7163-464a-99a8-72973ed09c21");
+                        hd1.NgayTao = DateTime.Now;
+                        MessageBox.Show(hoaDonService.Add(hd1));
+                        tpage.Text = Convert.ToString(hd1.MaHd);
+                        tpage.Name = Convert.ToString(hd1.MaHd);
+                        tabHoaDon.SelectedIndex = tabHoaDon.TabCount;
+                        LoaddataToHoadonChitiet();
+                        LoadHoaDonChiTiet();
+                        LoaddataToTextbox(hd1.Id);
+                        Tabhoadondcmm();
 
-                    // thêm sản phẩm lên hóa đơn vừa tạo
-                    var x1 = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x => x.Id).FirstOrDefault();
-                    SelectIDSp = x1;
-                    //HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
-                    SelectID = hd1.Id;
-                    HoaDonChiTiet data1 = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-                    string ctsclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).Ma;
-                    string tenclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).TenSach;
-                    decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).GiaBan);
-                    string Content1 = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
-                    if (Content1 == string.Empty) return;
+                        // thêm sản phẩm lên hóa đơn vừa tạo
+                        var x1 = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x => x.Id).FirstOrDefault();
+                        SelectIDSp = x1;
+                        //HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+                        SelectID = hd1.Id;
+                        HoaDonChiTiet data1 = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
+                        string ctsclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).Ma;
+                        string tenclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).TenSach;
+                        decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x1).GiaBan);
+                        string Content1 = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+                        if (Content1 == string.Empty) return;
 
-                    if (Regex.IsMatch(Content1, @"^[a-zA-Z0-9 ]*$") == false)
+                        if (Regex.IsMatch(Content1, @"^[a-zA-Z0-9 ]*$") == false)
+                        {
+
+                            MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
+                            return;
+                        }
+                        if (Regex.IsMatch(Content1, @"^\d+$") == false)
+                        {
+
+                            MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
+                            return;
+                        }
+                        if (Content1.Length > 6)
+                        {
+                            MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
+                            return;
+                        }
+                        if (Convert.ToInt32(Content1) <= 0)
+                        {
+                            MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
+                            return;
+                        }
+                        if (Content1 != null)
+                        {
+                            if (data1 == null)
+                            {
+                                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                                hdct.Id = Guid.NewGuid();
+                                hdct.IdHoaDon = SelectID;
+                                hdct.IdChiTietSach = SelectIDSp;
+                                ChiTietSach cts = new ChiTietSach();
+                                cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                                if (cts.SoLuong >= Convert.ToInt32(Content1))
+                                {
+                                    hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
+                                      .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
+                                    hdct.SoLuong = Convert.ToInt32(Content1);
+                                    hdct.DonGia = Convert.ToInt32(cts.GiaBan);
+                                    hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * cts.GiaBan);
+                                    hoaDonChiTietService.Add(hdct);
+                                    //update số lượng còn lại 
+                                    cts.IdSach = cts.IdSach;
+                                    cts.IdSach = cts.IdSach;
+                                    cts.IdNxb = cts.IdNxb;
+                                    cts.IdTacGia = cts.IdTacGia;
+                                    cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                                    cts.IdLoaiBia = cts.IdLoaiBia;
+                                    cts.Ma = cts.Ma;
+                                    cts.Anh = cts.Anh;
+                                    cts.MaVach = cts.MaVach;
+                                    cts.KichThuoc = cts.KichThuoc;
+                                    cts.SoTrang = cts.SoTrang;
+                                    cts.NamXuatBan = cts.NamXuatBan;
+                                    cts.MoTa = cts.MoTa;
+                                    cts.GiaNhap = cts.GiaNhap;
+                                    cts.GiaBan = cts.GiaBan;
+                                    cts.TrangThai = cts.TrangThai;
+                                    cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content1);
+                                    _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                                    //het update
+                                    LoadSanphamtoFl();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                }
+                            }
+                            else
+                            {
+                                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                                //hdct.IdHoaDon = SelectID;
+                                hdct.IdChiTietSach = SelectIDSp;
+                                hdct.SoLuong = data1.SoLuong + Convert.ToInt32(Content1);
+                                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                ChiTietSach cts = new ChiTietSach();
+                                cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
+                                hdct.DonGia = Convert.ToInt32(cts.GiaBan);
+                                if (cts.SoLuong > Convert.ToInt32(Content1))//check so luong con lai
+                                {
+                                    hoaDonChiTietService.Update(hdct);
+                                    //update so luong sach con lai
+                                    cts.IdSach = cts.IdSach;
+                                    cts.IdSach = cts.IdSach;
+                                    cts.IdNxb = cts.IdNxb;
+                                    cts.IdTacGia = cts.IdTacGia;
+                                    cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                                    cts.IdLoaiBia = cts.IdLoaiBia;
+                                    cts.Ma = cts.Ma;
+                                    cts.Anh = cts.Anh;
+                                    cts.MaVach = cts.MaVach;
+                                    cts.KichThuoc = cts.KichThuoc;
+                                    cts.SoTrang = cts.SoTrang;
+                                    cts.NamXuatBan = cts.NamXuatBan;
+                                    cts.MoTa = cts.MoTa;
+                                    cts.GiaNhap = cts.GiaNhap;
+                                    cts.GiaBan = cts.GiaBan;
+                                    cts.TrangThai = cts.TrangThai;
+                                    cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content1);
+                                    _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
+                                    //het update
+                                    LoadSanphamtoFl();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                }
+                            }
+                        }
+                        LoaddataToHoadonChitiet();
+                        LoadHoaDonChiTiet();
+                        LoadSanphamtoFl();
+                    }
+                    else if (DialogResult.No == hoi)
+                    {
+                        return;
+                    }
+
+                }
+                else
+                {
+                    var x = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x => x.Id).FirstOrDefault();
+                    SelectIDSp = x;
+                    HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
+                    SelectID = hd.Id;
+                    HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
+                    string ctsquet = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).Ma;
+                    decimal giabanquet = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
+                    string Content = Interaction.InputBox($"Mã: {ctsquet}" + Environment.NewLine + $"Tên: {Form_QuetMaSach.tensach}" + Environment.NewLine + $"Giá bán: {giabanquet}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+                    if (Content == string.Empty) return;
+                    if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
                     {
 
                         MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
                         return;
                     }
-                    if (Regex.IsMatch(Content1, @"^\d+$") == false)
+                    if (Regex.IsMatch(Content, @"^\d+$") == false)
                     {
 
                         MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
                         return;
                     }
-                    if (Content1.Length > 6)
+                    if (Content.Length > 6)
                     {
                         MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
                         return;
                     }
-                    if (Convert.ToInt32(Content1) <= 0)
+                    if (Convert.ToInt32(Content) <= 0)
                     {
                         MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
                         return;
                     }
-                    if (Content1 != null)
+                    if (Content != null)
                     {
-                        if (data1 == null)
+                        if (data == null)
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
                             hdct.Id = Guid.NewGuid();
@@ -1998,11 +2133,11 @@ namespace _3.PresentationLayers.Views
                             hdct.IdChiTietSach = SelectIDSp;
                             ChiTietSach cts = new ChiTietSach();
                             cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                            if (cts.SoLuong >= Convert.ToInt32(Content1))
+                            if (cts.SoLuong >= Convert.ToInt32(Content))
                             {
                                 hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
                                   .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
-                                hdct.SoLuong = Convert.ToInt32(Content1);
+                                hdct.SoLuong = Convert.ToInt32(Content);
                                 hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                 hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * cts.GiaBan);
                                 hoaDonChiTietService.Add(hdct);
@@ -2023,7 +2158,7 @@ namespace _3.PresentationLayers.Views
                                 cts.GiaNhap = cts.GiaNhap;
                                 cts.GiaBan = cts.GiaBan;
                                 cts.TrangThai = cts.TrangThai;
-                                cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content1);
+                                cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
                                 _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
                                 //het update
                                 LoadSanphamtoFl();
@@ -2036,14 +2171,14 @@ namespace _3.PresentationLayers.Views
                         else
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
-                            //hdct.IdHoaDon = SelectID;
+                            hdct.IdHoaDon = SelectID;
                             hdct.IdChiTietSach = SelectIDSp;
-                            hdct.SoLuong = data1.SoLuong + Convert.ToInt32(Content1);
+                            hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
                             hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
                             ChiTietSach cts = new ChiTietSach();
                             cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
                             hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                            if (cts.SoLuong > Convert.ToInt32(Content1))//check so luong con lai
+                            if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
                             {
                                 hoaDonChiTietService.Update(hdct);
                                 //update so luong sach con lai
@@ -2063,7 +2198,7 @@ namespace _3.PresentationLayers.Views
                                 cts.GiaNhap = cts.GiaNhap;
                                 cts.GiaBan = cts.GiaBan;
                                 cts.TrangThai = cts.TrangThai;
-                                cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content1);
+                                cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
                                 _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
                                 //het update
                                 LoadSanphamtoFl();
@@ -2077,137 +2212,9 @@ namespace _3.PresentationLayers.Views
                     LoaddataToHoadonChitiet();
                     LoadHoaDonChiTiet();
                     LoadSanphamtoFl();
+                    Tabhoadondcmm();
                 }
-                else if (DialogResult.No == hoi)
-                {
-                    return;
-                }
-
-            }
-            else
-            {
-                var x = _iChiTietSachService.GetAll().Where(c => c.MaVach == Form_QuetMaSach.mavach).Select(x => x.Id).FirstOrDefault();
-                SelectIDSp = x;
-                HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
-                SelectID = hd.Id;
-                HoaDonChiTiet data = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdChiTietSach == SelectIDSp && x.IdHoaDon == SelectID);
-                string ctsquet = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).Ma;
-                decimal giabanquet = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
-                string Content = Interaction.InputBox($"Mã: {ctsquet}" + Environment.NewLine + $"Tên: {Form_QuetMaSach.tensach}" + Environment.NewLine + $"Giá bán: {giabanquet}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
-                if (Content == string.Empty) return;
-                if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
-                {
-
-                    MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
-                    return;
-                }
-                if (Regex.IsMatch(Content, @"^\d+$") == false)
-                {
-
-                    MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
-                    return;
-                }
-                if (Content.Length > 6)
-                {
-                    MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
-                    return;
-                }
-                if (Convert.ToInt32(Content) <= 0)
-                {
-                    MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
-                    return;
-                }
-                if (Content != null)
-                {
-                    if (data == null)
-                    {
-                        HoaDonChiTiet hdct = new HoaDonChiTiet();
-                        hdct.Id = Guid.NewGuid();
-                        hdct.IdHoaDon = SelectID;
-                        hdct.IdChiTietSach = SelectIDSp;
-                        ChiTietSach cts = new ChiTietSach();
-                        cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                        if (cts.SoLuong >= Convert.ToInt32(Content))
-                        {
-                            hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
-                              .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
-                            hdct.SoLuong = Convert.ToInt32(Content);
-                            hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                            hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * cts.GiaBan);
-                            hoaDonChiTietService.Add(hdct);
-                            //update số lượng còn lại 
-                            cts.IdSach = cts.IdSach;
-                            cts.IdSach = cts.IdSach;
-                            cts.IdNxb = cts.IdNxb;
-                            cts.IdTacGia = cts.IdTacGia;
-                            cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
-                            cts.IdLoaiBia = cts.IdLoaiBia;
-                            cts.Ma = cts.Ma;
-                            cts.Anh = cts.Anh;
-                            cts.MaVach = cts.MaVach;
-                            cts.KichThuoc = cts.KichThuoc;
-                            cts.SoTrang = cts.SoTrang;
-                            cts.NamXuatBan = cts.NamXuatBan;
-                            cts.MoTa = cts.MoTa;
-                            cts.GiaNhap = cts.GiaNhap;
-                            cts.GiaBan = cts.GiaBan;
-                            cts.TrangThai = cts.TrangThai;
-                            cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
-                            _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
-                            //het update
-                            LoadSanphamtoFl();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
-                        }
-                    }
-                    else
-                    {
-                        HoaDonChiTiet hdct = new HoaDonChiTiet();
-                        hdct.IdHoaDon = SelectID;
-                        hdct.IdChiTietSach = SelectIDSp;
-                        hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                        hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
-                        ChiTietSach cts = new ChiTietSach();
-                        cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                        hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                        if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
-                        {
-                            hoaDonChiTietService.Update(hdct);
-                            //update so luong sach con lai
-                            cts.IdSach = cts.IdSach;
-                            cts.IdSach = cts.IdSach;
-                            cts.IdNxb = cts.IdNxb;
-                            cts.IdTacGia = cts.IdTacGia;
-                            cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
-                            cts.IdLoaiBia = cts.IdLoaiBia;
-                            cts.Ma = cts.Ma;
-                            cts.Anh = cts.Anh;
-                            cts.MaVach = cts.MaVach;
-                            cts.KichThuoc = cts.KichThuoc;
-                            cts.SoTrang = cts.SoTrang;
-                            cts.NamXuatBan = cts.NamXuatBan;
-                            cts.MoTa = cts.MoTa;
-                            cts.GiaNhap = cts.GiaNhap;
-                            cts.GiaBan = cts.GiaBan;
-                            cts.TrangThai = cts.TrangThai;
-                            cts.SoLuong = cts.SoLuong - Convert.ToInt32(Content);
-                            _iChiTietSachService.Update(hdct.IdChiTietSach, cts);
-                            //het update
-                            LoadSanphamtoFl();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
-                        }
-                    }
-                }
-                LoaddataToHoadonChitiet();
-                LoadHoaDonChiTiet();
-                LoadSanphamtoFl();
-                Tabhoadondcmm();
-            }
+            }                       
         }
 
 
