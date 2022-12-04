@@ -181,7 +181,7 @@
             // 
             // panel24
             // 
-            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.panel24.Controls.Add(this.tabHoaDon);
             this.panel24.Controls.Add(this.fl_KhachHang);
             this.panel24.Controls.Add(this.btn_taohoadon);
@@ -333,6 +333,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btn_quetma);
             this.panel2.Controls.Add(this.tbt_SearchProducts);
@@ -393,7 +394,7 @@
             // 
             // fl_sanpham
             // 
-            this.fl_sanpham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.fl_sanpham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.fl_sanpham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_sanpham.Location = new System.Drawing.Point(0, 0);
             this.fl_sanpham.Name = "fl_sanpham";
@@ -402,7 +403,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.panel4.Controls.Add(this.cbx_Loc);
             this.panel4.Controls.Add(this.groupBox2);
             this.panel4.Controls.Add(this.groupBox1);
@@ -439,7 +440,7 @@
             // fl_DaThanhToan
             // 
             this.fl_DaThanhToan.AutoScroll = true;
-            this.fl_DaThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.fl_DaThanhToan.BackColor = System.Drawing.SystemColors.Info;
             this.fl_DaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_DaThanhToan.Location = new System.Drawing.Point(3, 21);
             this.fl_DaThanhToan.Name = "fl_DaThanhToan";
@@ -478,7 +479,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.groupBox3.Controls.Add(this.panel_capnhat);
             this.groupBox3.Controls.Add(this.panel_thanhtoan);
             this.groupBox3.Controls.Add(this.panel25);
@@ -499,6 +500,7 @@
             // 
             // panel_capnhat
             // 
+            this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_capnhat.Location = new System.Drawing.Point(3, 882);
@@ -522,6 +524,7 @@
             // 
             // panel_thanhtoan
             // 
+            this.panel_thanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel_thanhtoan.Controls.Add(this.button5);
             this.panel_thanhtoan.Controls.Add(this.button4);
             this.panel_thanhtoan.Dock = System.Windows.Forms.DockStyle.Top;
@@ -560,6 +563,7 @@
             // 
             // panel25
             // 
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel25.Controls.Add(this.label5);
             this.panel25.Controls.Add(this.tb_ghichu);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
@@ -587,6 +591,7 @@
             // 
             // panel_tiencoc
             // 
+            this.panel_tiencoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel_tiencoc.Controls.Add(this.rd_chothanhtoan);
             this.panel_tiencoc.Controls.Add(this.panel23);
             this.panel_tiencoc.Controls.Add(this.panel22);
@@ -696,7 +701,7 @@
             // 
             // tb_diachi
             // 
-            this.tb_diachi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_diachi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_diachi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_diachi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diachi.Location = new System.Drawing.Point(159, 76);
@@ -706,7 +711,7 @@
             // 
             // tbx_TienCoc
             // 
-            this.tbx_TienCoc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tbx_TienCoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tbx_TienCoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienCoc.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienCoc.Location = new System.Drawing.Point(159, 3);
@@ -734,7 +739,7 @@
             // 
             // tbx_TienShip
             // 
-            this.tbx_TienShip.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tbx_TienShip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tbx_TienShip.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienShip.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienShip.Location = new System.Drawing.Point(161, 35);
@@ -744,6 +749,7 @@
             // 
             // panel10
             // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel10.Controls.Add(this.panel20);
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
@@ -764,7 +770,7 @@
             // 
             // tb_tientralai
             // 
-            this.tb_tientralai.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tientralai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_tientralai.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tientralai.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tientralai.Location = new System.Drawing.Point(162, 6);
@@ -784,6 +790,7 @@
             // 
             // panel_chuyenkhoan
             // 
+            this.panel_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel_chuyenkhoan.Controls.Add(this.panel19);
             this.panel_chuyenkhoan.Controls.Add(this.tb_chuyenkhoan);
             this.panel_chuyenkhoan.Controls.Add(this.lb_chuyenkhoan);
@@ -803,7 +810,7 @@
             // 
             // tb_chuyenkhoan
             // 
-            this.tb_chuyenkhoan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_chuyenkhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_chuyenkhoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_chuyenkhoan.Location = new System.Drawing.Point(161, 6);
@@ -824,6 +831,7 @@
             // 
             // panel_tienmat
             // 
+            this.panel_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel_tienmat.Controls.Add(this.panel18);
             this.panel_tienmat.Controls.Add(this.tb_tienmat);
             this.panel_tienmat.Controls.Add(this.lb_tienmat);
@@ -843,7 +851,7 @@
             // 
             // tb_tienmat
             // 
-            this.tb_tienmat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_tienmat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tienmat.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tienmat.Location = new System.Drawing.Point(161, 6);
@@ -864,6 +872,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.panel6.Controls.Add(this.panel17);
             this.panel6.Controls.Add(this.panel16);
             this.panel6.Controls.Add(this.panel15);
@@ -947,7 +956,7 @@
             // 
             // cbb_phuongthucthanhtoan
             // 
-            this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.cbb_phuongthucthanhtoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cbb_phuongthucthanhtoan.FormattingEnabled = true;
             this.cbb_phuongthucthanhtoan.Location = new System.Drawing.Point(161, 196);
@@ -958,7 +967,7 @@
             // 
             // tb_tongtien
             // 
-            this.tb_tongtien.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_tongtien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtien.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtien.Location = new System.Drawing.Point(162, 152);
@@ -979,7 +988,7 @@
             // 
             // tb_tongtienhang
             // 
-            this.tb_tongtienhang.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_tongtienhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_tongtienhang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtienhang.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtienhang.Location = new System.Drawing.Point(166, 23);
@@ -990,7 +999,7 @@
             // 
             // tb_diemquydoi
             // 
-            this.tb_diemquydoi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_diemquydoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_diemquydoi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_diemquydoi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diemquydoi.Location = new System.Drawing.Point(162, 106);
@@ -1020,7 +1029,7 @@
             // 
             // tb_dungdiem
             // 
-            this.tb_dungdiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_dungdiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
             this.tb_dungdiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_dungdiem.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_dungdiem.Location = new System.Drawing.Point(166, 64);
@@ -1083,7 +1092,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.DarkSalmon;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.panel5.Controls.Add(this.ipb_AddSach);
             this.panel5.Controls.Add(this.panel12);
             this.panel5.Controls.Add(this.panel11);
@@ -1157,7 +1166,7 @@
             // 
             // tbt_MaHD
             // 
-            this.tbt_MaHD.BackColor = System.Drawing.Color.DarkSalmon;
+            this.tbt_MaHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.tbt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbt_MaHD.Location = new System.Drawing.Point(142, 52);
             this.tbt_MaHD.Name = "tbt_MaHD";
@@ -1175,7 +1184,7 @@
             // 
             // tb_vidiem
             // 
-            this.tb_vidiem.BackColor = System.Drawing.Color.DarkSalmon;
+            this.tb_vidiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.tb_vidiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_vidiem.Location = new System.Drawing.Point(140, 124);
             this.tb_vidiem.Name = "tb_vidiem";
@@ -1212,7 +1221,7 @@
             // 
             // cbb_nhanvien
             // 
-            this.cbb_nhanvien.BackColor = System.Drawing.Color.DarkSalmon;
+            this.cbb_nhanvien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.cbb_nhanvien.FormattingEnabled = true;
             this.cbb_nhanvien.Location = new System.Drawing.Point(141, 14);
             this.cbb_nhanvien.Name = "cbb_nhanvien";
@@ -1221,7 +1230,7 @@
             // 
             // cbb_nganhang
             // 
-            this.cbb_nganhang.BackColor = System.Drawing.Color.DarkSalmon;
+            this.cbb_nganhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
             this.cbb_nganhang.FormattingEnabled = true;
             this.cbb_nganhang.Location = new System.Drawing.Point(142, 84);
             this.cbb_nganhang.Name = "cbb_nganhang";
