@@ -212,6 +212,14 @@ namespace _3.PresentationLayers.Views
                 }
 
             }
+            if (hd.TrangThai==0 )
+            {
+                fl_KhachHang.Visible = true;              
+            }
+            else
+            {
+                fl_KhachHang.Visible = false;
+            }    
             cleartextbox();
             Tabhoadondcmm();
         }
@@ -239,6 +247,7 @@ namespace _3.PresentationLayers.Views
                     LoadHoaDonChiTiet();
                     LoaddataToTextbox(hd.Id);
                     Tabhoadondcmm();
+                    LoadHoaDonChoThanhToan();
 
                     // thêm sản phẩm lên hóa đơn vừa tạo
                     var x = ((sender as Button).Tag as ChiTietSach).Id;
@@ -753,21 +762,21 @@ namespace _3.PresentationLayers.Views
             }
             cbb_phuongthucthanhtoan.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            panel24.BackColor= Color.FromArgb(189, 189, 189);
-            panel2.BackColor = Color.FromArgb(102, 187, 106);
-            fl_sanpham.BackColor = Color.FromArgb(189, 189, 189);
-            panel5.BackColor = Color.FromArgb(102, 187, 106);
-            panel6.BackColor= Color.FromArgb(189, 189, 189);
-            panel4.BackColor = Color.FromArgb(189, 189, 189);
-            panel_tienmat.BackColor = Color.FromArgb(189, 189, 189);
-            panel_chuyenkhoan.BackColor = Color.FromArgb(189, 189, 189);
-            panel10.BackColor = Color.FromArgb(189, 189, 189);
-            panel25.BackColor = Color.FromArgb(189, 189, 189);
-            panel_thanhtoan.BackColor = Color.FromArgb(189, 189, 189);
-            panel_capnhat.BackColor = Color.FromArgb(189, 189, 189);
-            groupBox3.BackColor = Color.FromArgb(189, 189, 189);
-            button4.BackColor = Color.FromArgb(102, 187, 106);
-            dtg_HoaDonChiTiet.BackgroundColor = Color.FromArgb(189, 189, 189);
+            //panel24.BackColor= Color.FromArgb(189, 189, 189);
+            //panel2.BackColor = Color.FromArgb(102, 187, 106);
+            //fl_sanpham.BackColor = Color.FromArgb(189, 189, 189);
+            //panel5.BackColor = Color.FromArgb(102, 187, 106);
+            //panel6.BackColor= Color.FromArgb(189, 189, 189);
+            //panel4.BackColor = Color.FromArgb(189, 189, 189);
+            //panel_tienmat.BackColor = Color.FromArgb(189, 189, 189);
+            //panel_chuyenkhoan.BackColor = Color.FromArgb(189, 189, 189);
+            //panel10.BackColor = Color.FromArgb(189, 189, 189);
+            //panel25.BackColor = Color.FromArgb(189, 189, 189);
+            //panel_thanhtoan.BackColor = Color.FromArgb(189, 189, 189);
+            //panel_capnhat.BackColor = Color.FromArgb(189, 189, 189);
+            //groupBox3.BackColor = Color.FromArgb(189, 189, 189);
+            //button4.BackColor = Color.FromArgb(102, 187, 106);
+            //dtg_HoaDonChiTiet.BackgroundColor = Color.FromArgb(189, 189, 189);
         }
 
         private void dtg_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -3172,13 +3181,21 @@ namespace _3.PresentationLayers.Views
 
         private void cbb_nganhang_TextChanged(object sender, EventArgs e)
         {
-            LoadKhachHang();
+            if (cbb_nganhang.Text == string.Empty)
+            {
+                fl_KhachHang.Visible = false;
+            }
+            else
+            {
+                fl_KhachHang.Visible = true;
+                LoadKhachHang();
+            } 
+                
+            
         }
         private void ClickKhachHang(object sender, EventArgs e)
         {
             cbb_nganhang.SelectedItem = ((sender as Button).Tag as KhachHang).Ten;
-
-
         }
 
         private void tbt_SearchProducts_TextChanged(object sender, EventArgs e)
@@ -3308,7 +3325,7 @@ namespace _3.PresentationLayers.Views
                     tb_tienmat.Clear();
                     tb_chuyenkhoan.Clear();
                 }
-
+               
             }
             catch (Exception)
             {
@@ -3339,12 +3356,19 @@ namespace _3.PresentationLayers.Views
                     tb_tienmat.Clear();
                     tb_chuyenkhoan.Clear();
                 }
-
+                tb_tienmat.Clear();
+                tb_chuyenkhoan.Clear();
             }
             catch (Exception)
             {
                 MessageBox.Show("Liên hệ FanPage 888 để góp ý và sửa lỗi");
             }
+        }
+
+        private void ipb_AddSach_Click(object sender, EventArgs e)
+        {
+            Form_KhachHang kh = new Form_KhachHang();
+            kh.ShowDialog();
         }
     }
 }
