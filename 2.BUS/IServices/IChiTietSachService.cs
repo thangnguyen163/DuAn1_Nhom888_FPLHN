@@ -11,8 +11,9 @@ namespace _2.BUS.IService
     public interface IChiTietSachService
     {
         string Add(ChiTietSach chiTietSach);
-        string Delete(Guid? id, ChiTietSach chiTietSach);
+        string Delete(Guid? id);
         string Update(Guid? id, ChiTietSach chiTietSach);
+        string UpdateTrangThai(Guid? id, ChiTietSach chiTietSach);
         List<ChiTietSach> GetAll();
         List<ChiTietSachView> GetAllChiTietSachView();
         List<ChiTietSachView> GetAllChiTietSachViewByName(string name);

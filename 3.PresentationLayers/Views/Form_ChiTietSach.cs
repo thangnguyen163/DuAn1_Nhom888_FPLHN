@@ -69,7 +69,7 @@ namespace _3.PresentationLayers.Views
         void LoadData()
         {
             int stt = 1;
-            dtg_Show.ColumnCount = 21;
+            dtg_Show.ColumnCount = 19;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id";
             dtg_Show.Columns[1].Visible = false;
@@ -91,14 +91,10 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[16].Visible = false;
             dtg_Show.Columns[17].Name = "Mã vạch";
             dtg_Show.Columns[18].Name = "Thể loại ";
-            //dtg_Show.Columns[19].Name = "Thể loại con";
-
-
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().OrderBy(x => x.Ma))
             {
-                //var IdCha = _iTheLoaiService.GetAllNoView().FirstOrDefault(c => c.Ten == a.TenTheLoai).IdCha;
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
             }
         }
 
@@ -133,11 +129,9 @@ namespace _3.PresentationLayers.Views
             {
                 cbb_TheLoai.Items.Add(a.Ten);
             }
+            cbb_LocTrangThai.Items.Add("Còn bán");
+            cbb_LocTrangThai.Items.Add("Ngừng kinh doanh");
 
-
-        }
-        private void cbb_TheLoai_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
         private void cbb_TheLoai_TextChanged(object sender, EventArgs e)
@@ -171,8 +165,8 @@ namespace _3.PresentationLayers.Views
             tbt_GiaNhap.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[13].Value);
             tbt_GiaBan.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[14].Value);
             rdt_ConBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Còn bán";
-            rdt_KhongBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Hết sách";
-            //ptb_AnhSach.Image = Image.FromStream(new MemoryStream((byte[])dtg_Show.Rows[rd].Cells[16].Value));
+            rdt_KhongBan.Checked = Convert.ToString(dtg_Show.Rows[rd].Cells[15].Value) == "Ngừng kinh doanh";
+            ptb_AnhSach.Image = Image.FromStream(new MemoryStream((byte[])dtg_Show.Rows[rd].Cells[16].Value));
             ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
             tbt_MaVach.Text = Convert.ToString(dtg_Show.Rows[rd].Cells[17].Value);
             TheLoai TheLoai = _iTheLoaiService.GetAllNoView().FirstOrDefault(x => x.Ten == Convert.ToString(dtg_Show.Rows[rd].Cells[18].Value));
@@ -211,13 +205,13 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[14].Name = "Giá bán";
             dtg_Show.Columns[15].Name = "Trạng thái";
             dtg_Show.Columns[16].Name = "Đường Dẫn";
-            //dtg_Show.Columns[17].Name = "Thể loại 1";
-            //dtg_Show.Columns[18].Name = "Thể loại 2";
-
+            dtg_Show.Columns[16].Visible = false;
+            dtg_Show.Columns[17].Name = "Mã vạch";
+            dtg_Show.Columns[18].Name = "Thể loại ";
             dtg_Show.Rows.Clear();
             foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenSach.Contains(tbt_Search.Text)).OrderBy(x => x.Ma))
             {
-                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*, a.TenTheLoai, a.TenChiTietTheLoai*/, a.MaVach);
+                dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
             }
         }
 
@@ -293,12 +287,12 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_ConBan.Checked = false)
+            else if (rdt_ConBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_KhongBan.Checked = false)
+            else if (rdt_KhongBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
@@ -309,12 +303,13 @@ namespace _3.PresentationLayers.Views
             else
             {
                 Guid idTheLoai = Guid.Empty;
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tthêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if (cbb_TheLoai.Text == String.Empty)
                     {
                         MessageBox.Show("Bạn chưa chọn thể loại", "Thông báo");
+                        return;
                     }
                     else if (cbb_TheLoai.Text != String.Empty && cbb_TheLoai2.Text == String.Empty)
                     {
@@ -324,10 +319,18 @@ namespace _3.PresentationLayers.Views
                     {
                         idTheLoai = _iTheLoaiService.GetAllNoView().FirstOrDefault(a => a.Ten == cbb_TheLoai2.Text).Id;
                     }
-
-
+                    int a = 0;
+                    if (rdt_ConBan.Checked == true)
+                    {
+                        a = 1;
+                    }
+                    else if (rdt_KhongBan.Checked == true)
+                    {
+                        a = 0;
+                    }
                     MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
                     {
+
                         Id = Guid.NewGuid(),
                         IdSach = _iSachService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_Sach.Text)).Select(x => x.Id).FirstOrDefault(),
                         IdNxb = _iNXBService.GetAllNoView().Where(x => x.Ten == Convert.ToString(cbb_NXB.Text)).Select(x => x.Id).FirstOrDefault(),
@@ -337,6 +340,7 @@ namespace _3.PresentationLayers.Views
                         IdTheLoai = idTheLoai,
                         Ma = "CTS" + Convert.ToString(_iChiTietSachService.GetAll()
                           .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1)),
+                        TrangThai = a,
                         KichThuoc = tbt_KichThuoc.Text,
                         MaVach = tbt_MaVach.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
@@ -346,10 +350,6 @@ namespace _3.PresentationLayers.Views
                         GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
                         GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
                         Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
-                        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-
-
-
 
                     }));
 
@@ -423,12 +423,12 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_ConBan.Checked = false)
+            else if (rdt_ConBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_KhongBan.Checked = false)
+            else if (rdt_KhongBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
@@ -441,9 +441,24 @@ namespace _3.PresentationLayers.Views
             #endregion
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt Update chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
+                Guid idTheLoai = Guid.Empty;
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sửa chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    if (cbb_TheLoai.Text == String.Empty)
+                    {
+                        MessageBox.Show("Bạn chưa chọn thể loại", "Thông báo");
+                    }
+                    else if (cbb_TheLoai.Text != String.Empty && cbb_TheLoai2.Text == String.Empty)
+                    {
+                        idTheLoai = _iTheLoaiService.GetAllNoView().FirstOrDefault(a => a.Ten == cbb_TheLoai.Text).Id;
+                    }
+                    else
+                    {
+                        idTheLoai = _iTheLoaiService.GetAllNoView().FirstOrDefault(a => a.Ten == cbb_TheLoai2.Text).Id;
+                    }
+
+
                     MessageBox.Show(_iChiTietSachService.Update(SelectedID, new ChiTietSach()
                     {
 
@@ -452,21 +467,18 @@ namespace _3.PresentationLayers.Views
                         IdTacGia = _iTacGiaService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_TacGia.Text)).Select(x => x.Id).FirstOrDefault(),
                         IdNhaPhatHanh = _iNhaPhatHanhService.GetAll().Where(x => x.Ten == Convert.ToString(cbb_NhaPhatHanh.Text)).Select(x => x.Id).FirstOrDefault(),
                         IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                        //IdTheLoai = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-                        //IdLoaiBia = _iLoaiBiaService.GetLoaiBia().Where(x => x.Ten == Convert.ToString(cbb_LoaiBia.Text)).Select(x => x.Id).FirstOrDefault(),
-
+                        IdTheLoai = idTheLoai,
                         Ma = tbt_Ma.Text,
                         KichThuoc = tbt_KichThuoc.Text,
+                        MaVach = tbt_MaVach.Text,
                         NamXuatBan = Convert.ToInt32(tbt_NamXuatBan.Text),
                         MoTa = tbt_MoTa.Text,
-                        MaVach = tbt_MaVach.Text,
                         SoTrang = Convert.ToInt32(tbt_SoTrang.Text),
                         SoLuong = Convert.ToInt32(tbt_SoLuong.Text),
                         GiaNhap = Convert.ToInt32(tbt_GiaNhap.Text),
                         GiaBan = Convert.ToInt32(tbt_GiaBan.Text),
                         Anh = (byte[])(new ImageConverter().ConvertTo(ptb_AnhSach.Image, typeof(byte[]))),
                         TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
-
                     }));
                     LoadData();
                 }
@@ -476,17 +488,27 @@ namespace _3.PresentationLayers.Views
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            //DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốnt thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    MessageBox.Show(_iChiTietSachService.Add(new ChiTietSach()
-            //    {
-            //        TrangThai = rdt_ConBan.Checked == true ? 1 : 0,
+            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn  XOÁ  sách này ", "Thông báo ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show(_iChiTietSachService.Delete(SelectedID));
+                LoadData();
+            }
+            if (dialogResult == DialogResult.No) return;
 
-            //    }));
-            //    LoadData();
-            //}
-            //if (dialogResult == DialogResult.No) return;
+        }
+        private void btn_NgungKinhDoanh_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn  Ngừng kinh doanh  sách này ", "Thông báo ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show(_iChiTietSachService.UpdateTrangThai(SelectedID, new ChiTietSach()
+                {
+                    TrangThai = 0,
+                }));
+                LoadData();
+            }
+            if (dialogResult == DialogResult.No) return;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -502,6 +524,8 @@ namespace _3.PresentationLayers.Views
             cbb_TacGia.Items.Clear();
             cbb_NhaPhatHanh.Items.Clear();
             cbb_LoaiBia.Items.Clear();
+            cbb_TheLoai.Items.Clear();
+            cbb_TheLoai2.Items.Clear();
             LoadCbb();
         }
         private void ipb_AddSach_Click(object sender, EventArgs e)
@@ -533,51 +557,30 @@ namespace _3.PresentationLayers.Views
             AddNhanh("Thể loại");
         }
 
-        private void ipb_TheLoai2_Click(object sender, EventArgs e)
-        {
-            AddNhanh("Thể loại chi tiết");
-        }
 
 
         private void ptb_AnhSach_DoubleClick(object sender, EventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Imaga file: | *.jpg; *.png; *.jpeg";
-            //ofd.ShowDialog();
-            //DialogResult result = MessageBox.Show("Bạn có muốn chọn ảnh sách không? ", "Đổi ảnh sách", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.Yes)
-            //{
-            //    ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage; // cho vừa khung 
-            //    ptb_AnhSach.Image = Image.FromFile(ofd.FileName);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Lựa chọn đúng đắn");
-            //}
-            // thêm cái này 
-            //= ofd.FileName; // lưu đường dẫn ảnh để lát tạo đối tượng
             OpenFileDialog open = new OpenFileDialog();
-            try
+            DialogResult result = MessageBox.Show("Bạn có muốn chọn ảnh sách không? ", "Đổi ảnh sách", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-
-                if (open.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
-                    ptb_AnhSach.Image = Image.FromFile(open.FileName);
-                    LinkImage = open.FileName;
+                    if (open.ShowDialog() == DialogResult.OK)
+                    {
+                        ptb_AnhSach.SizeMode = PictureBoxSizeMode.StretchImage;
+                        ptb_AnhSach.Image = Image.FromFile(open.FileName);
+                        LinkImage = open.FileName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với Thắng để khắc phục");
                 }
             }
-            catch (Exception ex)
-            {
+            else return;
 
-                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với Thắng để khắc phục");
-            }
-            //ChiTietSach.Anh = open.FileName;
-        }
-
-        private void Form_ChiTietSach_Load(object sender, EventArgs e)
-        {
-            //LoadCbb();
         }
 
         private void btn_Load_Click(object sender, EventArgs e)
@@ -585,19 +588,16 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
         }
-
-
-
         private void btn_Reset_Click(object sender, EventArgs e)
         {
             tbt_Ma.Clear();
-            cbb_Sach.Text = "";
-            cbb_TheLoai.Text = "";
-            cbb_TheLoai2.Text = "";
-            cbb_NXB.Text = "";
-            cbb_TacGia.Text = "";
-            cbb_NhaPhatHanh.Text = "";
-            cbb_LoaiBia.Text = "";
+            cbb_Sach.Text = string.Empty;
+            cbb_TheLoai.Text = string.Empty;
+            cbb_TheLoai2.Text = string.Empty;
+            cbb_NXB.Text = string.Empty;
+            cbb_TacGia.Text = string.Empty;
+            cbb_NhaPhatHanh.Text = string.Empty;
+            cbb_LoaiBia.Text = string.Empty;
             tbt_MaVach.Clear();
             tbt_NamXuatBan.Clear();
             tbt_MoTa.Clear();
@@ -608,15 +608,14 @@ namespace _3.PresentationLayers.Views
             tbt_KichThuoc.Clear();
             rdt_ConBan.Checked = false;
             rdt_KhongBan.Checked = false;
-            //ptb_AnhSach.Image=Image()
         }
 
         private void cbb_LocNXB_TextChanged(object sender, EventArgs e)
         {
-            if (cbb_LocNXB.Text != null)
+            if (cbb_LocNXB.Text != string.Empty)
             {
                 int stt = 1;
-                dtg_Show.ColumnCount = 17;
+                dtg_Show.ColumnCount = 19;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
                 dtg_Show.Columns[1].Visible = false;
@@ -635,16 +634,19 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[14].Name = "Giá bán";
                 dtg_Show.Columns[15].Name = "Trạng thái";
                 dtg_Show.Columns[16].Name = "Đường Dẫn";
-                //dtg_Show.Columns[17].Name = "Thể loại 1";
-                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
                 dtg_Show.Rows.Clear();
                 foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNxb.Contains(cbb_LocNXB.Text)).OrderBy(x => x.Ma))
                 {
-                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
                 }
-                cbb_LocTacGia.Text = "";
-                cbb_LocNhaPhatHanh.Text = "";
-                cbb_LocLoaiBia.Text = "";
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocLoaiBia.Text = string.Empty;
+                cbb_LocTheLoai.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
 
             }
 
@@ -652,10 +654,10 @@ namespace _3.PresentationLayers.Views
 
         private void cbb_LocTacGia_TextChanged(object sender, EventArgs e)
         {
-            if (cbb_LocTacGia.Text != "")
+            if (cbb_LocTacGia.Text != string.Empty)
             {
                 int stt = 1;
-                dtg_Show.ColumnCount = 17;
+                dtg_Show.ColumnCount = 19;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
                 dtg_Show.Columns[1].Visible = false;
@@ -674,25 +676,28 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[14].Name = "Giá bán";
                 dtg_Show.Columns[15].Name = "Trạng thái";
                 dtg_Show.Columns[16].Name = "Đường Dẫn";
-                //dtg_Show.Columns[17].Name = "Thể loại 1";
-                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
                 dtg_Show.Rows.Clear();
                 foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTacGia.Contains(cbb_LocTacGia.Text)).OrderBy(x => x.Ma))
                 {
-                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
                 }
-                cbb_LocNXB.Text = "";
-                cbb_LocNhaPhatHanh.Text = "";
-                cbb_LocLoaiBia.Text = "";
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocLoaiBia.Text = string.Empty;
+                cbb_LocTheLoai.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
             }
         }
 
         private void cbb_LocNhaPhatHanh_TextChanged(object sender, EventArgs e)
         {
-            if (cbb_LocNhaPhatHanh.Text != "")
+            if (cbb_LocNhaPhatHanh.Text != string.Empty)
             {
                 int stt = 1;
-                dtg_Show.ColumnCount = 17;
+                dtg_Show.ColumnCount = 19;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
                 dtg_Show.Columns[1].Visible = false;
@@ -711,25 +716,28 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[14].Name = "Giá bán";
                 dtg_Show.Columns[15].Name = "Trạng thái";
                 dtg_Show.Columns[16].Name = "Đường Dẫn";
-                //dtg_Show.Columns[17].Name = "Thể loại 1";
-                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
                 dtg_Show.Rows.Clear();
                 foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenNhaPhatHanh.Contains(cbb_LocNhaPhatHanh.Text)).OrderBy(x => x.Ma))
                 {
-                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
                 }
-                cbb_LocNXB.Text = "";
-                cbb_LocTacGia.Text = "";
-                cbb_LocLoaiBia.Text = "";
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocLoaiBia.Text = string.Empty;
+                cbb_LocTheLoai.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
             }
         }
 
         private void cbb_LocLoaiBia_TextChanged(object sender, EventArgs e)
         {
-            if (cbb_LocLoaiBia.Text != "")
+            if (cbb_LocLoaiBia.Text != string.Empty)
             {
                 int stt = 1;
-                dtg_Show.ColumnCount = 17;
+                dtg_Show.ColumnCount = 19;
                 dtg_Show.Columns[0].Name = "STT";
                 dtg_Show.Columns[1].Name = "Id";
                 dtg_Show.Columns[1].Visible = false;
@@ -748,19 +756,107 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[14].Name = "Giá bán";
                 dtg_Show.Columns[15].Name = "Trạng thái";
                 dtg_Show.Columns[16].Name = "Đường Dẫn";
-                //dtg_Show.Columns[17].Name = "Thể loại 1";
-                //dtg_Show.Columns[18].Name = "Thể loại 2";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
                 dtg_Show.Rows.Clear();
                 foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenLoaiBia.Contains(cbb_LocLoaiBia.Text)).OrderBy(x => x.Ma))
                 {
-                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Hết sách" : "Còn bán", a.Anh/*,a.TenTheLoai,a.TenChiTietTheLoai*/, a.MaVach);
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
                 }
-                cbb_LocNXB.Text = "";
-                cbb_LocNhaPhatHanh.Text = "";
-                cbb_LocTacGia.Text = "";
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocTheLoai.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
             }
         }
 
+        private void cbb_LocTheLoai_TextChanged(object sender, EventArgs e)
+        {
+            if (cbb_LocLoaiBia.Text != string.Empty)
+            {
+                int stt = 1;
+                dtg_Show.ColumnCount = 19;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TenTheLoai.Contains(cbb_LocTheLoai.Text)).OrderBy(x => x.Ma))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
+                }
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
+            }
+        }
 
+        private void cbb_LocTrangThai_TextChanged(object sender, EventArgs e)
+        {
+            if (cbb_LocTrangThai.Text != string.Empty)
+            {
+                int stt = 1;
+                dtg_Show.ColumnCount = 19;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
+                dtg_Show.Rows.Clear();
+
+                if (cbb_LocTrangThai.Text == "Còn bán")
+                    foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TrangThai == 1).OrderBy(x => x.Ma))
+                    {
+                        dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
+                    }
+                else if(cbb_LocTrangThai.Text == "Ngừng kinh doanh")
+                    foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.TrangThai == 0).OrderBy(x => x.Ma))
+                    {
+                        dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
+                    }
+
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocTheLoai.Text = string.Empty;
+
+            }
+        }
     }
 }
