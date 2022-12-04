@@ -67,6 +67,7 @@ namespace _3.PresentationLayers.Views
             rd_chogiao.Checked = true;
             panel_tiencoc.Visible = false;
             panel_capnhat.Visible = false;
+            tabHoaDon.SelectedIndex= -1;
         }
         public Form_BanHang(string a)
         {
@@ -209,7 +210,7 @@ namespace _3.PresentationLayers.Views
                 {
                     tabtrangthaimuahang.SelectedIndex = 0;
                 }
-                
+
             }
             cleartextbox();
             Tabhoadondcmm();
@@ -684,16 +685,21 @@ namespace _3.PresentationLayers.Views
                     {
                         if (hd.TrangThai == 0)
                         {
-                            hd.Idnv = _inhanvienService.getNhanViensFromDB().Where(x => x.Ma == cbb_nhanvien.SelectedItem).Select(x => x.Id).FirstOrDefault();
-                            if (hd.Idkh != null)
+                            
+                            if (hd.Idkh != _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault())
                             {
-                                hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                                hd.Idnv = SelectNhanVien;
+                                if (cbb_nganhang.SelectedIndex >= 0)
+                                {
+                                    hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                                }
                             }
+                            
+                            
                             if (!string.IsNullOrEmpty(tb_tongtienhang.Text))
                             {
                                 hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
                             }
-
                             hoaDonService.Update(hd);
                             Tabhoadondcmm();
                         }
@@ -1101,10 +1107,11 @@ namespace _3.PresentationLayers.Views
                 tb_diachi.ReadOnly = true;
                 cbb_nganhang.Enabled = false;
                 cbb_phuongthucthanhtoan.Enabled = false;
-                
+                cbb_nhanvien.Enabled = false;
             }
             else
             {
+                cbb_nhanvien.Enabled = true;
                 tb_dungdiem.ReadOnly = false;
                 tb_tienmat.ReadOnly = false;
                 tb_chuyenkhoan.ReadOnly = false;
@@ -1113,7 +1120,6 @@ namespace _3.PresentationLayers.Views
                 tb_diachi.ReadOnly = false;
                 cbb_nganhang.Enabled = true;
                 cbb_phuongthucthanhtoan.Enabled = true;
-                
             }
             if (hd.TrangThai == 1)
             {
@@ -1381,7 +1387,7 @@ namespace _3.PresentationLayers.Views
 
 
             LoadHoaDonChoThanhToan();
-            LoadHoaDonDaThanhToan();          
+            LoadHoaDonDaThanhToan();
             Tabhoadondcmm();
         }
         private void bt_capnhat_Click(object sender, EventArgs e)
@@ -1748,7 +1754,7 @@ namespace _3.PresentationLayers.Views
                     {
                         hd.GhiChu = tb_ghichu.Text;
                     }
-                   // hd.TrangThai = a; // hóa đơn đã thanh toán
+                    // hd.TrangThai = a; // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
                     AlertSuccess("Cập nhật thành công");
                     LoadHoaDonChoThanhToan();
@@ -1766,7 +1772,7 @@ namespace _3.PresentationLayers.Views
                     {
                         cbx_Loc.SelectedIndex = 1;
                     }
-                    
+
                 }
             }
             else if (hd.TrangThai == 2 || hd.TrangThai == 3)
@@ -1819,7 +1825,7 @@ namespace _3.PresentationLayers.Views
                                 diemtieudung.SoDiem = diemtieudung.SoDiem + lichsudiemdung.SoDiemDung - lichSuDiemTich.SoDiemTich;
                                 _idiemTieuDungService.Update(diemtieudung);
                                 hd.TrangThai = a;
-                                  
+
                                 hoaDonService.Update(hd);
                                 _ilichSuDiemDungService.Remove(lichsudiemdung);
                                 _ilichSuDiemTichService.Remove(lichSuDiemTich);
@@ -1873,7 +1879,7 @@ namespace _3.PresentationLayers.Views
                         AlertFail("Bạn chưa có sự thay đổi");
                         return;
                     }
-                    else if ( hd.TrangThai != a)
+                    else if (hd.TrangThai != a)
                     {
                         hd.TrangThai = a;
                         if (string.IsNullOrEmpty(tb_ghichu.Text))
@@ -1923,7 +1929,7 @@ namespace _3.PresentationLayers.Views
             Form_QuetMaSach.mavach = null;
             Form_QuetMaSach qms = new Form_QuetMaSach();
             qms.ShowDialog();
-            if (Form_QuetMaSach.mavach == null) return;
+            if (Form_QuetMaSach.mavach == null || Form_QuetMaSach.mavach == string.Empty) qms.ShowDialog();
 
             if (dtg_HoaDonChiTiet.Visible == false)
             {

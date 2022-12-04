@@ -52,7 +52,7 @@ namespace _3.PresentationLayers.Views
                     tb_mavach.Text = String.Empty;
                     return;
                 }
-                if (dialogResult == DialogResult.No)
+                else/* (dialogResult == DialogResult.No) */
                 {
                     tb_mavach.Text = string.Empty;
                     tb_tensach.Text = string.Empty;
