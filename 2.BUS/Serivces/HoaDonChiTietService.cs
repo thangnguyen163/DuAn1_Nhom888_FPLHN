@@ -16,8 +16,7 @@ namespace _2.BUS.Serivces
     public class HoaDonChiTietService : IHoaDonChiTietService
     {
         private IChitietHoadonRepository _ichitietHoadonRepository = new HoaDonChiTietRepository();
-        private IChiTietSachRepository _ichiTietSachRepository = new ChiTietSachRepository();
-        private IChiTietTheLoaiRepository _ichiTietTheLoaiRepository = new ChiTietTheLoaiRepository();
+        private IChiTietSachRepository _ichiTietSachRepository = new ChiTietSachRepository();        
         private INhaPhatHanhRepository _inhaPhatHanhRepository = new NhaPhatHanhRepository();
         private ILoaiBiaRepository _iloaiBiaRepository = new LoaiBiaRepository();
         private ITacGiaRepository _itacGiaRepository = new TacGiaRepository();
