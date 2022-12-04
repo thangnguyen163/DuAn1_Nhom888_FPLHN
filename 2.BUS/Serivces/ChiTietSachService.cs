@@ -20,7 +20,6 @@ namespace _2.BUS.Service
         private INXBRepository _iNXBRepository;
         private ITacGiaRepository _iTacGiaRepository;
         private ILoaiBiaRepository _iLoaiBiaRepository;
-        //private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
         private ITheLoaiRepository _iTheLoaiRepository;
         private INhaPhatHanhRepository _iNhaPhatHanhRepository;
         public ChiTietSachService()
@@ -34,7 +33,6 @@ namespace _2.BUS.Service
             _iLoaiBiaRepository = new LoaiBiaRepository();
             _iNhaPhatHanhRepository = new NhaPhatHanhRepository();
             _iTheLoaiRepository = new TheLoaiRepository();
-            //_iChiTietTheLoaiRepository = new ChiTietTheLoaiRepository();
         }
         public string Add(ChiTietSach chiTietSach)
         {
@@ -43,10 +41,11 @@ namespace _2.BUS.Service
             return "Thêm chi tiết sách thành công";
         }
 
-        public string Delete(Guid? id, ChiTietSach chiTietSach)
+        public string Delete(Guid? id)
         {
-            _iChiTietSachRepository.Delete(id, chiTietSach);
-            return "Chi tiết sách đã được chuyển thành không sử dụng";
+            if (id == null) return "Chưa chọn sản phẩm muốn sửa";
+            _iChiTietSachRepository.Delete(id);
+            return "Chi tiết sách được xoá thành công";
         }
 
         public List<ChiTietSach> GetAll()
@@ -98,8 +97,16 @@ namespace _2.BUS.Service
 
         public string Update(Guid? id, ChiTietSach chiTietSach)
         {
+            if (id == null) return "Chưa chọn sản phẩm muốn sửa";
             _iChiTietSachRepository.Update(id, chiTietSach);
             return "Chi tiết sách được sửa thành công";
+        }
+
+        public string UpdateTrangThai(Guid? id, ChiTietSach chiTietSach)
+        {
+            if (id == null) return "Chưa chọn sản phẩm muốn sửa";
+            _iChiTietSachRepository.UpdateTrangThai(id, chiTietSach);
+            return "Sách được chuyển thành Ngừng kinh doanh";
         }
     }
 }

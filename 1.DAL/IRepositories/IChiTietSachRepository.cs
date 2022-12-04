@@ -11,7 +11,8 @@ namespace _1.DAL.IRepositoties
     {
         bool Add(ChiTietSach chiTietSach);
         bool Update(Guid? id, ChiTietSach chiTietSach);
-        bool Delete(Guid? id, ChiTietSach chiTietSach);
+        bool UpdateTrangThai(Guid? id, ChiTietSach chiTietSach);
+        bool Delete(Guid? id);
         List<ChiTietSach> GetAll();
     }
 }
