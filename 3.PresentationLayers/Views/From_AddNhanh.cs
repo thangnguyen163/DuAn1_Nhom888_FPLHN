@@ -22,7 +22,7 @@ namespace _3.PresentationLayers.Views
         private ITacGiaService _iTacGiaService;
         private ILoaiBiaService _iLoaiBiaService;
         private ITheLoaiService _iTheLoaiService;
-        private IChiTietTheLoaiService _iChiTietTheLoaiService;
+        //private IChiTietTheLoaiService _iChiTietTheLoaiService;
         public Form_AddNhanh()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace _3.PresentationLayers.Views
             _iNhaPhatHanhService = new NhaPhatHanhService();
             _iLoaiBiaService = new LoaiBiaService();
             _iTheLoaiService = new TheLoaiService();
-            _iChiTietTheLoaiService = new ChiTietTheLoaiService();
+            //_iChiTietTheLoaiService = new ChiTietTheLoaiService();
         }
         public Form_AddNhanh(string a)
         {
@@ -167,16 +167,16 @@ namespace _3.PresentationLayers.Views
             }
             if (Convert.ToString(lb_ThemNhanh.Text) == "Thể loại chi tiết")
             {
-                MessageBox.Show(_iChiTietTheLoaiService.Add(new ChiTietTheLoai()
-                {
+                //MessageBox.Show(_iChiTietTheLoaiService.Add(new ChiTietTheLoai()
+                //{
 
-                    Id = Guid.NewGuid(),
-                    Ma = "CTTL" + Convert.ToString(_iLoaiBiaService.GetLoaiBia()
-                      .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 1)),
-                    IdTheLoai = _iTheLoaiService.GetAllNoView().Where(c => c.Ten == cbb_Cha.Text).Select(c => c.Id).FirstOrDefault(),
-                    Ten = tbt_Ten.Text,
-                    TrangThai = 1,
-                }));
+                //    Id = Guid.NewGuid(),
+                //    Ma = "CTTL" + Convert.ToString(_iLoaiBiaService.GetLoaiBia()
+                //      .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 1)),
+                //    IdTheLoai = _iTheLoaiService.GetAllNoView().Where(c => c.Ten == cbb_Cha.Text).Select(c => c.Id).FirstOrDefault(),
+                //    Ten = tbt_Ten.Text,
+                //    TrangThai = 1,
+                //}));
             }
             LoadCbbAddNhanh();
             this.Close();
