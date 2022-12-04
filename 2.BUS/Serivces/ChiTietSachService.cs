@@ -20,7 +20,7 @@ namespace _2.BUS.Service
         private INXBRepository _iNXBRepository;
         private ITacGiaRepository _iTacGiaRepository;
         private ILoaiBiaRepository _iLoaiBiaRepository;
-        private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
+        //private IChiTietTheLoaiRepository _iChiTietTheLoaiRepository;
         private ITheLoaiRepository _iTheLoaiRepository;
         private INhaPhatHanhRepository _iNhaPhatHanhRepository;
         public ChiTietSachService()
@@ -34,7 +34,7 @@ namespace _2.BUS.Service
             _iLoaiBiaRepository = new LoaiBiaRepository();
             _iNhaPhatHanhRepository = new NhaPhatHanhRepository();
             _iTheLoaiRepository = new TheLoaiRepository();
-            _iChiTietTheLoaiRepository = new ChiTietTheLoaiRepository();
+            //_iChiTietTheLoaiRepository = new ChiTietTheLoaiRepository();
         }
         public string Add(ChiTietSach chiTietSach)
         {
@@ -63,8 +63,7 @@ namespace _2.BUS.Service
                  join d in _iNXBRepository.GetAllNSX() on a.IdNxb equals d.Id
                  join e in _iTacGiaRepository.GetTacGia() on a.IdTacGia equals e.Id
                  join f in _iNhaPhatHanhRepository.GetNhaPhatHanhs() on a.IdNhaPhatHanh equals f.Id
-                 //join g in _iChiTietTheLoaiRepository.GetAllCTTheLoai() on a.Id equals g.IdChiTietSach
-                 //join h in _iTheLoaiRepository.GetAllTheLoai() on g.IdTheLoai equals h.Id
+                 join h in _iTheLoaiRepository.GetAllTheLoai() on a.IdTheLoai equals h.Id
 
                  select new ChiTietSachView()
                  {
@@ -74,8 +73,8 @@ namespace _2.BUS.Service
                      TenTacGia = e.Ten,
                      TenNhaPhatHanh = f.Ten,
                      TenLoaiBia = c.Ten,
-                     //TenTheLoai=g.Ten,
-                     //TenChiTietTheLoai=h.Ten,
+                     TenTheLoai=h.Ten,
+                     TenTheLoai2= h.IdCha,
                      Ma = a.Ma,
                      Anh=a.Anh,
                      MaVach=a.MaVach,

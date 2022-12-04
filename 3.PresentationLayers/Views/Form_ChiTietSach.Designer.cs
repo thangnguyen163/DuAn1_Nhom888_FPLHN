@@ -840,6 +840,7 @@
             this.cbb_TheLoai.Size = new System.Drawing.Size(165, 28);
             this.cbb_TheLoai.TabIndex = 0;
             this.cbb_TheLoai.SelectedIndexChanged += new System.EventHandler(this.cbb_TheLoai_SelectedIndexChanged);
+            this.cbb_TheLoai.TextChanged += new System.EventHandler(this.cbb_TheLoai_TextChanged);
             // 
             // cbb_Sach
             // 
@@ -1002,7 +1003,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(1388, 980);
+            this.ClientSize = new System.Drawing.Size(1566, 994);
             this.Controls.Add(this.Lọc);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -1079,7 +1080,6 @@
         private System.Windows.Forms.PictureBox ptb_AnhSach;
         private FontAwesome.Sharp.IconPictureBox ipb_TheLoai2;
         private FontAwesome.Sharp.IconPictureBox ipb_AddTheLoai;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbb_TheLoai2;
         private System.Windows.Forms.ComboBox cbb_TheLoai;
@@ -1109,5 +1109,6 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label16;
     }
 }
