@@ -61,11 +61,12 @@ namespace _2.BUS.Serivces
                                Trangthai = a.TrangThai,
                                Idchitietsp = c.Id,
                                IDhoadon = a.IdHoaDon,
+                               GiamGia = a.GiamGia,
                            }).ToList();
             return templst;
-        }
 
-        public List<HoaDonChiTietView> GetAllbanhang(Guid id)
+
+            public List<HoaDonChiTietView> GetAllbanhang(Guid id)
         {
 
             var templst1 = (from a in _ichitietHoadonRepository.GetAll()
