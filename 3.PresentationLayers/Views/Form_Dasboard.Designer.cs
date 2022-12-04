@@ -278,6 +278,7 @@
             this.btn_HoaDon.TabIndex = 5;
             this.btn_HoaDon.Text = "Hoá đơn";
             this.btn_HoaDon.UseVisualStyleBackColor = true;
+            this.btn_HoaDon.Click += new System.EventHandler(this.btn_HoaDon_Click);
             // 
             // btn_sanpham
             // 

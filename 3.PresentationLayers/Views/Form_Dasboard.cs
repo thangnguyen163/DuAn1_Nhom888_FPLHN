@@ -176,6 +176,9 @@ namespace _3.PresentationLayers.Views
             //LoaddataToChitietHoadon(SelectID);
         }
 
-
+        private void btn_HoaDon_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form_Hoadon(), sender);
+        }
     }
 }
