@@ -532,15 +532,15 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.OrangeRed;
+            this.button5.BackColor = System.Drawing.Color.Red;
+            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(254, 6);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(104, 50);
+            this.button5.Size = new System.Drawing.Size(138, 50);
             this.button5.TabIndex = 111;
             this.button5.Text = "Hủy ";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
