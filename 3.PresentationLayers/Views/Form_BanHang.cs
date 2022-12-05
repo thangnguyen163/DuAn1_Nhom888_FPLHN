@@ -18,6 +18,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
 
 namespace _3.PresentationLayers.Views
 {
@@ -67,7 +68,7 @@ namespace _3.PresentationLayers.Views
             rd_chogiao.Checked = true;
             panel_tiencoc.Visible = false;
             panel_capnhat.Visible = false;
-            tabHoaDon.SelectedIndex= -1;
+            tabHoaDon.SelectedIndex = -1;
         }
         public Form_BanHang(string a)
         {
@@ -212,14 +213,14 @@ namespace _3.PresentationLayers.Views
                 }
 
             }
-            if (hd.TrangThai==0 )
+            if (hd.TrangThai == 0)
             {
-                fl_KhachHang.Visible = true;              
+                fl_KhachHang.Visible = true;
             }
             else
             {
                 fl_KhachHang.Visible = false;
-            }    
+            }
             cleartextbox();
             Tabhoadondcmm();
         }
@@ -589,23 +590,23 @@ namespace _3.PresentationLayers.Views
                     Button btn1 = new Button() { Width = 260, Height = 180 };
                     btn1.Text = x.Ma + Environment.NewLine + "Tên: " + Ten + Environment.NewLine + "Gía bán:" + x.GiaBan + Environment.NewLine + "Số lượng:" + x.SoLuong;
                     btn1.ForeColor = System.Drawing.Color.FromArgb(1, 102, 207);
-                    btn1.BackColor = Color.FromArgb(1, 90, 90);
+                    btn1.BackColor = Color.FromArgb(228, 241, 240);
                     btn1.TextAlign = ContentAlignment.MiddleLeft;
                     Image img2 = byteArrayToImage(x.Anh);
-                    img2 = resizeImage(img2, new Size(60, 110));
+                    img2 = resizeImage(img2, new Size(80, 110));
                     btn1.Image = img2;
                     btn1.Tag = x;
                     btn1.ImageAlign = ContentAlignment.MiddleRight;
-                    btn1.ForeColor = Color.FromArgb(224, 238, 224);
+                    btn1.ForeColor = Color.Black;
                     btn1.Click += btnsender_Click1;
                     fl_sanpham.Controls.Add(btn1);
                 }
-                Button btn2 = new Button() { Width = 200, Height = 150 };
-                btn2.Text = "+";
-                btn2.TextAlign = ContentAlignment.TopCenter;
-                btn2.Font = new Font(btn2.Font.FontFamily, 69);
-                btn2.Click += btnsender_click3;
-                fl_sanpham.Controls.Add(btn2);
+                //Button btn2 = new Button() { Width = 200, Height = 150 };
+                //btn2.Text = "+";
+                //btn2.TextAlign = ContentAlignment.TopCenter;
+                //btn2.Font = new Font(btn2.Font.FontFamily, 69);
+                //btn2.Click += btnsender_click3;
+                //fl_sanpham.Controls.Add(btn2);
             }
             catch (Exception)
             {
@@ -674,7 +675,7 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show(hoaDonService.Add(hd));
                 tpage.Text = Convert.ToString(hd.MaHd);
                 tpage.Name = Convert.ToString(hd.MaHd);
-                tabHoaDon.SelectedIndex = tabHoaDon.TabCount-1;
+                tabHoaDon.SelectedIndex = tabHoaDon.TabCount - 1;
                 LoaddataToTextbox(hd.Id);
                 Tabhoadondcmm();
             }
@@ -695,7 +696,7 @@ namespace _3.PresentationLayers.Views
                     {
                         if (hd.TrangThai == 0)
                         {
-                            
+
                             if (hd.Idkh != _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault())
                             {
                                 hd.Idnv = SelectNhanVien;
@@ -704,8 +705,8 @@ namespace _3.PresentationLayers.Views
                                     hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ten == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
                                 }
                             }
-                            
-                            
+
+
                             if (!string.IsNullOrEmpty(tb_tongtienhang.Text))
                             {
                                 hd.TongTien = Convert.ToInt32(tb_tongtienhang.Text);
@@ -761,7 +762,7 @@ namespace _3.PresentationLayers.Views
                 cbb_phuongthucthanhtoan.Items.Add(x.Ten);
             }
             cbb_phuongthucthanhtoan.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            fl_KhachHang.Visible = false;
             //panel24.BackColor= Color.FromArgb(189, 189, 189);
             //panel2.BackColor = Color.FromArgb(102, 187, 106);
             //fl_sanpham.BackColor = Color.FromArgb(189, 189, 189);
@@ -1003,7 +1004,7 @@ namespace _3.PresentationLayers.Views
                     return;
                 }
             }
-            Tabhoadondcmm();
+            
         }
 
         private void tabHoaDon_MouseClick(object sender, MouseEventArgs e)
@@ -1117,7 +1118,7 @@ namespace _3.PresentationLayers.Views
             else if (hd.TienMat != null && hd.TienChuyenKhoan != null)
             {
                 cbb_phuongthucthanhtoan.SelectedIndex = 2;
-                tb_tienmat.Text = Convert.ToString(hd.TienChuyenKhoan);
+                tb_chuyenkhoan.Text = Convert.ToString(hd.TienChuyenKhoan);
                 tb_tienmat.Text = Convert.ToString(hd.TienMat);
             }
 
@@ -1806,79 +1807,88 @@ namespace _3.PresentationLayers.Views
             {
                 if (tb_vidiem.Text != null)
                 {
-                    
-                        int a = 0;
-                        if (rd_chogiao.Checked == true)
-                        {
-                            a = 2;
-                        }
-                        else if (rd_danggiao.Checked == true)
-                        {
-                            a = 3;
-                        }
-                        else if (rd_dathanhtoan.Checked == true)
-                        {
-                            a = 1;
-                        }
-                        else if (rd_chothanhtoan.Checked == true)
-                        {
-                            a = 0;
-                        }
-                        if (hd.TrangThai == a)
-                        {
-                            AlertFail("Bạn chưa có sự thay đổi");
-                            return;
-                        }
-                        if (hd.TrangThai != a)
-                        {
-                            if (a == 0)
-                            {
-                                if (string.IsNullOrEmpty(tb_ghichu.Text))
-                                {
-                                    AlertFail("Vui lòng nhập ghi chú");
-                                    return;
-                                }
-                                else
-                                {
-                                    hd.GhiChu = tb_ghichu.Text;
-                                }
-                                lichsudiemdung = _ilichSuDiemDungService.GetAll().Where(x => x.Id == hd.IddiemDung).FirstOrDefault();
-                                lichSuDiemTich = _ilichSuDiemTichService.GetAll().Where(x => x.Id == hd.IddiemTich).FirstOrDefault();
-                                hd.IddiemDung = null;
-                                hd.IddiemTich = null;
-                                kh = _ikhachHangService.getAll().Where(x => x.Id == hd.Idkh).FirstOrDefault();
-                                diemtieudung = _idiemTieuDungService.GetAll().Where(x => x.Id == kh.IddiemTieuDung).FirstOrDefault();
-                                diemtieudung.SoDiem = diemtieudung.SoDiem + lichsudiemdung.SoDiemDung - lichSuDiemTich.SoDiemTich;
-                                _idiemTieuDungService.Update(diemtieudung);
-                                hd.TrangThai = a;
 
-                                hoaDonService.Update(hd);
-                                _ilichSuDiemDungService.Remove(lichsudiemdung);
-                                _ilichSuDiemTichService.Remove(lichSuDiemTich);
-                                AlertSuccess("Update trạng thái thành công");
+                    int a = 0;
+                    if (rd_chogiao.Checked == true)
+                    {
+                        a = 2;
+                    }
+                    else if (rd_danggiao.Checked == true)
+                    {
+                        a = 3;
+                    }
+                    else if (rd_dathanhtoan.Checked == true)
+                    {
+                        a = 1;
+                    }
+                    else if (rd_chothanhtoan.Checked == true)
+                    {
+                        a = 0;
+                    }
+                    if (hd.TrangThai == a)
+                    {
+                        AlertFail("Bạn chưa có sự thay đổi");
+                        return;
+                    }
+                    if (hd.TrangThai != a)
+                    {
+                        if (a == 0)
+                        {
+                            if (string.IsNullOrEmpty(tb_ghichu.Text))
+                            {
+                                AlertFail("Vui lòng nhập ghi chú");
                                 return;
                             }
                             else
                             {
-                                if (string.IsNullOrEmpty(tb_ghichu.Text))
-                                {
-                                    AlertFail("Vui lòng nhập ghi chú");
-                                    return;
-                                }
-                                else
-                                {
-                                    hd.GhiChu = tb_ghichu.Text;
-                                }
-                                hd.TrangThai = a;
-                                hoaDonService.Update(hd);
-                                AlertSuccess("Update trạng thái thành công");
-                                LoadHoaDonChoThanhToan();
-                                LoadHoaDonDaThanhToan();
-                                Tabhoadondcmm();
+                                hd.GhiChu = tb_ghichu.Text;
+                            }
+                            lichsudiemdung = _ilichSuDiemDungService.GetAll().Where(x => x.Id == hd.IddiemDung).FirstOrDefault();
+                            lichSuDiemTich = _ilichSuDiemTichService.GetAll().Where(x => x.Id == hd.IddiemTich).FirstOrDefault();
+                            hd.IddiemDung = null;
+                            hd.IddiemTich = null;
+                            kh = _ikhachHangService.getAll().Where(x => x.Id == hd.Idkh).FirstOrDefault();
+                            diemtieudung = _idiemTieuDungService.GetAll().Where(x => x.Id == kh.IddiemTieuDung).FirstOrDefault();
+
+                            hd.TrangThai = a;
+                            if (hd.IddiemDung != null)
+                            {
+                                diemtieudung.SoDiem = diemtieudung.SoDiem + lichsudiemdung.SoDiemDung - lichSuDiemTich.SoDiemTich;
+                                _idiemTieuDungService.Update(diemtieudung);
+                            }
+                            else
+                            {
+                                diemtieudung.SoDiem = diemtieudung.SoDiem - lichSuDiemTich.SoDiemTich;
+                                _idiemTieuDungService.Update(diemtieudung);
+                            }
+
+                            hoaDonService.Update(hd);
+                            _ilichSuDiemDungService.Remove(lichsudiemdung);
+                            _ilichSuDiemTichService.Remove(lichSuDiemTich);
+                            AlertSuccess("Update trạng thái thành công");
+                            return;
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(tb_ghichu.Text))
+                            {
+                                AlertFail("Vui lòng nhập ghi chú");
                                 return;
                             }
+                            else
+                            {
+                                hd.GhiChu = tb_ghichu.Text;
+                            }
+                            hd.TrangThai = a;
+                            hoaDonService.Update(hd);
+                            AlertSuccess("Update trạng thái thành công");
+                            LoadHoaDonChoThanhToan();
+                            LoadHoaDonDaThanhToan();
+                            Tabhoadondcmm();
+                            return;
                         }
-                    
+
+                    }
                 }
                 else if (tb_vidiem.Text == null)
                 {
@@ -1907,7 +1917,7 @@ namespace _3.PresentationLayers.Views
                     }
                     else if (hd.TrangThai != a)
                     {
-                        hd.TrangThai = a;
+
                         if (string.IsNullOrEmpty(tb_ghichu.Text))
                         {
                             AlertFail("Vui lòng nhập ghi chú");
@@ -1917,6 +1927,7 @@ namespace _3.PresentationLayers.Views
                         {
                             hd.GhiChu = tb_ghichu.Text;
                         }
+                        hd.TrangThai = a;
                         hoaDonService.Update(hd);
                         AlertSuccess("Update trạng thái thành công");
                         return;
@@ -1955,13 +1966,13 @@ namespace _3.PresentationLayers.Views
             Form_QuetMaSach.mavach = string.Empty;
             Form_QuetMaSach qms = new Form_QuetMaSach();
             qms.ShowDialog();
-            if ( Form_QuetMaSach.mavach == string.Empty)
+            if (Form_QuetMaSach.mavach == string.Empty)
             {
                 //Form_QuetMaSach.mavach = null;
                 //qms.ShowDialog();
                 return;
             }
-            if (Form_QuetMaSach.mavach != string.Empty && Form_QuetMaSach.tensach!=null)            
+            if (Form_QuetMaSach.mavach != string.Empty && Form_QuetMaSach.tensach != null)
             {
                 if (dtg_HoaDonChiTiet.Visible == false)
                 {
@@ -2240,7 +2251,7 @@ namespace _3.PresentationLayers.Views
                     LoadSanphamtoFl();
                     Tabhoadondcmm();
                 }
-            }                       
+            }
         }
 
 
@@ -2759,6 +2770,14 @@ namespace _3.PresentationLayers.Views
             //var hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
             //cbb_nhanvien.SelectedItem = _inhanvienService.getNhanViensFromDB().Where(x => x.Id == hd.Idnv).Select(x => x.Ma).FirstOrDefault();
             /*khach hang*/
+            if (cbb_nganhang.SelectedIndex >= 0)
+            {
+                fl_KhachHang.Visible = false;
+            }
+            else
+            {
+                fl_KhachHang.Visible = true;
+            }
             var kh = _ikhachHangService.getAll().Where(x => x.Ten == cbb_nganhang.SelectedItem).FirstOrDefault();
             if (cbb_nganhang.SelectedIndex >= 0)
             {
@@ -2773,7 +2792,7 @@ namespace _3.PresentationLayers.Views
         private void tb_chuyenkhoan_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"^[0-9]*$");
-            if (dtg_HoaDonChiTiet.Visible == true)
+            if (tabHoaDon.SelectedIndex >= 0)
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
@@ -2963,7 +2982,7 @@ namespace _3.PresentationLayers.Views
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
-                if (hd.TrangThai == 0)
+                if (hd.TrangThai != 1)
                 {
                     if (tabtrangthaimuahang.SelectedIndex == 0)
                     {
@@ -3189,13 +3208,14 @@ namespace _3.PresentationLayers.Views
             {
                 fl_KhachHang.Visible = true;
                 LoadKhachHang();
-            } 
-                
-            
+            }
+
+
         }
         private void ClickKhachHang(object sender, EventArgs e)
         {
             cbb_nganhang.SelectedItem = ((sender as Button).Tag as KhachHang).Ten;
+            fl_KhachHang.Visible = false;
         }
 
         private void tbt_SearchProducts_TextChanged(object sender, EventArgs e)
@@ -3325,7 +3345,7 @@ namespace _3.PresentationLayers.Views
                     tb_tienmat.Clear();
                     tb_chuyenkhoan.Clear();
                 }
-               
+
             }
             catch (Exception)
             {
@@ -3369,6 +3389,133 @@ namespace _3.PresentationLayers.Views
         {
             Form_KhachHang kh = new Form_KhachHang();
             kh.ShowDialog();
+        }
+
+        private void dtg_HoaDonChiTiet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtg_HoaDonChiTiet_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                HoaDon selecthd = new HoaDon();
+                selecthd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.MaHd == tabHoaDon.SelectedTab.Name);
+                if (selecthd.TrangThai == 2 || selecthd.TrangThai == 3)
+                {
+                    ContextMenuStrip menu = new System.Windows.Forms.ContextMenuStrip();
+                    int position = dtg_HoaDonChiTiet.HitTest(e.X, e.Y).RowIndex;
+                    if (position >= 0)
+                    {
+                        menu.Items.Add("Trả hàng").Name = "Trả hàng";
+                    }
+                    menu.Show(dtg_HoaDonChiTiet, new Point(e.X, e.Y));
+                    menu.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemCLicked);
+                }
+
+            }
+        }
+
+        private void menu_ItemCLicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            HoaDon selecthd = new HoaDon();
+            selecthd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.MaHd == tabHoaDon.SelectedTab.Name);
+            if (selecthd.TrangThai == 2 || selecthd.TrangThai == 3)
+            {
+                string ctsclick = dtg_HoaDonChiTiet.CurrentRow.Cells[1].Value.ToString();
+                string tenclick = dtg_HoaDonChiTiet.CurrentRow.Cells[2].Value.ToString(); ;
+                decimal giabanclick = Convert.ToInt32(dtg_HoaDonChiTiet.CurrentRow.Cells[6].Value.ToString());
+                string Content = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+                if (Content == string.Empty) return;
+
+                if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
+                {
+
+                    MessageBox.Show("Số Lượng không được chứa ký tự đặc biệt", "ERR");
+                    return;
+                }
+                if (Regex.IsMatch(Content, @"^\d+$") == false)
+                {
+
+                    MessageBox.Show("Số Lượng không được chứa chữ cái", "ERR");
+                    return;
+                }
+                if (Content.Length > 6)
+                {
+                    MessageBox.Show("Số Lượng Không Cho Phép", "ERR");
+                    return;
+                }
+                if (Convert.ToInt32(Content) <= 0)
+                {
+                    MessageBox.Show("Số Lượng Phải Lớn Hơn 0", "ERR");
+                    return;
+                }
+                if (Content != null)
+                {
+                    DialogResult hoi = MessageBox.Show("Bạn có muốn trả hàng không", "Trả hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (DialogResult.Yes == hoi)
+                    {
+                        HoaDon hd = new HoaDon();
+                        hd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.MaHd == tabHoaDon.SelectedTab.Name);
+                        ChiTietSach cts = new ChiTietSach();
+                        cts = _iChiTietSachService.GetAll().FirstOrDefault(q => q.Ma == ctsclick);
+                        HoaDonChiTiet hdct = new HoaDonChiTiet();
+                        hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(z => z.IdHoaDon == hd.Id && z.IdChiTietSach == cts.Id);
+                        if (Convert.ToInt32(Content) > hdct.SoLuong)
+                        {
+                            MessageBox.Show("Số sách không tồn tại");
+                            return;
+                        }
+                        else if (Convert.ToInt32(Content) == hdct.SoLuong)
+                        {
+                            hdct.TrangThai = 0;
+                            hdct.ThanhTien = 0;
+                            hoaDonChiTietService.Update(hdct);
+                            return;
+                        }
+                        else if (Convert.ToInt32(Content) < hdct.SoLuong)
+                        {
+                            //Update số lượng giao tiếp
+                            hdct.SoLuong = hdct.SoLuong - Convert.ToInt32(Content);
+                            hdct.TrangThai = 1;
+                            hdct.ThanhTien = hdct.SoLuong * cts.GiaBan;
+                            hoaDonChiTietService.Update(hdct);
+                            // Thêm mới hàng hoàn trả
+                            HoaDonChiTiet hdctnew = new HoaDonChiTiet();
+                            hdctnew.Id = Guid.NewGuid();
+                            hdctnew.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
+                                  .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
+                            hdctnew.IdHoaDon = hd.Id;
+                            hdctnew.IdChiTietSach = cts.Id;
+                            hdctnew.SoLuong = Convert.ToInt32(Content);
+                            hdctnew.DonGia = Convert.ToInt32(cts.GiaBan);
+                            hdctnew.ThanhTien = 0;
+                            hdctnew.TrangThai = 0;
+                            hoaDonChiTietService.Add(hdctnew);
+                            //Cập nhật lại số lượng của sách trong kho;
+                            cts.SoLuong = cts.SoLuong + Convert.ToInt32(Content);
+                            cts.IdSach = cts.IdSach;
+                            cts.IdNxb = cts.IdNxb;
+                            cts.IdTacGia = cts.IdTacGia;
+                            cts.IdNhaPhatHanh = cts.IdNhaPhatHanh;
+                            cts.IdLoaiBia = cts.IdLoaiBia;
+                            cts.Ma = cts.Ma;
+                            cts.Anh = cts.Anh;
+                            cts.MaVach = cts.MaVach;
+                            cts.KichThuoc = cts.KichThuoc;
+                            cts.SoTrang = cts.SoTrang;
+                            cts.NamXuatBan = cts.NamXuatBan;
+                            cts.MoTa = cts.MoTa;
+                            cts.GiaNhap = cts.GiaNhap;
+                            cts.GiaBan = cts.GiaBan;
+                            _iChiTietSachService.Update(cts.Id, cts);
+                        }
+                        LoaddataToHoadonChitiet();
+                    }
+                }
+            }
+
         }
     }
 }
