@@ -1654,7 +1654,8 @@ namespace _3.PresentationLayers.Views
                     }
                     else if (rd_dathanhtoan.Checked == true)
                     {
-                        hd.TrangThai = 1;
+                        AlertFail("Không thể chuyển thành đã giao");
+                        return;
                     }
                     if (!string.IsNullOrEmpty(tb_ghichu.Text))
                     {
