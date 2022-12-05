@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dasboard));
             this.PanelTitel = new System.Windows.Forms.Panel();
+            this.lb_date = new System.Windows.Forms.Label();
+            this.lb_time = new System.Windows.Forms.Label();
             this.lb_XinChao = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelTite = new System.Windows.Forms.Label();
@@ -44,6 +47,7 @@
             this.btn_HoaDon = new System.Windows.Forms.Button();
             this.btn_sanpham = new System.Windows.Forms.Button();
             this.btn_shopping = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PanelTitel.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,6 +57,8 @@
             // PanelTitel
             // 
             this.PanelTitel.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.PanelTitel.Controls.Add(this.lb_date);
+            this.PanelTitel.Controls.Add(this.lb_time);
             this.PanelTitel.Controls.Add(this.lb_XinChao);
             this.PanelTitel.Controls.Add(this.label1);
             this.PanelTitel.Controls.Add(this.labelTite);
@@ -62,13 +68,37 @@
             this.PanelTitel.Size = new System.Drawing.Size(1158, 100);
             this.PanelTitel.TabIndex = 1;
             // 
+            // lb_date
+            // 
+            this.lb_date.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_date.AutoSize = true;
+            this.lb_date.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_date.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lb_date.Location = new System.Drawing.Point(897, 64);
+            this.lb_date.Name = "lb_date";
+            this.lb_date.Size = new System.Drawing.Size(50, 20);
+            this.lb_date.TabIndex = 3;
+            this.lb_date.Text = "label2";
+            // 
+            // lb_time
+            // 
+            this.lb_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_time.AutoSize = true;
+            this.lb_time.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_time.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lb_time.Location = new System.Drawing.Point(897, 44);
+            this.lb_time.Name = "lb_time";
+            this.lb_time.Size = new System.Drawing.Size(50, 20);
+            this.lb_time.TabIndex = 2;
+            this.lb_time.Text = "label2";
+            // 
             // lb_XinChao
             // 
             this.lb_XinChao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_XinChao.AutoSize = true;
             this.lb_XinChao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lb_XinChao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lb_XinChao.Location = new System.Drawing.Point(979, 61);
+            this.lb_XinChao.Location = new System.Drawing.Point(969, 9);
             this.lb_XinChao.Name = "lb_XinChao";
             this.lb_XinChao.Size = new System.Drawing.Size(0, 20);
             this.lb_XinChao.TabIndex = 1;
@@ -79,7 +109,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(907, 61);
+            this.label1.Location = new System.Drawing.Point(897, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 1;
@@ -109,6 +139,8 @@
             this.PanelDesktopPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDesktopPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelDesktopPanel.BackgroundImage")));
+            this.PanelDesktopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PanelDesktopPanel.Location = new System.Drawing.Point(228, 100);
             this.PanelDesktopPanel.Name = "PanelDesktopPanel";
             this.PanelDesktopPanel.Size = new System.Drawing.Size(1158, 673);
@@ -259,6 +291,10 @@
             this.btn_shopping.UseVisualStyleBackColor = true;
             this.btn_shopping.Click += new System.EventHandler(this.btn_shopping_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form_Dasboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -298,5 +334,8 @@
         private System.Windows.Forms.Button btn_LogOut;
         private System.Windows.Forms.Label lb_XinChao;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lb_date;
+        private System.Windows.Forms.Label lb_time;
     }
 }
