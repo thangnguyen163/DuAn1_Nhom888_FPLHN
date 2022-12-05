@@ -41,6 +41,8 @@ namespace _1.DAL.Repositories
         {
             if (obj == null) return false;
             var tempobj = dBContext.HoaDonChiTiets.FirstOrDefault(x => x.IdChiTietSach == obj.IdChiTietSach && x.IdHoaDon == obj.IdHoaDon);  
+           
+            tempobj = obj;
             tempobj.SoLuong = obj.SoLuong;
             tempobj.ThanhTien = obj.ThanhTien;
             dBContext.HoaDonChiTiets.Update(tempobj);
