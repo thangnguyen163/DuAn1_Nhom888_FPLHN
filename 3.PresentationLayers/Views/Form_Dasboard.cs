@@ -3,6 +3,7 @@ using _2.BUS.IService;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
 using _2.BUS.Service;
+using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace _3.PresentationLayers.Views
 {
     public partial class Form_Dasboard : Form
     {
+      
         private IHoaDonService _ihoaDonService = new HoaDonService();
         private IHoaDonChiTietService _ihoaDonChiTietService = new HoaDonChiTietService();
         private IChiTietSachService _ichiTietSachService = new ChiTietSachService();
@@ -26,7 +28,9 @@ namespace _3.PresentationLayers.Views
         private int tempIndex;
         private Form activeForm;
         private INhanVienService _iNhanVienService;
+        private List<NhanVienView> _NvView= new List<NhanVienView>();
         public Guid SelectID { get; set; }
+        
         public Form_Dasboard()
         {
             InitializeComponent();
@@ -183,6 +187,21 @@ namespace _3.PresentationLayers.Views
         private void btn_HoaDon_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_Hoadon(), sender);
+        }
+       
+       
+        private void Form_Dasboard_Load(object sender, EventArgs e)
+        {
+           //Phân quyền
+          foreach(var a in _iNhanVienService.getViewNhanViens())
+          {
+                if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten== "Nhân viên")
+                {
+                    btn_NhanVien.Visible = false;
+                    btn_sanpham.Visible = false;
+                }
+          }
+             
         }
     }
 }

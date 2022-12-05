@@ -39,9 +39,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btn_LogOut = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btn_ThongKe = new System.Windows.Forms.Button();
-            this.btn_KhuyenMai = new System.Windows.Forms.Button();
             this.btn_KhachHang = new System.Windows.Forms.Button();
             this.btn_NhanVien = new System.Windows.Forms.Button();
             this.btn_HoaDon = new System.Windows.Forms.Button();
@@ -71,7 +68,7 @@
             this.lb_XinChao.AutoSize = true;
             this.lb_XinChao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lb_XinChao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lb_XinChao.Location = new System.Drawing.Point(951, 64);
+            this.lb_XinChao.Location = new System.Drawing.Point(979, 61);
             this.lb_XinChao.Name = "lb_XinChao";
             this.lb_XinChao.Size = new System.Drawing.Size(0, 20);
             this.lb_XinChao.TabIndex = 1;
@@ -82,7 +79,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(879, 64);
+            this.label1.Location = new System.Drawing.Point(907, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 1;
@@ -142,9 +139,6 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btn_LogOut);
-            this.panelMenu.Controls.Add(this.button6);
-            this.panelMenu.Controls.Add(this.btn_ThongKe);
-            this.panelMenu.Controls.Add(this.btn_KhuyenMai);
             this.panelMenu.Controls.Add(this.btn_KhachHang);
             this.panelMenu.Controls.Add(this.btn_NhanVien);
             this.panelMenu.Controls.Add(this.btn_HoaDon);
@@ -167,64 +161,13 @@
             this.btn_LogOut.ForeColor = System.Drawing.Color.White;
             this.btn_LogOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_LogOut.Image")));
             this.btn_LogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_LogOut.Location = new System.Drawing.Point(0, 660);
+            this.btn_LogOut.Location = new System.Drawing.Point(0, 450);
             this.btn_LogOut.Name = "btn_LogOut";
             this.btn_LogOut.Size = new System.Drawing.Size(228, 70);
             this.btn_LogOut.TabIndex = 11;
             this.btn_LogOut.Text = "Thoát";
             this.btn_LogOut.UseVisualStyleBackColor = true;
             this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 590);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(228, 70);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Sản Phẩm";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // btn_ThongKe
-            // 
-            this.btn_ThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_ThongKe.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btn_ThongKe.FlatAppearance.BorderSize = 0;
-            this.btn_ThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThongKe.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_ThongKe.ForeColor = System.Drawing.Color.White;
-            this.btn_ThongKe.Image = ((System.Drawing.Image)(resources.GetObject("btn_ThongKe.Image")));
-            this.btn_ThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ThongKe.Location = new System.Drawing.Point(0, 520);
-            this.btn_ThongKe.Name = "btn_ThongKe";
-            this.btn_ThongKe.Size = new System.Drawing.Size(228, 70);
-            this.btn_ThongKe.TabIndex = 9;
-            this.btn_ThongKe.Text = "Thống Kê";
-            this.btn_ThongKe.UseVisualStyleBackColor = true;
-            // 
-            // btn_KhuyenMai
-            // 
-            this.btn_KhuyenMai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_KhuyenMai.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btn_KhuyenMai.FlatAppearance.BorderSize = 0;
-            this.btn_KhuyenMai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_KhuyenMai.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_KhuyenMai.ForeColor = System.Drawing.Color.White;
-            this.btn_KhuyenMai.Image = ((System.Drawing.Image)(resources.GetObject("btn_KhuyenMai.Image")));
-            this.btn_KhuyenMai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KhuyenMai.Location = new System.Drawing.Point(0, 450);
-            this.btn_KhuyenMai.Name = "btn_KhuyenMai";
-            this.btn_KhuyenMai.Size = new System.Drawing.Size(228, 70);
-            this.btn_KhuyenMai.TabIndex = 8;
-            this.btn_KhuyenMai.Text = "Khuyến Mãi";
-            this.btn_KhuyenMai.UseVisualStyleBackColor = true;
             // 
             // btn_KhachHang
             // 
@@ -329,6 +272,7 @@
             this.Name = "Form_Dasboard";
             this.Text = "Form_Dasboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form_Dasboard_Load);
             this.PanelTitel.ResumeLayout(false);
             this.PanelTitel.PerformLayout();
             this.panelLogo.ResumeLayout(false);
@@ -348,9 +292,6 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btn_sanpham;
         private System.Windows.Forms.Button btn_shopping;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button btn_ThongKe;
-        private System.Windows.Forms.Button btn_KhuyenMai;
         private System.Windows.Forms.Button btn_KhachHang;
         private System.Windows.Forms.Button btn_NhanVien;
         private System.Windows.Forms.Button btn_HoaDon;
