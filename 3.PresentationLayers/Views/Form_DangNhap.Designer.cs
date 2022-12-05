@@ -41,6 +41,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lb_exit = new System.Windows.Forms.Label();
+            this.cb_NhoMk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -109,11 +110,11 @@
             // lb_login
             // 
             this.lb_login.AutoSize = true;
-            this.lb_login.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lb_login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lb_login.Location = new System.Drawing.Point(156, 170);
             this.lb_login.Name = "lb_login";
-            this.lb_login.Size = new System.Drawing.Size(103, 38);
+            this.lb_login.Size = new System.Drawing.Size(119, 38);
             this.lb_login.TabIndex = 9;
             this.lb_login.Text = "LOGIN";
             // 
@@ -175,6 +176,20 @@
             this.lb_exit.Text = "Exit";
             this.lb_exit.Click += new System.EventHandler(this.lb_exit_Click);
             // 
+            // cb_NhoMk
+            // 
+            this.cb_NhoMk.AutoSize = true;
+            this.cb_NhoMk.BackColor = System.Drawing.Color.White;
+            this.cb_NhoMk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cb_NhoMk.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cb_NhoMk.Location = new System.Drawing.Point(73, 381);
+            this.cb_NhoMk.Name = "cb_NhoMk";
+            this.cb_NhoMk.Size = new System.Drawing.Size(124, 24);
+            this.cb_NhoMk.TabIndex = 7;
+            this.cb_NhoMk.Text = "Nhớ mật khẩu";
+            this.cb_NhoMk.UseVisualStyleBackColor = false;
+            this.cb_NhoMk.CheckedChanged += new System.EventHandler(this.cb_hienthi_CheckedChanged);
+            // 
             // Form_DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -188,12 +203,14 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lb_login);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.cb_NhoMk);
             this.Controls.Add(this.cb_hienthi);
             this.Controls.Add(this.btn_dangnhap);
             this.Controls.Add(this.lb_quenmk);
             this.Controls.Add(this.tb_matkhau);
             this.Controls.Add(this.tb_tendangnhap);
             this.Name = "Form_DangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_DangNhap";
             this.Load += new System.EventHandler(this.Form_DangNhap_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -218,5 +235,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lb_exit;
+        private System.Windows.Forms.CheckBox cb_NhoMk;
     }
 }
