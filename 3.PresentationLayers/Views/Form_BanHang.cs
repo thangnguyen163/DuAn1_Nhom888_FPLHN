@@ -1570,7 +1570,7 @@ namespace _3.PresentationLayers.Views
                             AlertFail("Vui lòng nhập số tiền");
                             return;
                         }
-                        else if (Convert.ToInt32(Convert.ToInt32(tb_tienmat.Text) + Convert.ToInt32(tbx_TienShip.Text) - Convert.ToInt32(tb_tongtien.Text) - Convert.ToInt32(tbx_TienCoc.Text) + Convert.ToInt32(tbx_TienShip.Text)) < 0)
+                        else if (Convert.ToInt32(Convert.ToInt32(tb_tienmat.Text) + Convert.ToInt32(tbx_TienShip.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text)) < 0)
                         {
                             AlertFail("Số tiền chưa thỏa mãn");
                             return;
