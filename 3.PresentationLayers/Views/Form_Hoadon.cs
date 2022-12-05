@@ -21,6 +21,7 @@ namespace _3.PresentationLayers.Views
         IKhachHangService _iKhachHangService;
         INhanVienService _iNhanVienService;
         IPhuongThucThanhToanService _iPTTTService;
+        public Guid SelectID { get; set; }
         public Form_Hoadon()
         {
             InitializeComponent();
@@ -30,8 +31,8 @@ namespace _3.PresentationLayers.Views
             _iNhanVienService = new NhanVienService();
             _iPTTTService = new PhuongThucThanhToanService();
             LoadCbb();
-            rdb_all.Checked= true;
-            rdb_all1.Checked= true;
+            rdb_all.Checked = true;
+            rdb_all1.Checked = true;
             LoadDataToHD(_ihoaDonService.GetAllHoaDon().OrderBy(c => c.MaHd).ToList());
             LoadDataToHDCT(_ihoaDonCTService.GetAll().OrderBy(c => c.MaHd).ToList());
 
@@ -46,6 +47,14 @@ namespace _3.PresentationLayers.Views
                 cbb_manv.Items.Add(x.Ma);
             }
             cbb_manv.SelectedIndex = 0;
+
+            cbb_locmahdct.Items.Clear();
+            cbb_locmahdct.Items.Add("--Lọc--");
+            foreach (var x in _iNhanVienService.getNhanViensFromDB().OrderBy(c => c.Ma))
+            {
+                cbb_locmahdct.Items.Add(x.Ma);
+            }
+            cbb_locmahdct.SelectedIndex = 0;
         }
         public void LoadDataToHD(List<HoaDon> lst)
         {
@@ -83,23 +92,49 @@ namespace _3.PresentationLayers.Views
         {
             int stt = 1;
             dtg_hdct.Rows.Clear();
-            dtg_hdct.ColumnCount = 10;
+            dtg_hdct.ColumnCount = 11;
             dtg_hdct.Columns[0].Name = "STT";
             dtg_hdct.Columns[1].Name = "ID";
             dtg_hdct.Columns[1].Visible = false;
             dtg_hdct.Columns[2].Name = "Mã hóa đơn";
             dtg_hdct.Columns[3].Name = "Mã hóa đơn chi tiết";
-            dtg_hdct.Columns[4].Name = "Mã chi tiết sách";
-            dtg_hdct.Columns[5].Name = "Đơn giá";
-            dtg_hdct.Columns[6].Name = "Số lượng";
-            dtg_hdct.Columns[7].Name = "Giảm giá";
-            dtg_hdct.Columns[8].Name = "Thành tiền";
-            dtg_hdct.Columns[9].Name = "Trạng thái";
+            dtg_hdct.Columns[4].Name = "Mã nhân viên";
+            dtg_hdct.Columns[5].Name = "Mã chi tiết sách";
+            dtg_hdct.Columns[6].Name = "Đơn giá";
+            dtg_hdct.Columns[7].Name = "Số lượng";
+            dtg_hdct.Columns[8].Name = "Giảm giá";
+            dtg_hdct.Columns[9].Name = "Thành tiền";
+            dtg_hdct.Columns[10].Name = "Trạng thái";
             foreach (var x in lst)
             {
-                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
+                var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
+                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
             }
             dtg_hdct.AllowUserToAddRows = false;
+        }
+        public void LoadDataToHDCT_HD(List<HoaDonChiTietView> lst)
+        {
+            int stt = 1;
+            dtg_hdct1.Rows.Clear();
+            dtg_hdct1.ColumnCount = 11;
+            dtg_hdct1.Columns[0].Name = "STT";
+            dtg_hdct1.Columns[1].Name = "ID";
+            dtg_hdct1.Columns[1].Visible = false;
+            dtg_hdct1.Columns[2].Name = "Mã hóa đơn";
+            dtg_hdct1.Columns[3].Name = "Mã hóa đơn chi tiết";
+            dtg_hdct1.Columns[4].Name = "Mã nhân viên";
+            dtg_hdct1.Columns[5].Name = "Mã chi tiết sách";
+            dtg_hdct1.Columns[6].Name = "Đơn giá";
+            dtg_hdct1.Columns[7].Name = "Số lượng";
+            dtg_hdct1.Columns[8].Name = "Giảm giá";
+            dtg_hdct1.Columns[9].Name = "Thành tiền";
+            dtg_hdct1.Columns[10].Name = "Trạng thái";
+            foreach (var x in lst)
+            {
+                var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
+                dtg_hdct1.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
+            }
+            dtg_hdct1.AllowUserToAddRows = false;
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -198,6 +233,23 @@ namespace _3.PresentationLayers.Views
         private void rdb_chuatt1_CheckedChanged(object sender, EventArgs e)
         {
             if (rdb_chuatt1.Checked == true) LoadDataToHD(_ihoaDonService.GetAllHoaDon().Where(c => c.TrangThai == 0).ToList());
+        }
+
+        private void dtg_hd_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            SelectID = Guid.Parse(dtg_hd.CurrentRow.Cells[1].Value.ToString());
+            LoadDataToHDCT_HD(_ihoaDonCTService.GetAll().Where(c => c.IDhoadon == SelectID).ToList());
+        }
+        private void cbb_locmahdct_TextChanged(object sender, EventArgs e)
+        {
+            if (cbb_locmahdct.Text == "--Lọc--")
+            {
+                LoadDataToHDCT(_ihoaDonCTService.GetAll().OrderBy(c => c.MaHd).ToList());
+                return;
+            }
+            var b = _iNhanVienService.getNhanViensFromDB().Where(c => c.Ma == cbb_locmahdct.Text).Select(c => c.Id).FirstOrDefault();
+            LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Idnv == b).ToList());
         }
     }
 }
