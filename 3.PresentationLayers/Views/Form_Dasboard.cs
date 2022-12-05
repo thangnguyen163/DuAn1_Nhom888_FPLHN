@@ -38,6 +38,7 @@ namespace _3.PresentationLayers.Views
             this.Text = string.Empty;
             // LoaddataToChitietHoadon(SelectID);
             _iNhanVienService = new NhanVienService();
+            
         }
         public Form_Dasboard(string a)
         {
@@ -47,6 +48,7 @@ namespace _3.PresentationLayers.Views
             // LoaddataToChitietHoadon(SelectID);
             _iNhanVienService = new NhanVienService();
             this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
+            timer1.Enabled = true;
         }
 
         private Color SelectThemeColor()
@@ -118,6 +120,7 @@ namespace _3.PresentationLayers.Views
         {
             OpenChildForm(new Form_BanHang(lb_XinChao.Text), sender);
              btn_shopping.BackColor = Color.FromArgb(63, 0, 113);
+            labelTite.Text = "BÁN HÀNG";
 
         }
         private void btn_LogOut_Click(object sender, EventArgs e)
@@ -129,17 +132,20 @@ namespace _3.PresentationLayers.Views
         {
             OpenChildForm(new Form_NhanVien(), sender);
             btn_NhanVien.BackColor = Color.FromArgb(206, 119, 119);
+            labelTite.Text = "NHÂN VIÊN";
         }
 
         private void btn_KhachHang_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_KhachHang(), sender);
             btn_KhachHang.BackColor = Color.FromArgb(0, 2, 161);
+            labelTite.Text = "KHÁCH HÀNG";
         }
         private void btn_sanpham_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_ChiTietSach(), sender);
             btn_sanpham.BackColor = Color.FromArgb(251, 37, 118);
+            labelTite.Text = "SẢN PHẨM";
         }
 
 
@@ -201,7 +207,13 @@ namespace _3.PresentationLayers.Views
                     btn_sanpham.Visible = false;
                 }
           }
-             
+           
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lb_time.Text = DateTime.Now.ToLongTimeString();
+            lb_date.Text = DateTime.Now.ToShortDateString();
         }
     }
 }
