@@ -22,6 +22,9 @@ namespace _3.PresentationLayers.Views
             _iNhanVienSercvice = new NhanVienService();
             tb_tendangnhap.Text = Properties.Settings.Default.Username;
             tb_matkhau.Text = Properties.Settings.Default.Password;
+            if(Properties.Settings.Default.Username==string.Empty)
+                cb_NhoMk.Checked = false;
+            else cb_NhoMk.Checked = true;
         }
         private void lb_quenmk_Click(object sender, EventArgs e)
         {
@@ -90,6 +93,7 @@ namespace _3.PresentationLayers.Views
                 Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
                 Properties.Settings.Default.Password = tb_matkhau.Text;
                 Properties.Settings.Default.Save();
+                cb_NhoMk.Checked=true;
             }
             else
             {
