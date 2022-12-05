@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using Microsoft.VisualBasic;
+using _3_GUI_PresentaionLayers;
 
 namespace _3.PresentationLayers.Views
 {
@@ -846,6 +847,28 @@ namespace _3.PresentationLayers.Views
                 cbb_LocTacGia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
 
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("bạn có muốn xuất file pdf  hay không", "Thông Báo", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                Form_ExportFilePDF reportFileToPDF = new Form_ExportFilePDF();
+                reportFileToPDF.Show();
+                for (int a = 0; a < 1; a++)
+                {
+                    MessageBox.Show("Hãy Tiến Hành Xuát Ra File PDF Thôi Nào !");
+
+                }
+            };
+
+            if (dialogResult == DialogResult.No)
+            {
+                return;
             }
         }
     }
