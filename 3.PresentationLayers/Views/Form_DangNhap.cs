@@ -20,6 +20,8 @@ namespace _3.PresentationLayers.Views
         {
             InitializeComponent();
             _iNhanVienSercvice = new NhanVienService();
+            tb_tendangnhap.Text = Properties.Settings.Default.Username;
+            tb_matkhau.Text = Properties.Settings.Default.Password;
         }
         private void lb_quenmk_Click(object sender, EventArgs e)
         {
@@ -42,6 +44,7 @@ namespace _3.PresentationLayers.Views
                 }
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
+                    InforLogin();
                     Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);
                     fdb.Show();
                     this.Hide();
@@ -77,6 +80,25 @@ namespace _3.PresentationLayers.Views
         private void lb_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        public void InforLogin()
+        {
+            if (cb_NhoMk.Checked == true)
+            {
+                Properties.Settings.Default.Username= tb_tendangnhap.Text;
+                Properties.Settings.Default.Password= tb_matkhau.Text ;
+                Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
+                Properties.Settings.Default.Password = tb_matkhau.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
+                Properties.Settings.Default.PassLogin = tb_matkhau.Text;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
