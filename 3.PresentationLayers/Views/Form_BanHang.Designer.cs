@@ -172,7 +172,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1679, 1055);
+            this.panel1.Size = new System.Drawing.Size(1720, 1055);
             this.panel1.TabIndex = 0;
             // 
             // panel_nel
@@ -183,7 +183,7 @@
             this.panel_nel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_nel.Location = new System.Drawing.Point(0, 0);
             this.panel_nel.Name = "panel_nel";
-            this.panel_nel.Size = new System.Drawing.Size(1247, 1055);
+            this.panel_nel.Size = new System.Drawing.Size(1288, 1055);
             this.panel_nel.TabIndex = 94;
             this.panel_nel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_nel_Paint);
             // 
@@ -199,7 +199,7 @@
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel24.Location = new System.Drawing.Point(0, 0);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(1247, 1055);
+            this.panel24.Size = new System.Drawing.Size(1288, 1055);
             this.panel24.TabIndex = 109;
             // 
             // panel29
@@ -209,7 +209,7 @@
             this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel29.Location = new System.Drawing.Point(0, 112);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(837, 537);
+            this.panel29.Size = new System.Drawing.Size(878, 537);
             this.panel29.TabIndex = 112;
             // 
             // dtg_HoaDonChiTiet
@@ -246,7 +246,7 @@
             this.dtg_HoaDonChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
-            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(837, 537);
+            this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(878, 537);
             this.dtg_HoaDonChiTiet.TabIndex = 99;
             this.dtg_HoaDonChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_HoaDonChiTiet_CellClick);
             this.dtg_HoaDonChiTiet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dtg_HoaDonChiTiet_MouseClick);
@@ -257,7 +257,7 @@
             this.IDHDct.MinimumWidth = 6;
             this.IDHDct.Name = "IDHDct";
             this.IDHDct.Visible = false;
-            this.IDHDct.Width = 125;
+            this.IDHDct.Width = 75;
             // 
             // masp
             // 
@@ -321,7 +321,7 @@
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel28.Location = new System.Drawing.Point(0, 75);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(837, 37);
+            this.panel28.Size = new System.Drawing.Size(878, 37);
             this.panel28.TabIndex = 111;
             // 
             // lb_HoaDonChiTiet
@@ -342,7 +342,7 @@
             this.panel27.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel27.Location = new System.Drawing.Point(0, 0);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(837, 75);
+            this.panel27.Size = new System.Drawing.Size(878, 75);
             this.panel27.TabIndex = 110;
             // 
             // btn_taohoadon
@@ -384,7 +384,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 649);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(837, 52);
+            this.panel2.Size = new System.Drawing.Size(878, 52);
             this.panel2.TabIndex = 107;
             // 
             // button1
@@ -398,6 +398,7 @@
             // 
             // btn_quetma
             // 
+            this.btn_quetma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_quetma.Image = ((System.Drawing.Image)(resources.GetObject("btn_quetma.Image")));
             this.btn_quetma.Location = new System.Drawing.Point(376, 3);
             this.btn_quetma.Name = "btn_quetma";
@@ -431,16 +432,17 @@
             this.panel26.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel26.Location = new System.Drawing.Point(0, 701);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(837, 354);
+            this.panel26.Size = new System.Drawing.Size(878, 354);
             this.panel26.TabIndex = 109;
             // 
             // fl_sanpham
             // 
+            this.fl_sanpham.AutoScroll = true;
             this.fl_sanpham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.fl_sanpham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_sanpham.Location = new System.Drawing.Point(0, 0);
             this.fl_sanpham.Name = "fl_sanpham";
-            this.fl_sanpham.Size = new System.Drawing.Size(837, 354);
+            this.fl_sanpham.Size = new System.Drawing.Size(878, 354);
             this.fl_sanpham.TabIndex = 108;
             // 
             // panel3
@@ -449,14 +451,14 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(837, 0);
+            this.panel3.Location = new System.Drawing.Point(878, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(410, 1055);
             this.panel3.TabIndex = 104;
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.panel4.Controls.Add(this.cbx_Loc);
             this.panel4.Controls.Add(this.groupBox2);
             this.panel4.Controls.Add(this.groupBox1);
@@ -523,7 +525,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.panel5.Controls.Add(this.tb_vidiem);
             this.panel5.Controls.Add(this.fl_KhachHang);
             this.panel5.Controls.Add(this.panel9);
@@ -547,7 +549,7 @@
             // 
             // tb_vidiem
             // 
-            this.tb_vidiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.tb_vidiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.tb_vidiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_vidiem.Location = new System.Drawing.Point(100, 55);
             this.tb_vidiem.Name = "tb_vidiem";
@@ -559,7 +561,7 @@
             // 
             this.fl_KhachHang.AutoScroll = true;
             this.fl_KhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.fl_KhachHang.Location = new System.Drawing.Point(98, 75);
+            this.fl_KhachHang.Location = new System.Drawing.Point(90, 75);
             this.fl_KhachHang.Name = "fl_KhachHang";
             this.fl_KhachHang.Size = new System.Drawing.Size(298, 149);
             this.fl_KhachHang.TabIndex = 108;
@@ -576,7 +578,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 55);
+            this.label1.Location = new System.Drawing.Point(4, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 110;
@@ -617,7 +619,7 @@
             // 
             // tbt_MaHD
             // 
-            this.tbt_MaHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.tbt_MaHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.tbt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbt_MaHD.Location = new System.Drawing.Point(100, 102);
             this.tbt_MaHD.Name = "tbt_MaHD";
@@ -628,7 +630,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 110);
+            this.label13.Location = new System.Drawing.Point(3, 110);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 20);
             this.label13.TabIndex = 121;
@@ -654,7 +656,7 @@
             // 
             // cbb_nhanvien
             // 
-            this.cbb_nhanvien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.cbb_nhanvien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.cbb_nhanvien.FormattingEnabled = true;
             this.cbb_nhanvien.Location = new System.Drawing.Point(99, 151);
             this.cbb_nhanvien.Name = "cbb_nhanvien";
@@ -663,7 +665,7 @@
             // 
             // cbb_nganhang
             // 
-            this.cbb_nganhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(175)))));
+            this.cbb_nganhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(241)))), ((int)(((byte)(233)))));
             this.cbb_nganhang.FormattingEnabled = true;
             this.cbb_nganhang.Location = new System.Drawing.Point(100, 12);
             this.cbb_nganhang.Name = "cbb_nganhang";
@@ -692,7 +694,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.groupBox3.Controls.Add(this.panel_capnhat);
             this.groupBox3.Controls.Add(this.panel_thanhtoan);
             this.groupBox3.Controls.Add(this.panel25);
@@ -703,7 +705,7 @@
             this.groupBox3.Controls.Add(this.panel6);
             this.groupBox3.Controls.Add(this.panel7);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox3.Location = new System.Drawing.Point(1247, 0);
+            this.groupBox3.Location = new System.Drawing.Point(1288, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(432, 1055);
             this.groupBox3.TabIndex = 93;
@@ -712,7 +714,7 @@
             // 
             // panel_capnhat
             // 
-            this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_capnhat.Location = new System.Drawing.Point(3, 720);
@@ -736,7 +738,7 @@
             // 
             // panel_thanhtoan
             // 
-            this.panel_thanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel_thanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_thanhtoan.Controls.Add(this.button5);
             this.panel_thanhtoan.Controls.Add(this.button4);
             this.panel_thanhtoan.Dock = System.Windows.Forms.DockStyle.Top;
@@ -775,7 +777,7 @@
             // 
             // panel25
             // 
-            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel25.Controls.Add(this.label5);
             this.panel25.Controls.Add(this.tb_ghichu);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
@@ -803,7 +805,7 @@
             // 
             // panel_tiencoc
             // 
-            this.panel_tiencoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel_tiencoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_tiencoc.Controls.Add(this.rd_chothanhtoan);
             this.panel_tiencoc.Controls.Add(this.panel23);
             this.panel_tiencoc.Controls.Add(this.panel22);
@@ -839,25 +841,25 @@
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.Color.Black;
-            this.panel23.Location = new System.Drawing.Point(131, 100);
+            this.panel23.Location = new System.Drawing.Point(163, 100);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(280, 2);
+            this.panel23.Size = new System.Drawing.Size(255, 2);
             this.panel23.TabIndex = 123;
             // 
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.Black;
-            this.panel22.Location = new System.Drawing.Point(134, 59);
+            this.panel22.Location = new System.Drawing.Point(163, 59);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(280, 2);
+            this.panel22.Size = new System.Drawing.Size(255, 2);
             this.panel22.TabIndex = 123;
             // 
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.Black;
-            this.panel21.Location = new System.Drawing.Point(133, 27);
+            this.panel21.Location = new System.Drawing.Point(163, 27);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(280, 2);
+            this.panel21.Size = new System.Drawing.Size(255, 2);
             this.panel21.TabIndex = 123;
             // 
             // rd_dathanhtoan
@@ -896,7 +898,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 112);
+            this.label12.Location = new System.Drawing.Point(10, 112);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 20);
             this.label12.TabIndex = 111;
@@ -905,7 +907,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 82);
+            this.label11.Location = new System.Drawing.Point(10, 82);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 20);
             this.label11.TabIndex = 108;
@@ -913,7 +915,7 @@
             // 
             // tb_diachi
             // 
-            this.tb_diachi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_diachi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_diachi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_diachi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diachi.Location = new System.Drawing.Point(159, 76);
@@ -923,7 +925,7 @@
             // 
             // tbx_TienCoc
             // 
-            this.tbx_TienCoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tbx_TienCoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tbx_TienCoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienCoc.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienCoc.Location = new System.Drawing.Point(159, 3);
@@ -935,7 +937,7 @@
             // lb_TienCoc
             // 
             this.lb_TienCoc.AutoSize = true;
-            this.lb_TienCoc.Location = new System.Drawing.Point(15, 14);
+            this.lb_TienCoc.Location = new System.Drawing.Point(10, 14);
             this.lb_TienCoc.Name = "lb_TienCoc";
             this.lb_TienCoc.Size = new System.Drawing.Size(66, 20);
             this.lb_TienCoc.TabIndex = 104;
@@ -944,7 +946,7 @@
             // lb_TienShip
             // 
             this.lb_TienShip.AutoSize = true;
-            this.lb_TienShip.Location = new System.Drawing.Point(16, 52);
+            this.lb_TienShip.Location = new System.Drawing.Point(10, 52);
             this.lb_TienShip.Name = "lb_TienShip";
             this.lb_TienShip.Size = new System.Drawing.Size(72, 20);
             this.lb_TienShip.TabIndex = 105;
@@ -952,7 +954,7 @@
             // 
             // tbx_TienShip
             // 
-            this.tbx_TienShip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tbx_TienShip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tbx_TienShip.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienShip.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienShip.Location = new System.Drawing.Point(161, 35);
@@ -963,7 +965,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel10.Controls.Add(this.panel20);
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
@@ -977,14 +979,14 @@
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.Color.Black;
-            this.panel20.Location = new System.Drawing.Point(133, 34);
+            this.panel20.Location = new System.Drawing.Point(163, 34);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(280, 2);
+            this.panel20.Size = new System.Drawing.Size(255, 2);
             this.panel20.TabIndex = 123;
             // 
             // tb_tientralai
             // 
-            this.tb_tientralai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_tientralai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tientralai.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tientralai.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tientralai.Location = new System.Drawing.Point(162, 6);
@@ -996,7 +998,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 16);
+            this.label6.Location = new System.Drawing.Point(10, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 20);
             this.label6.TabIndex = 96;
@@ -1004,7 +1006,7 @@
             // 
             // panel_chuyenkhoan
             // 
-            this.panel_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_chuyenkhoan.Controls.Add(this.panel19);
             this.panel_chuyenkhoan.Controls.Add(this.tb_chuyenkhoan);
             this.panel_chuyenkhoan.Controls.Add(this.lb_chuyenkhoan);
@@ -1017,14 +1019,14 @@
             // panel19
             // 
             this.panel19.BackColor = System.Drawing.Color.Black;
-            this.panel19.Location = new System.Drawing.Point(135, 32);
+            this.panel19.Location = new System.Drawing.Point(163, 32);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(280, 2);
+            this.panel19.Size = new System.Drawing.Size(255, 2);
             this.panel19.TabIndex = 123;
             // 
             // tb_chuyenkhoan
             // 
-            this.tb_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_chuyenkhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_chuyenkhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_chuyenkhoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_chuyenkhoan.Location = new System.Drawing.Point(161, 6);
@@ -1037,7 +1039,7 @@
             // lb_chuyenkhoan
             // 
             this.lb_chuyenkhoan.AutoSize = true;
-            this.lb_chuyenkhoan.Location = new System.Drawing.Point(13, 12);
+            this.lb_chuyenkhoan.Location = new System.Drawing.Point(10, 14);
             this.lb_chuyenkhoan.Name = "lb_chuyenkhoan";
             this.lb_chuyenkhoan.Size = new System.Drawing.Size(108, 20);
             this.lb_chuyenkhoan.TabIndex = 128;
@@ -1045,7 +1047,7 @@
             // 
             // panel_tienmat
             // 
-            this.panel_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_tienmat.Controls.Add(this.panel18);
             this.panel_tienmat.Controls.Add(this.tb_tienmat);
             this.panel_tienmat.Controls.Add(this.lb_tienmat);
@@ -1058,14 +1060,14 @@
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.Black;
-            this.panel18.Location = new System.Drawing.Point(134, 34);
+            this.panel18.Location = new System.Drawing.Point(163, 34);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(280, 2);
+            this.panel18.Size = new System.Drawing.Size(255, 2);
             this.panel18.TabIndex = 123;
             // 
             // tb_tienmat
             // 
-            this.tb_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_tienmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tienmat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tienmat.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tienmat.Location = new System.Drawing.Point(161, 6);
@@ -1078,7 +1080,7 @@
             // lb_tienmat
             // 
             this.lb_tienmat.AutoSize = true;
-            this.lb_tienmat.Location = new System.Drawing.Point(17, 16);
+            this.lb_tienmat.Location = new System.Drawing.Point(13, 16);
             this.lb_tienmat.Name = "lb_tienmat";
             this.lb_tienmat.Size = new System.Drawing.Size(71, 20);
             this.lb_tienmat.TabIndex = 126;
@@ -1086,7 +1088,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel6.Controls.Add(this.panel17);
             this.panel6.Controls.Add(this.panel16);
             this.panel6.Controls.Add(this.panel15);
@@ -1120,40 +1122,40 @@
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.Black;
-            this.panel16.Location = new System.Drawing.Point(132, 176);
+            this.panel16.Location = new System.Drawing.Point(163, 176);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(280, 2);
+            this.panel16.Size = new System.Drawing.Size(255, 2);
             this.panel16.TabIndex = 123;
             // 
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Black;
-            this.panel15.Location = new System.Drawing.Point(136, 130);
+            this.panel15.Location = new System.Drawing.Point(163, 130);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(280, 2);
+            this.panel15.Size = new System.Drawing.Size(255, 2);
             this.panel15.TabIndex = 123;
             // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.Black;
-            this.panel14.Location = new System.Drawing.Point(138, 89);
+            this.panel14.Location = new System.Drawing.Point(163, 89);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(280, 2);
+            this.panel14.Size = new System.Drawing.Size(255, 2);
             this.panel14.TabIndex = 123;
             // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Black;
-            this.panel13.Location = new System.Drawing.Point(134, 49);
+            this.panel13.Location = new System.Drawing.Point(163, 48);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(280, 2);
+            this.panel13.Size = new System.Drawing.Size(255, 2);
             this.panel13.TabIndex = 123;
             this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 204);
+            this.label7.Location = new System.Drawing.Point(10, 204);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 20);
             this.label7.TabIndex = 123;
@@ -1170,7 +1172,7 @@
             // 
             // cbb_phuongthucthanhtoan
             // 
-            this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.cbb_phuongthucthanhtoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cbb_phuongthucthanhtoan.FormattingEnabled = true;
             this.cbb_phuongthucthanhtoan.Location = new System.Drawing.Point(161, 196);
@@ -1181,7 +1183,7 @@
             // 
             // tb_tongtien
             // 
-            this.tb_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tongtien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtien.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtien.Location = new System.Drawing.Point(162, 152);
@@ -1194,7 +1196,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 158);
+            this.label4.Location = new System.Drawing.Point(10, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 20);
             this.label4.TabIndex = 92;
@@ -1202,7 +1204,7 @@
             // 
             // tb_tongtienhang
             // 
-            this.tb_tongtienhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_tongtienhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tongtienhang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtienhang.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tongtienhang.Location = new System.Drawing.Point(166, 23);
@@ -1213,7 +1215,7 @@
             // 
             // tb_diemquydoi
             // 
-            this.tb_diemquydoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_diemquydoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_diemquydoi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_diemquydoi.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_diemquydoi.Location = new System.Drawing.Point(162, 106);
@@ -1225,11 +1227,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 112);
+            this.label9.Location = new System.Drawing.Point(10, 112);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 20);
+            this.label9.Size = new System.Drawing.Size(95, 20);
             this.label9.TabIndex = 115;
-            this.label9.Text = "Điểm quy đổi";
+            this.label9.Text = "Tiền quy đổi";
             // 
             // cb_dungdiem
             // 
@@ -1243,7 +1245,7 @@
             // 
             // tb_dungdiem
             // 
-            this.tb_dungdiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(255)))), ((int)(((byte)(238)))));
+            this.tb_dungdiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_dungdiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_dungdiem.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_dungdiem.Location = new System.Drawing.Point(166, 64);
@@ -1257,7 +1259,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 68);
+            this.label8.Location = new System.Drawing.Point(10, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 20);
             this.label8.TabIndex = 112;
@@ -1308,7 +1310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 1055);
+            this.ClientSize = new System.Drawing.Size(1720, 1055);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "Form_BanHang";
@@ -1377,15 +1379,6 @@
         private System.Windows.Forms.TextBox tbt_SearchProducts;
         private System.Windows.Forms.Label lb_HoaDonChiTiet;
         private System.Windows.Forms.DataGridView dtg_HoaDonChiTiet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDHDct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn masp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tensp;
-        private System.Windows.Forms.DataGridViewButtonColumn tru;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Soluong;
-        private System.Windows.Forms.DataGridViewButtonColumn Cong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dongia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Thanhtien;
-        private System.Windows.Forms.DataGridViewButtonColumn Xoa;
         private System.Windows.Forms.TabControl tabHoaDon;
         private System.Windows.Forms.Button btn_taohoadon;
         private System.Windows.Forms.Label lbdtghdct;
@@ -1461,5 +1454,14 @@
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Panel panel30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDHDct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn masp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tensp;
+        private System.Windows.Forms.DataGridViewButtonColumn tru;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Soluong;
+        private System.Windows.Forms.DataGridViewButtonColumn Cong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dongia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thanhtien;
+        private System.Windows.Forms.DataGridViewButtonColumn Xoa;
     }
 }
