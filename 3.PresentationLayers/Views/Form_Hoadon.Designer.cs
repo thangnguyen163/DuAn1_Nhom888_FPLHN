@@ -30,6 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtg_hdct1 = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dtg_hd = new System.Windows.Forms.DataGridView();
             this.rdb_all1 = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.rdb_chuatt1 = new System.Windows.Forms.RadioButton();
@@ -45,9 +49,9 @@
             this.tb_giamin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_time = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtg_hd = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbb_locmahdct = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -64,6 +68,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hdct1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_hd)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -74,14 +80,16 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(12, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1499, 697);
+            this.tabControl1.Size = new System.Drawing.Size(1499, 792);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.rdb_all1);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.rdb_chuatt1);
@@ -97,14 +105,60 @@
             this.tabPage1.Controls.Add(this.tb_giamin);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dtp_time);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1491, 664);
+            this.tabPage1.Size = new System.Drawing.Size(1491, 759);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hóa Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtg_hdct1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 501);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1473, 255);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Hóa đơn chi tiết";
+            // 
+            // dtg_hdct1
+            // 
+            this.dtg_hdct1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_hdct1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_hdct1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtg_hdct1.Location = new System.Drawing.Point(3, 23);
+            this.dtg_hdct1.Name = "dtg_hdct1";
+            this.dtg_hdct1.RowHeadersWidth = 51;
+            this.dtg_hdct1.RowTemplate.Height = 29;
+            this.dtg_hdct1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_hdct1.Size = new System.Drawing.Size(1467, 229);
+            this.dtg_hdct1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dtg_hd);
+            this.groupBox4.Location = new System.Drawing.Point(6, 125);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1476, 370);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Danh Sách Hóa Đơn";
+            // 
+            // dtg_hd
+            // 
+            this.dtg_hd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_hd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_hd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtg_hd.Location = new System.Drawing.Point(3, 23);
+            this.dtg_hd.Name = "dtg_hd";
+            this.dtg_hd.RowHeadersWidth = 51;
+            this.dtg_hd.RowTemplate.Height = 29;
+            this.dtg_hd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_hd.Size = new System.Drawing.Size(1470, 344);
+            this.dtg_hd.TabIndex = 0;
+            this.dtg_hd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_hd_CellClick);
             // 
             // rdb_all1
             // 
@@ -247,31 +301,10 @@
             this.dtp_time.TabIndex = 4;
             this.dtp_time.ValueChanged += new System.EventHandler(this.dtp_time_ValueChanged);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dtg_hd);
-            this.groupBox1.Location = new System.Drawing.Point(6, 216);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1479, 442);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh Sách Hóa Đơn";
-            // 
-            // dtg_hd
-            // 
-            this.dtg_hd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtg_hd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_hd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtg_hd.Location = new System.Drawing.Point(3, 23);
-            this.dtg_hd.Name = "dtg_hd";
-            this.dtg_hd.RowHeadersWidth = 51;
-            this.dtg_hd.RowTemplate.Height = 29;
-            this.dtg_hd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_hd.Size = new System.Drawing.Size(1473, 416);
-            this.dtg_hd.TabIndex = 0;
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.cbb_locmahdct);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label11);
@@ -287,10 +320,29 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1491, 664);
+            this.tabPage2.Size = new System.Drawing.Size(1491, 759);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hóa Đơn Chi Tiết";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(798, 65);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(158, 20);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Lọc theo mã nhân viên";
+            // 
+            // cbb_locmahdct
+            // 
+            this.cbb_locmahdct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_locmahdct.FormattingEnabled = true;
+            this.cbb_locmahdct.Location = new System.Drawing.Point(798, 90);
+            this.cbb_locmahdct.Name = "cbb_locmahdct";
+            this.cbb_locmahdct.Size = new System.Drawing.Size(204, 28);
+            this.cbb_locmahdct.TabIndex = 16;
+            this.cbb_locmahdct.TextChanged += new System.EventHandler(this.cbb_locmahdct_TextChanged);
             // 
             // label9
             // 
@@ -400,12 +452,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dtg_hdct);
-            this.groupBox2.Location = new System.Drawing.Point(9, 216);
+            this.groupBox2.Location = new System.Drawing.Point(9, 122);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1476, 442);
+            this.groupBox2.Size = new System.Drawing.Size(1476, 631);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh Sách Hóa Đơn";
+            this.groupBox2.Text = "Danh Sách Hóa Đơn Chi Tiết";
             // 
             // dtg_hdct
             // 
@@ -417,14 +469,14 @@
             this.dtg_hdct.RowHeadersWidth = 51;
             this.dtg_hdct.RowTemplate.Height = 29;
             this.dtg_hdct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_hdct.Size = new System.Drawing.Size(1470, 416);
+            this.dtg_hdct.Size = new System.Drawing.Size(1470, 605);
             this.dtg_hdct.TabIndex = 0;
             // 
             // Form_Hoadon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1523, 721);
+            this.ClientSize = new System.Drawing.Size(1523, 817);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form_Hoadon";
             this.Text = "Form_Hoadon";
@@ -432,6 +484,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hdct1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_hd)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -447,8 +501,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtp_time;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dtg_hd;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
@@ -476,5 +528,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton rdb_chuatt1;
         private System.Windows.Forms.RadioButton rdb_datt1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dtg_hdct1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView dtg_hd;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cbb_locmahdct;
     }
 }

@@ -62,6 +62,7 @@ namespace _2.BUS.Serivces
                                Idchitietsp = c.Id,
                                IDhoadon = a.IdHoaDon,
                                GiamGia = a.GiamGia,
+                               Idnv = b.Idnv,
                            }).ToList();
             return templst;
         }

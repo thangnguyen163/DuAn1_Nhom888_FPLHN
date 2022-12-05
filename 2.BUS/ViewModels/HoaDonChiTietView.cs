@@ -25,5 +25,6 @@ namespace _2.BUS.ViewModels
         public decimal? Thanhtien { get; set; }
         public int? Trangthai { get; set; }
         public int? GiamGia { get; set; }
+        public Guid? Idnv { get; set; }
     }
 }
