@@ -49,7 +49,7 @@ namespace _3.PresentationLayers.Views
                     fdb.Show();
                     this.Hide();
                     MessageBox.Show($"Xin chào: {_iNhanVienSercvice.getNhanViensFromDB()[i].Ten}", "Đăng nhập thành công", MessageBoxButtons.OK);
-                    return;
+                    return; 
                 }
                 
             }
