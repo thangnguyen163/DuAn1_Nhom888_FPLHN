@@ -287,12 +287,7 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_ConBan.Checked == false)
-            {
-                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
-                return;
-            }
-            else if (rdt_KhongBan.Checked == false)
+            else if (rdt_ConBan.Checked == false && rdt_KhongBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
@@ -423,12 +418,7 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Giá bán không được để trống!!!!", "ERROR");
                 return;
             }
-            else if (rdt_ConBan.Checked == false)
-            {
-                MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
-                return;
-            }
-            else if (rdt_KhongBan.Checked == false)
+            else if (rdt_ConBan.Checked == false && rdt_KhongBan.Checked == false)
             {
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
