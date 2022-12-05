@@ -850,7 +850,8 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void ptb_PDF_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("bạn có muốn xuất file pdf  hay không", "Thông Báo", MessageBoxButtons.YesNo);
 
