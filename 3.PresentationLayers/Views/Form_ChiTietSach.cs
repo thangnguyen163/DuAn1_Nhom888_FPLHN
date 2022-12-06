@@ -66,6 +66,7 @@ namespace _3.PresentationLayers.Views
             LoadCbb();
             ChiTietSach = new ChiTietSach();
             tbt_MaVach.Text = tbt_maVach;
+
         }
         void LoadData()
         {
@@ -206,7 +207,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[14].Name = "Giá bán";
             dtg_Show.Columns[15].Name = "Trạng thái";
             dtg_Show.Columns[16].Name = "Đường Dẫn";
-            dtg_Show.Columns[16].Visible = false;
+            //dtg_Show.Columns[16].Visible = false;
             dtg_Show.Columns[17].Name = "Mã vạch";
             dtg_Show.Columns[18].Name = "Thể loại ";
             dtg_Show.Rows.Clear();
@@ -599,6 +600,8 @@ namespace _3.PresentationLayers.Views
             tbt_KichThuoc.Clear();
             rdt_ConBan.Checked = false;
             rdt_KhongBan.Checked = false;
+            ptb_AnhSach.ImageLocation = "icon-add.png";
+
         }
 
         private void cbb_LocNXB_TextChanged(object sender, EventArgs e)
