@@ -84,7 +84,7 @@ namespace _3.PresentationLayers.Views
                 var a = _iKhachHangService.getAll().Where(c => c.Id == x.Idkh).Select(c => c.Ma).FirstOrDefault();
                 var b = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
                 var c = _iPTTTService.GetAllNoView().Where(c => c.Id == x.IdphuongThucThanhToan).Select(c => c.Ten).FirstOrDefault();
-                dtg_hd.Rows.Add(stt++, x.Id, x.MaHd, a == null ? "Vãng lai" : a, b.Ma, c, x.NgayTao, x.NgayShip, x.TienCoc, x.TienShip, x.DiaChi, x.TongTien, x.TienMat, x.TienChuyenKhoan, x.GhiChu, x.TrangThai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
+                dtg_hd.Rows.Add(stt++, x.Id, x.MaHd, a == null ? "Vãng lai" : a, b.Ma, c, x.NgayTao, x.NgayShip, x.TienCoc, x.TienShip, x.DiaChi, x.TongTien, x.TienMat, x.TienChuyenKhoan, x.GhiChu, x.TrangThai == 0 ? "Chưa thanh toán" :x.TrangThai==1 ?"Đã thanh toán": x.TrangThai==2 ? "Chờ giao":"Đang giao");
             }
             dtg_hd.AllowUserToAddRows = false;
         }
