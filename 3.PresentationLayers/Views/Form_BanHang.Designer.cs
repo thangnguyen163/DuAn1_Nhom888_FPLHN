@@ -90,6 +90,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tb_ghichu = new System.Windows.Forms.RichTextBox();
             this.panel_tiencoc = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_sodienthoai = new System.Windows.Forms.TextBox();
+            this.tb_nguoinhan = new System.Windows.Forms.TextBox();
+            this.panel31 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.rd_chothanhtoan = new System.Windows.Forms.RadioButton();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
@@ -717,7 +723,7 @@
             this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_capnhat.Location = new System.Drawing.Point(3, 720);
+            this.panel_capnhat.Location = new System.Drawing.Point(3, 805);
             this.panel_capnhat.Name = "panel_capnhat";
             this.panel_capnhat.Size = new System.Drawing.Size(426, 59);
             this.panel_capnhat.TabIndex = 108;
@@ -742,7 +748,7 @@
             this.panel_thanhtoan.Controls.Add(this.button5);
             this.panel_thanhtoan.Controls.Add(this.button4);
             this.panel_thanhtoan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 662);
+            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 747);
             this.panel_thanhtoan.Name = "panel_thanhtoan";
             this.panel_thanhtoan.Size = new System.Drawing.Size(426, 58);
             this.panel_thanhtoan.TabIndex = 107;
@@ -781,7 +787,7 @@
             this.panel25.Controls.Add(this.label5);
             this.panel25.Controls.Add(this.tb_ghichu);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel25.Location = new System.Drawing.Point(3, 592);
+            this.panel25.Location = new System.Drawing.Point(3, 677);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(426, 70);
             this.panel25.TabIndex = 111;
@@ -806,6 +812,12 @@
             // panel_tiencoc
             // 
             this.panel_tiencoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.panel_tiencoc.Controls.Add(this.label15);
+            this.panel_tiencoc.Controls.Add(this.label14);
+            this.panel_tiencoc.Controls.Add(this.tb_sodienthoai);
+            this.panel_tiencoc.Controls.Add(this.tb_nguoinhan);
+            this.panel_tiencoc.Controls.Add(this.panel31);
+            this.panel_tiencoc.Controls.Add(this.panel12);
             this.panel_tiencoc.Controls.Add(this.rd_chothanhtoan);
             this.panel_tiencoc.Controls.Add(this.panel23);
             this.panel_tiencoc.Controls.Add(this.panel22);
@@ -821,16 +833,70 @@
             this.panel_tiencoc.Controls.Add(this.lb_TienShip);
             this.panel_tiencoc.Controls.Add(this.tbx_TienShip);
             this.panel_tiencoc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_tiencoc.Location = new System.Drawing.Point(3, 423);
+            this.panel_tiencoc.Location = new System.Drawing.Point(3, 428);
             this.panel_tiencoc.Name = "panel_tiencoc";
-            this.panel_tiencoc.Size = new System.Drawing.Size(426, 169);
+            this.panel_tiencoc.Size = new System.Drawing.Size(426, 249);
             this.panel_tiencoc.TabIndex = 107;
             this.panel_tiencoc.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tiencoc_Paint);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 151);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 20);
+            this.label15.TabIndex = 128;
+            this.label15.Text = "Số điện thoại";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 117);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(92, 20);
+            this.label14.TabIndex = 127;
+            this.label14.Text = "Người nhận";
+            // 
+            // tb_sodienthoai
+            // 
+            this.tb_sodienthoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.tb_sodienthoai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_sodienthoai.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tb_sodienthoai.Location = new System.Drawing.Point(165, 148);
+            this.tb_sodienthoai.Name = "tb_sodienthoai";
+            this.tb_sodienthoai.Size = new System.Drawing.Size(252, 20);
+            this.tb_sodienthoai.TabIndex = 126;
+            // 
+            // tb_nguoinhan
+            // 
+            this.tb_nguoinhan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.tb_nguoinhan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_nguoinhan.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tb_nguoinhan.Location = new System.Drawing.Point(163, 114);
+            this.tb_nguoinhan.Name = "tb_nguoinhan";
+            this.tb_nguoinhan.Size = new System.Drawing.Size(252, 20);
+            this.tb_nguoinhan.TabIndex = 125;
+            // 
+            // panel31
+            // 
+            this.panel31.BackColor = System.Drawing.Color.Black;
+            this.panel31.Location = new System.Drawing.Point(166, 169);
+            this.panel31.Name = "panel31";
+            this.panel31.Size = new System.Drawing.Size(255, 2);
+            this.panel31.TabIndex = 124;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.Black;
+            this.panel12.Location = new System.Drawing.Point(163, 135);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(255, 2);
+            this.panel12.TabIndex = 124;
             // 
             // rd_chothanhtoan
             // 
             this.rd_chothanhtoan.AutoSize = true;
-            this.rd_chothanhtoan.Location = new System.Drawing.Point(277, 138);
+            this.rd_chothanhtoan.Location = new System.Drawing.Point(280, 218);
             this.rd_chothanhtoan.Name = "rd_chothanhtoan";
             this.rd_chothanhtoan.Size = new System.Drawing.Size(138, 24);
             this.rd_chothanhtoan.TabIndex = 124;
@@ -849,7 +915,7 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.Black;
-            this.panel22.Location = new System.Drawing.Point(163, 59);
+            this.panel22.Location = new System.Drawing.Point(165, 68);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(255, 2);
             this.panel22.TabIndex = 123;
@@ -865,7 +931,7 @@
             // rd_dathanhtoan
             // 
             this.rd_dathanhtoan.AutoSize = true;
-            this.rd_dathanhtoan.Location = new System.Drawing.Point(141, 138);
+            this.rd_dathanhtoan.Location = new System.Drawing.Point(144, 218);
             this.rd_dathanhtoan.Name = "rd_dathanhtoan";
             this.rd_dathanhtoan.Size = new System.Drawing.Size(130, 24);
             this.rd_dathanhtoan.TabIndex = 114;
@@ -876,7 +942,7 @@
             // rd_danggiao
             // 
             this.rd_danggiao.AutoSize = true;
-            this.rd_danggiao.Location = new System.Drawing.Point(273, 108);
+            this.rd_danggiao.Location = new System.Drawing.Point(276, 188);
             this.rd_danggiao.Name = "rd_danggiao";
             this.rd_danggiao.Size = new System.Drawing.Size(101, 24);
             this.rd_danggiao.TabIndex = 113;
@@ -887,7 +953,7 @@
             // rd_chogiao
             // 
             this.rd_chogiao.AutoSize = true;
-            this.rd_chogiao.Location = new System.Drawing.Point(142, 108);
+            this.rd_chogiao.Location = new System.Drawing.Point(145, 188);
             this.rd_chogiao.Name = "rd_chogiao";
             this.rd_chogiao.Size = new System.Drawing.Size(91, 24);
             this.rd_chogiao.TabIndex = 112;
@@ -898,7 +964,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 112);
+            this.label12.Location = new System.Drawing.Point(13, 192);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 20);
             this.label12.TabIndex = 111;
@@ -970,9 +1036,9 @@
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 377);
+            this.panel10.Location = new System.Drawing.Point(3, 371);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(426, 46);
+            this.panel10.Size = new System.Drawing.Size(426, 57);
             this.panel10.TabIndex = 110;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             // 
@@ -1013,7 +1079,7 @@
             this.panel_chuyenkhoan.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_chuyenkhoan.Location = new System.Drawing.Point(3, 334);
             this.panel_chuyenkhoan.Name = "panel_chuyenkhoan";
-            this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 43);
+            this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 37);
             this.panel_chuyenkhoan.TabIndex = 109;
             // 
             // panel19
@@ -1212,6 +1278,7 @@
             this.tb_tongtienhang.ReadOnly = true;
             this.tb_tongtienhang.Size = new System.Drawing.Size(249, 20);
             this.tb_tongtienhang.TabIndex = 104;
+            this.tb_tongtienhang.TextChanged += new System.EventHandler(this.tb_tongtienhang_TextChanged);
             // 
             // tb_diemquydoi
             // 
@@ -1463,5 +1530,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dongia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanhtien;
         private System.Windows.Forms.DataGridViewButtonColumn Xoa;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tb_sodienthoai;
+        private System.Windows.Forms.TextBox tb_nguoinhan;
+        private System.Windows.Forms.Panel panel31;
+        private System.Windows.Forms.Panel panel12;
     }
 }
