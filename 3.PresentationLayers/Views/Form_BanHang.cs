@@ -1268,7 +1268,7 @@ namespace _3.PresentationLayers.Views
             {
                 BanTaiQuay();
             }
-            InHoaDon();
+            //InHoaDon();
         }
         private void BanTaiQuay()
         {
@@ -1393,7 +1393,9 @@ namespace _3.PresentationLayers.Views
                 }
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
+                InHoaDon();
                 AlertSuccess("Thanh toán thành công");
+                
             }
             else
             {
@@ -1469,7 +1471,9 @@ namespace _3.PresentationLayers.Views
                     hd.GhiChu = tb_ghichu.Text;
                 }
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
-                MessageBox.Show(hoaDonService.Update(hd));
+                hoaDonService.Update(hd);
+                InHoaDon();
+                AlertSuccess("Thanh toán thành công");
             }
 
 
@@ -1643,6 +1647,23 @@ namespace _3.PresentationLayers.Views
                             hd.TienChuyenKhoan = Convert.ToInt32(tb_chuyenkhoan.Text);
                         }
                     }
+                    if (rd_chogiao.Checked == true)
+                    {
+                        hd.TrangThai = 2;
+                    }
+                    else if (rd_danggiao.Checked == true)
+                    {
+                        hd.TrangThai = 3;
+                    }
+                    else if (rd_dathanhtoan.Checked == true)
+                    {
+                        AlertFail("Không thể chuyển thành đã giao");
+                        return;
+                    }
+                    if (!string.IsNullOrEmpty(tb_ghichu.Text))
+                    {
+                        hd.GhiChu = tb_ghichu.Text;
+                    }
 
                     if (string.IsNullOrEmpty(tbx_TienCoc.Text))
                     {
@@ -1664,6 +1685,21 @@ namespace _3.PresentationLayers.Views
                         AlertFail("Tiền cọc phải lớn hơn tiền ship");
                         return;
                     }
+                    if (string.IsNullOrEmpty(tb_nguoinhan.Text))
+                    {
+                        AlertFail("Vui lòng nhập tên người nhận");
+                        return;
+                    }
+                    else if (!string.IsNullOrEmpty(tb_sodienthoai.Text))
+                    {
+                        if (tb_sodienthoai.Text.Length>10)
+                        {
+                            AlertFail("Số điện thoại sai");
+                            return;
+                        }
+                    }
+                    else return;
+
                     lichsudiemdung.SoDiemDung = 0;
                     if (cb_dungdiem.Checked == true && !String.IsNullOrEmpty(tb_dungdiem.Text))
                     {
@@ -1705,23 +1741,7 @@ namespace _3.PresentationLayers.Views
                     hd.DiaChi = tb_diachi.Text;
                     hd.IdphuongThucThanhToan = _iphuongThucThanhToanService.GetAllNoView().Where(x => x.Ten == cbb_phuongthucthanhtoan.SelectedItem).Select(x => x.Id).FirstOrDefault();
                     hd.TongTien = Convert.ToInt32(tb_tongtien.Text);
-                    if (rd_chogiao.Checked == true)
-                    {
-                        hd.TrangThai = 2;
-                    }
-                    else if (rd_danggiao.Checked == true)
-                    {
-                        hd.TrangThai = 3;
-                    }
-                    else if (rd_dathanhtoan.Checked == true)
-                    {
-                        AlertFail("Không thể chuyển thành đã giao");
-                        return;
-                    }
-                    if (!string.IsNullOrEmpty(tb_ghichu.Text))
-                    {
-                        hd.GhiChu = tb_ghichu.Text;
-                    }
+                   
                     // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
                     AlertSuccess("Cập nhật thành công");
@@ -1830,6 +1850,20 @@ namespace _3.PresentationLayers.Views
                         hd.TrangThai = 1;
                     }
 
+                    if (string.IsNullOrEmpty(tb_nguoinhan.Text))
+                    {
+                        AlertFail("Vui lòng nhập tên người nhận");
+                        return;
+                    }
+                    else if (!string.IsNullOrEmpty(tb_sodienthoai.Text))
+                    {
+                        if (tb_sodienthoai.Text.Length > 10)
+                        {
+                            AlertFail("Số điện thoại sai");
+                            return;
+                        }
+                    }
+                    else return;
                     hd.Id = hd.Id;
                     hd.MaHd = tabHoaDon.SelectedTab.Name;
                     hd.Idnv = SelectNhanVien;
@@ -3730,7 +3764,7 @@ namespace _3.PresentationLayers.Views
                 pdd_ReviewHoaDon.Document = pd_HoaDon;
                 pdd_ReviewHoaDon.ShowDialog();
             }
-            if (dialogResult == DialogResult.Yes) return;
+            if (dialogResult == DialogResult.No) return;
         }
     }
 }
