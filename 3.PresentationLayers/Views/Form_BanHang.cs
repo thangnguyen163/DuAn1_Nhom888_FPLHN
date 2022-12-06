@@ -1268,6 +1268,7 @@ namespace _3.PresentationLayers.Views
             {
                 BanTaiQuay();
             }
+            InHoaDon();
         }
         private void BanTaiQuay()
         {
@@ -3653,6 +3654,83 @@ namespace _3.PresentationLayers.Views
 
             //    }
             //}
+        }
+
+        private void pd_HoaDon_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string TenCuaHang = "Nhà sách BeeBooks";
+            string DiaChi = "Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội";
+            string Sdt = "0367180646";
+            string TenHoaDon = "Hoá đơn bán hàng";
+            string MaHD = tbt_MaHD.Text;
+            string TenNhanVien = cbb_nhanvien.Text;
+            string KhachHang = cbb_nganhang.Text;
+            string TongTien = tb_tongtien.Text;
+            string LoiCamOn = "Xin cảm ơn Quý khách !! Hẹn gặp lại.";
+            string TienKhachDua = tb_tienmat.Text;
+            string TienTraLai = tb_tientralai.Text;
+            var width = pd_HoaDon.DefaultPageSettings.PaperSize.Width;
+
+
+            e.Graphics.DrawString(TenCuaHang.ToUpper(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new PointF(width / 2 - 120, 40));
+            e.Graphics.DrawString(String.Format("{0} - {1}", DiaChi, Sdt), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(215, 70));
+            e.Graphics.DrawString(String.Format(TenHoaDon.ToUpper()), new Font("Courier New", 15, FontStyle.Bold), Brushes.Black, new PointF(width / 2 - 110, 110));
+            e.Graphics.DrawString(String.Format("Mã hoá đơn: {0}", MaHD.ToUpper()), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, 150));
+            e.Graphics.DrawString(String.Format("Ngày: {0} ", DateTime.Now.ToString("dd/MM/yyyy HH:mm")), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(500, 150));
+            e.Graphics.DrawString(String.Format("Tên nhân viên: {0}", TenNhanVien), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, 175));
+            e.Graphics.DrawString(String.Format("Khách hàng: {0}", KhachHang), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, 200));
+
+            //// sản phẩm
+            ///định dạng bút vẽ
+            //Pen blachPen = new Pen(Color.Black, 1);
+            //// cách lề trái và lề phải 10
+            //Point p1 = new Point(10, y);
+            //Point p2=new Point(width-10, y);
+            //e.Graphics.DrawLine(blachPen, p1, p2); // kẻ đường thẳng 
+            var y = 240;// toạ độ theo chiều dọc
+
+            e.Graphics.DrawString(String.Format("STT"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, y));
+            e.Graphics.DrawString(String.Format("Tên sản phẩm"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(240, y));
+            e.Graphics.DrawString(String.Format("Số lượng"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y));
+            e.Graphics.DrawString(String.Format("Đơn giá"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(550, y));
+            e.Graphics.DrawString(String.Format("Thành tiền"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(650, y));
+            int i = 1;
+            y += 20;
+            foreach (var a in hoaDonChiTietService.GetAll().Where(a => a.MaHd == MaHD))
+            {
+                e.Graphics.DrawString(String.Format("{0}", i++), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, y));
+                e.Graphics.DrawString(String.Format(a.Tensach), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(240, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Soluong)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Dongia)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(550, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Thanhtien)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(650, y));
+                y += 20;
+            }
+            y += 40;
+            Pen blachPen = new Pen(Color.Black, 1);
+            // cách lề trái và lề phải 10
+            Point p1 = new Point(200, y);
+            Point p2 = new Point(width - 100, y);
+            e.Graphics.DrawLine(blachPen, p1, p2); // kẻ đường thẳng 
+
+            //// Tổng tiền
+            e.Graphics.DrawString(String.Format("Tổng tiền:     {0} VND", TongTien), new Font("Courier New", 12, FontStyle.Bold), Brushes.Black, new PointF(450, y += 20));
+            // Tiền khách đưa  -- chưa xong
+            e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 11, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            // Tiền thối
+            e.Graphics.DrawString(String.Format("Tiền trả lại:    {0} VND", TienTraLai), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            // Xin cảm ơn
+            e.Graphics.DrawString(String.Format(LoiCamOn), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(250, y += 30));
+
+        }
+        void InHoaDon()
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hoá đơn hay không", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                pdd_ReviewHoaDon.Document = pd_HoaDon;
+                pdd_ReviewHoaDon.ShowDialog();
+            }
+            if (dialogResult == DialogResult.Yes) return;
         }
     }
 }
