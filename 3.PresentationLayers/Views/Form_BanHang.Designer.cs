@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
@@ -143,6 +143,8 @@
             this.tabtrangthaimuahang = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pd_HoaDon = new System.Drawing.Printing.PrintDocument();
+            this.pdd_ReviewHoaDon = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -222,13 +224,13 @@
             // 
             this.dtg_HoaDonChiTiet.AllowUserToAddRows = false;
             this.dtg_HoaDonChiTiet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtg_HoaDonChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_HoaDonChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtg_HoaDonChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_HoaDonChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDHDct,
@@ -243,13 +245,13 @@
             this.dtg_HoaDonChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(0, 0);
             this.dtg_HoaDonChiTiet.Name = "dtg_HoaDonChiTiet";
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtg_HoaDonChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_HoaDonChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
             this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(878, 537);
@@ -1373,6 +1375,20 @@
             this.tabPage2.Text = "Giao hàng";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pd_HoaDon
+            // 
+            this.pd_HoaDon.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pd_HoaDon_PrintPage);
+            // 
+            // pdd_ReviewHoaDon
+            // 
+            this.pdd_ReviewHoaDon.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.pdd_ReviewHoaDon.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.pdd_ReviewHoaDon.ClientSize = new System.Drawing.Size(400, 300);
+            this.pdd_ReviewHoaDon.Enabled = true;
+            this.pdd_ReviewHoaDon.Icon = ((System.Drawing.Icon)(resources.GetObject("pdd_ReviewHoaDon.Icon")));
+            this.pdd_ReviewHoaDon.Name = "pdd_ReviewHoaDon";
+            this.pdd_ReviewHoaDon.Visible = false;
+            // 
             // Form_BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1536,5 +1552,7 @@
         private System.Windows.Forms.TextBox tb_nguoinhan;
         private System.Windows.Forms.Panel panel31;
         private System.Windows.Forms.Panel panel12;
+        private System.Drawing.Printing.PrintDocument pd_HoaDon;
+        private System.Windows.Forms.PrintPreviewDialog pdd_ReviewHoaDon;
     }
 }
