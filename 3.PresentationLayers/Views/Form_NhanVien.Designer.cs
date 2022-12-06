@@ -535,11 +535,13 @@
             // 
             // dtg_Show
             // 
+            this.dtg_Show.AllowUserToAddRows = false;
             this.dtg_Show.BackgroundColor = System.Drawing.Color.White;
             this.dtg_Show.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtg_Show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_Show.Location = new System.Drawing.Point(16, 76);
             this.dtg_Show.Name = "dtg_Show";
+            this.dtg_Show.RowHeadersVisible = false;
             this.dtg_Show.RowHeadersWidth = 51;
             this.dtg_Show.RowTemplate.Height = 29;
             this.dtg_Show.Size = new System.Drawing.Size(1067, 209);

@@ -60,7 +60,7 @@
             // 
             // btn_reset
             // 
-            this.btn_reset.Location = new System.Drawing.Point(552, 245);
+            this.btn_reset.Location = new System.Drawing.Point(404, 243);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(107, 43);
             this.btn_reset.TabIndex = 3;
@@ -69,7 +69,7 @@
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Location = new System.Drawing.Point(366, 247);
+            this.btn_xoa.Location = new System.Drawing.Point(268, 246);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(107, 40);
             this.btn_xoa.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             // btn_sua
             // 
-            this.btn_sua.Location = new System.Drawing.Point(186, 245);
+            this.btn_sua.Location = new System.Drawing.Point(147, 244);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(107, 42);
             this.btn_sua.TabIndex = 1;
@@ -120,14 +120,14 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(163, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(677, 312);
+            this.groupBox2.Size = new System.Drawing.Size(635, 312);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(35, 222);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(205, 1);
@@ -135,7 +135,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(35, 140);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(205, 1);
@@ -143,7 +143,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(35, 68);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 1);
@@ -173,37 +173,37 @@
             // 
             // cbb_iddtd
             // 
-            this.cbb_iddtd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cbb_iddtd.BackColor = System.Drawing.Color.White;
             this.cbb_iddtd.FormattingEnabled = true;
             this.cbb_iddtd.Location = new System.Drawing.Point(432, 34);
             this.cbb_iddtd.Name = "cbb_iddtd";
-            this.cbb_iddtd.Size = new System.Drawing.Size(203, 25);
+            this.cbb_iddtd.Size = new System.Drawing.Size(197, 25);
             this.cbb_iddtd.TabIndex = 12;
             // 
             // tb_sdt
             // 
-            this.tb_sdt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tb_sdt.BackColor = System.Drawing.Color.White;
             this.tb_sdt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_sdt.Location = new System.Drawing.Point(82, 191);
+            this.tb_sdt.Location = new System.Drawing.Point(82, 197);
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(158, 18);
             this.tb_sdt.TabIndex = 8;
             // 
             // tb_ten
             // 
-            this.tb_ten.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tb_ten.BackColor = System.Drawing.Color.White;
             this.tb_ten.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_ten.Location = new System.Drawing.Point(82, 108);
+            this.tb_ten.Location = new System.Drawing.Point(84, 115);
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(158, 18);
             this.tb_ten.TabIndex = 7;
             // 
             // tb_ma
             // 
-            this.tb_ma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tb_ma.BackColor = System.Drawing.Color.White;
             this.tb_ma.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_ma.ForeColor = System.Drawing.Color.White;
-            this.tb_ma.Location = new System.Drawing.Point(82, 42);
+            this.tb_ma.ForeColor = System.Drawing.Color.IndianRed;
+            this.tb_ma.Location = new System.Drawing.Point(82, 45);
             this.tb_ma.Name = "tb_ma";
             this.tb_ma.Size = new System.Drawing.Size(158, 18);
             this.tb_ma.TabIndex = 5;
@@ -255,27 +255,30 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.dtg_Show);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 330);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(828, 216);
+            this.groupBox1.Size = new System.Drawing.Size(786, 216);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách khách hàng";
             // 
             // dtg_Show
             // 
-            this.dtg_Show.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dtg_Show.AllowUserToDeleteRows = false;
+            this.dtg_Show.BackgroundColor = System.Drawing.Color.White;
             this.dtg_Show.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtg_Show.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dtg_Show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_Show.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtg_Show.Location = new System.Drawing.Point(6, 38);
+            this.dtg_Show.Location = new System.Drawing.Point(16, 27);
             this.dtg_Show.Name = "dtg_Show";
+            this.dtg_Show.RowHeadersVisible = false;
             this.dtg_Show.RowHeadersWidth = 51;
             this.dtg_Show.RowTemplate.Height = 29;
-            this.dtg_Show.Size = new System.Drawing.Size(804, 169);
+            this.dtg_Show.Size = new System.Drawing.Size(754, 169);
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
@@ -291,14 +294,14 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(31, 174);
+            this.button1.Location = new System.Drawing.Point(28, 174);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 30);
             this.button1.TabIndex = 7;
@@ -309,9 +312,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(850, 552);
+            this.ClientSize = new System.Drawing.Size(806, 552);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
