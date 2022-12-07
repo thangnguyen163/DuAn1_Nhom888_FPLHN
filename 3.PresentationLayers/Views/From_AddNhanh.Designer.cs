@@ -146,6 +146,7 @@
             this.Controls.Add(this.lb_ThemNhanh);
             this.Controls.Add(this.label1);
             this.Name = "Form_AddNhanh";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "From_AddNhanh";
             this.ResumeLayout(false);
             this.PerformLayout();

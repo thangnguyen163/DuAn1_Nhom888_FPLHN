@@ -21,17 +21,16 @@ namespace _1.DAL.Repositoties
         public bool Add(ChiTietSach chiTietSach)
         {
             if (chiTietSach == null) return false;
-            _dbContext.Add(chiTietSach);
+            _dbContext.ChiTietSaches.Add(chiTietSach);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public bool Delete(Guid? id, ChiTietSach chiTietSach)
+        public bool Delete(Guid? id)
         {
-            if (chiTietSach == null) return false;
+            if (id == null) return false;
             var a = _dbContext.ChiTietSaches.FirstOrDefault(c => c.Id == id);
-            a.TrangThai = 0;
-            _dbContext.Update(a);
+            _dbContext.Remove(a);
             _dbContext.SaveChanges();
             return true;
         }
@@ -61,6 +60,17 @@ namespace _1.DAL.Repositoties
             a.GiaNhap = chiTietSach.GiaNhap;
             a.GiaBan = chiTietSach.GiaBan;
             a.TrangThai = chiTietSach.TrangThai;
+            _dbContext.Update(a);
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateTrangThai(Guid? id, ChiTietSach chiTietSach)
+        {
+            if (chiTietSach == null) return false;
+            var a = _dbContext.ChiTietSaches.FirstOrDefault(c => c.Id == id);
+            a.SoLuong = 0;
+            a.TrangThai = 0;
             _dbContext.Update(a);
             _dbContext.SaveChanges();
             return true;

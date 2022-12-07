@@ -37,10 +37,10 @@
             // lb_message
             // 
             this.lb_message.AutoSize = true;
-            this.lb_message.Font = new System.Drawing.Font("Segoe UI Historic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_message.Font = new System.Drawing.Font("Cambria", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lb_message.Location = new System.Drawing.Point(64, 35);
             this.lb_message.Name = "lb_message";
-            this.lb_message.Size = new System.Drawing.Size(59, 25);
+            this.lb_message.Size = new System.Drawing.Size(59, 21);
             this.lb_message.TabIndex = 0;
             this.lb_message.Text = "label1";
             this.lb_message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

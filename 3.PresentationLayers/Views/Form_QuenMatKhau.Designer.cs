@@ -39,6 +39,7 @@
             this.cb_pass1 = new System.Windows.Forms.CheckBox();
             this.cb_pass2 = new System.Windows.Forms.CheckBox();
             this.btn_xacnhan = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb_ten
@@ -57,7 +58,7 @@
             // 
             // tb_matkhau
             // 
-            this.tb_matkhau.Location = new System.Drawing.Point(224, 138);
+            this.tb_matkhau.Location = new System.Drawing.Point(212, 217);
             this.tb_matkhau.Name = "tb_matkhau";
             this.tb_matkhau.PasswordChar = '*';
             this.tb_matkhau.Size = new System.Drawing.Size(322, 27);
@@ -65,7 +66,7 @@
             // 
             // tb_nhaplaimatkhau
             // 
-            this.tb_nhaplaimatkhau.Location = new System.Drawing.Point(224, 197);
+            this.tb_nhaplaimatkhau.Location = new System.Drawing.Point(212, 276);
             this.tb_nhaplaimatkhau.Name = "tb_nhaplaimatkhau";
             this.tb_nhaplaimatkhau.PasswordChar = '*';
             this.tb_nhaplaimatkhau.Size = new System.Drawing.Size(322, 27);
@@ -76,9 +77,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Tên người dùng";
+            this.label1.Text = "Email";
             // 
             // label2
             // 
@@ -92,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 141);
+            this.label3.Location = new System.Drawing.Point(21, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 6;
@@ -101,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 200);
+            this.label4.Location = new System.Drawing.Point(21, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 20);
             this.label4.TabIndex = 7;
@@ -110,7 +111,7 @@
             // cb_pass1
             // 
             this.cb_pass1.AutoSize = true;
-            this.cb_pass1.Location = new System.Drawing.Point(552, 141);
+            this.cb_pass1.Location = new System.Drawing.Point(540, 220);
             this.cb_pass1.Name = "cb_pass1";
             this.cb_pass1.Size = new System.Drawing.Size(83, 24);
             this.cb_pass1.TabIndex = 8;
@@ -121,7 +122,7 @@
             // cb_pass2
             // 
             this.cb_pass2.AutoSize = true;
-            this.cb_pass2.Location = new System.Drawing.Point(552, 200);
+            this.cb_pass2.Location = new System.Drawing.Point(540, 279);
             this.cb_pass2.Name = "cb_pass2";
             this.cb_pass2.Size = new System.Drawing.Size(83, 24);
             this.cb_pass2.TabIndex = 9;
@@ -131,7 +132,7 @@
             // 
             // btn_xacnhan
             // 
-            this.btn_xacnhan.Location = new System.Drawing.Point(234, 246);
+            this.btn_xacnhan.Location = new System.Drawing.Point(676, 233);
             this.btn_xacnhan.Name = "btn_xacnhan";
             this.btn_xacnhan.Size = new System.Drawing.Size(194, 50);
             this.btn_xacnhan.TabIndex = 10;
@@ -139,11 +140,22 @@
             this.btn_xacnhan.UseVisualStyleBackColor = true;
             this.btn_xacnhan.Click += new System.EventHandler(this.btn_xacnhan_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(224, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 47);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Gửi mail";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form_QuenMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 347);
+            this.ClientSize = new System.Drawing.Size(644, 212);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_xacnhan);
             this.Controls.Add(this.cb_pass2);
             this.Controls.Add(this.cb_pass1);
@@ -156,6 +168,7 @@
             this.Controls.Add(this.tb_sdt);
             this.Controls.Add(this.tb_ten);
             this.Name = "Form_QuenMatKhau";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_QuenMatKhau";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,5 +188,6 @@
         private System.Windows.Forms.CheckBox cb_pass1;
         private System.Windows.Forms.CheckBox cb_pass2;
         private System.Windows.Forms.Button btn_xacnhan;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -31,21 +31,31 @@ namespace _3.PresentationLayers.Views
         private VideoCaptureDevice videoCaptureDevice;
         public static string mavach;
         public static string tensach;
+        public void BatCam()
+        {
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_tenmay.SelectedIndex].MonikerString);
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            videoCaptureDevice.Start();
+        }
         public void GetBookByMa()
         {
             if (_ichiTietSachService.GetAllChiTietSachView().Where(p => p.MaVach == tb_mavach.Text).ToList().Count == 0)
             {
+                Lammoi();
                 DialogResult dialogResult = MessageBox.Show("Chưa có sản phẩm này, bạn có muốn thêm sản phẩm mới không ", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
-                    form.Show();
-                }
-                if (dialogResult == DialogResult.No)
-                {
-                    tb_mavach.Text = String.Empty;
-                    tb_tensach.Text = String.Empty;
                     Lammoi();
+                    Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
+                    form.ShowDialog();
+                    tb_tensach.Text = String.Empty;
+                    tb_mavach.Text = String.Empty;
+                    return;
+                }
+                else/* (dialogResult == DialogResult.No) */
+                {
+                    tb_mavach.Text = string.Empty;
+                    tb_tensach.Text = string.Empty;
                     return;
                 }
             }
@@ -54,6 +64,7 @@ namespace _3.PresentationLayers.Views
         {
             try
             {
+                videoCaptureDevice.SignalToStop();
                 if (InvokeRequired)
                 {
                     this.Invoke(new MethodInvoker(Lammoi));
@@ -83,9 +94,7 @@ namespace _3.PresentationLayers.Views
                 cbb_tenmay.Items.Add(device.Name);
             }
             cbb_tenmay.SelectedIndex = 0;
-            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_tenmay.SelectedIndex].MonikerString);
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
+            BatCam();
         }
 
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -108,10 +117,7 @@ namespace _3.PresentationLayers.Views
         {
             try
             {
-                if (videoCaptureDevice != null)
-                {
-                    if (videoCaptureDevice.IsRunning == true) videoCaptureDevice.SignalToStop();
-                }
+                videoCaptureDevice.SignalToStop();
             }
             catch (Exception ex)
             {
@@ -122,6 +128,7 @@ namespace _3.PresentationLayers.Views
 
         private void tb_mavach_TextChanged(object sender, EventArgs e)
         {
+            videoCaptureDevice.SignalToStop();
             string x = _ichiTietSachService.GetAllChiTietSachView().Where(c => c.MaVach == tb_mavach.Text).Select(x => x.TenSach).FirstOrDefault();
             tb_tensach.Text = x;
             if (tb_tensach.Text != String.Empty)
@@ -134,6 +141,11 @@ namespace _3.PresentationLayers.Views
             if (tb_tensach.Text == String.Empty && tb_mavach.Text != String.Empty)
             {
                 GetBookByMa();
+                return;
+            }
+            if (tb_tensach.Text == String.Empty && tb_mavach.Text == String.Empty)
+            {
+                BatCam();
                 return;
             }
         }

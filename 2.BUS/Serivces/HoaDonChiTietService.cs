@@ -17,7 +17,6 @@ namespace _2.BUS.Serivces
     {
         private IChitietHoadonRepository _ichitietHoadonRepository = new HoaDonChiTietRepository();
         private IChiTietSachRepository _ichiTietSachRepository = new ChiTietSachRepository();
-        private IChiTietTheLoaiRepository _ichiTietTheLoaiRepository = new ChiTietTheLoaiRepository();
         private INhaPhatHanhRepository _inhaPhatHanhRepository = new NhaPhatHanhRepository();
         private ILoaiBiaRepository _iloaiBiaRepository = new LoaiBiaRepository();
         private ITacGiaRepository _itacGiaRepository = new TacGiaRepository();
@@ -33,7 +32,7 @@ namespace _2.BUS.Serivces
         {
             if (obj == null) return "Thêm Thất bại";
             if (_ichitietHoadonRepository.Add(obj)) return "Thêm thành công";
-            return "Thêm thất bại";                    
+            return "Thêm thất bại";
         }
 
         public List<HoaDonChiTietView> GetAll()
@@ -62,6 +61,8 @@ namespace _2.BUS.Serivces
                                Trangthai = a.TrangThai,
                                Idchitietsp = c.Id,
                                IDhoadon = a.IdHoaDon,
+                               GiamGia = a.GiamGia,
+                               Idnv = b.Idnv,
                            }).ToList();
             return templst;
         }
