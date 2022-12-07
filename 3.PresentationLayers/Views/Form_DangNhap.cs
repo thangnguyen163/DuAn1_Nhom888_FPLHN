@@ -1,4 +1,4 @@
-﻿using _1.DAL.DomainClass;
+using _1.DAL.DomainClass;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
 using System;
@@ -16,6 +16,7 @@ namespace _3.PresentationLayers.Views
     public partial class Form_DangNhap : Form
     {
         INhanVienService _iNhanVienSercvice;
+        public static string Email;
         public Form_DangNhap()
         {
             InitializeComponent();
@@ -25,6 +26,18 @@ namespace _3.PresentationLayers.Views
             if(Properties.Settings.Default.Username==string.Empty)
                 cb_NhoMk.Checked = false;
             else cb_NhoMk.Checked = true;
+        }
+        public Form_DangNhap(string email,string pass)
+        {
+            InitializeComponent();
+            _iNhanVienSercvice = new NhanVienService();
+            tb_tendangnhap.Text = Properties.Settings.Default.Username;
+            tb_matkhau.Text = Properties.Settings.Default.Password;
+            if (Properties.Settings.Default.Username == string.Empty)
+                cb_NhoMk.Checked = false;
+            else cb_NhoMk.Checked = true;
+            tb_tendangnhap.Text = email;
+            tb_matkhau.Text = pass;
         }
         private void lb_quenmk_Click(object sender, EventArgs e)
         {
@@ -48,6 +61,7 @@ namespace _3.PresentationLayers.Views
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
                     InforLogin();
+                    Email = tb_tendangnhap.Text;
                     Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);
                     fdb.Show();
                     this.Hide();
@@ -70,10 +84,6 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        private void Form_DangNhap_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form_DangNhap_Load_1(object sender, EventArgs e)
         {

@@ -4,6 +4,7 @@ using _2.BUS.IServices;
 using _2.BUS.Serivces;
 using _2.BUS.Service;
 using _2.BUS.ViewModels;
+using Org.BouncyCastle.Crypto.Tls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,26 +21,30 @@ namespace _3.PresentationLayers.Views
 {
     public partial class Form_Dasboard : Form
     {
-      
+
         private IHoaDonService _ihoaDonService = new HoaDonService();
         private IHoaDonChiTietService _ihoaDonChiTietService = new HoaDonChiTietService();
         private IChiTietSachService _ichiTietSachService = new ChiTietSachService();
+
+        private IGiaoCaService _iGiaoCaServicel = new GiaoCaService();
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
+        GiaoCa _gc = new GiaoCa();
         private INhanVienService _iNhanVienService;
-        private List<NhanVienView> _NvView= new List<NhanVienView>();
+        private List<NhanVienView> _NvView = new List<NhanVienView>();
         public Guid SelectID { get; set; }
-        
+
         public Form_Dasboard()
         {
             InitializeComponent();
             random = new Random();
             this.Text = string.Empty;
+
             // LoaddataToChitietHoadon(SelectID);
             _iNhanVienService = new NhanVienService();
-            
+
         }
         public Form_Dasboard(string a)
         {
@@ -50,7 +56,20 @@ namespace _3.PresentationLayers.Views
             this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
             timer1.Enabled = true;
         }
-
+        public Form_Dasboard(int b)
+        {
+            InitializeComponent();
+            random = new Random();
+            this.Text = string.Empty;
+            // LoaddataToChitietHoadon(SelectID);
+            _iNhanVienService = new NhanVienService();
+            //this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
+            timer1.Enabled = true;
+            if (b==0)
+            {
+                this.Close();
+            }
+        }
         private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
@@ -78,7 +97,7 @@ namespace _3.PresentationLayers.Views
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-               
+
 
                 }
             }
@@ -95,7 +114,7 @@ namespace _3.PresentationLayers.Views
                 }
             }
         }
-        
+
 
 
 
@@ -119,7 +138,7 @@ namespace _3.PresentationLayers.Views
         private void btn_shopping_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_BanHang(lb_XinChao.Text), sender);
-             btn_shopping.BackColor = Color.FromArgb(63, 0, 113);
+            btn_shopping.BackColor = Color.FromArgb(63, 0, 113);
             labelTite.Text = "BÁN HÀNG";
 
         }
@@ -156,9 +175,9 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-          //  SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
-          ////  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
-          //  LoaddataToChitietHoadon(SelectID);
+            //  SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
+            ////  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
+            //  LoaddataToChitietHoadon(SelectID);
         }
 
         private void dtg_sanpham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -194,20 +213,38 @@ namespace _3.PresentationLayers.Views
         {
             OpenChildForm(new Form_Hoadon(), sender);
         }
-       
-       
+
+
         private void Form_Dasboard_Load(object sender, EventArgs e)
         {
-           //Phân quyền
-          foreach(var a in _iNhanVienService.getViewNhanViens())
-          {
-                if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten== "Nhân viên")
+            //Phân quyền
+            foreach (var a in _iNhanVienService.getViewNhanViens())
+            {
+                if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên")
                 {
+                    btn_HoaDon.Visible = false;
+                    btn_shopping.Visible = false;
+                    btn_KhachHang.Visible = false;
                     btn_NhanVien.Visible = false;
                     btn_sanpham.Visible = false;
+                    btn_RutTien.Visible = false;
+                    btn_KetCa.Visible = false;
+
                 }
-          }
-           
+                else if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Quản trị")
+                {
+                    btn_HoaDon.Visible = true;
+                    btn_sanpham.Visible = true;
+                    btn_shopping.Visible = true;
+                    btn_NhanVien.Visible = true;
+                    btn_NhanCa.Visible = true;
+                    btn_LogOut.Visible = true;
+                    btn_RutTien.Visible = true;
+                    btn_KetCa.Visible = true;
+
+                }
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -215,5 +252,56 @@ namespace _3.PresentationLayers.Views
             lb_time.Text = DateTime.Now.ToLongTimeString();
             lb_date.Text = DateTime.Now.ToShortDateString();
         }
+
+        private void btn_NhanCa_Click(object sender, EventArgs e)
+        {
+            Form_NhanCaLam form_NhanCaLam = new Form_NhanCaLam();
+            form_NhanCaLam.ShowDialog();
+            lb_TongTien.Text = Form_NhanCaLam.TongTien.ToString();
+            if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
+            {
+                btn_KhachHang.Visible = true;
+                btn_shopping.Visible = true;
+                btn_HoaDon.Visible = true;
+                btn_RutTien.Visible = true;
+                btn_KetCa.Visible = true;
+            }
+
+
+            btn_NhanCa.Visible = true;
+            if (btn_shopping.Visible == true)
+            {
+                btn_NhanCa.Visible = false;
+            }
+        }
+
+        private void btn_RutTien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new RutTien(), sender);
+            labelTite.Text = "Rút Tiền";
+        }
+        public static decimal TienKetCa;
+        private void btn_KetCa_Click(object sender, EventArgs e)
+        {
+            TienKetCa = Convert.ToDecimal(lb_TongTien.Text);
+            OpenChildForm(new Form_KetCa(), sender);
+            labelTite.Text = "Kết Ca";
+        }
+
+        public int tienbitru { get; set; }
+        private void btn_LamMoi_Click(object sender, EventArgs e)
+        {
+
+            string b = (Convert.ToString("GC" + _iGiaoCaServicel.GetAll().Count()));
+            GiaoCa tien = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == b);
+            //tienbitru = Convert.ToInt32(lb_TongTien.Text) - Convert.ToInt32(tien.TongTienTrongCa.ToString());
+            lb_TongTien.Text = Convert.ToString(tien.TongTienTrongCa);
+            
+        }
+        public void closeForm()
+        {
+            this.Dispose();
+        }
+
     }
 }
