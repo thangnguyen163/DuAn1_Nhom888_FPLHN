@@ -16,10 +16,28 @@ namespace _3.PresentationLayers.Views
     public partial class Form_DangNhap : Form
     {
         INhanVienService _iNhanVienSercvice;
+        public static string Email;
         public Form_DangNhap()
         {
             InitializeComponent();
             _iNhanVienSercvice = new NhanVienService();
+            tb_tendangnhap.Text = Properties.Settings.Default.Username;
+            tb_matkhau.Text = Properties.Settings.Default.Password;
+            if(Properties.Settings.Default.Username==string.Empty)
+                cb_NhoMk.Checked = false;
+            else cb_NhoMk.Checked = true;
+        }
+        public Form_DangNhap(string email,string pass)
+        {
+            InitializeComponent();
+            _iNhanVienSercvice = new NhanVienService();
+            tb_tendangnhap.Text = Properties.Settings.Default.Username;
+            tb_matkhau.Text = Properties.Settings.Default.Password;
+            if (Properties.Settings.Default.Username == string.Empty)
+                cb_NhoMk.Checked = false;
+            else cb_NhoMk.Checked = true;
+            tb_tendangnhap.Text = email;
+            tb_matkhau.Text = pass;
         }
         private void lb_quenmk_Click(object sender, EventArgs e)
         {
@@ -42,11 +60,13 @@ namespace _3.PresentationLayers.Views
                 }
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
-                    Form_Dasboard fdb = new Form_Dasboard();
+                    InforLogin();
+                    Email = tb_tendangnhap.Text;
+                    Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);
                     fdb.Show();
                     this.Hide();
                     MessageBox.Show($"Xin chào: {_iNhanVienSercvice.getNhanViensFromDB()[i].Ten}", "Đăng nhập thành công", MessageBoxButtons.OK);
-                    return;
+                    return; 
                 }
                 
             }
@@ -64,10 +84,6 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        private void Form_DangNhap_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form_DangNhap_Load_1(object sender, EventArgs e)
         {
@@ -77,6 +93,26 @@ namespace _3.PresentationLayers.Views
         private void lb_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        public void InforLogin()
+        {
+            if (cb_NhoMk.Checked == true)
+            {
+                Properties.Settings.Default.Username= tb_tendangnhap.Text;
+                Properties.Settings.Default.Password= tb_matkhau.Text ;
+                Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
+                Properties.Settings.Default.Password = tb_matkhau.Text;
+                Properties.Settings.Default.Save();
+                cb_NhoMk.Checked=true;
+            }
+            else
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
+                Properties.Settings.Default.PassLogin = tb_matkhau.Text;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

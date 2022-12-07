@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dasboard));
             this.PanelTitel = new System.Windows.Forms.Panel();
+            this.lb_TongTien = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lb_date = new System.Windows.Forms.Label();
             this.lb_time = new System.Windows.Forms.Label();
             this.lb_XinChao = new System.Windows.Forms.Label();
@@ -42,12 +44,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btn_LogOut = new System.Windows.Forms.Button();
+            this.btn_NhanCa = new System.Windows.Forms.Button();
+            this.btn_RutTien = new System.Windows.Forms.Button();
+            this.btn_KetCa = new System.Windows.Forms.Button();
             this.btn_KhachHang = new System.Windows.Forms.Button();
             this.btn_NhanVien = new System.Windows.Forms.Button();
             this.btn_HoaDon = new System.Windows.Forms.Button();
             this.btn_sanpham = new System.Windows.Forms.Button();
             this.btn_shopping = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_LamMoi = new System.Windows.Forms.Button();
             this.PanelTitel.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,6 +63,9 @@
             // PanelTitel
             // 
             this.PanelTitel.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.PanelTitel.Controls.Add(this.btn_LamMoi);
+            this.PanelTitel.Controls.Add(this.lb_TongTien);
+            this.PanelTitel.Controls.Add(this.label2);
             this.PanelTitel.Controls.Add(this.lb_date);
             this.PanelTitel.Controls.Add(this.lb_time);
             this.PanelTitel.Controls.Add(this.lb_XinChao);
@@ -67,6 +76,27 @@
             this.PanelTitel.Name = "PanelTitel";
             this.PanelTitel.Size = new System.Drawing.Size(1158, 100);
             this.PanelTitel.TabIndex = 1;
+            // 
+            // lb_TongTien
+            // 
+            this.lb_TongTien.AutoSize = true;
+            this.lb_TongTien.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_TongTien.ForeColor = System.Drawing.Color.White;
+            this.lb_TongTien.Location = new System.Drawing.Point(182, 12);
+            this.lb_TongTien.Name = "lb_TongTien";
+            this.lb_TongTien.Size = new System.Drawing.Size(0, 31);
+            this.lb_TongTien.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(9, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 31);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Tiền trong ca :";
             // 
             // lb_date
             // 
@@ -139,7 +169,6 @@
             this.PanelDesktopPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelDesktopPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelDesktopPanel.BackgroundImage")));
             this.PanelDesktopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PanelDesktopPanel.Location = new System.Drawing.Point(228, 100);
             this.PanelDesktopPanel.Name = "PanelDesktopPanel";
@@ -171,6 +200,9 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btn_LogOut);
+            this.panelMenu.Controls.Add(this.btn_NhanCa);
+            this.panelMenu.Controls.Add(this.btn_RutTien);
+            this.panelMenu.Controls.Add(this.btn_KetCa);
             this.panelMenu.Controls.Add(this.btn_KhachHang);
             this.panelMenu.Controls.Add(this.btn_NhanVien);
             this.panelMenu.Controls.Add(this.btn_HoaDon);
@@ -193,13 +225,67 @@
             this.btn_LogOut.ForeColor = System.Drawing.Color.White;
             this.btn_LogOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_LogOut.Image")));
             this.btn_LogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_LogOut.Location = new System.Drawing.Point(0, 450);
+            this.btn_LogOut.Location = new System.Drawing.Point(0, 660);
             this.btn_LogOut.Name = "btn_LogOut";
             this.btn_LogOut.Size = new System.Drawing.Size(228, 70);
             this.btn_LogOut.TabIndex = 11;
             this.btn_LogOut.Text = "Thoát";
             this.btn_LogOut.UseVisualStyleBackColor = true;
             this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
+            // 
+            // btn_NhanCa
+            // 
+            this.btn_NhanCa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_NhanCa.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_NhanCa.FlatAppearance.BorderSize = 0;
+            this.btn_NhanCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_NhanCa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_NhanCa.ForeColor = System.Drawing.Color.White;
+            this.btn_NhanCa.Image = ((System.Drawing.Image)(resources.GetObject("btn_NhanCa.Image")));
+            this.btn_NhanCa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_NhanCa.Location = new System.Drawing.Point(0, 590);
+            this.btn_NhanCa.Name = "btn_NhanCa";
+            this.btn_NhanCa.Size = new System.Drawing.Size(228, 70);
+            this.btn_NhanCa.TabIndex = 12;
+            this.btn_NhanCa.Text = "Nhận Ca";
+            this.btn_NhanCa.UseVisualStyleBackColor = true;
+            this.btn_NhanCa.Click += new System.EventHandler(this.btn_NhanCa_Click);
+            // 
+            // btn_RutTien
+            // 
+            this.btn_RutTien.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_RutTien.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_RutTien.FlatAppearance.BorderSize = 0;
+            this.btn_RutTien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_RutTien.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_RutTien.ForeColor = System.Drawing.Color.White;
+            this.btn_RutTien.Image = ((System.Drawing.Image)(resources.GetObject("btn_RutTien.Image")));
+            this.btn_RutTien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_RutTien.Location = new System.Drawing.Point(0, 520);
+            this.btn_RutTien.Name = "btn_RutTien";
+            this.btn_RutTien.Size = new System.Drawing.Size(228, 70);
+            this.btn_RutTien.TabIndex = 13;
+            this.btn_RutTien.Text = "Rút tiền";
+            this.btn_RutTien.UseVisualStyleBackColor = true;
+            this.btn_RutTien.Click += new System.EventHandler(this.btn_RutTien_Click);
+            // 
+            // btn_KetCa
+            // 
+            this.btn_KetCa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_KetCa.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_KetCa.FlatAppearance.BorderSize = 0;
+            this.btn_KetCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_KetCa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_KetCa.ForeColor = System.Drawing.Color.White;
+            this.btn_KetCa.Image = ((System.Drawing.Image)(resources.GetObject("btn_KetCa.Image")));
+            this.btn_KetCa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_KetCa.Location = new System.Drawing.Point(0, 450);
+            this.btn_KetCa.Name = "btn_KetCa";
+            this.btn_KetCa.Size = new System.Drawing.Size(228, 70);
+            this.btn_KetCa.TabIndex = 12;
+            this.btn_KetCa.Text = "Kết Ca";
+            this.btn_KetCa.UseVisualStyleBackColor = true;
+            this.btn_KetCa.Click += new System.EventHandler(this.btn_KetCa_Click);
             // 
             // btn_KhachHang
             // 
@@ -295,6 +381,18 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btn_LamMoi
+            // 
+            this.btn_LamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
+            this.btn_LamMoi.Location = new System.Drawing.Point(18, 55);
+            this.btn_LamMoi.Name = "btn_LamMoi";
+            this.btn_LamMoi.Size = new System.Drawing.Size(137, 39);
+            this.btn_LamMoi.TabIndex = 6;
+            this.btn_LamMoi.Text = "Làm mới";
+            this.btn_LamMoi.UseVisualStyleBackColor = true;
+            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
+            // 
             // Form_Dasboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -337,5 +435,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lb_date;
         private System.Windows.Forms.Label lb_time;
+        private System.Windows.Forms.Button btn_NhanCa;
+        private System.Windows.Forms.Label lb_TongTien;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_RutTien;
+        private System.Windows.Forms.Button btn_KetCa;
+        private System.Windows.Forms.Button btn_LamMoi;
     }
 }
