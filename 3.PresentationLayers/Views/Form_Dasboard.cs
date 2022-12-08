@@ -116,7 +116,7 @@ namespace _3.PresentationLayers.Views
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     PanelTitel.BackColor = Color.FromArgb(127, 188, 210);
-                    panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                    //panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
 
@@ -273,6 +273,32 @@ namespace _3.PresentationLayers.Views
         {
             lb_time.Text = DateTime.Now.ToLongTimeString();
             lb_date.Text = DateTime.Now.ToShortDateString();
+            string b = (Convert.ToString("GC" + _iGiaoCaServicel.GetAll().Count()));
+            GiaoCa tien = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == b);
+            lb_TongTien.Text = Convert.ToString(tien.TongTienTrongCa);
+            if (Form_GiaoCa.emailgiao == null && Form_GiaoCa.passgiao == null) return;
+            if (Form_GiaoCa.emailgiao != null && Form_GiaoCa.passgiao != null)
+            {
+                var x = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Email == Form_GiaoCa.emailgiao);
+                lb_XinChao.Text = x.Ten;
+                lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
+                if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
+                {
+                    btn_KhachHang.Visible = true;
+                    btn_shopping.Visible = true;
+                    btn_HoaDon.Visible = true;
+                    btn_RutTien.Visible = true;
+                    btn_KetCa.Visible = true;
+                }
+                btn_NhanCa.Visible = true;
+                if (btn_shopping.Visible == true)
+                {
+                    btn_NhanCa.Visible = false;
+                }
+                Form_GiaoCa.emailgiao = null;
+                Form_GiaoCa.passgiao = null;
+                //Form_KetCa.TongTien = Convert.ToDecimal(null);
+            }
         }
 
         private void btn_NhanCa_Click(object sender, EventArgs e)
@@ -306,7 +332,7 @@ namespace _3.PresentationLayers.Views
         private void btn_KetCa_Click(object sender, EventArgs e)
         {
             TienKetCa = Convert.ToDecimal(lb_TongTien.Text);
-            OpenChildForm(new Form_KetCa(), sender);
+            OpenChildForm(new Form_GiaoCa(), sender);
             labelTite.Text = "Kết Ca";
         }
 
@@ -314,11 +340,8 @@ namespace _3.PresentationLayers.Views
         private void btn_LamMoi_Click(object sender, EventArgs e)
         {
 
-            string b = (Convert.ToString("GC" + _iGiaoCaServicel.GetAll().Count()));
-            GiaoCa tien = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == b);
-            //tienbitru = Convert.ToInt32(lb_TongTien.Text) - Convert.ToInt32(tien.TongTienTrongCa.ToString());
-            lb_TongTien.Text = Convert.ToString(tien.TongTienTrongCa);
-            
+
+
         }
         public void closeForm()
         {
