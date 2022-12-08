@@ -37,7 +37,10 @@ namespace _3.PresentationLayers.Views
                 _gc.Ma = "GC" + (_iGiaoCaServicel.GetAll().Count + 1).ToString();
                 _gc.ThoiGianNhanCa = DateTime.Now;
                 _gc.IdNhanVien = idnv;
-                _gc.TongTienTrongCa = Convert.ToDecimal(tbx_tienbandau.Text);
+                _gc.TongTienMat = Convert.ToDecimal(tbx_tienmat.Text == string.Empty ? 0 : tbx_tienmat.Text);
+                _gc.TongTienKhac = 0;
+                _gc.TienBanDau = Convert.ToDecimal(lb_tongtien.Text);
+                _gc.TongTienTrongCa = Convert.ToDecimal(lb_tongtien.Text);
                 _gc.TienPhatSinh = 0;
                 _gc.TongTienMatRut = 0;
                 _gc.TrangThai = 1;
@@ -46,23 +49,32 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_TiepNhan_Click(object sender, EventArgs e)
         {
-            if (tbx_tienbandau.Text == String.Empty)
+            if (tbx_tienmat.Text == String.Empty && tbx_tienmat.Text == String.Empty)
             {
-                MessageBox.Show("Bạn chưa nhận số tiền ban đầu", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Bạn chưa nhập số tiền ban đầu", "Thông báo", MessageBoxButtons.OK);
             }
             else
             {
-                TongTien = Convert.ToDecimal(tbx_tienbandau.Text);
-                MessageBox.Show(_iGiaoCaServicel.Add(NhanCa()));
+                TongTien = Convert.ToDecimal(lb_tongtien.Text);
+                _iGiaoCaServicel.Add(NhanCa());
+                MessageBox.Show("Nhận ca thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }
-           
         }
 
         private void tbx_tienbandau_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void tbx_tienmat_TextChanged(object sender, EventArgs e)
+        {
+            if (tbx_tienmat.Text != string.Empty)
+            {
+                lb_tongtien.Text = Convert.ToDecimal(tbx_tienmat.Text).ToString();
+                return;
+            }
         }
     }
 }

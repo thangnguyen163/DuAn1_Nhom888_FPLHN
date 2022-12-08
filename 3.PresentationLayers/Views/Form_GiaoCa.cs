@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class Form_KetCa : Form
+    public partial class Form_GiaoCa : Form
     {
         public static decimal TongTien;
         IGiaoCaService _iGiaoCaServicel;
@@ -23,18 +23,20 @@ namespace _3.PresentationLayers.Views
         GiaoCa _gc;
         Form_Dasboard frm = new Form_Dasboard();
         public Form_Dasboard MyForm { get; set; }
-     
-        public Form_KetCa()
+
+        public Form_GiaoCa()
         {
             InitializeComponent();
             _iGiaoCaServicel = new GiaoCaService();
             _iNhanVienServicel = new NhanVienService();
             _gc = new GiaoCa();
-            lb_tongtien.Text = Form_Dasboard.TienKetCa.ToString();
-            
+            var caht = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+            lb_tongtien.Text = caht.TongTienTrongCa.ToString();
+            lb_tienmat.Text = caht.TongTienMat.ToString();
+            lb_tienkhac.Text = caht.TongTienKhac.ToString();
         }
-       
-        private GiaoCa NhanCa()
+
+        private GiaoCa KetCa()
         {
             _gc = new GiaoCa();
             {
@@ -42,9 +44,32 @@ namespace _3.PresentationLayers.Views
                 var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                 _gc.Id = ID;
                 _gc.ThoiGianGiaoCa = DateTime.Now;
+                _gc.TongTienMat = Convert.ToDecimal(lb_tienmat.Text);
+                _gc.TongTienKhac = Convert.ToDecimal(lb_tienkhac.Text);
+                _gc.TongTienTrongCa = Convert.ToDecimal(lb_tongtien.Text);
                 _gc.IdNhanVienCaTiep = nv.Id;
-                _gc.TongTienTrongCa = Form_Dasboard.TienKetCa;
                 _gc.ThoiGianReset = DateTime.Now;
+            };
+            return _gc;
+        }
+
+        private GiaoCa CaMoi()
+        {
+            _gc = new GiaoCa();
+            {
+                var cacu = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+                var idnv = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == tb_email.Text).Select(c => c.Id).FirstOrDefault();
+                _gc.Id = Guid.NewGuid();
+                _gc.Ma = "GC" + (_iGiaoCaServicel.GetAll().Count + 1).ToString();
+                _gc.ThoiGianNhanCa = DateTime.Now;
+                _gc.IdNhanVien = idnv;
+                _gc.TongTienMat = Convert.ToDecimal(cacu.TongTienMat);
+                _gc.TongTienKhac = Convert.ToDecimal(cacu.TongTienKhac);
+                _gc.TongTienTrongCa = Convert.ToDecimal(cacu.TongTienTrongCa);
+                _gc.TongTienMatCaTruoc = Convert.ToDecimal(cacu.TongTienTrongCa);
+                _gc.TienPhatSinh = 0;
+                _gc.TongTienMatRut = 0;
+                _gc.TrangThai = 1;
             };
             return _gc;
         }
@@ -52,21 +77,26 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var ID = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString()).Id;
+                var gcht = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString());
                 var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
-                _gc.Id = ID;
-                _gc.TienPhatSinh = Convert.ToDecimal(_gc.TienPhatSinh) + Convert.ToDecimal(tb_tienphatsinh.Text);
-                _gc.GhiChuPhatSinh = Convert.ToString(_gc.GhiChuPhatSinh + "," + tbx_ghichu.Text);
+                _gc.Id = gcht.Id;
+                _gc.TienPhatSinh = gcht.TienPhatSinh + Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
+                _gc.GhiChuPhatSinh = tbx_ghichu.Text + "|" + gcht.GhiChuPhatSinh;
+                _gc.TongTienMat = gcht.TongTienMat - Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
+                _gc.TongTienKhac = gcht.TongTienKhac;
+                _gc.TongTienTrongCa = gcht.TongTienTrongCa - Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
             };
             return _gc;
         }
-        
+        public static string emailgiao;
+        public static string passgiao;
+        public static decimal TienGiao;
         private void btn_xacnhan_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Bạn hãy đếm lại số tiền có trong két đã đủ" + lb_tongtien.Text, "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show(_iGiaoCaServicel.Update(NhanCa()));
+                MessageBox.Show(_iGiaoCaServicel.Update(KetCa()));
                 for (int i = 0; i <= _iNhanVienServicel.getNhanViensFromDB().Count(); i++)
                 {
                     if (_iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == tb_email.Text).ToList().Count == 0 || tb_email.Text == _iNhanVienServicel.getNhanViensFromDB()[i].Email && tb_matkhau.Text != _iNhanVienServicel.getNhanViensFromDB()[i].MatKhau)
@@ -76,17 +106,14 @@ namespace _3.PresentationLayers.Views
                     }
                     if (tb_email.Text == _iNhanVienServicel.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienServicel.getNhanViensFromDB()[i].MatKhau)
                     {
-                        
-                        //MessageBox.Show($"Xin chào: {_iNhanVienServicel.getNhanViensFromDB()[i].Ten}", "Giao ca thành công", MessageBoxButtons.OK);
-                        //Form_Dasboard fdb = new Form_Dasboard();
-                        //fdb.Show();
-                        //Form_DangNhap form_DangNhap = new Form_DangNhap(tb_email.Text, tb_matkhau.Text);
-                        //Application.Restart();
-                        Form_Dasboard frm = new Form_Dasboard(0);
-                        ///form_Dasboard.Close();
-                        //frm.Show();
-                        frm.closeForm();
+                        var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
+                        emailgiao = tb_email.Text;
+                        passgiao = tb_matkhau.Text;
+                        TienGiao = Convert.ToDecimal(lb_tongtien.Text);
+                        _iGiaoCaServicel.Add(CaMoi());
+                        MessageBox.Show($"Xin chào {nv.Ten}", "Giao ca thành công", MessageBoxButtons.OK);
                         this.Close();
+                        //Form_DangNhap form_DangNhap = new Form_DangNhap(tb_email.Text, tb_matkhau.Text);
                         return;
                     }
                 }
@@ -118,17 +145,15 @@ namespace _3.PresentationLayers.Views
         public static decimal TongTienHienTai;
         private void btn_tienphatsinh_Click(object sender, EventArgs e)
         {
-            if (tb_tienphatsinh.Text == string.Empty)
+            if (tb_phatsinhtienmat.Text == string.Empty)
             {
                 MessageBox.Show("Bạn phải nhập tiền phát sinh", "Thông báo", MessageBoxButtons.OK);
                 return;
-
             }
-            if (Convert.ToDecimal(lb_TongTienCaTruoc.Text) < Convert.ToDecimal(tb_tienphatsinh.Text))
+            if (Convert.ToDecimal(lb_tienmat.Text) < Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text))
             {
-                MessageBox.Show("Số tiền trong ca không đủ cho tiền phát sinh", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Tổng số tiền mặt không đủ", "Thông báo", MessageBoxButtons.OK);
                 return;
-
             }
             if (tbx_ghichu.Text == String.Empty)
             {
@@ -137,8 +162,12 @@ namespace _3.PresentationLayers.Views
             }
 
             MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
-            lb_TongTienCaTruoc.Text = (Convert.ToDecimal(lb_TongTienCaTruoc.Text) - Convert.ToDecimal(tb_tienphatsinh.Text)).ToString();
-            TongTienHienTai = Convert.ToDecimal(lb_TongTienCaTruoc.Text);
+            var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+            lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
+            lb_tienmat.Text = capnhat.TongTienMat.ToString();
+            lb_tienkhac.Text = capnhat.TongTienKhac.ToString();
+            tb_phatsinhtienmat.Text=string.Empty;
+            tbx_ghichu.Text = string.Empty;
         }
 
         private void tb_tienphatsinh_KeyPress(object sender, KeyPressEventArgs e)
@@ -147,7 +176,5 @@ namespace _3.PresentationLayers.Views
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
-
-        
     }
 }
