@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -33,6 +34,7 @@ namespace _3.PresentationLayers.Views
         private Form activeForm;
         GiaoCa _gc = new GiaoCa();
         private INhanVienService _iNhanVienService;
+        private IChucVuService _ichucVuService = new ChucVuServivce();
         private List<NhanVienView> _NvView = new List<NhanVienView>();
         public Guid SelectID { get; set; }
 
@@ -44,7 +46,7 @@ namespace _3.PresentationLayers.Views
 
             // LoaddataToChitietHoadon(SelectID);
             _iNhanVienService = new NhanVienService();
-
+            _ichucVuService = new ChucVuServivce();
         }
         public Form_Dasboard(string a)
         {
@@ -55,7 +57,22 @@ namespace _3.PresentationLayers.Views
             _iNhanVienService = new NhanVienService();
             this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
             timer1.Enabled = true;
+            NhanVien nv = new NhanVien();
+            nv = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Email == a);
+            MemoryStream memstr = new MemoryStream(nv.Anh);
+            Image img2 = Image.FromStream(memstr);
+            //img2 = resizeImage(img2, new Size(80, 110));
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
+            Region rg = new Region(gp);
+            pictureBox1.Region = rg;
+            pictureBox1.Image = img2;
+            lb_chucvu.Text = _ichucVuService.getChucVusFromDB().Where(x=>x.Id==nv.IdchucVu).Select(x=>x.Ten).FirstOrDefault();
         }
+        //public static Image resizeImage(Image imgToResize, Size size)
+        //{
+        //    return (Image)(new Bitmap(imgToResize, size));
+        //}
         public Form_Dasboard(int b)
         {
             InitializeComponent();
@@ -63,11 +80,16 @@ namespace _3.PresentationLayers.Views
             this.Text = string.Empty;
             // LoaddataToChitietHoadon(SelectID);
             _iNhanVienService = new NhanVienService();
-            //this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
+          //  this.lb_XinChao.Text = _iNhanVienService.getNhanViensFromDB().Where(x => x.Email == a).Select(a => a.Ten).FirstOrDefault();
             timer1.Enabled = true;
-            if (b==0)
+          
+        }
+        public Image byteArrayToImage(byte[] bytesArr)
+        {
+            using (MemoryStream memstr = new MemoryStream(bytesArr))
             {
-                this.Close();
+                Image img = Image.FromStream(memstr);
+                return img;
             }
         }
         private Color SelectThemeColor()
