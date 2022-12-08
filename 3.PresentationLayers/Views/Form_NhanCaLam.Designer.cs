@@ -114,6 +114,7 @@
             this.Name = "Form_NhanCaLam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_NhanCaLam";
+            this.Load += new System.EventHandler(this.Form_NhanCaLam_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

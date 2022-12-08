@@ -39,8 +39,8 @@ namespace _3.PresentationLayers.Views
                 _gc.IdNhanVien = idnv;
                 _gc.TongTienMat = Convert.ToDecimal(tbx_tienmat.Text == string.Empty ? 0 : tbx_tienmat.Text);
                 _gc.TongTienKhac = 0;
-                _gc.TienBanDau = Convert.ToDecimal(lb_tongtien.Text);
-                _gc.TongTienTrongCa = Convert.ToDecimal(lb_tongtien.Text);
+                _gc.TienBanDau = Convert.ToDecimal(tbx_tienmat.Text);
+                _gc.TongTienTrongCa = Convert.ToDecimal(tbx_tienmat.Text);
                 _gc.TienPhatSinh = 0;
                 _gc.TongTienMatRut = 0;
                 _gc.TrangThai = 1;
@@ -55,7 +55,7 @@ namespace _3.PresentationLayers.Views
             }
             else
             {
-                TongTien = Convert.ToDecimal(lb_tongtien.Text);
+                TongTien = Convert.ToDecimal(tbx_tienmat.Text);
                 _iGiaoCaServicel.Add(NhanCa());
                 MessageBox.Show("Nhận ca thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
@@ -72,9 +72,102 @@ namespace _3.PresentationLayers.Views
         {
             if (tbx_tienmat.Text != string.Empty)
             {
-                lb_tongtien.Text = Convert.ToDecimal(tbx_tienmat.Text).ToString();
+                lb_tongtien.Text = NumberToText(Convert.ToInt32(tbx_tienmat.Text));
                 return;
             }
+        }
+        public static string NumberToText(double inputNumber, bool suffix = true)
+        {
+            string[] unitNumbers = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
+            string[] placeValues = new string[] { "", "Nghìn", "Triệu", "ỷ" };
+            bool isNegative = false;
+
+            // -12345678.3445435 => "-12345678"
+            string sNumber = inputNumber.ToString("#");
+            double number = Convert.ToDouble(sNumber);
+            if (number < 0)
+            {
+                number = -number;
+                sNumber = number.ToString();
+                isNegative = true;
+            }
+
+
+            int ones, tens, hundreds;
+
+            int positionDigit = sNumber.Length;   // last -> first
+
+            string result = " ";
+
+
+            if (positionDigit == 0)
+                result = unitNumbers[0] + result;
+            else
+            {
+                // 0:       ###
+                // 1: nghìn ###,###
+                // 2: triệu ###,###,###
+                // 3: tỷ    ###,###,###,###
+                int placeValue = 0;
+
+                while (positionDigit > 0)
+                {
+                    // Check last 3 digits remain ### (hundreds tens ones)
+                    tens = hundreds = -1;
+                    ones = Convert.ToInt32(sNumber.Substring(positionDigit - 1, 1));
+                    positionDigit--;
+                    if (positionDigit > 0)
+                    {
+                        tens = Convert.ToInt32(sNumber.Substring(positionDigit - 1, 1));
+                        positionDigit--;
+                        if (positionDigit > 0)
+                        {
+                            hundreds = Convert.ToInt32(sNumber.Substring(positionDigit - 1, 1));
+                            positionDigit--;
+                        }
+                    }
+
+                    if ((ones > 0) || (tens > 0) || (hundreds > 0) || (placeValue == 3))
+                        result = placeValues[placeValue] + result;
+
+                    placeValue++;
+                    if (placeValue > 3) placeValue = 1;
+
+                    if ((ones == 1) && (tens > 1))
+                        result = "một " + result;
+                    else
+                    {
+                        if ((ones == 5) && (tens > 0))
+                            result = "lăm " + result;
+                        else if (ones > 0)
+                            result = unitNumbers[ones] + " " + result;
+                    }
+                    if (tens < 0)
+                        break;
+                    else
+                    {
+                        if ((tens == 0) && (ones > 0)) result = "lẻ " + result;
+                        if (tens == 1) result = "mười " + result;
+                        if (tens > 1) result = unitNumbers[tens] + " mươi " + result;
+                    }
+                    if (hundreds < 0) break;
+                    else
+                    {
+                        if ((hundreds > 0) || (tens > 0) || (ones > 0))
+                            result = unitNumbers[hundreds] + " trăm " + result;
+                    }
+                    result = " " + result;
+                }
+            }
+            result = result.Trim();
+            if (isNegative) result = "Âm " + result;
+            return result + (suffix ? " đồng chẵn" : "");
+        }
+    
+
+    private void Form_NhanCaLam_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
