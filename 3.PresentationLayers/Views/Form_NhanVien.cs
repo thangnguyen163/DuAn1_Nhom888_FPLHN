@@ -76,7 +76,7 @@ namespace _3.PresentationLayers.Views
                     item.nhanVien.Anh,
                     item.nhanVien.DiaChi,
                     item.nhanVien.NamSinh,
-                    item.nhanVien.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+                    item.nhanVien.TrangThai == 0 ? "Hoạt động" : "Không hoạt động"
                     );
             }
         }
@@ -119,9 +119,9 @@ namespace _3.PresentationLayers.Views
                 cbb_ChucVu.Text = _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Id == _nv.IdchucVu).Ten;
                 cb_Nam.Checked = _nv.GioiTinh == 0;
                 cb_Nu.Checked = _nv.GioiTinh == 1;
-                rB_hd.Checked = _nv.TrangThai == 1;
-                rB_khd.Checked = _nv.TrangThai == 0;
-                pic_Anh.Image = Image.FromStream(new MemoryStream((byte[])r.Cells[9].Value));
+                rB_hd.Checked = _nv.TrangThai == 0;
+                rB_khd.Checked = _nv.TrangThai == 1;
+                //pic_Anh.Image = Image.FromStream(new MemoryStream((byte[])r.Cells[9].Value));
                //  _nhanVienService.getNhanViensFromDB().Where(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString())).Select(x => x.Anh).FirstOrDefault())
                 pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
             }

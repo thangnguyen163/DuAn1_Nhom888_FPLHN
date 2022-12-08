@@ -84,41 +84,57 @@
             // 
             // btn_reset
             // 
-            this.btn_reset.Location = new System.Drawing.Point(713, 374);
+            this.btn_reset.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
+            this.btn_reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_reset.Location = new System.Drawing.Point(437, 374);
             this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(161, 35);
+            this.btn_reset.Size = new System.Drawing.Size(103, 35);
             this.btn_reset.TabIndex = 3;
             this.btn_reset.Text = "Resert";
+            this.btn_reset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_reset.UseVisualStyleBackColor = true;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Location = new System.Drawing.Point(486, 374);
+            this.btn_xoa.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_xoa.Image")));
+            this.btn_xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_xoa.Location = new System.Drawing.Point(306, 374);
             this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(161, 35);
+            this.btn_xoa.Size = new System.Drawing.Size(86, 35);
             this.btn_xoa.TabIndex = 2;
             this.btn_xoa.Text = "Xóa";
+            this.btn_xoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_xoa.UseVisualStyleBackColor = true;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_sua
             // 
-            this.btn_sua.Location = new System.Drawing.Point(257, 374);
+            this.btn_sua.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_sua.Image")));
+            this.btn_sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_sua.Location = new System.Drawing.Point(167, 374);
             this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(161, 35);
+            this.btn_sua.Size = new System.Drawing.Size(83, 35);
             this.btn_sua.TabIndex = 1;
             this.btn_sua.Text = "Sửa";
+            this.btn_sua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_sua.UseVisualStyleBackColor = true;
             this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_them
             // 
+            this.btn_them.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_them.Image = ((System.Drawing.Image)(resources.GetObject("btn_them.Image")));
+            this.btn_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_them.Location = new System.Drawing.Point(29, 374);
             this.btn_them.Name = "btn_them";
-            this.btn_them.Size = new System.Drawing.Size(161, 35);
+            this.btn_them.Size = new System.Drawing.Size(85, 35);
             this.btn_them.TabIndex = 0;
             this.btn_them.Text = "Thêm";
+            this.btn_them.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_them.UseVisualStyleBackColor = true;
             this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
@@ -476,11 +492,15 @@
             // 
             // btn_Anh
             // 
-            this.btn_Anh.Location = new System.Drawing.Point(41, 211);
+            this.btn_Anh.Font = new System.Drawing.Font("Times New Roman", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btn_Anh.ForeColor = System.Drawing.Color.Red;
+            this.btn_Anh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Anh.Location = new System.Drawing.Point(41, 209);
             this.btn_Anh.Name = "btn_Anh";
-            this.btn_Anh.Size = new System.Drawing.Size(94, 29);
+            this.btn_Anh.Size = new System.Drawing.Size(86, 29);
             this.btn_Anh.TabIndex = 33;
             this.btn_Anh.Text = "Mở Ảnh";
+            this.btn_Anh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Anh.UseVisualStyleBackColor = true;
             this.btn_Anh.Click += new System.EventHandler(this.btn_Anh_Click);
             // 
