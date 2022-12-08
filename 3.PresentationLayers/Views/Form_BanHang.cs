@@ -298,7 +298,7 @@ namespace _3.PresentationLayers.Views
                             if (cts.SoLuong >= Convert.ToInt32(Content))
                             {
                                 hdct.Ma = "HDCT" + Convert.ToString(hoaDonChiTietService.GetAllloadformsp()
-                                  .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 2));
+                                  .Max(c => Convert.ToInt32(c.Ma.Substring(4, c.Ma.Length - 4)) + 1));
                                 hdct.SoLuong = Convert.ToInt32(Content);
                                 hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                 hdct.ThanhTien = Convert.ToInt32(hdct.SoLuong * cts.GiaBan);
@@ -1393,7 +1393,7 @@ namespace _3.PresentationLayers.Views
                 }
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
-                InHoaDon();
+                InHoaDonTaiQuay();
                 AlertSuccess("Thanh toán thành công");
                 
             }
@@ -1472,7 +1472,7 @@ namespace _3.PresentationLayers.Views
                 }
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
-                InHoaDon();
+                InHoaDonTaiQuay();
                 AlertSuccess("Thanh toán thành công");
             }
 
@@ -1744,6 +1744,7 @@ namespace _3.PresentationLayers.Views
                    
                     // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
+                    InHoaDonGiaoHang();
                     AlertSuccess("Cập nhật thành công");
                     LoadHoaDonChoThanhToan();
                     LoadHoaDonDatHang();
@@ -1878,6 +1879,7 @@ namespace _3.PresentationLayers.Views
                     }
                     // hd.TrangThai = a; // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
+                    InHoaDonGiaoHang();
                     AlertSuccess("Cập nhật thành công");
                     LoadHoaDonChoThanhToan();
                     LoadHoaDonDaThanhToan();
@@ -3698,13 +3700,21 @@ namespace _3.PresentationLayers.Views
             string TenHoaDon = "Hoá đơn bán hàng";
             string MaHD = tbt_MaHD.Text;
             string TenNhanVien = cbb_nhanvien.Text;
-            string KhachHang = cbb_nganhang.Text;
+            string KhachHang = string.Empty;
+            if (cbb_nganhang.Text == string.Empty)  KhachHang ="Khách lẻ";
+            else KhachHang=cbb_nganhang.Text;       
             string TongTien = tb_tongtien.Text;
             string LoiCamOn = "Xin cảm ơn Quý khách !! Hẹn gặp lại.";
             string TienKhachDua = tb_tienmat.Text;
             string TienTraLai = tb_tientralai.Text;
+            string TienChuyenKhoan = tb_chuyenkhoan.Text;
+            string GiamGia=tb_diemquydoi.Text;
             var width = pd_HoaDon.DefaultPageSettings.PaperSize.Width;
-
+            Pen blachPen = new Pen(Color.Black, 1);
+            var y = 240;// toạ độ theo chiều dọc
+            Point p3 = new Point(200, y+17);
+            Point p4 = new Point(width - 100, y+17);
+            e.Graphics.DrawLine(blachPen, p3, p4);
 
             e.Graphics.DrawString(TenCuaHang.ToUpper(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new PointF(width / 2 - 120, 40));
             e.Graphics.DrawString(String.Format("{0} - {1}", DiaChi, Sdt), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(215, 70));
@@ -3713,15 +3723,7 @@ namespace _3.PresentationLayers.Views
             e.Graphics.DrawString(String.Format("Ngày: {0} ", DateTime.Now.ToString("dd/MM/yyyy HH:mm")), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(500, 150));
             e.Graphics.DrawString(String.Format("Tên nhân viên: {0}", TenNhanVien), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, 175));
             e.Graphics.DrawString(String.Format("Khách hàng: {0}", KhachHang), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, 200));
-
-            //// sản phẩm
-            ///định dạng bút vẽ
-            //Pen blachPen = new Pen(Color.Black, 1);
-            //// cách lề trái và lề phải 10
-            //Point p1 = new Point(10, y);
-            //Point p2=new Point(width-10, y);
-            //e.Graphics.DrawLine(blachPen, p1, p2); // kẻ đường thẳng 
-            var y = 240;// toạ độ theo chiều dọc
+            
 
             e.Graphics.DrawString(String.Format("STT"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, y));
             e.Graphics.DrawString(String.Format("Tên sản phẩm"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(240, y));
@@ -3729,7 +3731,8 @@ namespace _3.PresentationLayers.Views
             e.Graphics.DrawString(String.Format("Đơn giá"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(550, y));
             e.Graphics.DrawString(String.Format("Thành tiền"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(650, y));
             int i = 1;
-            y += 20;
+
+            y += 22;
             foreach (var a in hoaDonChiTietService.GetAll().Where(a => a.MaHd == MaHD))
             {
                 e.Graphics.DrawString(String.Format("{0}", i++), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, y));
@@ -3740,23 +3743,41 @@ namespace _3.PresentationLayers.Views
                 y += 20;
             }
             y += 40;
-            Pen blachPen = new Pen(Color.Black, 1);
+            
             // cách lề trái và lề phải 10
             Point p1 = new Point(200, y);
             Point p2 = new Point(width - 100, y);
             e.Graphics.DrawLine(blachPen, p1, p2); // kẻ đường thẳng 
 
             //// Tổng tiền
-            e.Graphics.DrawString(String.Format("Tổng tiền:     {0} VND", TongTien), new Font("Courier New", 12, FontStyle.Bold), Brushes.Black, new PointF(450, y += 20));
-            // Tiền khách đưa  -- chưa xong
-            e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 11, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            e.Graphics.DrawString(String.Format("Tổng tiền:      {0} VND", TongTien), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 20));
+            // Tiền khách đưa  
+            //e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+
+
+            if (cbb_phuongthucthanhtoan.Text == "Tiền Mặt")
+            {
+                e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            else if (cbb_phuongthucthanhtoan.Text == "Chuyển khoản")
+            {
+                e.Graphics.DrawString(String.Format("Chuyển khoản:   {0} VND", TienChuyenKhoan), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            else if (cbb_phuongthucthanhtoan.Text == "Tiền Mặt và Chuyển khoản")
+            {
+                e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+                e.Graphics.DrawString(String.Format("Chuyển khoản:   {0} VND", TienChuyenKhoan), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            if(cb_dungdiem.Checked==true)
+                e.Graphics.DrawString(String.Format("Giảm giá:       {0} VND", GiamGia), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+
             // Tiền thối
-            e.Graphics.DrawString(String.Format("Tiền trả lại:    {0} VND", TienTraLai), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            e.Graphics.DrawString(String.Format("Tiền trả lại:   {0} VND", TienTraLai), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
             // Xin cảm ơn
             e.Graphics.DrawString(String.Format(LoiCamOn), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(250, y += 30));
 
         }
-        void InHoaDon()
+        void InHoaDonTaiQuay()
         {
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hoá đơn hay không", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -3765,6 +3786,111 @@ namespace _3.PresentationLayers.Views
                 pdd_ReviewHoaDon.ShowDialog();
             }
             if (dialogResult == DialogResult.No) return;
+        }
+        void InHoaDonGiaoHang()
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hoá đơn hay không", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                pdd_ReviewHoaDon.Document = pd_HoaDonGiaoHang;
+                pdd_ReviewHoaDon.ShowDialog();
+            }
+            if (dialogResult == DialogResult.No) return;
+        }
+
+        private void pd_HoaDonGiaoHang_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string TenCuaHang = "Nhà sách BeeBooks";
+            string DiaChi = "Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội";
+            string Sdt = "0367180646";
+            string TenHoaDon = "Hoá đơn bán hàng";
+            string MaHD = tbt_MaHD.Text;
+            string TenNhanVien = cbb_nhanvien.Text;
+            string KhachHang = string.Empty;
+            if (cbb_nganhang.Text == string.Empty) KhachHang = "Khách lẻ";
+            else KhachHang = cbb_nganhang.Text;
+            string TongTien = tb_tongtien.Text;
+            string LoiCamOn = "Xin cảm ơn Quý khách !! Hẹn gặp lại.";
+            string TienKhachDua = tb_tienmat.Text;
+            string TienTraLai = tb_tientralai.Text;
+            string TienChuyenKhoan = tb_chuyenkhoan.Text;
+            string GiamGia = tb_diemquydoi.Text;
+            string NguoiNhan = tb_nguoinhan.Text;
+            string SdtNN = tb_sodienthoai.Text;
+            string Diachi = tb_diachi.Text;
+            string TienCoc = tbx_TienCoc.Text;
+            string TienShip = tbx_TienShip.Text;
+            var width = pd_HoaDon.DefaultPageSettings.PaperSize.Width;
+            Pen blachPen = new Pen(Color.Black, 1);
+            var y = 290;// toạ độ theo chiều dọc
+            Point p3 = new Point(160, y + 17);
+            Point p4 = new Point(width - 160, y + 17);
+            e.Graphics.DrawLine(blachPen, p3, p4);
+
+            e.Graphics.DrawString(TenCuaHang.ToUpper(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new PointF(width / 2 - 120, 40));
+            e.Graphics.DrawString(String.Format("{0} - {1}", DiaChi, Sdt), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(215, 70));
+            e.Graphics.DrawString(String.Format(TenHoaDon.ToUpper()), new Font("Courier New", 15, FontStyle.Bold), Brushes.Black, new PointF(width / 2 - 110, 110));
+            e.Graphics.DrawString(String.Format("Mã hoá đơn: {0}", MaHD.ToUpper()), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, 150));
+            e.Graphics.DrawString(String.Format("Ngày: {0} ", DateTime.Now.ToString("dd/MM/yyyy HH:mm")), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, 150));
+            e.Graphics.DrawString(String.Format("Tên nhân viên: {0}", TenNhanVien), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, 175));
+            e.Graphics.DrawString(String.Format("Khách hàng: {0}", KhachHang), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, 200));
+            e.Graphics.DrawString(String.Format("Người nhận: {0}", NguoiNhan), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, 225));
+            e.Graphics.DrawString(String.Format("SĐT: {0}", SdtNN), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, 225));
+            e.Graphics.DrawString(String.Format("Địa chỉ: {0}", Diachi), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, 250));
+
+
+            e.Graphics.DrawString(String.Format("STT"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(160, y));
+            e.Graphics.DrawString(String.Format("Tên sản phẩm"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(210, y));
+            e.Graphics.DrawString(String.Format("Số lượng"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(430, y));
+            e.Graphics.DrawString(String.Format("Đơn giá"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(520, y));
+            e.Graphics.DrawString(String.Format("Thành tiền"), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(600, y));
+            int i = 1;
+
+            y += 22;
+            foreach (var a in hoaDonChiTietService.GetAll().Where(a => a.MaHd == MaHD))
+            {
+                e.Graphics.DrawString(String.Format("{0}", i++), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(200, y));
+                e.Graphics.DrawString(String.Format(a.Tensach), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(240, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Soluong)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Dongia)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(550, y));
+                e.Graphics.DrawString(String.Format(Convert.ToString(a.Thanhtien)), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(650, y));
+                y += 20;
+            }
+            y += 40;
+
+            // cách lề trái và lề phải 10
+            Point p1 = new Point(160, y);
+            Point p2 = new Point(width - 160, y);
+            e.Graphics.DrawLine(blachPen, p1, p2); // kẻ đường thẳng 
+
+            //// Tổng tiền
+            e.Graphics.DrawString(String.Format("Tổng tiền:      {0} VND", TongTien), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 20));
+            // Tiền khách đưa  
+            //e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+
+
+            if (cbb_phuongthucthanhtoan.Text == "Tiền Mặt")
+            {
+                e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            else if (cbb_phuongthucthanhtoan.Text == "Chuyển khoản")
+            {
+                e.Graphics.DrawString(String.Format("Chuyển khoản:   {0} VND", TienChuyenKhoan), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            else if (cbb_phuongthucthanhtoan.Text == "Tiền Mặt và Chuyển khoản")
+            {
+                e.Graphics.DrawString(String.Format("Tiền khách đưa: {0} VND", TienKhachDua), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+                e.Graphics.DrawString(String.Format("Chuyển khoản:   {0} VND", TienChuyenKhoan), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            }
+            if (cb_dungdiem.Checked == true)
+                e.Graphics.DrawString(String.Format("Giảm giá:       {0} VND", GiamGia), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+
+            // Tiền thối
+            e.Graphics.DrawString(String.Format("Tiền trả lại:   {0} VND", TienTraLai), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            e.Graphics.DrawString(String.Format("Tiền cọc:       {0} VND", TienCoc), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            e.Graphics.DrawString(String.Format("Phí ship:       {0} VND", TienShip), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(450, y += 30));
+            // Xin cảm ơn
+            e.Graphics.DrawString(String.Format(LoiCamOn), new Font("Courier New", 10, FontStyle.Bold), Brushes.Black, new PointF(250, y += 30));
         }
     }
 }
