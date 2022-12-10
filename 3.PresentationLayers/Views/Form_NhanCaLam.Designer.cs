@@ -35,6 +35,7 @@
             this.lb_manv = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lb_tongtien = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label2
@@ -57,7 +58,7 @@
             // 
             // btn_NhanCa
             // 
-            this.btn_NhanCa.Location = new System.Drawing.Point(504, 111);
+            this.btn_NhanCa.Location = new System.Drawing.Point(443, 111);
             this.btn_NhanCa.Name = "btn_NhanCa";
             this.btn_NhanCa.Size = new System.Drawing.Size(147, 44);
             this.btn_NhanCa.TabIndex = 3;
@@ -85,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 227);
+            this.label4.Location = new System.Drawing.Point(61, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 20);
             this.label4.TabIndex = 8;
@@ -94,16 +95,28 @@
             // lb_tongtien
             // 
             this.lb_tongtien.AutoSize = true;
-            this.lb_tongtien.Location = new System.Drawing.Point(200, 227);
+            this.lb_tongtien.Location = new System.Drawing.Point(200, 163);
             this.lb_tongtien.Name = "lb_tongtien";
             this.lb_tongtien.Size = new System.Drawing.Size(0, 20);
             this.lb_tongtien.TabIndex = 9;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(61, 201);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(91, 24);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "Xác nhận";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form_NhanCaLam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lb_tongtien);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lb_manv);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Label lb_manv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lb_tongtien;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -26,6 +26,9 @@ namespace _3.PresentationLayers.Views
             _iNhanVienServicel = new NhanVienService();
             _gc = new GiaoCa();
             lb_manv.Text = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == Form_DangNhap.Email).Select(c => c.Ma).FirstOrDefault();
+            checkBox1.Checked = false;
+            tbx_tienmat.Enabled = true;
+            tbx_tienmat.Text = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString()).TongTienTrongCa.ToString();
         }
 
         private GiaoCa NhanCa()
@@ -55,10 +58,15 @@ namespace _3.PresentationLayers.Views
             }
             else
             {
-                TongTien = Convert.ToDecimal(tbx_tienmat.Text);
-                _iGiaoCaServicel.Add(NhanCa());
-                MessageBox.Show("Nhận ca thành công", "Thông báo", MessageBoxButtons.OK);
-                this.Close();
+                if (checkBox1.Checked == false) MessageBox.Show("Vui lòng chọn xác nhận để tiếp tục");
+                else
+                {
+                    TongTien = Convert.ToDecimal(tbx_tienmat.Text);
+                    _iGiaoCaServicel.Add(NhanCa());
+                    MessageBox.Show("Nhận ca thành công", "Thông báo", MessageBoxButtons.OK);
+                    this.Close();
+                }
+
             }
         }
 
@@ -163,11 +171,20 @@ namespace _3.PresentationLayers.Views
             if (isNegative) result = "Âm " + result;
             return result + (suffix ? " đồng chẵn" : "");
         }
-    
 
-    private void Form_NhanCaLam_Load(object sender, EventArgs e)
+
+        private void Form_NhanCaLam_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == false)
+            {
+                tbx_tienmat.Enabled = true;
+            }
+            else tbx_tienmat.Enabled = false;
         }
     }
 }
