@@ -36,6 +36,7 @@ namespace _3.PresentationLayers.Views
         private IDiemTieuDungService _idiemTieuDungService = new DiemTieuDungService();
         private ICongThucTinhDiemService _icongThucTinhDiemService = new CongThucTinhDiemService();
         private IPhuongThucThanhToanService _iphuongThucThanhToanService = new PhuongThucThanhToanService();
+        private IGiaoCaService _igiaocaservice = new GiaoCaService();
         private Button currentButton;
         private Random random;
         private int tempIndex;
@@ -1394,8 +1395,14 @@ namespace _3.PresentationLayers.Views
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
+                GiaoCa gc = new GiaoCa();
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_igiaocaservice.GetAll().Count).ToString());
+                gc.Id = cahientai.Id;
+                gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
+                gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
+                gc.TongTienTrongCa = cahientai.TongTienTrongCa + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
+                _igiaocaservice.Update(gc);
                 AlertSuccess("Thanh toán thành công");
-                
             }
             else
             {
@@ -1473,6 +1480,13 @@ namespace _3.PresentationLayers.Views
                 hd.TrangThai = 1; // hóa đơn đã thanh toán
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
+                GiaoCa gc = new GiaoCa();
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_igiaocaservice.GetAll().Count).ToString());
+                gc.Id = cahientai.Id;
+                gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text==string.Empty?0: tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
+                gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text==string.Empty ? 0 : tb_chuyenkhoan.Text);
+                gc.TongTienTrongCa = cahientai.TongTienTrongCa + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
+                _igiaocaservice.Update(gc);
                 AlertSuccess("Thanh toán thành công");
             }
 
