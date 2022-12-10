@@ -11,9 +11,10 @@ namespace _2.BUS.IServices
     public interface INhanVienService
     {
         public string addNhanVien(NhanVien nhanVien);
-        public string updateNhanVien(Guid Id, NhanVien nhanVien);
-        public string deleteNhanVien(Guid Id);
+        public string updateNhanVien(Guid? Id, NhanVien nhanVien);
+        public string deleteNhanVien(Guid? Id);
         List<NhanVien> getNhanViensFromDB();
         List<NhanVienView> getViewNhanViens();
+        public string QuenMatKhau(NhanVien nhanVien);
     }
 }

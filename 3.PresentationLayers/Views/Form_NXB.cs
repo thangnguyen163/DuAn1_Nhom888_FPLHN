@@ -15,13 +15,13 @@ using System.Windows.Forms;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class FrmNXB : Form
+    public partial class Form_NXB : Form
     {
         INXBService _iNSXService;
         Nxb _nxb;
         public string TrangThai { get; set; }
         public Guid SelectID { get; set; }
-        public FrmNXB()
+        public Form_NXB()
         {
             InitializeComponent();
             _iNSXService = new NXBService();
@@ -43,10 +43,11 @@ namespace _3.PresentationLayers.Views
             {
                 dtg_Show.Rows.Add(stt++, x.Id, x.Ma, x.Ten, x.TrangThai == 0 ? "Không hoạt động" : "Hoạt động");
             }
+            dtg_Show.AllowUserToAddRows= false;
         }
         private void Load()
         {
-            LoadDataToDtg(_iNSXService.GetAll());
+            LoadDataToDtg(_iNSXService.GetAll().OrderBy(c=>c.Ma).ToList());
             // Thêm trạng thái vào cbb
             List<int> lsttt = new List<int>();
             foreach (var x in _iNSXService.GetAll())
@@ -63,10 +64,10 @@ namespace _3.PresentationLayers.Views
         }
         private void ResetForm()
         {
-            LoadDataToDtg(_iNSXService.GetAll());
+            LoadDataToDtg(_iNSXService.GetAll().OrderBy(c => c.Ma).ToList());
             _nxb = null;
-            tb_ma.Text = "";
-            tb_ten.Text = "";
+            tb_ma.Text = string.Empty;
+            tb_ten.Text = string.Empty;
             cbb_trangthai.Text = "--Chọn--";
         }
         private Nxb GetDataFromGui_Them()
@@ -86,12 +87,13 @@ namespace _3.PresentationLayers.Views
                 _nxb.Id = SelectID;
                 _nxb.Ma = tb_ma.Text;
                 _nxb.Ten = tb_ten.Text;
-                _nxb.TrangThai = Convert.ToInt32(cbb_trangthai.Text);
+                _nxb.TrangThai = cbb_trangthai.Text == "Không hoạt động" ? 0 : 1;
             };
             return _nxb;
         }
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             SelectID = Guid.Parse(dtg_Show.CurrentRow.Cells[1].Value.ToString());
             tb_ma.Text = dtg_Show.CurrentRow.Cells[2].Value.ToString();
             tb_ten.Text = dtg_Show.CurrentRow.Cells[3].Value.ToString();
@@ -100,20 +102,47 @@ namespace _3.PresentationLayers.Views
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iNSXService.Add(GetDataFromGui_Them()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thêm đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (tb_ma.Text == String.Empty || tb_ten.Text == String.Empty || cbb_trangthai.Text == "--Chọn--")
+                {
+                    MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+
+                MessageBox.Show(_iNSXService.Add(GetDataFromGui_Them()));
+                ResetForm();
+            }
+            else return;
         }
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iNSXService.Update(GetDataFromGui_Sua_Xoa()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (tb_ma.Text == string.Empty || tb_ten.Text == string.Empty || cbb_trangthai.Text == "--Chọn--")
+                {
+                    MessageBox.Show("Bạn chưa nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                MessageBox.Show(_iNSXService.Update(GetDataFromGui_Sua_Xoa()));
+                ResetForm();
+            }
+            else return;
+            
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_iNSXService.Delete(GetDataFromGui_Sua_Xoa()));
-            ResetForm();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật đối tượng không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show(_iNSXService.Delete(GetDataFromGui_Sua_Xoa()));
+                ResetForm();
+            }
+            else return;
         }
 
         private void btn_Reset_Click(object sender, EventArgs e)

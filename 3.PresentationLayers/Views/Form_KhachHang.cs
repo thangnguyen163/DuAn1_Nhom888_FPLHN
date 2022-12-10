@@ -38,7 +38,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[5].Name = "Mã điểm tiêu dùng";
             dtg_Show.Columns[6].Name = "Trạng thái";
             dtg_Show.Rows.Clear();
-            foreach (var x in _ikhachHangService.getKhachHangFromDB())
+            foreach (var x in _ikhachHangService.getKhachHangFromDB().OrderBy(x => x.Ma))
             {
                 dtg_Show.Rows.Add(i++, x.ID, x.Ma, x.Ten, x.Sodt, x.Madiemtieudung, x.Trangthai == 1 ? "Còn hoạt động" : "Đã tạm dừng");
             }

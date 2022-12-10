@@ -40,16 +40,12 @@ namespace _1.DAL.Repositories
         public bool Update(HoaDonChiTiet obj)
         {
             if (obj == null) return false;
-            var tempobj = dBContext.HoaDonChiTiets.FirstOrDefault(x => x.Id == obj.Id);
-            tempobj.IdHoaDon = obj.IdHoaDon;
-            tempobj.IdChiTietSach = obj.IdChiTietSach;
-            tempobj.Ma = obj.Ma;
-            tempobj.GiamGia = obj.GiamGia;
+            var tempobj = dBContext.HoaDonChiTiets.FirstOrDefault(x => x.IdChiTietSach == obj.IdChiTietSach && x.IdHoaDon == obj.IdHoaDon);  
+           
+            tempobj = obj;
             tempobj.SoLuong = obj.SoLuong;
-            tempobj.DonGia = obj.DonGia;
             tempobj.ThanhTien = obj.ThanhTien;
-            tempobj.TrangThai = obj.TrangThai;              
-            dBContext.HoaDonChiTiets.Remove(tempobj);
+            dBContext.HoaDonChiTiets.Update(tempobj);
             dBContext.SaveChanges();
             return true;
         }

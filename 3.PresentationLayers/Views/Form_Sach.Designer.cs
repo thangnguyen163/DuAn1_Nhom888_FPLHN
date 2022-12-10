@@ -1,6 +1,6 @@
 ﻿namespace _3.PresentationLayers.Views
 {
-    partial class FrmSach
+    partial class Form_Sach
     {
         /// <summary>
         /// Required designer variable.

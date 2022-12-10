@@ -43,10 +43,7 @@ namespace _1.DAL.Repositories
         {
             if (obj == null) return false;
             var tempobj = _DbContext.DiemTieuDungs.FirstOrDefault(x => x.Id == obj.Id);
-            tempobj.Ma = obj.Ma;
-            tempobj.SoDiem = obj.SoDiem;
-            
-            tempobj.TrangThai = obj.TrangThai;
+            tempobj = obj;
             _DbContext.DiemTieuDungs.Update(tempobj);
             _DbContext.SaveChanges();
             return true;

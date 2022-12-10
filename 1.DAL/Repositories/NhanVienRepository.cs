@@ -19,16 +19,26 @@ namespace _1.DAL.Repositories
         public bool addNhanVien(NhanVien nhanVien)
         {
             if (nhanVien == null) return false;
-            _DBContext.NhanViens.Add(nhanVien);
+            _DBContext.Add(nhanVien);
             _DBContext.SaveChanges();
             return true;
         }
 
-        public bool deleteNhanVien(Guid Id)
+        public bool deleteNhanVien(Guid? Id)
         {
             if (Id == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
             //a.TrangThai = 1;
+            _DBContext.SaveChanges();
+            return true;
+        }
+
+        public bool QuenMatKhau(NhanVien nhanVien)
+        {
+            if (nhanVien == null) return false;
+            var x = _DBContext.NhanViens.FirstOrDefault(p => p.Id == nhanVien.Id);
+            x.MatKhau = nhanVien.MatKhau;
+            _DBContext.NhanViens.Update(x);
             _DBContext.SaveChanges();
             return true;
         }
@@ -38,14 +48,24 @@ namespace _1.DAL.Repositories
             return _DBContext.NhanViens.ToList();
         }
 
-        public bool updateNhanVien(Guid Id, NhanVien nhanVien)
+        public bool updateNhanVien(Guid? Id, NhanVien nhanVien)
         {
-            if (Id == null) return false;
+            if (nhanVien == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
-            a.Ma = nhanVien.Ma;
-            a.Ten = nhanVien.Ten;
+            a.Ma=nhanVien.Ma;
+            a.Ten=nhanVien.Ten;
+            a.GioiTinh=nhanVien.GioiTinh;
+            a.NamSinh = nhanVien.NamSinh;
+            a.Email = nhanVien.Email;
+            a.DiaChi=nhanVien.DiaChi;
+            a.Sdt=nhanVien.Sdt;
+            a.Cccd = nhanVien.Cccd;
+            a.MatKhau=nhanVien.MatKhau;
+            a.Anh=nhanVien.Anh;
+            a.IdchucVu=nhanVien.IdchucVu;
             a.TrangThai = nhanVien.TrangThai;
-            _DBContext.NhanViens.Update(a);
+           
+            _DBContext.Update(a);
             _DBContext.SaveChanges();
             return true;
         }
