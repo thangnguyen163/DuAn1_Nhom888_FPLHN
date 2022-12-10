@@ -57,6 +57,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ipb_AddSach.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAH1JREFUSEvt
+        lLsKgDAUQ/t56iD+/6DgY9Cf0ARakFJdWlOHe+AshZtAhzjj7wzwgDvs+aBig6d35YOKUBqUYcUyrFhG
+        8eIOTjAOzpWZLXxkhqnDEr4uXLVifscIU4c5MrOB2cTBMqxYhhXLqFZ833OOgwwu3OItskjGRzh3AViz
+        p+GQJctrAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="IDHDct.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -84,7 +93,6 @@
   <metadata name="Xoa.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btn_taohoadon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAABb5JREFUeF7t
@@ -137,14 +145,6 @@
         eIXEHzuXSyy2mNjW6YUDyG0xsXHGVqYkccILpPVuS/EnXvvl9JC7jbZmKXoozb9BZs+Yfdje26yH0ErY
         h2UrU1vA0iYK4JN3zQt8RWfQNaT1bktZly8Pubxpa5aiB575yf9qMNgcs9kvLPYBYukv7WcAAAAASUVO
         RK5CYII=
-</value>
-  </data>
-  <data name="ipb_AddSach.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAH1JREFUSEvt
-        lLsKgDAUQ/t56iD+/6DgY9Cf0ARakFJdWlOHe+AshZtAhzjj7wzwgDvs+aBig6d35YOKUBqUYcUyrFhG
-        8eIOTjAOzpWZLXxkhqnDEr4uXLVifscIU4c5MrOB2cTBMqxYhhXLqFZ833OOgwwu3OItskjGRzh3AViz
-        p+GQJctrAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="bt_capnhat.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
