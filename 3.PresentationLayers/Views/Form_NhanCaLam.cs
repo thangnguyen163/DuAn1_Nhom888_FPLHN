@@ -28,7 +28,7 @@ namespace _3.PresentationLayers.Views
             lb_manv.Text = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == Form_DangNhap.Email).Select(c => c.Ma).FirstOrDefault();
             checkBox1.Checked = false;
             tbx_tienmat.Enabled = true;
-            tbx_tienmat.Text = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString()).TongTienTrongCa.ToString();
+            tbx_tienmat.Text = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).TongTienTrongCa.ToString();
         }
 
         private GiaoCa NhanCa()
@@ -37,7 +37,7 @@ namespace _3.PresentationLayers.Views
             {
                 var idnv = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == Form_DangNhap.Email).Select(c => c.Id).FirstOrDefault();
                 _gc.Id = Guid.NewGuid();
-                _gc.Ma = "GC" + (_iGiaoCaServicel.GetAll().Count + 1).ToString();
+                _gc.Ma = "GC"+ _iGiaoCaServicel.GetAll().Max(c=> Convert.ToInt32(c.Ma.Substring(2)) + 1).ToString();
                 _gc.ThoiGianNhanCa = DateTime.Now;
                 _gc.IdNhanVien = idnv;
                 _gc.TongTienMat = Convert.ToDecimal(tbx_tienmat.Text == string.Empty ? 0 : tbx_tienmat.Text);
