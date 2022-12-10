@@ -65,7 +65,6 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
             ChiTietSach = new ChiTietSach();
-            //tbt_MaVach.Text = tbt_maVach;
             if (ChucVu == "Nhân viên")
             {
                 btn_Add.Visible=false;
