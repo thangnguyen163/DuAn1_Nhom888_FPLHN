@@ -1396,7 +1396,7 @@ namespace _3.PresentationLayers.Views
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
                 GiaoCa gc = new GiaoCa();
-                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_igiaocaservice.GetAll().Count).ToString());
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 gc.Id = cahientai.Id;
                 gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                 gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
@@ -1481,7 +1481,7 @@ namespace _3.PresentationLayers.Views
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
                 GiaoCa gc = new GiaoCa();
-                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_igiaocaservice.GetAll().Count).ToString());
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 gc.Id = cahientai.Id;
                 gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text==string.Empty?0: tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                 gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text==string.Empty ? 0 : tb_chuyenkhoan.Text);
