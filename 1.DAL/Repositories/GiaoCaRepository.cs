@@ -49,8 +49,9 @@ namespace _1.DAL.Repositories
         {
             if (obj == null) return false;
             var temp = _DbContext.GiaoCas.FirstOrDefault(c => c.Id == obj.Id);
-            temp.TongTienMatRut += obj.TongTienMatRut;
-            temp.TongTienTrongCa -= obj.TongTienMatRut;
+            temp.TongTienMatRut = obj.TongTienMatRut;
+            temp.TongTienMat = obj.TongTienMat;
+            temp.TongTienTrongCa = obj.TongTienTrongCa;
             _DbContext.GiaoCas.Update(temp);
             _DbContext.SaveChanges();
             return true;
@@ -63,7 +64,6 @@ namespace _1.DAL.Repositories
             temp.TienPhatSinh = obj.TienPhatSinh;
             temp.GhiChuPhatSinh = obj.GhiChuPhatSinh;
             temp.TongTienMat = obj.TongTienMat;
-            temp.TongTienKhac = obj.TongTienKhac;
             temp.TongTienTrongCa = obj.TongTienTrongCa;
             _DbContext.GiaoCas.Update(temp);
             _DbContext.SaveChanges();
