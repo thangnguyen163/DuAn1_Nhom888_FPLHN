@@ -30,7 +30,7 @@ namespace _3.PresentationLayers.Views
             _iGiaoCaServicel = new GiaoCaService();
             _iNhanVienServicel = new NhanVienService();
             _gc = new GiaoCa();
-            var caht = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+            var caht = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
             lb_tongtien.Text = caht.TongTienTrongCa.ToString();
             lb_tienmat.Text = caht.TongTienMat.ToString();
             lb_tienkhac.Text = caht.TongTienKhac.ToString();
@@ -40,7 +40,7 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var ID = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString()).Id;
+                var ID = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).Id;
                 var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                 _gc.Id = ID;
                 _gc.ThoiGianGiaoCa = DateTime.Now;
@@ -57,10 +57,10 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var cacu = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+                var cacu = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
                 var idnv = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == tb_email.Text).Select(c => c.Id).FirstOrDefault();
                 _gc.Id = Guid.NewGuid();
-                _gc.Ma = "GC" + (_iGiaoCaServicel.GetAll().Count + 1).ToString();
+                _gc.Ma = "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2+1))).ToString();
                 _gc.ThoiGianNhanCa = DateTime.Now;
                 _gc.IdNhanVien = idnv;
                 _gc.TongTienMat = Convert.ToDecimal(cacu.TongTienMat);
@@ -77,7 +77,7 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var gcht = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString());
+                var gcht = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                 _gc.Id = gcht.Id;
                 _gc.TienPhatSinh = gcht.TienPhatSinh + Convert.ToDecimal(tb_phatsinhtienmat.Text);
@@ -161,7 +161,7 @@ namespace _3.PresentationLayers.Views
             }
 
             MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
-            var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count()).ToString()).FirstOrDefault();
+            var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
             lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
             lb_tienmat.Text = capnhat.TongTienMat.ToString();
             lb_tienkhac.Text = capnhat.TongTienKhac.ToString();

@@ -33,7 +33,7 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var GC = _iGiaoCaService.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaService.GetAll().Count).ToString());
+                var GC = _iGiaoCaService.GetAll().FirstOrDefault(c => c.Ma == "GC" + _iGiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 //var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                 _gc.Id = GC.Id;
                 _gc.TongTienMatRut = GC.TongTienMatRut + Convert.ToDecimal(tbx_TienRut.Text);
