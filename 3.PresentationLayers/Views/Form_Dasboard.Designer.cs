@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dasboard));
             this.PanelTitel = new System.Windows.Forms.Panel();
-            this.btn_LamMoi = new System.Windows.Forms.Button();
             this.lb_TongTien = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lb_date = new System.Windows.Forms.Label();
@@ -71,7 +70,6 @@
             // PanelTitel
             // 
             this.PanelTitel.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.PanelTitel.Controls.Add(this.btn_LamMoi);
             this.PanelTitel.Controls.Add(this.lb_TongTien);
             this.PanelTitel.Controls.Add(this.label2);
             this.PanelTitel.Controls.Add(this.lb_date);
@@ -82,18 +80,6 @@
             this.PanelTitel.Name = "PanelTitel";
             this.PanelTitel.Size = new System.Drawing.Size(1158, 100);
             this.PanelTitel.TabIndex = 1;
-            // 
-            // btn_LamMoi
-            // 
-            this.btn_LamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
-            this.btn_LamMoi.Location = new System.Drawing.Point(18, 55);
-            this.btn_LamMoi.Name = "btn_LamMoi";
-            this.btn_LamMoi.Size = new System.Drawing.Size(137, 39);
-            this.btn_LamMoi.TabIndex = 6;
-            this.btn_LamMoi.Text = "Làm mới";
-            this.btn_LamMoi.UseVisualStyleBackColor = true;
-            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
             // 
             // lb_TongTien
             // 
@@ -500,7 +486,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_RutTien;
         private System.Windows.Forms.Button btn_KetCa;
-        private System.Windows.Forms.Button btn_LamMoi;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel6;

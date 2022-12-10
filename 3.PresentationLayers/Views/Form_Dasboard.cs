@@ -335,18 +335,5 @@ namespace _3.PresentationLayers.Views
             OpenChildForm(new Form_GiaoCa(), sender);
             labelTite.Text = "Kết Ca";
         }
-
-        public int tienbitru { get; set; }
-        private void btn_LamMoi_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
-        public void closeForm()
-        {
-            this.Dispose();
-        }
-
     }
 }

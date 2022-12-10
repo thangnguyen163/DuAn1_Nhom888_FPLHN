@@ -33,11 +33,12 @@ namespace _3.PresentationLayers.Views
         {
             _gc = new GiaoCa();
             {
-                var ID = _iGiaoCaService.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaService.GetAll().Count).ToString()).Id;
+                var GC = _iGiaoCaService.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaService.GetAll().Count).ToString());
                 //var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
-                _gc.Id = ID;
-                _gc.TongTienMatRut = Convert.ToDecimal(tbx_TienRut.Text);
-                _gc.TongTienTrongCa = _gc.TongTienTrongCa - _gc.TongTienMatRut;
+                _gc.Id = GC.Id;
+                _gc.TongTienMatRut = GC.TongTienMatRut + Convert.ToDecimal(tbx_TienRut.Text);
+                _gc.TongTienMat = GC.TongTienMat - Convert.ToDecimal(tbx_TienRut.Text);
+                _gc.TongTienTrongCa = GC.TongTienTrongCa - Convert.ToDecimal(tbx_TienRut.Text);
             };
             return _gc;
         }
@@ -59,12 +60,14 @@ namespace _3.PresentationLayers.Views
                         if (dialogResult == DialogResult.Yes)
                         {
                             MessageBox.Show(_iGiaoCaService.UpdateRutTien(RutTien1()));
+                            tbx_TienRut.Text = string.Empty;
+                            tbx_pass.Text = string.Empty;
+                            tbx_user.Text = string.Empty;
                             return;
                         }
                         else if (dialogResult == DialogResult.No) return;
                     }
                 }
-
             }
         }
     }

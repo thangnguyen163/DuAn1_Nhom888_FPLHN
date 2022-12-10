@@ -80,11 +80,10 @@ namespace _3.PresentationLayers.Views
                 var gcht = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == "GC" + (_iGiaoCaServicel.GetAll().Count).ToString());
                 var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                 _gc.Id = gcht.Id;
-                _gc.TienPhatSinh = gcht.TienPhatSinh + Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
+                _gc.TienPhatSinh = gcht.TienPhatSinh + Convert.ToDecimal(tb_phatsinhtienmat.Text);
                 _gc.GhiChuPhatSinh = tbx_ghichu.Text + "|" + gcht.GhiChuPhatSinh;
-                _gc.TongTienMat = gcht.TongTienMat - Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
-                _gc.TongTienKhac = gcht.TongTienKhac;
-                _gc.TongTienTrongCa = gcht.TongTienTrongCa - Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text);
+                _gc.TongTienMat = gcht.TongTienMat - Convert.ToDecimal(tb_phatsinhtienmat.Text);
+                _gc.TongTienTrongCa = gcht.TongTienTrongCa - Convert.ToDecimal(tb_phatsinhtienmat.Text);
             };
             return _gc;
         }

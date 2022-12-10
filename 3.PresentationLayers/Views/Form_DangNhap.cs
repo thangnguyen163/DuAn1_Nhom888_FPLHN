@@ -16,11 +16,13 @@ namespace _3.PresentationLayers.Views
     public partial class Form_DangNhap : Form
     {
         INhanVienService _iNhanVienSercvice;
+        IGiaoCaService _igiaoCaService;
         public static string Email;
         public Form_DangNhap()
         {
             InitializeComponent();
             _iNhanVienSercvice = new NhanVienService();
+            _igiaoCaService = new GiaoCaService();
             tb_tendangnhap.Text = Properties.Settings.Default.Username;
             tb_matkhau.Text = Properties.Settings.Default.Password;
             if(Properties.Settings.Default.Username==string.Empty)

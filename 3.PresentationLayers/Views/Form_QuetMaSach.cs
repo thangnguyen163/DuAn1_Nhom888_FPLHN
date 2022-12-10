@@ -37,29 +37,29 @@ namespace _3.PresentationLayers.Views
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             videoCaptureDevice.Start();
         }
-        public void GetBookByMa()
-        {
-            if (_ichiTietSachService.GetAllChiTietSachView().Where(p => p.MaVach == tb_mavach.Text).ToList().Count == 0)
-            {
-                Lammoi();
-                DialogResult dialogResult = MessageBox.Show("Chưa có sản phẩm này, bạn có muốn thêm sản phẩm mới không ", "Thông báo", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Lammoi();
-                    Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
-                    form.ShowDialog();
-                    tb_tensach.Text = String.Empty;
-                    tb_mavach.Text = String.Empty;
-                    return;
-                }
-                else/* (dialogResult == DialogResult.No) */
-                {
-                    tb_mavach.Text = string.Empty;
-                    tb_tensach.Text = string.Empty;
-                    return;
-                }
-            }
-        }
+        //public void GetBookByMa()
+        //{
+        //    if (_ichiTietSachService.GetAllChiTietSachView().Where(p => p.MaVach == tb_mavach.Text).ToList().Count == 0)
+        //    {
+        //        Lammoi();
+        //        DialogResult dialogResult = MessageBox.Show("Chưa có sản phẩm này, bạn có muốn thêm sản phẩm mới không ", "Thông báo", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            Lammoi();
+        //            Form_ChiTietSach form = new Form_ChiTietSach(tb_mavach.Text);
+        //            form.ShowDialog();
+        //            tb_tensach.Text = String.Empty;
+        //            tb_mavach.Text = String.Empty;
+        //            return;
+        //        }
+        //        else/* (dialogResult == DialogResult.No) */
+        //        {
+        //            tb_mavach.Text = string.Empty;
+        //            tb_tensach.Text = string.Empty;
+        //            return;
+        //        }
+        //    }
+        //}
         private void Lammoi()
         {
             try
@@ -140,7 +140,9 @@ namespace _3.PresentationLayers.Views
             }
             if (tb_tensach.Text == String.Empty && tb_mavach.Text != String.Empty)
             {
-                GetBookByMa();
+                MessageBox.Show("Sách chưa có trong hệ thống, xin mời bạn thêm thủ công","Thông báo",MessageBoxButtons.OK);
+                tb_mavach.Text = string.Empty;
+                tb_tensach.Text = string.Empty;
                 return;
             }
             if (tb_tensach.Text == String.Empty && tb_mavach.Text == String.Empty)
