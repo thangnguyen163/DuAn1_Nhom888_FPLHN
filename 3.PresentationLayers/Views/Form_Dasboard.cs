@@ -361,7 +361,7 @@ namespace _3.PresentationLayers.Views
                 {
                     gc.Id = cahientai.Id;
                     gc.ThoiGianReset = DateTime.Now;
-                    _iGiaoCaServicel.Update(gc);
+                    _iGiaoCaServicel.UpdateKetCa(gc);
                     Form_DangNhap frm = new Form_DangNhap();
                     this.Close();
                     frm.Show();
@@ -376,7 +376,7 @@ namespace _3.PresentationLayers.Views
                 if (dialogResult == DialogResult.Cancel) return;
                 //Application.Exit();
         }
-
+		//a
         private void btn_doimatkhau_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_DoiMatKhau(), sender);
