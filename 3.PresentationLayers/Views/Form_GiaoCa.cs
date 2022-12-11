@@ -34,6 +34,7 @@ namespace _3.PresentationLayers.Views
             lb_tongtien.Text = caht.TongTienTrongCa.ToString();
             lb_tienmat.Text = caht.TongTienMat.ToString();
             lb_tienkhac.Text = caht.TongTienKhac.ToString();
+
         }
 
         private GiaoCa KetCa()
@@ -159,6 +160,11 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Bạn phải nhập ghi chú cho tiền phát sinh này", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
+            if (ck_confirm.Checked==false)
+            {
+                MessageBox.Show("Bạn chưa xác nhận thông tin trên", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
 
             MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
             var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
@@ -174,6 +180,26 @@ namespace _3.PresentationLayers.Views
 
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ck_confirm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ck_confirm.Checked == true)
+            {
+                tbx_ghichu.Enabled = false;
+                tb_phatsinhtienmat.Enabled = false;
+            }
+            else
+            {
+                tbx_ghichu.Enabled = true;
+                tb_phatsinhtienmat.Enabled = true;
+            }
+
         }
     }
 }
