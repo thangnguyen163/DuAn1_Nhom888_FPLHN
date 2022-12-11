@@ -62,13 +62,13 @@ namespace _3.PresentationLayers.Views
 			NhanVien nv = new NhanVien();
 			nv = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Email == a);
 			MemoryStream memstr = new MemoryStream(nv.Anh);
-			Image img2 = Image.FromStream(memstr);
+			//Image img2 = Image.FromStream(memstr);
 			//img2 = resizeImage(img2, new Size(80, 110));
 			System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
 			gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
 			Region rg = new Region(gp);
 			pictureBox1.Region = rg;
-			pictureBox1.Image = img2;
+			//pictureBox1.Image = img2;
 			lb_chucvu.Text = _ichucVuService.getChucVusFromDB().Where(x=>x.Id==nv.IdchucVu).Select(x=>x.Ten).FirstOrDefault();
 			LastTK = _iGiaoCaServicel.GetAll().Where(c=>c.Ma =="GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
 			CheckTk = _iNhanVienService.getNhanViensFromDB().Where(p => p.Email == a).FirstOrDefault().Id;
@@ -169,30 +169,7 @@ namespace _3.PresentationLayers.Views
 			labelTite.Text = "BÁN HÀNG";
 
 		}
-		private void btn_LogOut_Click(object sender, EventArgs e)
-		{
-			var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
-			GiaoCa gc = new GiaoCa();
-			DialogResult dialogResult = MessageBox.Show("Bạn có muốn kết thúc ca không?", "Thông báo", MessageBoxButtons.YesNoCancel);
-			if (dialogResult == DialogResult.Yes)
-			{
-				gc.Id = cahientai.Id;
-				gc.ThoiGianReset = DateTime.Now;
-				_iGiaoCaServicel.UpdateKetCa(gc);
-				Form_DangNhap frm = new Form_DangNhap();
-				this.Close();
-				frm.Show();
-			}
-			if (dialogResult == DialogResult.No)
-			{
-				Form_DangNhap frm = new Form_DangNhap();
-				this.Close();
-				frm.Show();
-				return;
-			}
-			if (dialogResult == DialogResult.Cancel) return;
-			//Application.Exit();
-		}
+		
 
 		private void btn_NhanVien_Click(object sender, EventArgs e)
 		{
@@ -217,7 +194,7 @@ namespace _3.PresentationLayers.Views
 
 		//private void logout_Click(object sender, EventArgs e)
 		//{
-		//    Application.Exit();
+		//	Application.Exit();
 		//}
 
 		private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -374,5 +351,37 @@ namespace _3.PresentationLayers.Views
 			OpenChildForm(new Form_GiaoCa(), sender);
 			labelTite.Text = "Kết Ca";
 		}
-	}
+
+        private void btn_LogOut_Click(object sender, EventArgs e)
+        {
+                var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+                GiaoCa gc = new GiaoCa();
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn kết thúc ca không?", "Thông báo", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    gc.Id = cahientai.Id;
+                    gc.ThoiGianReset = DateTime.Now;
+                    _iGiaoCaServicel.Update(gc);
+                    Form_DangNhap frm = new Form_DangNhap();
+                    this.Close();
+                    frm.Show();
+                }
+                if (dialogResult == DialogResult.No)
+                {
+                    Form_DangNhap frm = new Form_DangNhap();
+                    this.Close();
+                    frm.Show();
+                    return;
+                }
+                if (dialogResult == DialogResult.Cancel) return;
+                //Application.Exit();
+        }
+
+        private void btn_doimatkhau_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form_DoiMatKhau(), sender);
+            btn_doimatkhau.BackColor = Color.FromArgb(0, 2, 161);
+            labelTite.Text = "KHÁCH HÀNG";
+        }
+    }
 }
