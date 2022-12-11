@@ -13,6 +13,7 @@ namespace _1.DAL.IRepositories
         public bool Update(GiaoCa obj);
         public bool UpdateTienPhatSinh(GiaoCa obj);
         public bool UpdateRutTien(GiaoCa obj);
+        public bool UpdateKetCa(GiaoCa obj);
         public List<GiaoCa> GetAll();
     }
 }
