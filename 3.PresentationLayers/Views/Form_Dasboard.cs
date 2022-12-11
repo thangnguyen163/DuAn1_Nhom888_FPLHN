@@ -70,7 +70,7 @@ namespace _3.PresentationLayers.Views
 			pictureBox1.Region = rg;
 			pictureBox1.Image = img2;
 			lb_chucvu.Text = _ichucVuService.getChucVusFromDB().Where(x=>x.Id==nv.IdchucVu).Select(x=>x.Ten).FirstOrDefault();
-			LastTK = _iGiaoCaServicel.GetAll().Last().IdNhanVien;
+			LastTK = _iGiaoCaServicel.GetAll().Where(c=>c.Ma =="GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
 			CheckTk = _iNhanVienService.getNhanViensFromDB().Where(p => p.Email == a).FirstOrDefault().Id;
 			LastGC = _iGiaoCaServicel.GetAll().Last();
 		}
@@ -171,7 +171,27 @@ namespace _3.PresentationLayers.Views
 		}
 		private void btn_LogOut_Click(object sender, EventArgs e)
 		{
-			Application.Exit();
+			var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+			GiaoCa gc = new GiaoCa();
+			DialogResult dialogResult = MessageBox.Show("Bạn có muốn kết thúc ca không?", "Thông báo", MessageBoxButtons.YesNoCancel);
+			if (dialogResult == DialogResult.Yes)
+			{
+				gc.Id = cahientai.Id;
+				gc.ThoiGianReset = DateTime.Now;
+				_iGiaoCaServicel.UpdateKetCa(gc);
+				Form_DangNhap frm = new Form_DangNhap();
+				this.Close();
+				frm.Show();
+			}
+			if (dialogResult == DialogResult.No)
+			{
+				Form_DangNhap frm = new Form_DangNhap();
+				this.Close();
+				frm.Show();
+				return;
+			}
+			if (dialogResult == DialogResult.Cancel) return;
+			//Application.Exit();
 		}
 
 		private void btn_NhanVien_Click(object sender, EventArgs e)
@@ -244,10 +264,12 @@ namespace _3.PresentationLayers.Views
 
 		private void Form_Dasboard_Load(object sender, EventArgs e)
 		{
-			//Phân quyền
-			foreach (var a in _iNhanVienService.getViewNhanViens())
+			var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+			var idchucvu = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Quản trị".ToLower()).Select(c=>c.Id).FirstOrDefault();
+            //Phân quyền
+            foreach (var a in _iNhanVienService.getViewNhanViens())
 			{
-				if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK != CheckTk)
+				if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK != CheckTk || a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() != string.Empty)
 				{
 					btn_HoaDon.Visible = false;
 					btn_shopping.Visible = false;
@@ -256,9 +278,9 @@ namespace _3.PresentationLayers.Views
 					btn_sanpham.Visible = false;
 					btn_RutTien.Visible = false;
 					btn_KetCa.Visible = false;
-
+					return;
 				}
-				if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK == CheckTk)
+				if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
 				{
 					btn_HoaDon.Visible = true;
 					btn_shopping.Visible = true;
@@ -268,9 +290,9 @@ namespace _3.PresentationLayers.Views
 					btn_RutTien.Visible = true;
 					btn_KetCa.Visible = true;
 					btn_NhanCa.Visible = false;
+					return;
 				}
-
-				if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Quản trị")
+				if (a.nhanVien.Ten == lb_XinChao.Text && a.nhanVien.IdchucVu == idchucvu)
 				{
 					btn_HoaDon.Visible = true;
 					btn_sanpham.Visible = true;
@@ -280,10 +302,9 @@ namespace _3.PresentationLayers.Views
 					btn_LogOut.Visible = true;
 					btn_RutTien.Visible = true;
 					btn_KetCa.Visible = true;
-
+					return;
 				}
 			}
-
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)

@@ -69,5 +69,14 @@ namespace _1.DAL.Repositories
             _DbContext.SaveChanges();
             return true;
         }
+        public bool UpdateKetCa(GiaoCa obj)
+        {
+            if (obj == null) return false;
+            var temp = _DbContext.GiaoCas.FirstOrDefault(c => c.Id == obj.Id);
+            temp.ThoiGianReset = obj.ThoiGianReset;
+            _DbContext.GiaoCas.Update(temp);
+            _DbContext.SaveChanges();
+            return true;
+        }
     }
 }

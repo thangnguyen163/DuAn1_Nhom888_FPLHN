@@ -14,6 +14,7 @@ namespace _2.BUS.IServices
         public string Update(GiaoCa obj);
         public string UpdateTienPhatSinh(GiaoCa obj);
         public string UpdateRutTien(GiaoCa obj);
+        public string UpdateKetCa(GiaoCa obj);
         public List<GiaoCa> GetAll();
     }
 }

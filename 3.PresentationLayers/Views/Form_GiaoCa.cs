@@ -60,7 +60,7 @@ namespace _3.PresentationLayers.Views
                 var cacu = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
                 var idnv = _iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == tb_email.Text).Select(c => c.Id).FirstOrDefault();
                 _gc.Id = Guid.NewGuid();
-                _gc.Ma = "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2+1))).ToString();
+                _gc.Ma = "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))+1).ToString();
                 _gc.ThoiGianNhanCa = DateTime.Now;
                 _gc.IdNhanVien = idnv;
                 _gc.TongTienMat = Convert.ToDecimal(cacu.TongTienMat);

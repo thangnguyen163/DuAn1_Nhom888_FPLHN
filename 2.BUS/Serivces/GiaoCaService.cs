@@ -36,6 +36,13 @@ namespace _2.BUS.Serivces
             return "Kết thúc ca thất bại";
         }
 
+        public string UpdateKetCa(GiaoCa obj)
+        {
+            if (obj == null) return "Cập nhật thất bại";
+            if (_iGiaoCaRepository.UpdateKetCa(obj)) return "Cập nhật thành công";
+            return "Cập nhật thất bại";
+        }
+
         public string UpdateRutTien(GiaoCa obj)
         {
             if (obj == null) return "Cập nhật thất bại";
