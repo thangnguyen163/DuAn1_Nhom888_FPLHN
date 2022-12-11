@@ -69,5 +69,11 @@ namespace _1.DAL.Repositories
             _DBContext.SaveChanges();
             return true;
         }
+
+        public bool save(NhanVien nhanVien)
+        {
+            _DBContext.SaveChanges();
+            return true;
+        }
     }
 }

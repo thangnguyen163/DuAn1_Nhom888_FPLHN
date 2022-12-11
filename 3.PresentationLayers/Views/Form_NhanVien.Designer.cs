@@ -542,6 +542,7 @@
             this.tb_Timkiem.Name = "tb_Timkiem";
             this.tb_Timkiem.Size = new System.Drawing.Size(266, 20);
             this.tb_Timkiem.TabIndex = 4;
+            this.tb_Timkiem.TextChanged += new System.EventHandler(this.tb_Timkiem_TextChanged);
             this.tb_Timkiem.Leave += new System.EventHandler(this.tb_Timkiem_Leave);
             // 
             // label14
