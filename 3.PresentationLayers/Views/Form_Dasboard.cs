@@ -376,7 +376,7 @@ namespace _3.PresentationLayers.Views
                 if (dialogResult == DialogResult.Cancel) return;
                 //Application.Exit();
         }
-
+		//a
         private void btn_doimatkhau_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_DoiMatKhau(), sender);
