@@ -361,7 +361,7 @@ namespace _3.PresentationLayers.Views
                 {
                     gc.Id = cahientai.Id;
                     gc.ThoiGianReset = DateTime.Now;
-                    _iGiaoCaServicel.Update(gc);
+                    _iGiaoCaServicel.UpdateKetCa(gc);
                     Form_DangNhap frm = new Form_DangNhap();
                     this.Close();
                     frm.Show();
