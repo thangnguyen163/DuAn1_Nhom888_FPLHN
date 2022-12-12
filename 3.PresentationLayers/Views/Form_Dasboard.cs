@@ -357,20 +357,7 @@ namespace _3.PresentationLayers.Views
         {
             var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
             GiaoCa gc = new GiaoCa();
-            if (btn_NhanCa.Visible == true)
-            {
-                DialogResult dx = MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo);
-                if (dx == DialogResult.Yes)
-                {
-                    Form_DangNhap frm = new Form_DangNhap();
-                    this.Close();
-                    frm.Show();
-                    return;
-                }
-                else return;
-
-            }
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn kết thúc ca không?", "Xác nhận", MessageBoxButtons.YesNoCancel);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn kết thúc ca không?", "Thông báo", MessageBoxButtons.YesNoCancel);
             if (dialogResult == DialogResult.Yes)
             {
                 gc.Id = cahientai.Id;
