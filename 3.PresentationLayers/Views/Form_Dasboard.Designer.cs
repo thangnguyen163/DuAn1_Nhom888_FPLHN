@@ -49,6 +49,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btn_LogOut = new System.Windows.Forms.Button();
+            this.btn_doimatkhau = new System.Windows.Forms.Button();
             this.btn_NhanCa = new System.Windows.Forms.Button();
             this.btn_RutTien = new System.Windows.Forms.Button();
             this.btn_KetCa = new System.Windows.Forms.Button();
@@ -78,7 +79,7 @@
             this.PanelTitel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTitel.Location = new System.Drawing.Point(228, 0);
             this.PanelTitel.Name = "PanelTitel";
-            this.PanelTitel.Size = new System.Drawing.Size(1158, 100);
+            this.PanelTitel.Size = new System.Drawing.Size(1134, 100);
             this.PanelTitel.TabIndex = 1;
             // 
             // lb_TongTien
@@ -108,7 +109,7 @@
             this.lb_date.AutoSize = true;
             this.lb_date.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lb_date.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lb_date.Location = new System.Drawing.Point(984, 69);
+            this.lb_date.Location = new System.Drawing.Point(960, 69);
             this.lb_date.Name = "lb_date";
             this.lb_date.Size = new System.Drawing.Size(50, 20);
             this.lb_date.TabIndex = 3;
@@ -120,7 +121,7 @@
             this.lb_time.AutoSize = true;
             this.lb_time.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lb_time.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lb_time.Location = new System.Drawing.Point(984, 49);
+            this.lb_time.Location = new System.Drawing.Point(960, 49);
             this.lb_time.Name = "lb_time";
             this.lb_time.Size = new System.Drawing.Size(50, 20);
             this.lb_time.TabIndex = 2;
@@ -132,7 +133,7 @@
             this.labelTite.AutoSize = true;
             this.labelTite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTite.ForeColor = System.Drawing.Color.White;
-            this.labelTite.Location = new System.Drawing.Point(549, 44);
+            this.labelTite.Location = new System.Drawing.Point(537, 44);
             this.labelTite.Name = "labelTite";
             this.labelTite.Size = new System.Drawing.Size(76, 25);
             this.labelTite.TabIndex = 0;
@@ -167,7 +168,7 @@
             this.PanelDesktopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PanelDesktopPanel.Location = new System.Drawing.Point(228, 100);
             this.PanelDesktopPanel.Name = "PanelDesktopPanel";
-            this.PanelDesktopPanel.Size = new System.Drawing.Size(1158, 673);
+            this.PanelDesktopPanel.Size = new System.Drawing.Size(1134, 840);
             this.PanelDesktopPanel.TabIndex = 2;
             // 
             // panelLogo
@@ -255,6 +256,7 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btn_LogOut);
+            this.panelMenu.Controls.Add(this.btn_doimatkhau);
             this.panelMenu.Controls.Add(this.btn_NhanCa);
             this.panelMenu.Controls.Add(this.btn_RutTien);
             this.panelMenu.Controls.Add(this.btn_KetCa);
@@ -267,7 +269,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(228, 773);
+            this.panelMenu.Size = new System.Drawing.Size(228, 940);
             this.panelMenu.TabIndex = 0;
             // 
             // btn_LogOut
@@ -280,13 +282,31 @@
             this.btn_LogOut.ForeColor = System.Drawing.Color.White;
             this.btn_LogOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_LogOut.Image")));
             this.btn_LogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_LogOut.Location = new System.Drawing.Point(0, 794);
+            this.btn_LogOut.Location = new System.Drawing.Point(0, 864);
             this.btn_LogOut.Name = "btn_LogOut";
-            this.btn_LogOut.Size = new System.Drawing.Size(228, 70);
-            this.btn_LogOut.TabIndex = 11;
+            this.btn_LogOut.Size = new System.Drawing.Size(228, 73);
+            this.btn_LogOut.TabIndex = 14;
             this.btn_LogOut.Text = "Thoát";
             this.btn_LogOut.UseVisualStyleBackColor = true;
             this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
+            // 
+            // btn_doimatkhau
+            // 
+            this.btn_doimatkhau.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_doimatkhau.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_doimatkhau.FlatAppearance.BorderSize = 0;
+            this.btn_doimatkhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_doimatkhau.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_doimatkhau.ForeColor = System.Drawing.Color.White;
+            this.btn_doimatkhau.Image = ((System.Drawing.Image)(resources.GetObject("btn_doimatkhau.Image")));
+            this.btn_doimatkhau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_doimatkhau.Location = new System.Drawing.Point(0, 794);
+            this.btn_doimatkhau.Name = "btn_doimatkhau";
+            this.btn_doimatkhau.Size = new System.Drawing.Size(228, 70);
+            this.btn_doimatkhau.TabIndex = 11;
+            this.btn_doimatkhau.Text = "Đổi mật khẩu";
+            this.btn_doimatkhau.UseVisualStyleBackColor = true;
+            this.btn_doimatkhau.Click += new System.EventHandler(this.btn_doimatkhau_Click);
             // 
             // btn_NhanCa
             // 
@@ -441,7 +461,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1386, 773);
+            this.ClientSize = new System.Drawing.Size(1362, 940);
             this.Controls.Add(this.PanelDesktopPanel);
             this.Controls.Add(this.PanelTitel);
             this.Controls.Add(this.panelMenu);
@@ -476,7 +496,7 @@
         private System.Windows.Forms.Button btn_KhachHang;
         private System.Windows.Forms.Button btn_NhanVien;
         private System.Windows.Forms.Button btn_HoaDon;
-        private System.Windows.Forms.Button btn_LogOut;
+        private System.Windows.Forms.Button btn_doimatkhau;
         private System.Windows.Forms.Label lb_XinChao;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lb_date;
@@ -492,5 +512,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lb_chucvu;
+        private System.Windows.Forms.Button btn_LogOut;
     }
 }

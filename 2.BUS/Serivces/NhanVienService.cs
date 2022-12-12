@@ -76,5 +76,11 @@ namespace _2.BUS.Serivces
             }
             //fgfgf
         }
+
+        public string save(NhanVien nhanVien)
+        {
+            nhanVienRepository.save(nhanVien);
+            return "Đổi mật khẩu thành công";
+        }
     }
 }

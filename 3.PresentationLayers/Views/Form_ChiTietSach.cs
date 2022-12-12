@@ -50,7 +50,7 @@ namespace _3.PresentationLayers.Views
             LoadCbb();
             ChiTietSach = new ChiTietSach();
         }
-        public Form_ChiTietSach(string tbt_maVach)
+        public Form_ChiTietSach(string ChucVu)
         {
             InitializeComponent();
             _iChiTietSachService = new ChiTietSachService();
@@ -65,7 +65,22 @@ namespace _3.PresentationLayers.Views
             LoadData();
             LoadCbb();
             ChiTietSach = new ChiTietSach();
-            tbt_MaVach.Text = tbt_maVach;
+            if (ChucVu == "Nhân viên")
+            {
+                btn_Add.Visible=false;
+                btn_Update.Visible=false;
+                btn_Delete.Visible=false;
+                btn_NgungKinhDoanh.Visible=false;
+                btn_Reset.Visible=false;
+            }
+            else
+            {
+                btn_Add.Visible = true;
+                btn_Update.Visible = true;
+                btn_Delete.Visible = true;
+                btn_NgungKinhDoanh.Visible = true;
+                btn_Reset.Visible = true;
+            }
 
         }
         void LoadData()
@@ -856,7 +871,7 @@ namespace _3.PresentationLayers.Views
 
         private void ptb_PDF_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("bạn có muốn xuất file pdf  hay không", "Thông Báo", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xuất file pdf  hay không", "Thông Báo", MessageBoxButtons.YesNo);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -865,8 +880,6 @@ namespace _3.PresentationLayers.Views
                 reportFileToPDF.Show();
                 for (int a = 0; a < 1; a++)
                 {
-                    MessageBox.Show("Hãy Tiến Hành Xuát Ra File PDF Thôi Nào !");
-
                 }
             };
 

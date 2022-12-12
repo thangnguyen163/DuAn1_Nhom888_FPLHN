@@ -900,7 +900,7 @@
             this.dtg_Show.Name = "dtg_Show";
             this.dtg_Show.RowHeadersWidth = 51;
             this.dtg_Show.RowTemplate.Height = 29;
-            this.dtg_Show.Size = new System.Drawing.Size(1466, 219);
+            this.dtg_Show.Size = new System.Drawing.Size(1466, 263);
             this.dtg_Show.TabIndex = 0;
             this.dtg_Show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Show_CellClick);
             // 
@@ -938,7 +938,7 @@
             // ptb_PDF
             // 
             this.ptb_PDF.Image = ((System.Drawing.Image)(resources.GetObject("ptb_PDF.Image")));
-            this.ptb_PDF.Location = new System.Drawing.Point(191, 494);
+            this.ptb_PDF.Location = new System.Drawing.Point(5, 538);
             this.ptb_PDF.Name = "ptb_PDF";
             this.ptb_PDF.Size = new System.Drawing.Size(109, 50);
             this.ptb_PDF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

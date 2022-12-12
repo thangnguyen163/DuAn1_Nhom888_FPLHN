@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace _3.PresentationLayers.Views
@@ -34,6 +35,7 @@ namespace _3.PresentationLayers.Views
             _lstNhanVien = new List<NhanVienView>();
             loadCombobox();
             loadData();
+            
         }
         public void loadCombobox()
         {
@@ -76,7 +78,7 @@ namespace _3.PresentationLayers.Views
                     item.nhanVien.Anh,
                     item.nhanVien.DiaChi,
                     item.nhanVien.NamSinh,
-                    item.nhanVien.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+                    item.nhanVien.TrangThai == 0 ? "Hoạt động" : "Không hoạt động"
                     );
             }
         }
@@ -102,104 +104,136 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow r = dtg_Show.Rows[e.RowIndex];
-                _nv = _nhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString()));
-                SelectId=Guid.Parse(r.Cells[0].Value.ToString());
-                tb_ma.Text = r.Cells[1].Value.ToString();
-                tb_ten.Text = r.Cells[2].Value.ToString();
-                tb_matkhau.Text = r.Cells[7].Value.ToString();
-                tb_cccd.Text = r.Cells[4].Value.ToString();
-                tb_sdt.Text = r.Cells[5].Value.ToString();
-                tb_diaChi.Text = r.Cells[10].Value.ToString();
-                tb_email.Text = r.Cells[6].Value.ToString();
-                
-                tb_namsinh.Text = r.Cells[11].Value.ToString();
-                cbb_ChucVu.Text = _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Id == _nv.IdchucVu).Ten;
-                cb_Nam.Checked = _nv.GioiTinh == 0;
-                cb_Nu.Checked = _nv.GioiTinh == 1;
-                rB_hd.Checked = _nv.TrangThai == 1;
-                rB_khd.Checked = _nv.TrangThai == 0;
-                pic_Anh.Image = Image.FromStream(new MemoryStream((byte[])r.Cells[9].Value));
-               //  _nhanVienService.getNhanViensFromDB().Where(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString())).Select(x => x.Anh).FirstOrDefault())
-                pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow r = dtg_Show.Rows[e.RowIndex];
+                    _nv = _nhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString()));
+                    SelectId = Guid.Parse(r.Cells[0].Value.ToString());
+                    tb_ma.Text = r.Cells[1].Value.ToString();
+                    tb_ten.Text = r.Cells[2].Value.ToString();
+                    tb_matkhau.Text = r.Cells[7].Value.ToString();
+                    tb_cccd.Text = r.Cells[4].Value.ToString();
+                    tb_sdt.Text = r.Cells[5].Value.ToString();
+                    tb_diaChi.Text = r.Cells[10].Value.ToString();
+                    tb_email.Text = r.Cells[6].Value.ToString();
+
+                    tb_namsinh.Text = r.Cells[11].Value.ToString();
+                    cbb_ChucVu.Text = _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Id == _nv.IdchucVu).Ten;
+                    cb_Nam.Checked = _nv.GioiTinh == 0;
+                    cb_Nu.Checked = _nv.GioiTinh == 1;
+                    rB_hd.Checked = _nv.TrangThai == 0;
+                    rB_khd.Checked = _nv.TrangThai == 1;
+                    //pic_Anh.Image = Image.FromStream(new MemoryStream((byte[])r.Cells[9].Value));
+                    //  _nhanVienService.getNhanViensFromDB().Where(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString())).Select(x => x.Anh).FirstOrDefault())
+                    pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
+            } 
+            
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm không", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                MessageBox.Show(_nhanVienService.addNhanVien(new NhanVien()
+                DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm không", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    
-                    Id = Guid.NewGuid(),
-                    Ma = "NV" + Convert.ToString(_nhanVienService.getNhanViensFromDB()
-                      .Max(c => Convert.ToInt32(c.Ma.Substring(2, c.Ma.Length - 2)) + 1)),
-                    Ten = tb_ten.Text,
-                    MatKhau = tb_ma.Text,
-                    Cccd = Convert.ToDecimal(tb_cccd.Text),
-                    Sdt = tb_sdt.Text,
-                    DiaChi = tb_diaChi.Text,
-                    Email = tb_email.Text,
-                    Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
-                    NamSinh = Convert.ToInt32(tb_namsinh.Text),
-                    IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
-                    TrangThai = rB_hd.Checked ? 1 : 0,
-                }));
-                loadData();
+                    MessageBox.Show(_nhanVienService.addNhanVien(new NhanVien()
+                    {
+
+                        Id = Guid.NewGuid(),
+                        Ma = "NV" + Convert.ToString(_nhanVienService.getNhanViensFromDB()
+                          .Max(c => Convert.ToInt32(c.Ma.Substring(2, c.Ma.Length - 2)) + 1)),
+                        Ten = tb_ten.Text,
+                        MatKhau = tb_ma.Text,
+                        Cccd = Convert.ToDecimal(tb_cccd.Text),
+                        Sdt = tb_sdt.Text,
+                        DiaChi = tb_diaChi.Text,
+                        Email = tb_email.Text,
+                        Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
+                        NamSinh = Convert.ToInt32(tb_namsinh.Text),
+                        IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
+                        TrangThai = rB_hd.Checked ? 1 : 0,
+                    }));
+                    loadData();
+                }
+                else
+                {
+
+                    return;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-
-                return;
-
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
+            
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn muốn sửa không", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                MessageBox.Show(_nhanVienService.updateNhanVien(SelectId, new NhanVien()
+                DialogResult dialogResult = MessageBox.Show("Bạn muốn sửa không", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Ma = tb_ma.Text,
-                    Ten = tb_ten.Text,
-                    MatKhau = tb_matkhau.Text,
-                    Cccd = Convert.ToDecimal(tb_cccd.Text),
-                    Sdt = tb_sdt.Text,
-                    DiaChi = tb_diaChi.Text,
-                    NamSinh = Convert.ToInt32(tb_namsinh.Text),
-                    Email = tb_email.Text,
-                    Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
-                    IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
-                    TrangThai = rB_hd.Checked ? 1 : 0,
-                }));
-                loadData();
+                    MessageBox.Show(_nhanVienService.updateNhanVien(SelectId, new NhanVien()
+                    {
+                        Ma = tb_ma.Text,
+                        Ten = tb_ten.Text,
+                        MatKhau = tb_matkhau.Text,
+                        Cccd = Convert.ToDecimal(tb_cccd.Text),
+                        Sdt = tb_sdt.Text,
+                        DiaChi = tb_diaChi.Text,
+                        NamSinh = Convert.ToInt32(tb_namsinh.Text),
+                        Email = tb_email.Text,
+                        Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
+                        IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
+                        TrangThai = rB_hd.Checked ? 1 : 0,
+                    }));
+                    loadData();
+                }
+                else
+                {
+
+                    return;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-
-                return;
-
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
+            
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa không", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                MessageBox.Show(_nhanVienService.deleteNhanVien(SelectId));
-                loadData();
+                DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa không", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show(_nhanVienService.deleteNhanVien(SelectId));
+                    loadData();
+                }
+                else
+                {
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return;
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
+            
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
@@ -224,46 +258,94 @@ namespace _3.PresentationLayers.Views
             }
             rB_khd.Checked = true;
         }
-        void loadtim_kiem(string ma)
+        //private void loadtim_kiem(string ma)
+        //{
+        //    ArrayList row = new ArrayList();
+        //    row = new ArrayList();
+
+        //    dtg_Show.ColumnCount = 13;
+        //    dtg_Show.Columns[0].Name = "Id";
+        //    dtg_Show.Columns[0].Visible = false;
+        //    dtg_Show.Columns[1].Name = "Mã";
+        //    dtg_Show.Columns[2].Name = "Tên";
+        //    dtg_Show.Columns[3].Name = "Giới Tính";
+        //    dtg_Show.Columns[4].Name = "CCCD";
+        //    dtg_Show.Columns[5].Name = "Số ĐT";
+        //    dtg_Show.Columns[6].Name = "Email";
+        //    dtg_Show.Columns[7].Name = "Mật khẩu";
+        //    dtg_Show.Columns[8].Name = "Chức vụ";
+        //    dtg_Show.Columns[9].Name = "Ảnh";
+        //    dtg_Show.Columns[10].Name = "Địa chỉ";
+        //    dtg_Show.Columns[11].Name = "Năm Sinh";
+        //    dtg_Show.Columns[12].Name = "Trạng thái";
+        //    dtg_Show.Rows.Clear();
+        //    foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(ma) || c.Email.StartsWith(ma) || c.DiaChi.StartsWith(ma)))
+
+        //    {
+        //        dtg_Show.Rows.Add(item.Id,
+        //                            item.Ma,
+        //                            item.Ten,
+        //                            item.GioiTinh == 0 ? "Nam" : "Nữ",
+        //                            item.Cccd,
+        //                            item.Sdt,
+        //                            item.Email,
+        //                            item.MatKhau,
+        //                            item.Ten,
+        //                            item.Anh,
+        //                            item.DiaChi,
+        //                            item.NamSinh,
+        //                            item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+        //                            );
+        //    }
+
+        //}
+        private void tb_Timkiem_TextChanged(object sender, EventArgs e)
         {
-            ArrayList row = new ArrayList();
-            row = new ArrayList();
-
-            dtg_Show.ColumnCount = 13;
-            dtg_Show.Columns[0].Name = "Id";
-            dtg_Show.Columns[0].Visible = false;
-            dtg_Show.Columns[1].Name = "Mã";
-            dtg_Show.Columns[2].Name = "Tên";
-            dtg_Show.Columns[3].Name = "Giới Tính";
-            dtg_Show.Columns[4].Name = "CCCD";
-            dtg_Show.Columns[5].Name = "Số ĐT";
-            dtg_Show.Columns[6].Name = "Email";
-            dtg_Show.Columns[7].Name = "Mật khẩu";
-            dtg_Show.Columns[8].Name = "Chức vụ";
-            dtg_Show.Columns[9].Name = "Ảnh";
-            dtg_Show.Columns[10].Name = "Địa chỉ";
-            dtg_Show.Columns[11].Name = "Năm Sinh";
-            dtg_Show.Columns[12].Name = "Trạng thái";
-            dtg_Show.Rows.Clear();
-            foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(ma) || c.Email.StartsWith(ma) || c.DiaChi.StartsWith(ma)))
-
+            try
             {
-                dtg_Show.Rows.Add(item.Id,
-                                    item.Ma,
-                                    item.Ten,
-                                    item.GioiTinh == 0 ? "Nam" : "Nữ",
-                                    item.Cccd,
-                                    item.Sdt,
-                                    item.Email,
-                                    item.MatKhau,
-                                    item.Ten,
-                                    item.Anh,
-                                    item.DiaChi,
-                                    item.NamSinh,
-                                    item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
-                                    );
-            }
+                ArrayList row = new ArrayList();
+                row = new ArrayList();
 
+                dtg_Show.ColumnCount = 13;
+                dtg_Show.Columns[0].Name = "Id";
+                dtg_Show.Columns[0].Visible = false;
+                dtg_Show.Columns[1].Name = "Mã";
+                dtg_Show.Columns[2].Name = "Tên";
+                dtg_Show.Columns[3].Name = "Giới Tính";
+                dtg_Show.Columns[4].Name = "CCCD";
+                dtg_Show.Columns[5].Name = "Số ĐT";
+                dtg_Show.Columns[6].Name = "Email";
+                dtg_Show.Columns[7].Name = "Mật khẩu";
+                dtg_Show.Columns[8].Name = "Chức vụ";
+                dtg_Show.Columns[9].Name = "Ảnh";
+                dtg_Show.Columns[10].Name = "Địa chỉ";
+                dtg_Show.Columns[11].Name = "Năm Sinh";
+                dtg_Show.Columns[12].Name = "Trạng thái";
+                dtg_Show.Rows.Clear();
+                foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(tb_Timkiem.Text) ||c.Ma.StartsWith(tb_Timkiem.Text) || c.Email.StartsWith(tb_Timkiem.Text) || c.DiaChi.StartsWith(tb_Timkiem.Text)))
+
+                {
+                    dtg_Show.Rows.Add(item.Id,
+                                        item.Ma,
+                                        item.Ten,
+                                        item.GioiTinh == 0 ? "Nam" : "Nữ",
+                                        item.Cccd,
+                                        item.Sdt,
+                                        item.Email,
+                                        item.MatKhau,
+                                        item.Ten,
+                                        item.Anh,
+                                        item.DiaChi,
+                                        item.NamSinh,
+                                        item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+                                        );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
+            }
+            
         }
         private void tb_Timkiem_Leave(object sender, EventArgs e)
         {
@@ -316,6 +398,8 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với Thắng để khắc phục");
             }
         }
+
+        
         //dđ
     }
 }

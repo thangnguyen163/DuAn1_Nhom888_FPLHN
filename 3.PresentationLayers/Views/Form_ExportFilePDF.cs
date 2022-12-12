@@ -22,7 +22,7 @@ namespace _3_GUI_PresentaionLayers
         public Form_ExportFilePDF()
         {
             InitializeComponent();
-            _ichiTietSachService=new ChiTietSachService();
+            _ichiTietSachService = new ChiTietSachService();
             LoadData();
         }
         void LoadData()
@@ -65,9 +65,9 @@ namespace _3_GUI_PresentaionLayers
             pdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfPTable.DefaultCell.BorderWidth = 1;
 
-            iTextSharp.text.Font text = new iTextSharp.text.Font(bf,10,iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font text = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
             //Add header;
-            foreach(DataGridViewColumn col in dtg_Show.Columns)
+            foreach (DataGridViewColumn col in dtg_Show.Columns)
             {
                 PdfPCell pdfPCell = new PdfPCell(new Phrase(col.HeaderText));
                 pdfPTable.AddCell(pdfPCell);
@@ -77,14 +77,14 @@ namespace _3_GUI_PresentaionLayers
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     pdfPTable.AddCell(new Phrase(Convert.ToString(cell.Value), text));
-                }             
+                }
             }
             var savefiledialog = new SaveFileDialog();
             savefiledialog.FileName = filename;
             savefiledialog.DefaultExt = ".pdf";
             if (savefiledialog.ShowDialog() == DialogResult.OK)
             {
-                using(FileStream stream= new FileStream(savefiledialog.FileName, FileMode.Create))
+                using (FileStream stream = new FileStream(savefiledialog.FileName, FileMode.Create))
                 {
                     Document pdfdoc = new Document(PageSize.A1, 10f, 10f, 10f, 10f);
                     PdfWriter.GetInstance(pdfdoc, stream);
@@ -100,33 +100,23 @@ namespace _3_GUI_PresentaionLayers
         {
             try
             {
-                DialogResult dialogResult = MessageBox.Show("bạn có muốn Xuất Ra File PDF Hay Không", "Thông Báo", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn Xuất Ra File PDF Hay Không", "Thông Báo", MessageBoxButtons.YesNo);
 
                 if (dialogResult == DialogResult.Yes)
                 {
                     exportdata(dtg_Show, "Sản phẩm của BEEBOOKS");
-                    for (int i = 0; i < 2; i++)
-                    {
-                        MessageBox.Show("Xuất Ra File PDF Thành Công");
-                    }
+                    MessageBox.Show("Xuất Ra File PDF Thành Công");
                     return;
                 }
                 if (dialogResult == DialogResult.No)
                 {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        MessageBox.Show("Xuất Ra File PDF Thất Bại");
-                    }
+                    MessageBox.Show("Xuất Ra File PDF Thất Bại");
                     return;
                 }
             }
             catch (Exception ex)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    MessageBox.Show("Lỗi Rồi"+ex.Message);
-                }
-                
+                MessageBox.Show("Lỗi Rồi" + ex.Message);
                 return;
             }
         }
