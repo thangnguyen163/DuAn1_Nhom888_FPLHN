@@ -25,11 +25,11 @@ namespace _3.PresentationLayers.Views
             _igiaoCaService = new GiaoCaService();
             tb_tendangnhap.Text = Properties.Settings.Default.Username;
             tb_matkhau.Text = Properties.Settings.Default.Password;
-            if(Properties.Settings.Default.Username==string.Empty)
+            if (Properties.Settings.Default.Username == string.Empty)
                 cb_NhoMk.Checked = false;
             else cb_NhoMk.Checked = true;
         }
-        public Form_DangNhap(string email,string pass)
+        public Form_DangNhap(string email, string pass)
         {
             InitializeComponent();
             _iNhanVienSercvice = new NhanVienService();
@@ -48,29 +48,37 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
+            var cahientai = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+            var LastTK = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
+            var CheckTk = _iNhanVienSercvice.getNhanViensFromDB().Where(p => p.Email == tb_tendangnhap.Text).FirstOrDefault().Id;
             if (tb_tendangnhap.Text == String.Empty || tb_matkhau.Text == String.Empty)
             {
-                MessageBox.Show("Bạn cần nhập đầy đủ thông tin để đăng nhập","Thông báo",MessageBoxButtons.OK);
+                MessageBox.Show("Bạn cần nhập đầy đủ thông tin để đăng nhập", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
             for (int i = 0; i <= _iNhanVienSercvice.getNhanViensFromDB().Count(); i++)
             {
                 if (_iNhanVienSercvice.getNhanViensFromDB().Where(c => c.Email == tb_tendangnhap.Text).ToList().Count == 0 || tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text != _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
-                    MessageBox.Show("Thông tin đăng nhập không hợp lệ, vui lòng kiểm tra lại thông tin đăng nhập","Đăng nhập thất bại", MessageBoxButtons.OK);
+                    MessageBox.Show("Thông tin đăng nhập không hợp lệ, vui lòng kiểm tra lại thông tin đăng nhập", "Đăng nhập thất bại", MessageBoxButtons.OK);
                     return;
                 }
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
+                    if (LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
+                    {
+                        MessageBox.Show("Ca trước chưa kết thúc, vui lòng liên hệ nhân viên ca trước để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
+                        return;
+                    }
                     InforLogin();
                     Email = tb_tendangnhap.Text;
                     Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);
                     fdb.Show();
                     this.Hide();
                     MessageBox.Show($"Xin chào: {_iNhanVienSercvice.getNhanViensFromDB()[i].Ten}", "Đăng nhập thành công", MessageBoxButtons.OK);
-                    return; 
+                    return;
                 }
-                
+
             }
         }
 
@@ -100,12 +108,12 @@ namespace _3.PresentationLayers.Views
         {
             if (cb_NhoMk.Checked == true)
             {
-                Properties.Settings.Default.Username= tb_tendangnhap.Text;
-                Properties.Settings.Default.Password= tb_matkhau.Text ;
+                Properties.Settings.Default.Username = tb_tendangnhap.Text;
+                Properties.Settings.Default.Password = tb_matkhau.Text;
                 Properties.Settings.Default.UserLogin = tb_tendangnhap.Text;
                 Properties.Settings.Default.Password = tb_matkhau.Text;
                 Properties.Settings.Default.Save();
-                cb_NhoMk.Checked=true;
+                cb_NhoMk.Checked = true;
             }
             else
             {

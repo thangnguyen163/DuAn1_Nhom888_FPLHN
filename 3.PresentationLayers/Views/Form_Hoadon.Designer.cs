@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.rdb_danggiao1 = new System.Windows.Forms.RadioButton();
+            this.rdb_chogiao1 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtg_hdct1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -65,6 +67,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtg_hdct = new System.Windows.Forms.DataGridView();
+            this.rdb_danggiao = new System.Windows.Forms.RadioButton();
+            this.rdb_chogiao = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,6 +92,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.rdb_danggiao1);
+            this.tabPage1.Controls.Add(this.rdb_chogiao1);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.rdb_all1);
@@ -112,6 +118,30 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hóa Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rdb_danggiao1
+            // 
+            this.rdb_danggiao1.AutoSize = true;
+            this.rdb_danggiao1.Location = new System.Drawing.Point(920, 11);
+            this.rdb_danggiao1.Name = "rdb_danggiao1";
+            this.rdb_danggiao1.Size = new System.Drawing.Size(100, 24);
+            this.rdb_danggiao1.TabIndex = 22;
+            this.rdb_danggiao1.TabStop = true;
+            this.rdb_danggiao1.Text = "Đang giao";
+            this.rdb_danggiao1.UseVisualStyleBackColor = true;
+            this.rdb_danggiao1.CheckedChanged += new System.EventHandler(this.rdb_danggiao1_CheckedChanged);
+            // 
+            // rdb_chogiao1
+            // 
+            this.rdb_chogiao1.AutoSize = true;
+            this.rdb_chogiao1.Location = new System.Drawing.Point(772, 9);
+            this.rdb_chogiao1.Name = "rdb_chogiao1";
+            this.rdb_chogiao1.Size = new System.Drawing.Size(90, 24);
+            this.rdb_chogiao1.TabIndex = 21;
+            this.rdb_chogiao1.TabStop = true;
+            this.rdb_chogiao1.Text = "Chờ giao";
+            this.rdb_chogiao1.UseVisualStyleBackColor = true;
+            this.rdb_chogiao1.CheckedChanged += new System.EventHandler(this.rdb_chogiao1_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -303,6 +333,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.rdb_danggiao);
+            this.tabPage2.Controls.Add(this.rdb_chogiao);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.cbb_locmahdct);
             this.tabPage2.Controls.Add(this.label9);
@@ -472,6 +504,30 @@
             this.dtg_hdct.Size = new System.Drawing.Size(1470, 605);
             this.dtg_hdct.TabIndex = 0;
             // 
+            // rdb_danggiao
+            // 
+            this.rdb_danggiao.AutoSize = true;
+            this.rdb_danggiao.Location = new System.Drawing.Point(946, 13);
+            this.rdb_danggiao.Name = "rdb_danggiao";
+            this.rdb_danggiao.Size = new System.Drawing.Size(100, 24);
+            this.rdb_danggiao.TabIndex = 24;
+            this.rdb_danggiao.TabStop = true;
+            this.rdb_danggiao.Text = "Đang giao";
+            this.rdb_danggiao.UseVisualStyleBackColor = true;
+            this.rdb_danggiao.CheckedChanged += new System.EventHandler(this.rdb_danggiao_CheckedChanged);
+            // 
+            // rdb_chogiao
+            // 
+            this.rdb_chogiao.AutoSize = true;
+            this.rdb_chogiao.Location = new System.Drawing.Point(798, 11);
+            this.rdb_chogiao.Name = "rdb_chogiao";
+            this.rdb_chogiao.Size = new System.Drawing.Size(90, 24);
+            this.rdb_chogiao.TabIndex = 23;
+            this.rdb_chogiao.TabStop = true;
+            this.rdb_chogiao.Text = "Chờ giao";
+            this.rdb_chogiao.UseVisualStyleBackColor = true;
+            this.rdb_chogiao.CheckedChanged += new System.EventHandler(this.rdb_chogiao_CheckedChanged);
+            // 
             // Form_Hoadon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -534,5 +590,9 @@
         private System.Windows.Forms.DataGridView dtg_hd;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cbb_locmahdct;
+        private System.Windows.Forms.RadioButton rdb_danggiao1;
+        private System.Windows.Forms.RadioButton rdb_chogiao1;
+        private System.Windows.Forms.RadioButton rdb_danggiao;
+        private System.Windows.Forms.RadioButton rdb_chogiao;
     }
 }
