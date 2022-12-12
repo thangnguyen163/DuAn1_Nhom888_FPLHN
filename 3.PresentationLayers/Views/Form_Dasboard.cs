@@ -1,4 +1,4 @@
-﻿using _1.DAL.DomainClass;
+using _1.DAL.DomainClass;
 using _2.BUS.IService;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
