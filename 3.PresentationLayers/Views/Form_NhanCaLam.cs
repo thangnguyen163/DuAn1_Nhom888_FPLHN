@@ -66,7 +66,6 @@ namespace _3.PresentationLayers.Views
                     MessageBox.Show("Nhận ca thành công", "Thông báo", MessageBoxButtons.OK);
                     this.Close();
                 }
-
             }
         }
 

@@ -108,7 +108,7 @@ namespace _3.PresentationLayers.Views
             foreach (var x in lst)
             {
                 var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
-                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
+                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : x.Trangthai == 1 ? "Đã thanh toán" : x.Trangthai == 2 ? "Chờ giao" : "Đang giao");
             }
             dtg_hdct.AllowUserToAddRows = false;
         }
@@ -132,7 +132,7 @@ namespace _3.PresentationLayers.Views
             foreach (var x in lst)
             {
                 var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
-                dtg_hdct1.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : "Đã thanh toán");
+                dtg_hdct1.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : x.Trangthai == 1 ? "Đã thanh toán" : x.Trangthai == 2 ? "Chờ giao" : "Đang giao");
             }
             dtg_hdct1.AllowUserToAddRows = false;
         }
@@ -192,6 +192,15 @@ namespace _3.PresentationLayers.Views
         {
             if (rdb_chuatt.Checked == true) LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Trangthai == 0).ToList());
         }
+        private void rdb_chogiao_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdb_chogiao.Checked == true) LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Trangthai == 2).ToList());
+        }
+
+        private void rdb_danggiao_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdb_danggiao.Checked == true) LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Trangthai == 3).ToList());
+        }
         private void rdb_all_CheckedChanged(object sender, EventArgs e)
         {
             if (rdb_all.Checked == true) LoadDataToHDCT(_ihoaDonCTService.GetAll().ToList());
@@ -234,7 +243,15 @@ namespace _3.PresentationLayers.Views
         {
             if (rdb_chuatt1.Checked == true) LoadDataToHD(_ihoaDonService.GetAllHoaDon().Where(c => c.TrangThai == 0).ToList());
         }
+        private void rdb_chogiao1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdb_chogiao1.Checked == true) LoadDataToHD(_ihoaDonService.GetAllHoaDon().Where(c => c.TrangThai == 2).ToList());
+        }
 
+        private void rdb_danggiao1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdb_danggiao1.Checked == true) LoadDataToHD(_ihoaDonService.GetAllHoaDon().Where(c => c.TrangThai == 3).ToList());
+        }
         private void dtg_hd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
@@ -251,5 +268,7 @@ namespace _3.PresentationLayers.Views
             var b = _iNhanVienService.getNhanViensFromDB().Where(c => c.Ma == cbb_locmahdct.Text).Select(c => c.Id).FirstOrDefault();
             LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Idnv == b).ToList());
         }
+
+        
     }
 }
