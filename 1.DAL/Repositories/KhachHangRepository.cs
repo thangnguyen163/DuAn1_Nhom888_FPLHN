@@ -28,8 +28,8 @@ namespace _1.DAL.Repositories
         {
             if (khachHang == null) return false;
             var a = _dbContext.KhachHangs.FirstOrDefault(x => x.Id == khachHang.Id);
-            a.TrangThai = 0;
-            _dbContext.KhachHangs.Update(a);
+           ////////// a.TrangThai = 0;
+            _dbContext.KhachHangs.Remove(a);
             _dbContext.SaveChanges();
             return true;
         }

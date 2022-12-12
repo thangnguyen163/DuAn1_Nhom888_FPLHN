@@ -49,9 +49,9 @@ namespace _2.BUS.Serivces
 
         public string deleteKhachHang(KhachHang khachHang)
         {
-            if (khachHang == null) return "Chuyển trạng thái thất bại";
-            if (_khachHangRepository.deleteKhachHang(khachHang)) return "Chuyển trạng thái thành công";
-            return "Chuyển trạng thái thất bại";
+            if (khachHang == null) return "Xóa thất bại";
+            if (_khachHangRepository.deleteKhachHang(khachHang)) return "Xóa thành công";
+            return "Xóa thất bại";
         }
 
         public List<KhachHang> getAll()

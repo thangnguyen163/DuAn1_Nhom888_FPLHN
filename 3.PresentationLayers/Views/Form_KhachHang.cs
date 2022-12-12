@@ -1,6 +1,7 @@
 ﻿using _1.DAL.DomainClass;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
+using iTextSharp.text.pdf.codec;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,13 +19,14 @@ namespace _3.PresentationLayers.Views
     {
         private IKhachHangService _ikhachHangService = new KhachHangService();
         private IDiemTieuDungService _idiemTieuDungService = new DiemTieuDungService();
+        private IHoaDonService _ihoaDonService = new HoaDonService(); 
         public Guid SelectID { get; set; }
         public Form_KhachHang()
         {
             InitializeComponent();
             Loaddata();
 
-
+            rd_conhd.Checked = true;
         }
         public void Loaddata()
         {
@@ -43,32 +46,76 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Rows.Add(i++, x.ID, x.Ma, x.Ten, x.Sodt, x.Madiemtieudung, x.Trangthai == 1 ? "Còn hoạt động" : "Đã tạm dừng");
             }
         }
+        public static string vietHoaChuCaiDau(string text)
+        {
+            var temp = text.ToLower();
+            return temp.Substring(0, 1).ToUpper() + temp.Substring(1, temp.Length - 1);
+        }
+        public static string zenMaFpoly(string fullName, string number)
+        {
+            string[] arrNames = fullName.Split(' ');
+            string msv = vietHoaChuCaiDau(arrNames[arrNames.Length - 1]);
+            for (int i = 0; i < arrNames.Length - 1; i++)
+            {
+                
+                msv += vietHoaChuCaiDau(arrNames[i][0].ToString());
+            }
 
+            return msv + number;
+        }
+        public static string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
-            var a = Guid.NewGuid();
-            var kh = new KhachHang();
-            kh.Id = Guid.NewGuid();
-            kh.Ma = tb_ma.Text;
-            kh.Ten = tb_ten.Text;
-            kh.Sdt = tb_sdt.Text;
-            kh.IddiemTieuDung = a;
-            if (rd_conhd.Checked == true)
+            Regex validatePhoneNumberRegex = new Regex("^\\+?[0-0][0-9]{7,14}$");
+            if (string.IsNullOrEmpty(tb_ten.Text))
             {
-                kh.TrangThai = 1;
+                MessageBox.Show("Không được để trống tên khách hàng");
+            }
+            else if (string.IsNullOrEmpty(tb_sdt.Text))
+            {
+                MessageBox.Show("Không được để trống số điện thoại khách hàng");
+            }
+            else if (validatePhoneNumberRegex.IsMatch(tb_sdt.Text) == false)
+            {
+                MessageBox.Show("Hãy nhập đúng số điện thoại");
             }
             else
             {
-                kh.TrangThai = 0;
-            }
-            var diemtieudung = new DiemTieuDung();
-            diemtieudung.Id = a;
-            diemtieudung.Ma = Convert.ToString(tb_ma.Text + "" + tb_sdt.Text); 
-            diemtieudung.SoDiem = 0;
-            diemtieudung.TrangThai = 1;
-            //  diemtieudung.IdKh = a;
-            MessageBox.Show(_ikhachHangService.addKhachHang(kh, diemtieudung));
-            Loaddata();
+                Random r = new Random();
+                string ten = zenMaFpoly(convertToUnSign3(tb_ten.Text), Convert.ToString(r.Next(1000, 9999)));
+                MessageBox.Show(ten);
+                var a = Guid.NewGuid();
+                var kh = new KhachHang();
+                kh.Id = Guid.NewGuid();
+                kh.Ma = ten;
+                kh.Ten = tb_ten.Text;
+                kh.Sdt = tb_sdt.Text;
+                kh.IddiemTieuDung = a;
+                if (rd_conhd.Checked == true)
+                {
+                    kh.TrangThai = 1;
+                }
+                else
+                {
+                    kh.TrangThai = 0;
+                }
+                var diemtieudung = new DiemTieuDung();
+                diemtieudung.Id = a;
+                diemtieudung.Ma = "DTD" + Convert.ToString(_idiemTieuDungService.GetAll()
+                                 .Max(c => Convert.ToInt32(c.Ma.Substring(3, c.Ma.Length - 3)) + 1));
+               // diemtieudung.Ma = Convert.ToString(tb_ma.Text + "" + tb_sdt.Text);
+                diemtieudung.SoDiem = 0;
+                diemtieudung.TrangThai = 1;
+                
+                MessageBox.Show(_ikhachHangService.addKhachHang(kh, diemtieudung));
+                Loaddata();
+            }    
+            
         }
 
         private void dtg_Show_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -98,32 +145,72 @@ namespace _3.PresentationLayers.Views
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-           
-            var kh = new KhachHang();
-            kh.Id = SelectID;
-            kh.Ma = tb_ma.Text;
-            kh.Ten = tb_ten.Text;
-            kh.Sdt = tb_sdt.Text;
-           // kh.IddiemTieuDung = a;
-            if (rd_conhd.Checked == true)
+
+            if (SelectID != default)
             {
-                kh.TrangThai = 1;
+                Regex validatePhoneNumberRegex = new Regex("^\\+?[0-0][0-9]{7,14}$");
+                //validatePhoneNumberRegex.IsMatch("+12223334444");
+                if (string.IsNullOrEmpty(tb_ten.Text))
+                {
+                    MessageBox.Show("Không được để trống tên khách hàng");
+                }
+                else if (string.IsNullOrEmpty(tb_sdt.Text))
+                {
+                    MessageBox.Show("Không được để trống số điện thoại khách hàng");
+                }
+                else if (validatePhoneNumberRegex.IsMatch(tb_sdt.Text)==false)
+                {
+                    MessageBox.Show("hãy nhập đúng số điện thoại");
+                }
+                else
+                {
+                    var kh = new KhachHang();
+                    kh.Id = SelectID;
+                    kh.Ma = tb_ma.Text;
+                    kh.Ten = tb_ten.Text;
+                    kh.Sdt = tb_sdt.Text;
+                    // kh.IddiemTieuDung = a;
+                    if (rd_conhd.Checked == true)
+                    {
+                        kh.TrangThai = 1;
+                    }
+                    else
+                    {
+                        kh.TrangThai = 0;
+                    }
+
+                    MessageBox.Show(_ikhachHangService.updateKhachHang(kh));
+                    Loaddata();
+                }                   
+            }
+        }
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            if (SelectID != default)
+            {
+                if (_ihoaDonService.GetAllHoaDon().Where(x=>x.Idkh==SelectID).Count()==0)
+                {
+                    var kh = new KhachHang();
+                    kh.Id = SelectID;
+                    MessageBox.Show(_ikhachHangService.deleteKhachHang(kh));
+                    Loaddata();
+                }
+                else
+                {
+                    MessageBox.Show("Khách hàng đã có trong hóa đơn, hiện tại không thể xóa");
+                }
             }
             else
             {
-                kh.TrangThai = 0;
-            }
+                return;
+            }    
             
-            MessageBox.Show(_ikhachHangService.updateKhachHang(kh));
-            Loaddata();
         }
 
-        private void btn_xoa_Click(object sender, EventArgs e)
+        private void tb_sdt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var kh = new KhachHang();
-            kh.Id = SelectID;         
-            MessageBox.Show(_ikhachHangService.deleteKhachHang(kh));
-            Loaddata();
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }
