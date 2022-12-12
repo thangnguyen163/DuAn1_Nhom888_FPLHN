@@ -344,7 +344,8 @@ namespace _3.PresentationLayers.Views
 			Form_NhanCaLam form_NhanCaLam = new Form_NhanCaLam();
 			form_NhanCaLam.ShowDialog();
 			lb_TongTien.Text = Form_NhanCaLam.TongTien.ToString();
-			if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
+            if (Form_NhanCaLam.TongTien == null) return;
+            if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
 			{
 				btn_KhachHang.Visible = true;
 				btn_shopping.Visible = true;
