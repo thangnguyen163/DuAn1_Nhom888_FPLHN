@@ -161,7 +161,8 @@ namespace _3.PresentationLayers.Views
             }
             LoaddataToTextbox(SelectID);
         }
-
+     
+        
         private void btnsender_Click(object sender, EventArgs e)
         {
             tabHoaDon.Visible = true;
@@ -334,8 +335,7 @@ namespace _3.PresentationLayers.Views
                         else
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
-                            //hdct.IdHoaDon = SelectID;
-                            hdct.IdChiTietSach = SelectIDSp;
+                            hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
                             hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
                             hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
                             ChiTietSach cts = new ChiTietSach();
@@ -467,8 +467,7 @@ namespace _3.PresentationLayers.Views
                         else
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
-                            hdct.IdHoaDon = SelectID;
-                            hdct.IdChiTietSach = SelectIDSp;
+                            hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
                             hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
                             hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
                             ChiTietSach cts = new ChiTietSach();
@@ -530,32 +529,32 @@ namespace _3.PresentationLayers.Views
         }
         public void LoadHoaDonDaThanhToan()
         {
-            try
-            {
-                fl_DaThanhToan.Controls.Clear();
-                foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 1))
-                {
-                    Button btn1 = new Button() { Width = 80, Height = 60 };
-                    btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
-                    btn1.Tag = a;
-                    btn1.Click += btnsender_Click;
-                    btn1.ForeColor = Color.FromArgb(255, 114, 86);
-                    switch (a.TrangThai)
-                    {
-                        case 1:
-                            {
-                                btn1.BackColor = Color.FromArgb(205, 201, 201);
-                                break;
-                            }
-                    }
-                    fl_DaThanhToan.Controls.Add(btn1);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex), "Liên hệ");
-                return;
-            }
+            //try
+            //{
+            //    fl_DaThanhToan.Controls.Clear();
+            //    foreach (var a in hoaDonService.GetAllHoaDon().Where(p => p.TrangThai == 1))
+            //    {
+            //        Button btn1 = new Button() { Width = 80, Height = 60 };
+            //        btn1.Text = a.MaHd + Environment.NewLine + (a.TrangThai == 1 ? "Đã thanh toán" : "Chưa thanh toán");
+            //        btn1.Tag = a;
+            //        btn1.Click += btnsender_Click;
+            //        btn1.ForeColor = Color.FromArgb(255, 114, 86);
+            //        switch (a.TrangThai)
+            //        {
+            //            case 1:
+            //                {
+            //                    btn1.BackColor = Color.FromArgb(205, 201, 201);
+            //                    break;
+            //                }
+            //        }
+            //        fl_DaThanhToan.Controls.Add(btn1);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(Convert.ToString(ex), "Liên hệ");
+            //    return;
+            //}
         }
         private Image ByteToImg(string byteString)
         {
@@ -1219,7 +1218,7 @@ namespace _3.PresentationLayers.Views
             {
                 tb_ghichu.Text = hd.GhiChu;
             }
-           
+            dtp_ngaytao.Value = Convert.ToDateTime(hd.NgayTao);
         }
 
         private void cb_dungdiem_CheckedChanged(object sender, EventArgs e)
