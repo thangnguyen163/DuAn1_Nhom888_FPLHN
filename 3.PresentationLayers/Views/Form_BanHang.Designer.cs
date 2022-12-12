@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_BanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_nel = new System.Windows.Forms.Panel();
@@ -123,7 +123,6 @@
             this.tb_tienmat = new System.Windows.Forms.TextBox();
             this.lb_tienmat = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -146,6 +145,8 @@
             this.pd_HoaDon = new System.Drawing.Printing.PrintDocument();
             this.pdd_ReviewHoaDon = new System.Windows.Forms.PrintPreviewDialog();
             this.pd_HoaDonGiaoHang = new System.Drawing.Printing.PrintDocument();
+            this.dtp_ngaytao = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -225,13 +226,13 @@
             // 
             this.dtg_HoaDonChiTiet.AllowUserToAddRows = false;
             this.dtg_HoaDonChiTiet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtg_HoaDonChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_HoaDonChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtg_HoaDonChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_HoaDonChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDHDct,
@@ -246,13 +247,13 @@
             this.dtg_HoaDonChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_HoaDonChiTiet.Location = new System.Drawing.Point(0, 0);
             this.dtg_HoaDonChiTiet.Name = "dtg_HoaDonChiTiet";
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtg_HoaDonChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_HoaDonChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_HoaDonChiTiet.RowHeadersWidth = 51;
             this.dtg_HoaDonChiTiet.RowTemplate.Height = 29;
             this.dtg_HoaDonChiTiet.Size = new System.Drawing.Size(878, 537);
@@ -727,7 +728,7 @@
             this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_capnhat.Location = new System.Drawing.Point(3, 805);
+            this.panel_capnhat.Location = new System.Drawing.Point(3, 844);
             this.panel_capnhat.Name = "panel_capnhat";
             this.panel_capnhat.Size = new System.Drawing.Size(426, 59);
             this.panel_capnhat.TabIndex = 108;
@@ -752,7 +753,7 @@
             this.panel_thanhtoan.Controls.Add(this.button5);
             this.panel_thanhtoan.Controls.Add(this.button4);
             this.panel_thanhtoan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 747);
+            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 786);
             this.panel_thanhtoan.Name = "panel_thanhtoan";
             this.panel_thanhtoan.Size = new System.Drawing.Size(426, 58);
             this.panel_thanhtoan.TabIndex = 107;
@@ -791,7 +792,7 @@
             this.panel25.Controls.Add(this.label5);
             this.panel25.Controls.Add(this.tb_ghichu);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel25.Location = new System.Drawing.Point(3, 677);
+            this.panel25.Location = new System.Drawing.Point(3, 716);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(426, 70);
             this.panel25.TabIndex = 111;
@@ -837,7 +838,7 @@
             this.panel_tiencoc.Controls.Add(this.lb_TienShip);
             this.panel_tiencoc.Controls.Add(this.tbx_TienShip);
             this.panel_tiencoc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_tiencoc.Location = new System.Drawing.Point(3, 428);
+            this.panel_tiencoc.Location = new System.Drawing.Point(3, 467);
             this.panel_tiencoc.Name = "panel_tiencoc";
             this.panel_tiencoc.Size = new System.Drawing.Size(426, 249);
             this.panel_tiencoc.TabIndex = 107;
@@ -1040,7 +1041,7 @@
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 371);
+            this.panel10.Location = new System.Drawing.Point(3, 410);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(426, 57);
             this.panel10.TabIndex = 110;
@@ -1081,7 +1082,7 @@
             this.panel_chuyenkhoan.Controls.Add(this.tb_chuyenkhoan);
             this.panel_chuyenkhoan.Controls.Add(this.lb_chuyenkhoan);
             this.panel_chuyenkhoan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_chuyenkhoan.Location = new System.Drawing.Point(3, 334);
+            this.panel_chuyenkhoan.Location = new System.Drawing.Point(3, 373);
             this.panel_chuyenkhoan.Name = "panel_chuyenkhoan";
             this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 37);
             this.panel_chuyenkhoan.TabIndex = 109;
@@ -1122,7 +1123,7 @@
             this.panel_tienmat.Controls.Add(this.tb_tienmat);
             this.panel_tienmat.Controls.Add(this.lb_tienmat);
             this.panel_tienmat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_tienmat.Location = new System.Drawing.Point(3, 292);
+            this.panel_tienmat.Location = new System.Drawing.Point(3, 331);
             this.panel_tienmat.Name = "panel_tienmat";
             this.panel_tienmat.Size = new System.Drawing.Size(426, 42);
             this.panel_tienmat.TabIndex = 108;
@@ -1159,7 +1160,8 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
-            this.panel6.Controls.Add(this.panel17);
+            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.dtp_ngaytao);
             this.panel6.Controls.Add(this.panel16);
             this.panel6.Controls.Add(this.panel15);
             this.panel6.Controls.Add(this.panel14);
@@ -1178,21 +1180,13 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(3, 53);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(426, 239);
+            this.panel6.Size = new System.Drawing.Size(426, 278);
             this.panel6.TabIndex = 107;
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.Black;
-            this.panel17.Location = new System.Drawing.Point(113, 239);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(280, 3);
-            this.panel17.TabIndex = 123;
             // 
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.Black;
-            this.panel16.Location = new System.Drawing.Point(163, 176);
+            this.panel16.Location = new System.Drawing.Point(160, 202);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(255, 2);
             this.panel16.TabIndex = 123;
@@ -1200,7 +1194,7 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Black;
-            this.panel15.Location = new System.Drawing.Point(163, 130);
+            this.panel15.Location = new System.Drawing.Point(160, 156);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(255, 2);
             this.panel15.TabIndex = 123;
@@ -1208,7 +1202,7 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.Black;
-            this.panel14.Location = new System.Drawing.Point(163, 89);
+            this.panel14.Location = new System.Drawing.Point(160, 115);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(255, 2);
             this.panel14.TabIndex = 123;
@@ -1216,7 +1210,7 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Black;
-            this.panel13.Location = new System.Drawing.Point(163, 48);
+            this.panel13.Location = new System.Drawing.Point(160, 74);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(255, 2);
             this.panel13.TabIndex = 123;
@@ -1225,7 +1219,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 204);
+            this.label7.Location = new System.Drawing.Point(7, 230);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 20);
             this.label7.TabIndex = 123;
@@ -1234,7 +1228,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 23);
+            this.label10.Location = new System.Drawing.Point(9, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(115, 20);
             this.label10.TabIndex = 105;
@@ -1245,7 +1239,7 @@
             this.cbb_phuongthucthanhtoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.cbb_phuongthucthanhtoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cbb_phuongthucthanhtoan.FormattingEnabled = true;
-            this.cbb_phuongthucthanhtoan.Location = new System.Drawing.Point(161, 196);
+            this.cbb_phuongthucthanhtoan.Location = new System.Drawing.Point(158, 222);
             this.cbb_phuongthucthanhtoan.Name = "cbb_phuongthucthanhtoan";
             this.cbb_phuongthucthanhtoan.Size = new System.Drawing.Size(251, 28);
             this.cbb_phuongthucthanhtoan.TabIndex = 124;
@@ -1256,7 +1250,7 @@
             this.tb_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tongtien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtien.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tb_tongtien.Location = new System.Drawing.Point(162, 152);
+            this.tb_tongtien.Location = new System.Drawing.Point(159, 178);
             this.tb_tongtien.Name = "tb_tongtien";
             this.tb_tongtien.ReadOnly = true;
             this.tb_tongtien.Size = new System.Drawing.Size(249, 20);
@@ -1266,7 +1260,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 158);
+            this.label4.Location = new System.Drawing.Point(7, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 20);
             this.label4.TabIndex = 92;
@@ -1277,7 +1271,7 @@
             this.tb_tongtienhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tongtienhang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tongtienhang.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tb_tongtienhang.Location = new System.Drawing.Point(166, 23);
+            this.tb_tongtienhang.Location = new System.Drawing.Point(163, 49);
             this.tb_tongtienhang.Name = "tb_tongtienhang";
             this.tb_tongtienhang.ReadOnly = true;
             this.tb_tongtienhang.Size = new System.Drawing.Size(249, 20);
@@ -1289,7 +1283,7 @@
             this.tb_diemquydoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_diemquydoi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_diemquydoi.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tb_diemquydoi.Location = new System.Drawing.Point(162, 106);
+            this.tb_diemquydoi.Location = new System.Drawing.Point(159, 132);
             this.tb_diemquydoi.Name = "tb_diemquydoi";
             this.tb_diemquydoi.ReadOnly = true;
             this.tb_diemquydoi.Size = new System.Drawing.Size(252, 20);
@@ -1298,7 +1292,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 112);
+            this.label9.Location = new System.Drawing.Point(7, 138);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 20);
             this.label9.TabIndex = 115;
@@ -1307,7 +1301,7 @@
             // cb_dungdiem
             // 
             this.cb_dungdiem.AutoSize = true;
-            this.cb_dungdiem.Location = new System.Drawing.Point(111, 67);
+            this.cb_dungdiem.Location = new System.Drawing.Point(108, 93);
             this.cb_dungdiem.Name = "cb_dungdiem";
             this.cb_dungdiem.Size = new System.Drawing.Size(18, 17);
             this.cb_dungdiem.TabIndex = 114;
@@ -1319,7 +1313,7 @@
             this.tb_dungdiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_dungdiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_dungdiem.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tb_dungdiem.Location = new System.Drawing.Point(166, 64);
+            this.tb_dungdiem.Location = new System.Drawing.Point(163, 90);
             this.tb_dungdiem.Name = "tb_dungdiem";
             this.tb_dungdiem.ReadOnly = true;
             this.tb_dungdiem.Size = new System.Drawing.Size(252, 20);
@@ -1330,7 +1324,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 71);
+            this.label8.Location = new System.Drawing.Point(7, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 20);
             this.label8.TabIndex = 112;
@@ -1394,6 +1388,22 @@
             // pd_HoaDonGiaoHang
             // 
             this.pd_HoaDonGiaoHang.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pd_HoaDonGiaoHang_PrintPage);
+            // 
+            // dtp_ngaytao
+            // 
+            this.dtp_ngaytao.Location = new System.Drawing.Point(154, 14);
+            this.dtp_ngaytao.Name = "dtp_ngaytao";
+            this.dtp_ngaytao.Size = new System.Drawing.Size(250, 27);
+            this.dtp_ngaytao.TabIndex = 125;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 20);
+            this.label16.TabIndex = 126;
+            this.label16.Text = "Ngày tạo";
             // 
             // Form_BanHang
             // 
@@ -1523,7 +1533,6 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel14;
@@ -1561,5 +1570,7 @@
         private System.Windows.Forms.PrintPreviewDialog pdd_ReviewHoaDon;
         private System.Drawing.Printing.PrintDocument pd_HoaDonGiaoHang;
         private System.Windows.Forms.ComboBox cbb_nganhang;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dtp_ngaytao;
     }
 }
