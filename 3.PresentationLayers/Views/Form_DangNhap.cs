@@ -49,8 +49,6 @@ namespace _3.PresentationLayers.Views
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
             var cahientai = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
-            var LastTK = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
-            var CheckTk = _iNhanVienSercvice.getNhanViensFromDB().Where(p => p.Email == tb_tendangnhap.Text).FirstOrDefault().Id;
             if (tb_tendangnhap.Text == String.Empty || tb_matkhau.Text == String.Empty)
             {
                 MessageBox.Show("Bạn cần nhập đầy đủ thông tin để đăng nhập", "Thông báo", MessageBoxButtons.OK);
@@ -65,6 +63,8 @@ namespace _3.PresentationLayers.Views
                 }
                 if (tb_tendangnhap.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienSercvice.getNhanViensFromDB()[i].MatKhau)
                 {
+                    var LastTK = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
+                    var CheckTk = _iNhanVienSercvice.getNhanViensFromDB().Where(p => p.Email == tb_tendangnhap.Text).FirstOrDefault().Id;
                     if (LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
                     {
                         MessageBox.Show("Ca trước chưa kết thúc, vui lòng liên hệ nhân viên ca trước để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
