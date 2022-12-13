@@ -39,11 +39,13 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tb_email = new System.Windows.Forms.TextBox();
             this.tb_matkhau = new System.Windows.Forms.TextBox();
-            this.lb_mavaten = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -59,6 +61,7 @@
             this.lb_tienkhac = new System.Windows.Forms.TextBox();
             this.lb_tongtien = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -98,7 +101,7 @@
             // 
             this.btn_CapNhatTienPhatSinh.BackColor = System.Drawing.Color.Lime;
             this.btn_CapNhatTienPhatSinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_CapNhatTienPhatSinh.Location = new System.Drawing.Point(609, 407);
+            this.btn_CapNhatTienPhatSinh.Location = new System.Drawing.Point(501, 402);
             this.btn_CapNhatTienPhatSinh.Name = "btn_CapNhatTienPhatSinh";
             this.btn_CapNhatTienPhatSinh.Size = new System.Drawing.Size(190, 52);
             this.btn_CapNhatTienPhatSinh.TabIndex = 15;
@@ -120,7 +123,7 @@
             // 
             this.btn_xacnhan.BackColor = System.Drawing.Color.Lime;
             this.btn_xacnhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_xacnhan.Location = new System.Drawing.Point(140, 424);
+            this.btn_xacnhan.Location = new System.Drawing.Point(129, 431);
             this.btn_xacnhan.Name = "btn_xacnhan";
             this.btn_xacnhan.Size = new System.Drawing.Size(128, 52);
             this.btn_xacnhan.TabIndex = 4;
@@ -147,7 +150,6 @@
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(215, 20);
             this.tb_email.TabIndex = 10;
-            this.tb_email.TextChanged += new System.EventHandler(this.tb_email_TextChanged);
             // 
             // tb_matkhau
             // 
@@ -158,14 +160,6 @@
             this.tb_matkhau.PasswordChar = '*';
             this.tb_matkhau.Size = new System.Drawing.Size(215, 20);
             this.tb_matkhau.TabIndex = 13;
-            // 
-            // lb_mavaten
-            // 
-            this.lb_mavaten.AutoSize = true;
-            this.lb_mavaten.Location = new System.Drawing.Point(310, 456);
-            this.lb_mavaten.Name = "lb_mavaten";
-            this.lb_mavaten.Size = new System.Drawing.Size(0, 20);
-            this.lb_mavaten.TabIndex = 14;
             // 
             // label7
             // 
@@ -200,7 +194,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.ck_confirm);
             this.panel1.Controls.Add(this.panel13);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -208,13 +205,37 @@
             this.panel1.Controls.Add(this.tb_email);
             this.panel1.Controls.Add(this.btn_xacnhan);
             this.panel1.Controls.Add(this.tb_matkhau);
-            this.panel1.Controls.Add(this.lb_mavaten);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(366, 500);
             this.panel1.TabIndex = 23;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Location = new System.Drawing.Point(96, 380);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(215, 2);
+            this.panel6.TabIndex = 124;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(96, 310);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(215, 2);
+            this.panel4.TabIndex = 124;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(215, 2);
+            this.panel5.TabIndex = 125;
             // 
             // panel2
             // 
@@ -314,13 +335,12 @@
             this.ck_confirm.AutoSize = true;
             this.ck_confirm.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.ck_confirm.ForeColor = System.Drawing.Color.Blue;
-            this.ck_confirm.Location = new System.Drawing.Point(387, 407);
+            this.ck_confirm.Location = new System.Drawing.Point(29, 401);
             this.ck_confirm.Name = "ck_confirm";
-            this.ck_confirm.Size = new System.Drawing.Size(200, 24);
+            this.ck_confirm.Size = new System.Drawing.Size(97, 24);
             this.ck_confirm.TabIndex = 25;
-            this.ck_confirm.Text = "Xác nhận tiền phát sinh";
+            this.ck_confirm.Text = "Xác nhận";
             this.ck_confirm.UseVisualStyleBackColor = true;
-            this.ck_confirm.CheckedChanged += new System.EventHandler(this.ck_confirm_CheckedChanged);
             // 
             // lb_tienmat
             // 
@@ -363,7 +383,6 @@
             this.Controls.Add(this.lb_tongtien);
             this.Controls.Add(this.lb_tienkhac);
             this.Controls.Add(this.lb_tienmat);
-            this.Controls.Add(this.ck_confirm);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -381,6 +400,7 @@
             this.Text = "KetCa";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -402,7 +422,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.TextBox tb_matkhau;
-        private System.Windows.Forms.Label lb_mavaten;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
@@ -421,5 +440,8 @@
         private System.Windows.Forms.TextBox lb_tienmat;
         private System.Windows.Forms.TextBox lb_tienkhac;
         private System.Windows.Forms.TextBox lb_tongtien;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

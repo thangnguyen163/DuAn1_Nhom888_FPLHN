@@ -259,7 +259,7 @@ namespace _3.PresentationLayers.Views
                 }
                 if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
                 {
-                    btn_HoaDon.Visible = true;
+                    btn_HoaDon.Visible = false;
                     btn_shopping.Visible = true;
                     btn_KhachHang.Visible = true;
                     btn_NhanVien.Visible = false;
@@ -301,7 +301,7 @@ namespace _3.PresentationLayers.Views
                 {
                     btn_KhachHang.Visible = true;
                     btn_shopping.Visible = true;
-                    btn_HoaDon.Visible = true;
+                    btn_HoaDon.Visible = false;
                     btn_RutTien.Visible = true;
                     btn_KetCa.Visible = true;
                 }
@@ -326,7 +326,7 @@ namespace _3.PresentationLayers.Views
             {
                 btn_KhachHang.Visible = true;
                 btn_shopping.Visible = true;
-                btn_HoaDon.Visible = true;
+                btn_HoaDon.Visible = false;
                 btn_RutTien.Visible = true;
                 btn_KetCa.Visible = true;
                 btn_sanpham.Visible = true;
@@ -350,7 +350,7 @@ namespace _3.PresentationLayers.Views
         {
             TienKetCa = Convert.ToDecimal(lb_TongTien.Text);
             OpenChildForm(new Form_GiaoCa(), sender);
-            labelTite.Text = "Kết Ca";
+            labelTite.Text = "Giao Ca";
         }
 
         private void btn_LogOut_Click(object sender, EventArgs e)

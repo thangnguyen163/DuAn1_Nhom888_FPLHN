@@ -358,7 +358,7 @@
             this.btn_KetCa.Name = "btn_KetCa";
             this.btn_KetCa.Size = new System.Drawing.Size(228, 70);
             this.btn_KetCa.TabIndex = 12;
-            this.btn_KetCa.Text = "Kết Ca";
+            this.btn_KetCa.Text = "Giao Ca";
             this.btn_KetCa.UseVisualStyleBackColor = true;
             this.btn_KetCa.Click += new System.EventHandler(this.btn_KetCa_Click);
             // 
