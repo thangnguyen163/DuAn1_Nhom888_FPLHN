@@ -13,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -136,7 +137,29 @@ namespace _3.PresentationLayers.Views
             } 
             
         }
+        public static string vietHoaChuCaiDau(string text)
+        {
+            var temp = text.ToLower();
+            return temp.Substring(0, 1).ToUpper() + temp.Substring(1, temp.Length - 1);
+        }
+        public static string zenMaFpoly(string fullName, string number)
+        {
+            string[] arrNames = fullName.Split(' ');
+            string msv = vietHoaChuCaiDau(arrNames[arrNames.Length - 1]);
+            for (int i = 0; i < arrNames.Length - 1; i++)
+            {
 
+                msv += vietHoaChuCaiDau(arrNames[i][0].ToString());
+            }
+
+            return msv + number;
+        }
+        public static string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
             try
@@ -144,12 +167,14 @@ namespace _3.PresentationLayers.Views
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm không", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Random r = new Random();
+                    string ten = zenMaFpoly(convertToUnSign3(tb_ten.Text), Convert.ToString(r.Next(1000, 9999)));
+                    
                     MessageBox.Show(_nhanVienService.addNhanVien(new NhanVien()
                     {
 
                         Id = Guid.NewGuid(),
-                        Ma = "NV" + Convert.ToString(_nhanVienService.getNhanViensFromDB()
-                          .Max(c => Convert.ToInt32(c.Ma.Substring(2, c.Ma.Length - 2)) + 1)),
+                        Ma = ten,
                         Ten = tb_ten.Text,
                         MatKhau = tb_ma.Text,
                         Cccd = Convert.ToDecimal(tb_cccd.Text),
