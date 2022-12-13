@@ -93,7 +93,12 @@ namespace _3.PresentationLayers.Views
         public static decimal TienGiao;
         private void btn_xacnhan_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn hãy đếm lại số tiền có trong két đã đủ" + lb_tongtien.Text, "Thông báo", MessageBoxButtons.YesNo);
+            if (ck_confirm.Checked == false)
+            {
+                MessageBox.Show("Bạn cần phải xác nhận trước khi giao ca","Cảnh báo",MessageBoxButtons.OK);
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Mời bạn xác nhận số tiền trong két" + Environment.NewLine + lb_tongtien.Text + " VND", "Xác nhận", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show(_iGiaoCaServicel.Update(KetCa()));
@@ -131,48 +136,43 @@ namespace _3.PresentationLayers.Views
             //    }
             //    lb_tienketca.Text = (Convert.ToDecimal(lb_TongTienCaTruoc.Text) - Convert.ToDecimal(tb_tienphatsinh.Text)).ToString();
         }
-
-        private void tb_email_TextChanged(object sender, EventArgs e)
-        {
-            if (tb_email.Text != string.Empty)
-            {
-                var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
-                if (nv == null) return;
-                lb_mavaten.Text = $"({nv.Ma} - {nv.Ten})";
-            }
-            else lb_mavaten.Text = "";
-        }
         public static decimal TongTienHienTai;
         private void btn_tienphatsinh_Click(object sender, EventArgs e)
         {
-            if (tb_phatsinhtienmat.Text == string.Empty)
+            DialogResult dialog = MessageBox.Show("Bạn có chắc muốn cập nhật tiền phát sinh không?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                MessageBox.Show("Bạn phải nhập tiền phát sinh", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
-            if (Convert.ToDecimal(lb_tienmat.Text) < Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text))
-            {
-                MessageBox.Show("Tổng số tiền mặt không đủ", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
-            if (tbx_ghichu.Text == String.Empty)
-            {
-                MessageBox.Show("Bạn phải nhập ghi chú cho tiền phát sinh này", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
-            if (ck_confirm.Checked==false)
-            {
-                MessageBox.Show("Bạn chưa xác nhận thông tin trên", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
+                if (tb_phatsinhtienmat.Text == string.Empty)
+                {
+                    MessageBox.Show("Bạn phải nhập tiền phát sinh", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                if (Convert.ToDecimal(lb_tienmat.Text) < Convert.ToDecimal(tb_phatsinhtienmat.Text == string.Empty ? 0 : tb_phatsinhtienmat.Text))
+                {
+                    MessageBox.Show("Tổng số tiền mặt không đủ", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                if (tbx_ghichu.Text == String.Empty)
+                {
+                    MessageBox.Show("Bạn phải nhập ghi chú cho tiền phát sinh này", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                if (ck_confirm.Checked == false)
+                {
+                    MessageBox.Show("Bạn chưa xác nhận thông tin trên", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
 
-            MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
-            var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
-            lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
-            lb_tienmat.Text = capnhat.TongTienMat.ToString();
-            lb_tienkhac.Text = capnhat.TongTienKhac.ToString();
-            tb_phatsinhtienmat.Text=string.Empty;
-            tbx_ghichu.Text = string.Empty;
+                MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
+                var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+                lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
+                lb_tienmat.Text = capnhat.TongTienMat.ToString();
+                lb_tienkhac.Text = capnhat.TongTienKhac.ToString();
+                tb_phatsinhtienmat.Text = string.Empty;
+                tbx_ghichu.Text = string.Empty;
+            }
+            else return;
+            
         }
 
         private void tb_tienphatsinh_KeyPress(object sender, KeyPressEventArgs e)
@@ -184,21 +184,6 @@ namespace _3.PresentationLayers.Views
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void ck_confirm_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ck_confirm.Checked == true)
-            {
-                tbx_ghichu.Enabled = false;
-                tb_phatsinhtienmat.Enabled = false;
-            }
-            else
-            {
-                tbx_ghichu.Enabled = true;
-                tb_phatsinhtienmat.Enabled = true;
-            }
 
         }
     }
