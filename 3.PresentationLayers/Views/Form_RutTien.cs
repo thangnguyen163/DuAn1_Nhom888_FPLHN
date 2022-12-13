@@ -15,13 +15,13 @@ using System.Windows.Forms;
 
 namespace _3.PresentationLayers.Views
 {
-    public partial class RutTien : Form
+    public partial class Form_RutTien : Form
     {
         IGiaoCaService _iGiaoCaService;
         INhanVienService _iNhanVienService;
         IChucVuService _iChucVuService;
         GiaoCa _gc;
-        public RutTien()
+        public Form_RutTien()
         {
             InitializeComponent();
             _iGiaoCaService = new GiaoCaService();
