@@ -157,12 +157,6 @@ namespace _3.PresentationLayers.Views
                     MessageBox.Show("Bạn phải nhập ghi chú cho tiền phát sinh này", "Thông báo", MessageBoxButtons.OK);
                     return;
                 }
-                if (ck_confirm.Checked == false)
-                {
-                    MessageBox.Show("Bạn chưa xác nhận thông tin trên", "Thông báo", MessageBoxButtons.OK);
-                    return;
-                }
-
                 MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
                 var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
                 lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
