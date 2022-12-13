@@ -74,10 +74,7 @@ namespace _3.PresentationLayers.Views
             CheckTk = _iNhanVienService.getNhanViensFromDB().Where(p => p.Email == a).FirstOrDefault().Id;
             LastGC = _iGiaoCaServicel.GetAll().Last();
         }
-        //public static Image resizeImage(Image imgToResize, Size size)
-        //{
-        //    return (Image)(new Bitmap(imgToResize, size));
-        //}
+
         public Form_Dasboard(int b)
         {
             InitializeComponent();
@@ -164,6 +161,11 @@ namespace _3.PresentationLayers.Views
 
         private void btn_shopping_Click(object sender, EventArgs e)
         {
+            if (btn_NhanCa.Visible == true)
+            {
+                MessageBox.Show("Bạn cần nhận ca để sử dụng chức năng này", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             OpenChildForm(new Form_BanHang(lb_XinChao.Text), sender);
             btn_shopping.BackColor = Color.FromArgb(63, 0, 113);
             labelTite.Text = "BÁN HÀNG";
@@ -190,49 +192,6 @@ namespace _3.PresentationLayers.Views
             btn_sanpham.BackColor = Color.FromArgb(251, 37, 118);
             labelTite.Text = "SẢN PHẨM";
         }
-
-
-        //private void logout_Click(object sender, EventArgs e)
-        //{
-        //	Application.Exit();
-        //}
-
-        private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //  SelectID = Guid.Parse(dtg_hoadon.CurrentRow.Cells[1].Value.ToString());
-            ////  SelectID = Guid.Parse(dtg_showchitiet.CurrentRow.Cells[1].Value.ToString());
-            //  LoaddataToChitietHoadon(SelectID);
-        }
-
-        private void dtg_sanpham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //int i = 100;
-            //Guid a = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
-            //var data = _ihoaDonChiTietService.GetAll().FirstOrDefault(x => x.Idchitietsp == a);
-            //int count = _ihoaDonChiTietService.GetAll().Count;
-            //if (data == null)
-            //{
-            //    var add = new HoaDonChiTiet();
-            //    add.Id = Guid.NewGuid();
-            //    add.IdHoaDon = SelectID;
-            //    add.IdChiTietSach = Guid.Parse(Convert.ToString(dtg_sanpham.CurrentRow.Cells[1].Value));
-            //    add.Ma = Convert.ToString(dtg_hoadon.CurrentRow.Cells[2].Value.ToString() + "" + Convert.ToString(count++));
-            //    add.SoLuong = 1;
-            //    add.DonGia = Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value);
-            //    add.ThanhTien = Convert.ToInt32(1 * Convert.ToInt32(dtg_sanpham.CurrentRow.Cells[14].Value));
-            //    _ihoaDonChiTietService.Add(add);
-            //}
-            //else
-            //{
-            //    var add = new HoaDonChiTiet();
-            //    add.SoLuong++;
-            //    add.ThanhTien = add.SoLuong * add.DonGia;
-            //    _ihoaDonChiTietService.Update(add);
-            //}
-            //// LoaddataToHoadon();
-            //LoaddataToChitietHoadon(SelectID);
-        }
-
         private void btn_HoaDon_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Form_Hoadon(), sender);
@@ -248,6 +207,7 @@ namespace _3.PresentationLayers.Views
             {
                 if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK != CheckTk || a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Nhân viên" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() != string.Empty)
                 {
+                    btn_NhanCa.Visible = true;
                     btn_HoaDon.Visible = false;
                     btn_shopping.Visible = false;
                     btn_KhachHang.Visible = false;
@@ -263,6 +223,18 @@ namespace _3.PresentationLayers.Views
                     btn_shopping.Visible = true;
                     btn_KhachHang.Visible = true;
                     btn_NhanVien.Visible = false;
+                    btn_sanpham.Visible = true;
+                    btn_RutTien.Visible = true;
+                    btn_KetCa.Visible = true;
+                    btn_NhanCa.Visible = false;
+                    return;
+                }
+                if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Quản trị" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
+                {
+                    btn_HoaDon.Visible = true;
+                    btn_shopping.Visible = true;
+                    btn_KhachHang.Visible = true;
+                    btn_NhanVien.Visible = true;
                     btn_sanpham.Visible = true;
                     btn_RutTien.Visible = true;
                     btn_KetCa.Visible = true;
@@ -294,21 +266,34 @@ namespace _3.PresentationLayers.Views
             if (Form_GiaoCa.emailgiao == null && Form_GiaoCa.passgiao == null) return;
             if (Form_GiaoCa.emailgiao != null && Form_GiaoCa.passgiao != null)
             {
+                lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
                 var x = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Email == Form_GiaoCa.emailgiao);
                 lb_XinChao.Text = x.Ten;
-                lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
-                if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
+                var idqt = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Quản trị".ToLower()).Select(c => c.Id).FirstOrDefault();
+                var idnv = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Nhân viên".ToLower()).Select(c => c.Id).FirstOrDefault();
+                if (x.IdchucVu == idqt)
                 {
-                    btn_KhachHang.Visible = true;
+                    btn_HoaDon.Visible = true;
+                    btn_sanpham.Visible = true;
                     btn_shopping.Visible = true;
-                    btn_HoaDon.Visible = false;
+                    btn_NhanVien.Visible = true;
+                    btn_NhanCa.Visible = false;
+                    btn_LogOut.Visible = true;
                     btn_RutTien.Visible = true;
                     btn_KetCa.Visible = true;
+                    return;
                 }
-                btn_NhanCa.Visible = true;
-                if (btn_shopping.Visible == true)
+                if (x.IdchucVu == idnv)
                 {
+                    btn_HoaDon.Visible = false;
+                    btn_shopping.Visible = true;
+                    btn_KhachHang.Visible = true;
+                    btn_NhanVien.Visible = false;
+                    btn_sanpham.Visible = true;
+                    btn_RutTien.Visible = true;
+                    btn_KetCa.Visible = true;
                     btn_NhanCa.Visible = false;
+                    return;
                 }
                 Form_GiaoCa.emailgiao = null;
                 Form_GiaoCa.passgiao = null;
@@ -318,36 +303,58 @@ namespace _3.PresentationLayers.Views
 
         private void btn_NhanCa_Click(object sender, EventArgs e)
         {
+            Form_NhanCaLam.TongTien = 0;
             Form_NhanCaLam form_NhanCaLam = new Form_NhanCaLam();
             form_NhanCaLam.ShowDialog();
+            if (Form_NhanCaLam.TongTien == 0) return;
             lb_TongTien.Text = Form_NhanCaLam.TongTien.ToString();
-            if (Form_NhanCaLam.TongTien == null) return;
-            if (lb_TongTien.Text != String.Empty && Convert.ToDecimal(lb_TongTien.Text) > 0)
+            var x = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Email == Form_DangNhap.Email);
+            var idqt = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Quản trị".ToLower()).Select(c => c.Id).FirstOrDefault();
+            var idnv = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Nhân viên".ToLower()).Select(c => c.Id).FirstOrDefault();
+            if (x.IdchucVu == idqt)
             {
-                btn_KhachHang.Visible = true;
+                btn_HoaDon.Visible = true;
+                btn_sanpham.Visible = true;
                 btn_shopping.Visible = true;
-                btn_HoaDon.Visible = false;
+                btn_NhanVien.Visible = true;
+                btn_NhanCa.Visible = false;
+                btn_LogOut.Visible = true;
                 btn_RutTien.Visible = true;
                 btn_KetCa.Visible = true;
-                btn_sanpham.Visible = true;
+                return;
             }
-
-
-            btn_NhanCa.Visible = true;
-            if (btn_shopping.Visible == true)
+            if (x.IdchucVu == idnv)
             {
+                btn_HoaDon.Visible = false;
+                btn_shopping.Visible = true;
+                btn_KhachHang.Visible = true;
+                btn_NhanVien.Visible = false;
+                btn_sanpham.Visible = true;
+                btn_RutTien.Visible = true;
+                btn_KetCa.Visible = true;
                 btn_NhanCa.Visible = false;
+                return;
             }
         }
 
         private void btn_RutTien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new RutTien(), sender);
+            if (btn_NhanCa.Visible == true)
+            {
+                MessageBox.Show("Bạn cần nhận ca để sử dụng chức năng này", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            OpenChildForm(new Form_RutTien(), sender);
             labelTite.Text = "Rút Tiền";
         }
         public static decimal TienKetCa;
         private void btn_KetCa_Click(object sender, EventArgs e)
         {
+            if (btn_NhanCa.Visible == true)
+            {
+                MessageBox.Show("Bạn cần nhận ca để sử dụng chức năng này", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             TienKetCa = Convert.ToDecimal(lb_TongTien.Text);
             OpenChildForm(new Form_GiaoCa(), sender);
             labelTite.Text = "Giao Ca";
@@ -358,7 +365,7 @@ namespace _3.PresentationLayers.Views
             var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
             GiaoCa gc = new GiaoCa();
 
-            if (btn_NhanCa.Visible==true)
+            if (btn_NhanCa.Visible == true)
             {
                 DialogResult dx = MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo);
                 if (dx == DialogResult.Yes)

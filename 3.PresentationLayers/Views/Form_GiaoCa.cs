@@ -116,7 +116,7 @@ namespace _3.PresentationLayers.Views
                         passgiao = tb_matkhau.Text;
                         TienGiao = Convert.ToDecimal(lb_tongtien.Text);
                         _iGiaoCaServicel.Add(CaMoi());
-                        MessageBox.Show($"Xin chào {nv.Ten}", "Giao ca thành công", MessageBoxButtons.OK);
+                        MessageBox.Show($"Xin chào: {nv.Ten}", "Giao ca thành công", MessageBoxButtons.OK);
                         this.Close();
                         //Form_DangNhap form_DangNhap = new Form_DangNhap(tb_email.Text, tb_matkhau.Text);
                         return;

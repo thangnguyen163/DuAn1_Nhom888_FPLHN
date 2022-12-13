@@ -1,6 +1,6 @@
 ﻿namespace _3.PresentationLayers.Views
 {
-    partial class RutTien
+    partial class Form_RutTien
     {
         /// <summary>
         /// Required designer variable.
