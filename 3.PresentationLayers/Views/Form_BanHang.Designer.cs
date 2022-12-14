@@ -1037,6 +1037,7 @@
             this.tbx_TienCoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienCoc.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienCoc.Location = new System.Drawing.Point(165, 6);
+            this.tbx_TienCoc.MaxLength = 9;
             this.tbx_TienCoc.Name = "tbx_TienCoc";
             this.tbx_TienCoc.Size = new System.Drawing.Size(194, 20);
             this.tbx_TienCoc.TabIndex = 106;
@@ -1068,6 +1069,7 @@
             this.tbx_TienShip.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_TienShip.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbx_TienShip.Location = new System.Drawing.Point(168, 47);
+            this.tbx_TienShip.MaxLength = 9;
             this.tbx_TienShip.Name = "tbx_TienShip";
             this.tbx_TienShip.Size = new System.Drawing.Size(194, 20);
             this.tbx_TienShip.TabIndex = 107;
@@ -1165,6 +1167,7 @@
             this.tb_chuyenkhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_chuyenkhoan.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_chuyenkhoan.Location = new System.Drawing.Point(165, 11);
+            this.tb_chuyenkhoan.MaxLength = 9;
             this.tb_chuyenkhoan.Name = "tb_chuyenkhoan";
             this.tb_chuyenkhoan.Size = new System.Drawing.Size(194, 20);
             this.tb_chuyenkhoan.TabIndex = 127;
@@ -1218,6 +1221,7 @@
             this.tb_tienmat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tienmat.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_tienmat.Location = new System.Drawing.Point(163, 13);
+            this.tb_tienmat.MaxLength = 9;
             this.tb_tienmat.Name = "tb_tienmat";
             this.tb_tienmat.Size = new System.Drawing.Size(194, 20);
             this.tb_tienmat.TabIndex = 125;
@@ -1444,6 +1448,7 @@
             this.tb_dungdiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_dungdiem.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tb_dungdiem.Location = new System.Drawing.Point(163, 90);
+            this.tb_dungdiem.MaxLength = 9;
             this.tb_dungdiem.Name = "tb_dungdiem";
             this.tb_dungdiem.ReadOnly = true;
             this.tb_dungdiem.Size = new System.Drawing.Size(194, 20);
