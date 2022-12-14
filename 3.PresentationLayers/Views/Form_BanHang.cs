@@ -724,7 +724,7 @@ namespace _3.PresentationLayers.Views
                                 hd.Idnv = SelectNhanVien;
                                 if (cbb_nganhang.SelectedIndex > 0)
                                 {
-                                    if (_ikhachHangService.getAll().Where(x=>x.Ma == cbb_nganhang.Text).Count==1)
+                                    if (_ikhachHangService.getAll().Where(x=>x.Ma == cbb_nganhang.Text).Count()==1)
                                     {
                                         hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ma == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
                                     }
