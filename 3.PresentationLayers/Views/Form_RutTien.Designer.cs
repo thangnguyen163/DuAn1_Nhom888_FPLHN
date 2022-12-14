@@ -84,6 +84,7 @@
             this.tbx_TienRut.Name = "tbx_TienRut";
             this.tbx_TienRut.Size = new System.Drawing.Size(217, 27);
             this.tbx_TienRut.TabIndex = 5;
+            this.tbx_TienRut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_TienRut_KeyPress);
             // 
             // btn_ruttien
             // 
@@ -95,7 +96,7 @@
             this.btn_ruttien.UseVisualStyleBackColor = true;
             this.btn_ruttien.Click += new System.EventHandler(this.btn_ruttien_Click);
             // 
-            // RutTien
+            // Form_RutTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,7 +108,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbx_pass);
             this.Controls.Add(this.tbx_user);
-            this.Name = "RutTien";
+            this.Name = "Form_RutTien";
             this.Text = "RutTien";
             this.ResumeLayout(false);
             this.PerformLayout();
