@@ -2156,8 +2156,7 @@ namespace _3.PresentationLayers.Views
         }
         private void btn_quetma_Click(object sender, EventArgs e)
         {
-            if (dtg_HoaDonChiTiet.Visible == true)
-            {
+            
                 HoaDon hdcheck = new HoaDon();
                 hdcheck = hoaDonService.GetAllHoaDon().FirstOrDefault(z => z.MaHd == tabHoaDon.SelectedTab.Name);
                 if (hdcheck.TrangThai == 0)
@@ -2476,7 +2475,7 @@ namespace _3.PresentationLayers.Views
                 {
                     AlertFail("Không thể thêm sản phẩm");
                 }
-            }
+            
 
         }
 
@@ -2484,167 +2483,170 @@ namespace _3.PresentationLayers.Views
         private void tb_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"^[0-9]*$");
-            if (dtg_HoaDonChiTiet.Visible == true)
+            if (tabHoaDon.SelectedIndex>=0)
             {
-                HoaDon hd = new HoaDon();
-                hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
-                if (hd.TrangThai == 0)
+                if (dtg_HoaDonChiTiet.Visible == true)
                 {
-                    if (tabtrangthaimuahang.SelectedIndex == 0)
+                    HoaDon hd = new HoaDon();
+                    hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
+                    if (hd.TrangThai == 0)
                     {
-                        if (cbb_phuongthucthanhtoan.SelectedIndex == 0)
+                        if (tabtrangthaimuahang.SelectedIndex == 0)
                         {
-                            if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                            if (cbb_phuongthucthanhtoan.SelectedIndex == 0)
                             {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                else if (regex.IsMatch(tb_tienmat.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text));
+                                }
                             }
-                            else if (tb_tienmat.Text == "")
+                            else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
                             {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            else if (regex.IsMatch(tb_tienmat.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text));
-                            }
-                        }
-                        else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
-                        {
 
-                            if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^[a-zA-Z0-9 ]*$") == false)
-                            {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
-                            }
-                            else if (tb_tienmat.Text == "")
-                            {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            else if (regex.IsMatch(tb_chuyenkhoan.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text));
-                            }
+                                if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                else if (regex.IsMatch(tb_chuyenkhoan.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text));
+                                }
 
-                        }
-                        else if (cbb_phuongthucthanhtoan.SelectedIndex == 2)
-                        {
-                            if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
-                            {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
                             }
-                            else if (tb_tienmat.Text == "")
+                            else if (cbb_phuongthucthanhtoan.SelectedIndex == 2)
                             {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
-                            //{
-                            //    MessageBox.Show("Không được chứa chữ cái");
-                            //}
-                            else if (!string.IsNullOrEmpty(tb_chuyenkhoan.Text) && !string.IsNullOrEmpty(tb_tienmat.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tb_chuyenkhoan.Text));
-                            }
-                        }
-                    }
-                    else if (tabtrangthaimuahang.SelectedIndex == 1)
-                    {
-                        if (cbb_phuongthucthanhtoan.SelectedIndex == 0)
-                        {
-                            if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
-                            {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
-                            }
-                            else if (tb_tienmat.Text == "")
-                            {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
-                            //{
-                            //    MessageBox.Show("Không được chứa chữ cái");
-                            //}
-                            else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
-                            {
-                                return;
-                            }
-                            else if (string.IsNullOrEmpty(tbx_TienShip.Text))
-                            {
-                                return;
-                            }
-                            else if (regex.IsMatch(tb_tienmat.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
+                                if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
+                                //{
+                                //    MessageBox.Show("Không được chứa chữ cái");
+                                //}
+                                else if (!string.IsNullOrEmpty(tb_chuyenkhoan.Text) && !string.IsNullOrEmpty(tb_tienmat.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tb_chuyenkhoan.Text));
+                                }
                             }
                         }
-                        else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
+                        else if (tabtrangthaimuahang.SelectedIndex == 1)
                         {
+                            if (cbb_phuongthucthanhtoan.SelectedIndex == 0)
+                            {
+                                if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
+                                //{
+                                //    MessageBox.Show("Không được chứa chữ cái");
+                                //}
+                                else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
+                                {
+                                    return;
+                                }
+                                else if (string.IsNullOrEmpty(tbx_TienShip.Text))
+                                {
+                                    return;
+                                }
+                                else if (regex.IsMatch(tb_tienmat.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
+                                }
+                            }
+                            else if (cbb_phuongthucthanhtoan.SelectedIndex == 1)
+                            {
 
-                            if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^[a-zA-Z0-9 ]*$") == false)
-                            {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
-                            }
-                            else if (tb_tienmat.Text == "")
-                            {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            //else if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^\d+$") == false)
-                            //{
-                            //    MessageBox.Show("Không được chứa chữ cái");
-                            //}
-                            else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
-                            {
-                                return;
-                            }
-                            else if (string.IsNullOrEmpty(tbx_TienShip.Text))
-                            {
-                                return;
-                            }
-                            else if (regex.IsMatch(tb_chuyenkhoan.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
-                            }
+                                if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                //else if (Regex.IsMatch(tb_chuyenkhoan.Text, @"^\d+$") == false)
+                                //{
+                                //    MessageBox.Show("Không được chứa chữ cái");
+                                //}
+                                else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
+                                {
+                                    return;
+                                }
+                                else if (string.IsNullOrEmpty(tbx_TienShip.Text))
+                                {
+                                    return;
+                                }
+                                else if (regex.IsMatch(tb_chuyenkhoan.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
+                                }
 
+                            }
+                            else if (cbb_phuongthucthanhtoan.SelectedIndex == 2)
+                            {
+                                if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
+                                {
+                                    MessageBox.Show("Không được chứa ký tự đặc biệt");
+                                }
+                                else if (tb_tienmat.Text == "")
+                                {
+                                    tb_tienmat.Clear();
+                                    tb_tientralai.Clear();
+                                    return;
+                                }
+                                //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
+                                //{
+                                //    MessageBox.Show("Không được chứa chữ cái");
+                                //}
+                                else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
+                                {
+                                    return;
+                                }
+                                else if (string.IsNullOrEmpty(tbx_TienShip.Text))
+                                {
+                                    return;
+                                }
+                                else if (!string.IsNullOrEmpty(tb_chuyenkhoan.Text) && !string.IsNullOrEmpty(tb_tienmat.Text))
+                                {
+                                    tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) + Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
+                                }
+                            }
                         }
-                        else if (cbb_phuongthucthanhtoan.SelectedIndex == 2)
-                        {
-                            if (Regex.IsMatch(tb_tienmat.Text, @"^[a-zA-Z0-9 ]*$") == false)
-                            {
-                                MessageBox.Show("Không được chứa ký tự đặc biệt");
-                            }
-                            else if (tb_tienmat.Text == "")
-                            {
-                                tb_tienmat.Clear();
-                                tb_tientralai.Clear();
-                                return;
-                            }
-                            //else if (Regex.IsMatch(tb_tienmat.Text, @"^\d+$") == false)
-                            //{
-                            //    MessageBox.Show("Không được chứa chữ cái");
-                            //}
-                            else if (string.IsNullOrEmpty(tbx_TienCoc.Text))
-                            {
-                                return;
-                            }
-                            else if (string.IsNullOrEmpty(tbx_TienShip.Text))
-                            {
-                                return;
-                            }
-                            else if (!string.IsNullOrEmpty(tb_chuyenkhoan.Text) && !string.IsNullOrEmpty(tb_tienmat.Text))
-                            {
-                                tb_tientralai.Text = Convert.ToString(Convert.ToInt32(tb_tienmat.Text) + Convert.ToInt32(tb_chuyenkhoan.Text) - Convert.ToInt32(tb_tongtien.Text) + Convert.ToInt32(tbx_TienCoc.Text) - Convert.ToInt32(tbx_TienShip.Text));
-                            }
-                        }
+
                     }
 
                 }
-
             }
         }
 
@@ -3002,6 +3004,7 @@ namespace _3.PresentationLayers.Views
 
         private void tb_chuyenkhoan_TextChanged(object sender, EventArgs e)
         {
+           
             Regex regex = new Regex(@"^[0-9]*$");
             if (dtg_HoaDonChiTiet.Visible ==true)
             {
