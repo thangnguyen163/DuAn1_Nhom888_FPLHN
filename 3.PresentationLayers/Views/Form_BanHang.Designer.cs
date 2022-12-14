@@ -88,6 +88,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.tb_ghichu = new System.Windows.Forms.RichTextBox();
             this.panel_tiencoc = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
             this.tb_diachi = new System.Windows.Forms.RichTextBox();
@@ -153,7 +154,7 @@
             this.pd_HoaDon = new System.Drawing.Printing.PrintDocument();
             this.pdd_ReviewHoaDon = new System.Windows.Forms.PrintPreviewDialog();
             this.pd_HoaDonGiaoHang = new System.Drawing.Printing.PrintDocument();
-            this.tb_ghichu = new System.Windows.Forms.RichTextBox();
+            this.bt_huyship = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -575,6 +576,8 @@
             this.cbb_nganhang.TabIndex = 125;
             this.cbb_nganhang.SelectedIndexChanged += new System.EventHandler(this.cbb_nganhang_SelectedIndexChanged);
             this.cbb_nganhang.TextChanged += new System.EventHandler(this.cbb_nganhang_TextChanged);
+            this.cbb_nganhang.Leave += new System.EventHandler(this.cbb_nganhang_Leave);
+            this.cbb_nganhang.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbb_nganhang_MouseClick);
             // 
             // tb_vidiem
             // 
@@ -733,9 +736,10 @@
             // panel_capnhat
             // 
             this.panel_capnhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.panel_capnhat.Controls.Add(this.bt_huyship);
             this.panel_capnhat.Controls.Add(this.bt_capnhat);
             this.panel_capnhat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_capnhat.Location = new System.Drawing.Point(3, 843);
+            this.panel_capnhat.Location = new System.Drawing.Point(3, 842);
             this.panel_capnhat.Name = "panel_capnhat";
             this.panel_capnhat.Size = new System.Drawing.Size(426, 59);
             this.panel_capnhat.TabIndex = 108;
@@ -745,7 +749,7 @@
             this.bt_capnhat.BackColor = System.Drawing.Color.SpringGreen;
             this.bt_capnhat.Image = ((System.Drawing.Image)(resources.GetObject("bt_capnhat.Image")));
             this.bt_capnhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_capnhat.Location = new System.Drawing.Point(142, 3);
+            this.bt_capnhat.Location = new System.Drawing.Point(59, 3);
             this.bt_capnhat.Name = "bt_capnhat";
             this.bt_capnhat.Size = new System.Drawing.Size(136, 56);
             this.bt_capnhat.TabIndex = 0;
@@ -760,7 +764,7 @@
             this.panel_thanhtoan.Controls.Add(this.button5);
             this.panel_thanhtoan.Controls.Add(this.button4);
             this.panel_thanhtoan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 785);
+            this.panel_thanhtoan.Location = new System.Drawing.Point(3, 784);
             this.panel_thanhtoan.Name = "panel_thanhtoan";
             this.panel_thanhtoan.Size = new System.Drawing.Size(426, 58);
             this.panel_thanhtoan.TabIndex = 107;
@@ -784,9 +788,9 @@
             this.button4.BackColor = System.Drawing.Color.SpringGreen;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(49, 6);
+            this.button4.Location = new System.Drawing.Point(59, 6);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 50);
+            this.button4.Size = new System.Drawing.Size(136, 50);
             this.button4.TabIndex = 110;
             this.button4.Text = "Thanh Toán";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -799,7 +803,7 @@
             this.panel25.Controls.Add(this.label5);
             this.panel25.Controls.Add(this.tb_ghichu);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel25.Location = new System.Drawing.Point(3, 705);
+            this.panel25.Location = new System.Drawing.Point(3, 704);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(426, 80);
             this.panel25.TabIndex = 111;
@@ -812,6 +816,14 @@
             this.label5.Size = new System.Drawing.Size(62, 20);
             this.label5.TabIndex = 124;
             this.label5.Text = "Ghi chú";
+            // 
+            // tb_ghichu
+            // 
+            this.tb_ghichu.Location = new System.Drawing.Point(160, 6);
+            this.tb_ghichu.Name = "tb_ghichu";
+            this.tb_ghichu.Size = new System.Drawing.Size(263, 57);
+            this.tb_ghichu.TabIndex = 0;
+            this.tb_ghichu.Text = "";
             // 
             // panel_tiencoc
             // 
@@ -838,7 +850,7 @@
             this.panel_tiencoc.Controls.Add(this.lb_TienShip);
             this.panel_tiencoc.Controls.Add(this.tbx_TienShip);
             this.panel_tiencoc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_tiencoc.Location = new System.Drawing.Point(3, 425);
+            this.panel_tiencoc.Location = new System.Drawing.Point(3, 424);
             this.panel_tiencoc.Name = "panel_tiencoc";
             this.panel_tiencoc.Size = new System.Drawing.Size(426, 280);
             this.panel_tiencoc.TabIndex = 107;
@@ -856,9 +868,9 @@
             // 
             // tb_diachi
             // 
-            this.tb_diachi.Location = new System.Drawing.Point(127, 160);
+            this.tb_diachi.Location = new System.Drawing.Point(159, 160);
             this.tb_diachi.Name = "tb_diachi";
-            this.tb_diachi.Size = new System.Drawing.Size(299, 57);
+            this.tb_diachi.Size = new System.Drawing.Size(258, 58);
             this.tb_diachi.TabIndex = 0;
             this.tb_diachi.Text = "";
             // 
@@ -899,6 +911,7 @@
             this.tb_sodienthoai.Name = "tb_sodienthoai";
             this.tb_sodienthoai.Size = new System.Drawing.Size(252, 20);
             this.tb_sodienthoai.TabIndex = 126;
+            this.tb_sodienthoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sodienthoai_KeyPress);
             // 
             // tb_nguoinhan
             // 
@@ -989,7 +1002,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 228);
+            this.label12.Location = new System.Drawing.Point(9, 228);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 20);
             this.label12.TabIndex = 111;
@@ -1015,6 +1028,7 @@
             this.tbx_TienCoc.TabIndex = 106;
             this.tbx_TienCoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbx_TienCoc.TextChanged += new System.EventHandler(this.tbx_TienCoc_TextChanged);
+            this.tbx_TienCoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_TienCoc_KeyPress);
             // 
             // lb_TienCoc
             // 
@@ -1045,6 +1059,7 @@
             this.tbx_TienShip.TabIndex = 107;
             this.tbx_TienShip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbx_TienShip.TextChanged += new System.EventHandler(this.tbx_TienShip_TextChanged);
+            this.tbx_TienShip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_TienShip_KeyPress);
             // 
             // panel10
             // 
@@ -1054,7 +1069,7 @@
             this.panel10.Controls.Add(this.tb_tientralai);
             this.panel10.Controls.Add(this.label6);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 385);
+            this.panel10.Location = new System.Drawing.Point(3, 384);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(426, 40);
             this.panel10.TabIndex = 110;
@@ -1064,7 +1079,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(365, 7);
+            this.label22.Location = new System.Drawing.Point(362, 3);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(42, 20);
             this.label22.TabIndex = 127;
@@ -1073,7 +1088,7 @@
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.Color.Black;
-            this.panel20.Location = new System.Drawing.Point(166, 30);
+            this.panel20.Location = new System.Drawing.Point(163, 35);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(255, 2);
             this.panel20.TabIndex = 123;
@@ -1083,7 +1098,7 @@
             this.tb_tientralai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
             this.tb_tientralai.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_tientralai.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tb_tientralai.Location = new System.Drawing.Point(165, 6);
+            this.tb_tientralai.Location = new System.Drawing.Point(165, 7);
             this.tb_tientralai.Name = "tb_tientralai";
             this.tb_tientralai.ReadOnly = true;
             this.tb_tientralai.Size = new System.Drawing.Size(194, 20);
@@ -1109,7 +1124,7 @@
             this.panel_chuyenkhoan.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_chuyenkhoan.Location = new System.Drawing.Point(3, 347);
             this.panel_chuyenkhoan.Name = "panel_chuyenkhoan";
-            this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 38);
+            this.panel_chuyenkhoan.Size = new System.Drawing.Size(426, 37);
             this.panel_chuyenkhoan.TabIndex = 109;
             // 
             // label21
@@ -1491,13 +1506,19 @@
             // 
             this.pd_HoaDonGiaoHang.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pd_HoaDonGiaoHang_PrintPage);
             // 
-            // tb_ghichu
+            // bt_huyship
             // 
-            this.tb_ghichu.Location = new System.Drawing.Point(124, 6);
-            this.tb_ghichu.Name = "tb_ghichu";
-            this.tb_ghichu.Size = new System.Drawing.Size(299, 57);
-            this.tb_ghichu.TabIndex = 0;
-            this.tb_ghichu.Text = "";
+            this.bt_huyship.BackColor = System.Drawing.Color.Red;
+            this.bt_huyship.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bt_huyship.Image = ((System.Drawing.Image)(resources.GetObject("bt_huyship.Image")));
+            this.bt_huyship.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_huyship.Location = new System.Drawing.Point(254, 6);
+            this.bt_huyship.Name = "bt_huyship";
+            this.bt_huyship.Size = new System.Drawing.Size(138, 50);
+            this.bt_huyship.TabIndex = 112;
+            this.bt_huyship.Text = "Hủy ";
+            this.bt_huyship.UseVisualStyleBackColor = false;
+            this.bt_huyship.Click += new System.EventHandler(this.bt_huyship_Click);
             // 
             // Form_BanHang
             // 
@@ -1673,5 +1694,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.RichTextBox tb_ghichu;
+        private System.Windows.Forms.Button bt_huyship;
     }
 }
