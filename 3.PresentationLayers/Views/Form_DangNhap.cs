@@ -1,6 +1,8 @@
 using _1.DAL.DomainClass;
+using _2.BUS.IService;
 using _2.BUS.IServices;
 using _2.BUS.Serivces;
+using _2.BUS.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +19,14 @@ namespace _3.PresentationLayers.Views
     {
         INhanVienService _iNhanVienSercvice;
         IGiaoCaService _igiaoCaService;
+        IChucVuService _iChucVuService;
         public static string Email;
         public Form_DangNhap()
         {
             InitializeComponent();
             _iNhanVienSercvice = new NhanVienService();
             _igiaoCaService = new GiaoCaService();
+            _iChucVuService = new ChucVuServivce();
             tb_tendangnhap.Text = Properties.Settings.Default.Username;
             tb_matkhau.Text = Properties.Settings.Default.Password;
             if (Properties.Settings.Default.Username == string.Empty)
@@ -65,11 +69,13 @@ namespace _3.PresentationLayers.Views
                 {
                     var LastTK = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
                     var CheckTk = _iNhanVienSercvice.getNhanViensFromDB().Where(p => p.Email == tb_tendangnhap.Text).FirstOrDefault().Id;
-                    if (LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
+                    var idchucvu = _iChucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Nhân viên".ToLower()).Select(c => c.Id).FirstOrDefault();
+                    if ( LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty &&  _iNhanVienSercvice.getNhanViensFromDB()[i].IdchucVu == idchucvu)
                     {
                         MessageBox.Show("Ca trước chưa kết thúc, vui lòng liên hệ nhân viên ca trước để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
                         return;
                     }
+                    
                     InforLogin();
                     Email = tb_tendangnhap.Text;
                     Form_Dasboard fdb = new Form_Dasboard(tb_tendangnhap.Text);

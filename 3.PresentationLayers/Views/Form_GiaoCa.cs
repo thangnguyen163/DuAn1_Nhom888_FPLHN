@@ -101,7 +101,7 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Mời bạn xác nhận số tiền trong két" + Environment.NewLine + lb_tongtien.Text + " VND", "Xác nhận", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show(_iGiaoCaServicel.Update(KetCa()));
+                
                 for (int i = 0; i <= _iNhanVienServicel.getNhanViensFromDB().Count(); i++)
                 {
                     if (_iNhanVienServicel.getNhanViensFromDB().Where(c => c.Email == tb_email.Text).ToList().Count == 0 || tb_email.Text == _iNhanVienServicel.getNhanViensFromDB()[i].Email && tb_matkhau.Text != _iNhanVienServicel.getNhanViensFromDB()[i].MatKhau)
@@ -111,6 +111,7 @@ namespace _3.PresentationLayers.Views
                     }
                     if (tb_email.Text == _iNhanVienServicel.getNhanViensFromDB()[i].Email && tb_matkhau.Text == _iNhanVienServicel.getNhanViensFromDB()[i].MatKhau)
                     {
+                        MessageBox.Show(_iGiaoCaServicel.Update(KetCa()));
                         var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                         emailgiao = tb_email.Text;
                         passgiao = tb_matkhau.Text;

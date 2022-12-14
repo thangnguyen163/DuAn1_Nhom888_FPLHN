@@ -229,6 +229,18 @@ namespace _3.PresentationLayers.Views
                     btn_NhanCa.Visible = false;
                     return;
                 }
+                if (a.chucVu.Ten == "Quản trị" && LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
+                {
+                    btn_HoaDon.Visible = true;
+                    btn_sanpham.Visible = true;
+                    btn_shopping.Visible = true;
+                    btn_NhanVien.Visible = true;
+                    btn_NhanCa.Visible = true;
+                    btn_LogOut.Visible = true;
+                    btn_RutTien.Visible = true;
+                    btn_KetCa.Visible = true;
+                    return;
+                }
                 if (a.nhanVien.Ten == lb_XinChao.Text && a.chucVu.Ten == "Quản trị" && LastTK == CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty)
                 {
                     btn_HoaDon.Visible = true;
@@ -241,18 +253,7 @@ namespace _3.PresentationLayers.Views
                     btn_NhanCa.Visible = false;
                     return;
                 }
-                if (a.nhanVien.Ten == lb_XinChao.Text && a.nhanVien.IdchucVu == idchucvu)
-                {
-                    btn_HoaDon.Visible = true;
-                    btn_sanpham.Visible = true;
-                    btn_shopping.Visible = true;
-                    btn_NhanVien.Visible = true;
-                    btn_NhanCa.Visible = true;
-                    btn_LogOut.Visible = true;
-                    btn_RutTien.Visible = true;
-                    btn_KetCa.Visible = true;
-                    return;
-                }
+                
             }
         }
 
@@ -303,6 +304,12 @@ namespace _3.PresentationLayers.Views
 
         private void btn_NhanCa_Click(object sender, EventArgs e)
         {
+            var cahientai = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
+            if (cahientai.ThoiGianReset.ToString()==string.Empty)
+            {
+                MessageBox.Show("Bạn cần kết thúc ca cũ trước khi nhận ca mới, vui lòng liên hệ nhân viên ca cũ để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             Form_NhanCaLam.TongTien = 0;
             Form_NhanCaLam form_NhanCaLam = new Form_NhanCaLam();
             form_NhanCaLam.ShowDialog();
