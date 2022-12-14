@@ -82,6 +82,7 @@
             this.lbdtghdct = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel_capnhat = new System.Windows.Forms.Panel();
+            this.bt_huyship = new System.Windows.Forms.Button();
             this.bt_capnhat = new System.Windows.Forms.Button();
             this.panel_thanhtoan = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -154,7 +155,6 @@
             this.pd_HoaDon = new System.Drawing.Printing.PrintDocument();
             this.pdd_ReviewHoaDon = new System.Windows.Forms.PrintPreviewDialog();
             this.pd_HoaDonGiaoHang = new System.Drawing.Printing.PrintDocument();
-            this.bt_huyship = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_nel.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -505,7 +505,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(216, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(188, 743);
+            this.groupBox2.Size = new System.Drawing.Size(188, 588);
             this.groupBox2.TabIndex = 79;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa đơn đã thanh toán";
@@ -517,7 +517,7 @@
             this.fl_DaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_DaThanhToan.Location = new System.Drawing.Point(3, 21);
             this.fl_DaThanhToan.Name = "fl_DaThanhToan";
-            this.fl_DaThanhToan.Size = new System.Drawing.Size(182, 719);
+            this.fl_DaThanhToan.Size = new System.Drawing.Size(182, 564);
             this.fl_DaThanhToan.TabIndex = 73;
             // 
             // groupBox1
@@ -526,7 +526,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(11, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(199, 746);
+            this.groupBox1.Size = new System.Drawing.Size(199, 588);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hóa đơn chưa thanh toán";
@@ -538,7 +538,7 @@
             this.fl_ChuaThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fl_ChuaThanhToan.Location = new System.Drawing.Point(3, 21);
             this.fl_ChuaThanhToan.Name = "fl_ChuaThanhToan";
-            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(193, 722);
+            this.fl_ChuaThanhToan.Size = new System.Drawing.Size(193, 564);
             this.fl_ChuaThanhToan.TabIndex = 74;
             // 
             // panel5
@@ -743,6 +743,20 @@
             this.panel_capnhat.Name = "panel_capnhat";
             this.panel_capnhat.Size = new System.Drawing.Size(426, 59);
             this.panel_capnhat.TabIndex = 108;
+            // 
+            // bt_huyship
+            // 
+            this.bt_huyship.BackColor = System.Drawing.Color.Red;
+            this.bt_huyship.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bt_huyship.Image = ((System.Drawing.Image)(resources.GetObject("bt_huyship.Image")));
+            this.bt_huyship.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_huyship.Location = new System.Drawing.Point(254, 6);
+            this.bt_huyship.Name = "bt_huyship";
+            this.bt_huyship.Size = new System.Drawing.Size(138, 50);
+            this.bt_huyship.TabIndex = 112;
+            this.bt_huyship.Text = "Hủy ";
+            this.bt_huyship.UseVisualStyleBackColor = false;
+            this.bt_huyship.Click += new System.EventHandler(this.bt_huyship_Click);
             // 
             // bt_capnhat
             // 
@@ -1505,20 +1519,6 @@
             // pd_HoaDonGiaoHang
             // 
             this.pd_HoaDonGiaoHang.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pd_HoaDonGiaoHang_PrintPage);
-            // 
-            // bt_huyship
-            // 
-            this.bt_huyship.BackColor = System.Drawing.Color.Red;
-            this.bt_huyship.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bt_huyship.Image = ((System.Drawing.Image)(resources.GetObject("bt_huyship.Image")));
-            this.bt_huyship.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_huyship.Location = new System.Drawing.Point(254, 6);
-            this.bt_huyship.Name = "bt_huyship";
-            this.bt_huyship.Size = new System.Drawing.Size(138, 50);
-            this.bt_huyship.TabIndex = 112;
-            this.bt_huyship.Text = "Hủy ";
-            this.bt_huyship.UseVisualStyleBackColor = false;
-            this.bt_huyship.Click += new System.EventHandler(this.bt_huyship_Click);
             // 
             // Form_BanHang
             // 
