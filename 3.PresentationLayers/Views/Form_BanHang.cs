@@ -3999,62 +3999,70 @@ namespace _3.PresentationLayers.Views
         {
             if (dtg_HoaDonChiTiet.Visible == true)
             {
-                if (string.IsNullOrEmpty(tb_ghichu.Text))
+                DialogResult hoi = MessageBox.Show("Bạn có chắc chắn muốn hủy không", "Hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DialogResult.Yes == hoi)
                 {
-                    AlertFail("Vui lòng nhập ghi chú");
+                    if (string.IsNullOrEmpty(tb_ghichu.Text))
+                    {
+                        AlertFail("Vui lòng nhập ghi chú");
+                        return;
+                    }
+                    HoaDon hd = new HoaDon();
+                    hd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.MaHd == tabHoaDon.SelectedTab.Name);
+                    if (hd.Idkh != null)
+                    {
+                        LichSuDiemDung lsdd = new LichSuDiemDung();
+                        LichSuDiemTich lsdt = new LichSuDiemTich();
+                        KhachHang kh = new KhachHang();
+                        DiemTieuDung dtd = new DiemTieuDung();
+                        kh = _ikhachHangService.getAll().FirstOrDefault(x => x.Id == hd.Idkh);
+
+                        lsdt = _ilichSuDiemTichService.GetAll().FirstOrDefault(x => x.Id == hd.IddiemTich);
+                        dtd = _idiemTieuDungService.GetAll().FirstOrDefault(x => x.Id == kh.IddiemTieuDung);
+                        if (hd.IddiemDung != null)
+                        {
+                            hd.IddiemDung = null;
+                            hd.IddiemTich = null;
+                            lsdd = _ilichSuDiemDungService.GetAll().FirstOrDefault(x => x.Id == hd.IddiemDung);
+                            dtd.SoDiem = dtd.SoDiem + lsdd.SoDiemDung - lsdt.SoDiemTich;
+                            _idiemTieuDungService.Update(dtd);
+                            hoaDonService.Update(hd);
+                            _ilichSuDiemDungService.Remove(lsdd);
+                            _ilichSuDiemTichService.Remove(lsdt);
+
+                        }
+                        else if (hd.IddiemDung == null)
+                        {
+                            hd.IddiemDung = null;
+                            hd.IddiemTich = null;
+                            hoaDonService.Update(hd);
+                            dtd.SoDiem = dtd.SoDiem - lsdt.SoDiemTich;
+                            _idiemTieuDungService.Update(dtd);
+                            _ilichSuDiemTichService.Remove(lsdt);
+
+                        }
+
+                    }
+                    foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id))
+                    {
+                        foreach (var v in _iChiTietSachService.GetAll().Where(z => z.Id == x.IdChiTietSach))
+                        {
+                            var c = hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id && a.IdChiTietSach == v.Id).FirstOrDefault();
+                            v.SoLuong = v.SoLuong + c.SoLuong;
+                            _iChiTietSachService.Update(v.Id, v);
+                        }
+                    }
+                    hd.TrangThai = 4;
+                    hd.GhiChu = tb_ghichu.Text;
+                    hoaDonService.Update(hd);
+                    AlertSuccess("Hủy thành công");
+                    LoadHoaDonDatHang();
+                    LoadHoaDonChoThanhToan();
+                }
+                else
+                {
                     return;
-                }
-                HoaDon hd = new HoaDon();
-                hd = hoaDonService.GetAllHoaDon().FirstOrDefault(x => x.MaHd == tabHoaDon.SelectedTab.Name);
-                if (hd.Idkh != null)
-                {
-                    LichSuDiemDung lsdd = new LichSuDiemDung();
-                    LichSuDiemTich lsdt = new LichSuDiemTich();
-                    KhachHang kh = new KhachHang();
-                    DiemTieuDung dtd = new DiemTieuDung();
-                    kh = _ikhachHangService.getAll().FirstOrDefault(x => x.Id == hd.Idkh);
-
-                    lsdt = _ilichSuDiemTichService.GetAll().FirstOrDefault(x => x.Id == hd.IddiemTich);
-                    dtd = _idiemTieuDungService.GetAll().FirstOrDefault(x => x.Id == kh.IddiemTieuDung);
-                    if (hd.IddiemDung != null)
-                    {
-                        hd.IddiemDung = null;
-                        hd.IddiemTich = null;
-                        lsdd = _ilichSuDiemDungService.GetAll().FirstOrDefault(x => x.Id == hd.IddiemDung);
-                        dtd.SoDiem = dtd.SoDiem + lsdd.SoDiemDung - lsdt.SoDiemTich;
-                        _idiemTieuDungService.Update(dtd);
-                        hoaDonService.Update(hd);
-                        _ilichSuDiemDungService.Remove(lsdd);
-                        _ilichSuDiemTichService.Remove(lsdt);
-
-                    }
-                    else if (hd.IddiemDung == null)
-                    {
-                        hd.IddiemDung = null;
-                        hd.IddiemTich = null;
-                        hoaDonService.Update(hd);
-                        dtd.SoDiem = dtd.SoDiem - lsdt.SoDiemTich;
-                        _idiemTieuDungService.Update(dtd);
-                        _ilichSuDiemTichService.Remove(lsdt);
-
-                    }
-
-                }
-                foreach (var x in hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id))
-                {
-                    foreach (var v in _iChiTietSachService.GetAll().Where(z => z.Id == x.IdChiTietSach))
-                    {
-                        var c = hoaDonChiTietService.GetAllloadformsp().Where(a => a.IdHoaDon == hd.Id && a.IdChiTietSach == v.Id).FirstOrDefault();
-                        v.SoLuong = v.SoLuong + c.SoLuong;
-                        _iChiTietSachService.Update(v.Id, v);
-                    }
-                }
-                hd.TrangThai = 4;
-                hd.GhiChu = tb_ghichu.Text;
-                hoaDonService.Update(hd);
-                AlertSuccess("Hủy thành công");
-                LoadHoaDonDatHang();
-                LoadHoaDonChoThanhToan();
+                }    
             }
         }
     }
