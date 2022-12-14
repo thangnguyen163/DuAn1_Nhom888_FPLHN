@@ -1905,6 +1905,7 @@ namespace _3.PresentationLayers.Views
                     hd.GhiChu = tb_diachi.Text;
                     // hd.TrangThai = a; // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
+                    GiaoCa gc = new GiaoCa();
                     var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                     gc.Id = cahientai.Id;
                     gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
