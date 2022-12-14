@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_DoiMatKhau));
             this.btn_dmk = new System.Windows.Forms.Button();
             this.tb_nhaplai = new System.Windows.Forms.TextBox();
             this.tb_mkm = new System.Windows.Forms.TextBox();
@@ -35,10 +36,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.show = new System.Windows.Forms.PictureBox();
+            this.hide = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.show)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hide)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_dmk
@@ -58,6 +60,7 @@
             this.tb_nhaplai.Name = "tb_nhaplai";
             this.tb_nhaplai.Size = new System.Drawing.Size(149, 27);
             this.tb_nhaplai.TabIndex = 15;
+            this.tb_nhaplai.TextChanged += new System.EventHandler(this.tb_nhaplai_TextChanged);
             // 
             // tb_mkm
             // 
@@ -65,6 +68,7 @@
             this.tb_mkm.Name = "tb_mkm";
             this.tb_mkm.Size = new System.Drawing.Size(149, 27);
             this.tb_mkm.TabIndex = 14;
+            this.tb_mkm.TextChanged += new System.EventHandler(this.tb_mkm_TextChanged);
             // 
             // tb_mkc
             // 
@@ -72,6 +76,7 @@
             this.tb_mkc.Name = "tb_mkc";
             this.tb_mkc.Size = new System.Drawing.Size(149, 27);
             this.tb_mkc.TabIndex = 10;
+            this.tb_mkc.TextChanged += new System.EventHandler(this.tb_mkc_TextChanged);
             // 
             // label5
             // 
@@ -103,36 +108,6 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Mật khẩu cũ : ";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(335, 113);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(18, 17);
-            this.checkBox1.TabIndex = 16;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(335, 207);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(18, 17);
-            this.checkBox2.TabIndex = 17;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(335, 307);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(18, 17);
-            this.checkBox3.TabIndex = 18;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -143,16 +118,36 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "ĐỔI MẬT KHẨU";
             // 
+            // show
+            // 
+            this.show.Image = ((System.Drawing.Image)(resources.GetObject("show.Image")));
+            this.show.Location = new System.Drawing.Point(297, 333);
+            this.show.Name = "show";
+            this.show.Size = new System.Drawing.Size(32, 21);
+            this.show.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.show.TabIndex = 20;
+            this.show.TabStop = false;
+            this.show.Click += new System.EventHandler(this.show_Click);
+            // 
+            // hide
+            // 
+            this.hide.Image = ((System.Drawing.Image)(resources.GetObject("hide.Image")));
+            this.hide.Location = new System.Drawing.Point(297, 333);
+            this.hide.Name = "hide";
+            this.hide.Size = new System.Drawing.Size(32, 21);
+            this.hide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hide.TabIndex = 21;
+            this.hide.TabStop = false;
+            this.hide.Click += new System.EventHandler(this.hide_Click);
+            // 
             // Form_DoiMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
+            this.Controls.Add(this.show);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btn_dmk);
             this.Controls.Add(this.tb_nhaplai);
             this.Controls.Add(this.tb_mkm);
@@ -160,8 +155,11 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.hide);
             this.Name = "Form_DoiMatKhau";
             this.Text = "Form_DoiMatKhau";
+            ((System.ComponentModel.ISupportInitialize)(this.show)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,9 +173,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox show;
+        private System.Windows.Forms.PictureBox hide;
     }
 }

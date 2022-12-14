@@ -77,40 +77,48 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void tb_mkc_TextChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            tb_mkc.PasswordChar = '*';       
+        }
+        private void tb_mkm_TextChanged(object sender, EventArgs e)
+        {
+            tb_mkm.PasswordChar = '*';
+        }
+
+        private void tb_nhaplai_TextChanged(object sender, EventArgs e)
+        {
+            tb_nhaplai.PasswordChar = '*';
+        }
+
+        private void show_Click(object sender, EventArgs e)
+        {
+            if (tb_mkc.PasswordChar == '*' && tb_mkm.PasswordChar == '*' && tb_nhaplai.PasswordChar == '*')
             {
-                tb_mkc.UseSystemPasswordChar = false;
-            }    
+                hide.BringToFront();
+                tb_mkc.PasswordChar = '\0';
+                tb_mkm.PasswordChar = '\0';
+                tb_nhaplai.PasswordChar = '\0';
+            }
             else
             {
-                tb_mkc.UseSystemPasswordChar = true;
+
             }    
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void hide_Click(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+
+
+            if (tb_mkc.PasswordChar == '\0' && tb_mkm.PasswordChar == '\0' && tb_nhaplai.PasswordChar == '\0')
             {
-                tb_mkm.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                tb_mkm.UseSystemPasswordChar = true;
+                show.BringToFront();
+                tb_mkc.PasswordChar = '*';
+                tb_mkm.PasswordChar = '*';
+                tb_nhaplai.PasswordChar = '*';
             }
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked)
-            {
-                tb_nhaplai.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                tb_nhaplai.UseSystemPasswordChar = true;
-            }
-        }
+        
     }
 }
