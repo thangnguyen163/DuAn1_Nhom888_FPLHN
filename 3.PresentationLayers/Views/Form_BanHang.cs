@@ -724,7 +724,11 @@ namespace _3.PresentationLayers.Views
                                 hd.Idnv = SelectNhanVien;
                                 if (cbb_nganhang.SelectedIndex > 0)
                                 {
-                                    hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ma == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                                    if (_ikhachHangService.getAll().Where(x=>x.Ma == cbb_nganhang.Text).Count==1)
+                                    {
+                                        hd.Idkh = _ikhachHangService.getKhachHangFromDB().Where(x => x.Ma == cbb_nganhang.SelectedItem).Select(x => x.ID).FirstOrDefault();
+                                    }
+                                    
                                 }
                                 if (cbb_nganhang.SelectedIndex == 0)
                                 {
@@ -1383,6 +1387,12 @@ namespace _3.PresentationLayers.Views
                     _ilichSuDiemDungService.Add(lichsudiemdung);
                     hd.IddiemDung = lichsudiemdung.Id;
                 }
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                if (cahientai.TongTienTrongCa<Convert.ToInt32(tb_tientralai.Text))
+                {
+                    AlertFail("Không đủ tiền trả lại");
+                    return;
+                }
                 lichSuDiemTich.Id = Guid.NewGuid();
                 lichSuDiemTich.IddiemTieuDung = kh.IddiemTieuDung;
                 lichSuDiemTich.Ma = "LST" + Convert.ToString(_ilichSuDiemTichService.GetAll()
@@ -1413,7 +1423,7 @@ namespace _3.PresentationLayers.Views
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
                 GiaoCa gc = new GiaoCa();
-                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                 cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 gc.Id = cahientai.Id;
                 gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                 gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
@@ -1483,6 +1493,12 @@ namespace _3.PresentationLayers.Views
                         hd.TienChuyenKhoan = Convert.ToInt32(tb_chuyenkhoan.Text);
                     }
                 }
+                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                if (cahientai.TongTienTrongCa < Convert.ToInt32(tb_tientralai.Text))
+                {
+                    AlertFail("Không đủ tiền trả lại");
+                    return;
+                }
                 //hóa đơn
 
                 hd.Id = hd.Id;
@@ -1499,7 +1515,7 @@ namespace _3.PresentationLayers.Views
                 hoaDonService.Update(hd);
                 InHoaDonTaiQuay();
                 GiaoCa gc = new GiaoCa();
-                var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                 cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                 gc.Id = cahientai.Id;
                 gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                 gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
@@ -1716,7 +1732,12 @@ namespace _3.PresentationLayers.Views
                             return;
                         }
                     }
-
+                    var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                    if (cahientai.TongTienTrongCa < Convert.ToInt32(tb_tientralai.Text))
+                    {
+                        AlertFail("Không đủ tiền trả lại");
+                        return;
+                    }
                     lichsudiemdung.SoDiemDung = 0;
                     if (cb_dungdiem.Checked == true && !String.IsNullOrEmpty(tb_dungdiem.Text))
                     {
@@ -1765,7 +1786,7 @@ namespace _3.PresentationLayers.Views
                     // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
                     GiaoCa gc = new GiaoCa();
-                    var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                     cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                     gc.Id = cahientai.Id;
                     gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                     gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
@@ -1891,7 +1912,12 @@ namespace _3.PresentationLayers.Views
                             return;
                         }
                     }
-                    else return;
+                    var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                    if (cahientai.TongTienTrongCa < Convert.ToInt32(tb_tientralai.Text))
+                    {
+                        AlertFail("Không đủ tiền trả lại");
+                        return;
+                    }
                     hd.Id = hd.Id;
                     hd.MaHd = tabHoaDon.SelectedTab.Name;
                     hd.Idnv = SelectNhanVien;
@@ -1906,7 +1932,7 @@ namespace _3.PresentationLayers.Views
                     // hd.TrangThai = a; // hóa đơn đã thanh toán
                     hoaDonService.Update(hd);
                     GiaoCa gc = new GiaoCa();
-                    var cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
+                     cahientai = _igiaocaservice.GetAll().FirstOrDefault(c => c.Ma == "GC" + _igiaocaservice.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
                     gc.Id = cahientai.Id;
                     gc.TongTienMat = cahientai.TongTienMat + Convert.ToDecimal(tb_tienmat.Text == string.Empty ? 0 : tb_tienmat.Text) - Convert.ToDecimal(tb_tientralai.Text);
                     gc.TongTienKhac = cahientai.TongTienKhac + Convert.ToDecimal(tb_chuyenkhoan.Text == string.Empty ? 0 : tb_chuyenkhoan.Text);
@@ -2630,7 +2656,7 @@ namespace _3.PresentationLayers.Views
 
         private void tb_dungdiem_TextChanged(object sender, EventArgs e)
         {
-            if (tabHoaDon.Visible != false)
+            if (dtg_HoaDonChiTiet.Visible != false)
             {
                 if (!string.IsNullOrEmpty(tb_vidiem.Text))
                 {
@@ -2977,7 +3003,7 @@ namespace _3.PresentationLayers.Views
         private void tb_chuyenkhoan_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"^[0-9]*$");
-            if (tabHoaDon.SelectedIndex >= 0)
+            if (dtg_HoaDonChiTiet.Visible ==true)
             {
                 HoaDon hd = new HoaDon();
                 hd = hoaDonService.GetAllHoaDon().Where(x => x.MaHd == tabHoaDon.SelectedTab.Name).FirstOrDefault();
