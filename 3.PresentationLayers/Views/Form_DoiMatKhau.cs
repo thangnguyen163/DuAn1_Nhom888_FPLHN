@@ -73,7 +73,6 @@ namespace _3.PresentationLayers.Views
                                     var x = _inhanVienService.getNhanViensFromDB()[i];
                                     x.MatKhau = tb_nhaplai.Text;
                                     MessageBox.Show(_inhanVienService.save(x), "Thông báo", MessageBoxButtons.OK);
-                                    this.Close();
                                     return;
 
                                 }
