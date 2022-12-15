@@ -84,7 +84,7 @@ namespace _3.PresentationLayers.Views
                 var a = _iKhachHangService.getAll().Where(c => c.Id == x.Idkh).Select(c => c.Ma).FirstOrDefault();
                 var b = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
                 var c = _iPTTTService.GetAllNoView().Where(c => c.Id == x.IdphuongThucThanhToan).Select(c => c.Ten).FirstOrDefault();
-                dtg_hd.Rows.Add(stt++, x.Id, x.MaHd, a == null ? "Vãng lai" : a, b.Ma, c, x.NgayTao, x.NgayShip, x.TienCoc, x.TienShip, x.DiaChi, x.TongTien, x.TienMat, x.TienChuyenKhoan, x.GhiChu, x.TrangThai == 0 ? "Chưa thanh toán" :x.TrangThai==1 ?"Đã thanh toán": x.TrangThai==2 ? "Chờ giao":"Đang giao");
+                dtg_hd.Rows.Add(stt++, x.Id, x.MaHd, a == null ? "Vãng lai" : a, b.Ma, c, x.NgayTao, x.NgayShip, x.TienCoc, x.TienShip, x.DiaChi, x.TongTien, x.TienMat, x.TienChuyenKhoan, x.GhiChu, x.TrangThai == 0 ? "Chưa thanh toán" : x.TrangThai == 1 ? "Đã thanh toán" : x.TrangThai == 2 ? "Chờ giao" : "Đang giao");
             }
             dtg_hd.AllowUserToAddRows = false;
         }
@@ -92,7 +92,7 @@ namespace _3.PresentationLayers.Views
         {
             int stt = 1;
             dtg_hdct.Rows.Clear();
-            dtg_hdct.ColumnCount = 11;
+            dtg_hdct.ColumnCount = 10;
             dtg_hdct.Columns[0].Name = "STT";
             dtg_hdct.Columns[1].Name = "ID";
             dtg_hdct.Columns[1].Visible = false;
@@ -104,11 +104,10 @@ namespace _3.PresentationLayers.Views
             dtg_hdct.Columns[7].Name = "Số lượng";
             dtg_hdct.Columns[8].Name = "Giảm giá";
             dtg_hdct.Columns[9].Name = "Thành tiền";
-            dtg_hdct.Columns[10].Name = "Trạng thái";
             foreach (var x in lst)
             {
                 var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
-                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : x.Trangthai == 1 ? "Đã thanh toán" : x.Trangthai == 2 ? "Chờ giao" : "Đang giao");
+                dtg_hdct.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien);
             }
             dtg_hdct.AllowUserToAddRows = false;
         }
@@ -116,7 +115,7 @@ namespace _3.PresentationLayers.Views
         {
             int stt = 1;
             dtg_hdct1.Rows.Clear();
-            dtg_hdct1.ColumnCount = 11;
+            dtg_hdct1.ColumnCount = 10;
             dtg_hdct1.Columns[0].Name = "STT";
             dtg_hdct1.Columns[1].Name = "ID";
             dtg_hdct1.Columns[1].Visible = false;
@@ -128,11 +127,10 @@ namespace _3.PresentationLayers.Views
             dtg_hdct1.Columns[7].Name = "Số lượng";
             dtg_hdct1.Columns[8].Name = "Giảm giá";
             dtg_hdct1.Columns[9].Name = "Thành tiền";
-            dtg_hdct1.Columns[10].Name = "Trạng thái";
             foreach (var x in lst)
             {
                 var NV = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Id == x.Idnv);
-                dtg_hdct1.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien, x.Trangthai == 0 ? "Chưa thanh toán" : x.Trangthai == 1 ? "Đã thanh toán" : x.Trangthai == 2 ? "Chờ giao" : "Đang giao");
+                dtg_hdct1.Rows.Add(stt++, x.ID, x.MaHd, x.Ma, NV.Ma, x.MactSach, x.Dongia, x.Soluong, x.GiamGia, x.Thanhtien);
             }
             dtg_hdct1.AllowUserToAddRows = false;
         }
@@ -269,6 +267,6 @@ namespace _3.PresentationLayers.Views
             LoadDataToHDCT(_ihoaDonCTService.GetAll().Where(c => c.Idnv == b).ToList());
         }
 
-        
+
     }
 }
