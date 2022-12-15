@@ -42,6 +42,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.hienthi = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -58,6 +59,7 @@
             this.lb_tienmat = new System.Windows.Forms.TextBox();
             this.lb_tienkhac = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hienthi)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -181,6 +183,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(210)))));
+            this.panel1.Controls.Add(this.hienthi);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
@@ -198,6 +201,17 @@
             this.panel1.Size = new System.Drawing.Size(366, 500);
             this.panel1.TabIndex = 23;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // hienthi
+            // 
+            this.hienthi.Image = ((System.Drawing.Image)(resources.GetObject("hienthi.Image")));
+            this.hienthi.Location = new System.Drawing.Point(317, 361);
+            this.hienthi.Name = "hienthi";
+            this.hienthi.Size = new System.Drawing.Size(32, 21);
+            this.hienthi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hienthi.TabIndex = 125;
+            this.hienthi.TabStop = false;
+            this.hienthi.Click += new System.EventHandler(this.hienthi_Click);
             // 
             // panel6
             // 
@@ -363,6 +377,7 @@
             this.Text = "KetCa";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hienthi)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -403,5 +418,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox hienthi;
     }
 }

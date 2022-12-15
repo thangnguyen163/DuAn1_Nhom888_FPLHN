@@ -261,13 +261,16 @@ namespace _3.PresentationLayers.Views
         {
             lb_time.Text = DateTime.Now.ToLongTimeString();
             lb_date.Text = DateTime.Now.ToShortDateString();
-            string b = Convert.ToString("GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString());
-            GiaoCa tien = _iGiaoCaServicel.GetAll().FirstOrDefault(c => c.Ma == b);
-            lb_TongTien.Text = Convert.ToString(tien.TongTienTrongCa);
+            int a = _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2)));
+            string b = "GC" + a.ToString();
+            lb_TongTien.Text = Convert.ToString(_iGiaoCaServicel.GetAll().Where(c => c.Ma == b).Select(c => c.TongTienTrongCa).FirstOrDefault());
             if (Form_GiaoCa.emailgiao == null && Form_GiaoCa.passgiao == null) return;
             if (Form_GiaoCa.emailgiao != null && Form_GiaoCa.passgiao != null)
             {
-                lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
+                int c = _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2)));
+                string d = "GC" + c.ToString();
+                lb_TongTien.Text = Convert.ToString(_iGiaoCaServicel.GetAll().Where(c => c.Ma == d).Select(c => c.TongTienTrongCa).FirstOrDefault());
+                //lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
                 var x = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Email == Form_GiaoCa.emailgiao);
                 lb_XinChao.Text = x.Ten;
                 var idqt = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Quản trị".ToLower()).Select(c => c.Id).FirstOrDefault();
