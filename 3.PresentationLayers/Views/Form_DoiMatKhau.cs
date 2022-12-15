@@ -18,7 +18,7 @@ using System.Windows.Forms;
 namespace _3.PresentationLayers.Views
 {
     public partial class Form_DoiMatKhau : Form
-    { 
+    {
         private ICheckPassService _checkPassService;
         private IChucVuService _ichucVuService;
         private INhanVienService _inhanVienService;
@@ -31,55 +31,81 @@ namespace _3.PresentationLayers.Views
             _inhanVienService = new NhanVienService();
             _checkPassService = new CheckPassService();
             _nv = new NhanVien();
-            
+
         }
         private void btn_dmk_Click(object sender, EventArgs e)
         {
-            if (tb_mkc.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu cũ", "Thông Báo");
-                return;
-            }
-            if (tb_mkm.Text == string.Empty)
-            {
-                MessageBox.Show("Mời bạn nhập mật khẩu mới", "Thông báo");
-                return;
-            }
-            if (tb_nhaplai.Text == string.Empty)
-            {
-                MessageBox.Show("Bạn hãy nhập trùng với mật khẩu cũ đi nào", "Thông Báo");
-                return;
-            }
-            for (int i = 0; i < _inhanVienService.getNhanViensFromDB().Count(); i++)
-            {
-                if (tb_mkc.Text == _inhanVienService.getNhanViensFromDB()[i].MatKhau )
+                if (tb_email.Text == string.Empty)
                 {
-                    
-                    if(tb_mkm.Text == tb_nhaplai.Text)
-                    {
-                        var x = _inhanVienService.getNhanViensFromDB()[i];
-                        x.MatKhau = tb_nhaplai.Text;
-                        MessageBox.Show(_inhanVienService.save(x), "Thông báo", MessageBoxButtons.OK);
-                        this.Close();
-                        return;
-                    }
-                    else if (tb_mkm.Text != tb_nhaplai.Text)
-                    {
-                        MessageBox.Show("Mật khẩu nhập lại chưa chính xác", "Cảnh báo", MessageBoxButtons.OK);
-                        return;
-                    }
-                }
-                else if (tb_mkc.Text != _inhanVienService.getNhanViensFromDB()[i].MatKhau)
-                {
-                    MessageBox.Show("Mật khẩu nhập chưa chính xác", "Thông Báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Vui lòng nhập email", "Thông Báo");
                     return;
                 }
+                else if (tb_mkc.Text == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu cũ", "Thông Báo");
+                    return;
+                }
+                else if (tb_mkm.Text == string.Empty)
+                {
+                    MessageBox.Show("Mời bạn nhập mật khẩu mới", "Thông báo");
+                    return;
+                }
+                else if (tb_nhaplai.Text == string.Empty)
+                {
+                    MessageBox.Show("Bạn hãy nhập trùng với mật khẩu cũ đi nào", "Thông Báo");
+                    return;
+                }
+                else
+                {
+
+                    for (int i = 0; i < _inhanVienService.getNhanViensFromDB().Count(); i++)
+                    {
+                        if (tb_email.Text == _inhanVienService.getNhanViensFromDB()[i].Email)
+                        {
+                            if (tb_mkc.Text == _inhanVienService.getNhanViensFromDB()[i].MatKhau)
+                            {
+
+                                if (tb_mkm.Text == tb_nhaplai.Text)
+                                {
+                                    var x = _inhanVienService.getNhanViensFromDB()[i];
+                                    x.MatKhau = tb_nhaplai.Text;
+                                    MessageBox.Show(_inhanVienService.save(x), "Thông báo", MessageBoxButtons.OK);
+                                    this.Close();
+                                    return;
+
+                                }
+                                else if (tb_mkm.Text != tb_nhaplai.Text)
+                                {
+                                    MessageBox.Show("Mật khẩu nhập lại chưa chính xác", "Cảnh báo", MessageBoxButtons.OK);
+                                    return;
+                                }
+                            }
+                            //else 
+                            //{
+                            //    MessageBox.Show("Mật khẩu nhập chưa chính xác", "Thông Báo", MessageBoxButtons.OK);
+                            //    return;
+                            //}
+                            //}
+                            //else if (tb_email.Text != _inhanVienService.getNhanViensFromDB()[i].Email)
+                            //{
+                            //    MessageBox.Show("Email nhập chưa chính xác", "Thông Báo", MessageBoxButtons.OK);
+                            //    return;
+                        }
+
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
         }
 
         private void tb_mkc_TextChanged(object sender, EventArgs e)
         {
-            tb_mkc.PasswordChar = '*';       
+            tb_mkc.PasswordChar = '*';
         }
         private void tb_mkm_TextChanged(object sender, EventArgs e)
         {
@@ -100,10 +126,6 @@ namespace _3.PresentationLayers.Views
                 tb_mkm.PasswordChar = '\0';
                 tb_nhaplai.PasswordChar = '\0';
             }
-            else
-            {
-
-            }    
         }
 
         private void hide_Click(object sender, EventArgs e)
@@ -119,6 +141,6 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        
+
     }
 }

@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.show = new System.Windows.Forms.PictureBox();
             this.hide = new System.Windows.Forms.PictureBox();
+            this.tb_email = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hide)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +66,7 @@
             // 
             // tb_mkm
             // 
-            this.tb_mkm.Location = new System.Drawing.Point(180, 199);
+            this.tb_mkm.Location = new System.Drawing.Point(180, 219);
             this.tb_mkm.Name = "tb_mkm";
             this.tb_mkm.Size = new System.Drawing.Size(149, 27);
             this.tb_mkm.TabIndex = 14;
@@ -72,7 +74,7 @@
             // 
             // tb_mkc
             // 
-            this.tb_mkc.Location = new System.Drawing.Point(180, 107);
+            this.tb_mkc.Location = new System.Drawing.Point(180, 155);
             this.tb_mkc.Name = "tb_mkc";
             this.tb_mkc.Size = new System.Drawing.Size(149, 27);
             this.tb_mkc.TabIndex = 10;
@@ -92,7 +94,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(12, 206);
+            this.label4.Location = new System.Drawing.Point(12, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 12;
@@ -102,7 +104,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 115);
+            this.label3.Location = new System.Drawing.Point(12, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 19);
             this.label3.TabIndex = 11;
@@ -140,12 +142,31 @@
             this.hide.TabStop = false;
             this.hide.Click += new System.EventHandler(this.hide_Click);
             // 
+            // tb_email
+            // 
+            this.tb_email.Location = new System.Drawing.Point(180, 94);
+            this.tb_email.Name = "tb_email";
+            this.tb_email.Size = new System.Drawing.Size(149, 27);
+            this.tb_email.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(12, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 19);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Email :";
+            // 
             // Form_DoiMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tb_email);
             this.Controls.Add(this.show);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_dmk);
@@ -176,5 +197,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox show;
         private System.Windows.Forms.PictureBox hide;
+        private System.Windows.Forms.TextBox tb_email;
+        private System.Windows.Forms.Label label2;
     }
 }
