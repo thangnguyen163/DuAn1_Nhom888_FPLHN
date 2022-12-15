@@ -131,6 +131,12 @@ namespace _3.PresentationLayers.Views
         }
         public void LoaddataToHoadonChitiet()
         {
+            dtg_HoaDonChiTiet.Columns[0].ReadOnly = true;
+            dtg_HoaDonChiTiet.Columns[1].ReadOnly = true;
+            dtg_HoaDonChiTiet.Columns[2].ReadOnly = true;
+            dtg_HoaDonChiTiet.Columns[4].ReadOnly = true;
+            dtg_HoaDonChiTiet.Columns[6].ReadOnly = true;
+            dtg_HoaDonChiTiet.Columns[7].ReadOnly = true;
             HoaDon hd = hoaDonService.GetAllHoaDon().FirstOrDefault(c => c.MaHd == tabHoaDon.SelectedTab.Name);
             SelectID = hd.Id;
             dtg_HoaDonChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // căn giữa 
@@ -274,7 +280,13 @@ namespace _3.PresentationLayers.Views
                     string tenclick = _iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).TenSach;
                     decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
                     string Content = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
+
                     if (Content == string.Empty) return;
+                    if (_iChiTietSachService.GetAll().Where(c => c.Id == SelectID).Select(c => c.SoLuong).FirstOrDefault() < Convert.ToInt32(Content))
+                    {
+                        MessageBox.Show("Hết rồi");
+                        return;
+                    }
 
                     if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
                     {
@@ -341,19 +353,21 @@ namespace _3.PresentationLayers.Views
                             else
                             {
                                 MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                return;
                             }
                         }
                         else
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
                             hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
-                            hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                            hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
                             ChiTietSach cts = new ChiTietSach();
                             cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                            hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                            if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
+                            
+                            if (cts.SoLuong >= Convert.ToInt32(Content))//check so luong con lai
                             {
+                                hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                 hoaDonChiTietService.Update(hdct);
                                 //update so luong sach con lai
                                 cts.IdSach = cts.IdSach;
@@ -380,6 +394,7 @@ namespace _3.PresentationLayers.Views
                             else
                             {
                                 MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                return;
                             }
                         }
                     }
@@ -407,7 +422,6 @@ namespace _3.PresentationLayers.Views
                     decimal giabanclick = Convert.ToDecimal(_iChiTietSachService.GetAllChiTietSachView().FirstOrDefault(c => c.Id == x).GiaBan);
                     string Content = Interaction.InputBox($"Mã: {ctsclick}" + Environment.NewLine + $"Tên: {tenclick}" + Environment.NewLine + $"Giá bán: {giabanclick}" + Environment.NewLine + "Nhập số lượng ", "Bạn muốn thêm bao nhiêu", "1", 500, 300);//nhập số lượng ở màn bán hàng
                     if (Content == string.Empty) return;
-
                     if (Regex.IsMatch(Content, @"^[a-zA-Z0-9 ]*$") == false)
                     {
 
@@ -473,19 +487,22 @@ namespace _3.PresentationLayers.Views
                             else
                             {
                                 MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                return;
                             }
                         }
                         else
                         {
                             HoaDonChiTiet hdct = new HoaDonChiTiet();
                             hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
-                            hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                            hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                            
                             ChiTietSach cts = new ChiTietSach();
                             cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                            hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                            if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
+                            
+                            if (cts.SoLuong >= Convert.ToInt32(Content))//check so luong con lai
                             {
+                                hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                 hoaDonChiTietService.Update(hdct);
                                 //update so luong sach con lai
                                 cts.IdSach = cts.IdSach;
@@ -512,6 +529,7 @@ namespace _3.PresentationLayers.Views
                             else
                             {
                                 MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                return;
                             }
                         }
                     }
@@ -814,6 +832,7 @@ namespace _3.PresentationLayers.Views
 
         private void dtg_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             if (e.ColumnIndex == dtg_HoaDonChiTiet.Columns["tru"].Index)
             {
                 HoaDon hd = new HoaDon();
@@ -2272,19 +2291,22 @@ namespace _3.PresentationLayers.Views
                                 else
                                 {
                                     MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                    return;
                                 }
                             }
                             else
                             {
                                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                                 hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
-                                hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                
                                 ChiTietSach cts = new ChiTietSach();
                                 cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                                hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                                if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
+                                
+                                if (cts.SoLuong >= Convert.ToInt32(Content))//check so luong con lai
                                 {
+                                    hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                                    hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                    hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                     hoaDonChiTietService.Update(hdct);
                                     //update so luong sach con lai
                                     cts.IdSach = cts.IdSach;
@@ -2311,6 +2333,7 @@ namespace _3.PresentationLayers.Views
                                 else
                                 {
                                     MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                    return;
                                 }
                             }
                         }
@@ -2404,19 +2427,22 @@ namespace _3.PresentationLayers.Views
                                 else
                                 {
                                     MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                    return;
                                 }
                             }
                             else
                             {
                                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                                 hdct = hoaDonChiTietService.GetAllloadformsp().FirstOrDefault(x => x.IdHoaDon == SelectID && x.IdChiTietSach == SelectIDSp);
-                                hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
-                                hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                
                                 ChiTietSach cts = new ChiTietSach();
                                 cts = _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).FirstOrDefault();
-                                hdct.DonGia = Convert.ToInt32(cts.GiaBan);
-                                if (cts.SoLuong > Convert.ToInt32(Content))//check so luong con lai
+                                
+                                if (cts.SoLuong >= Convert.ToInt32(Content))//check so luong con lai
                                 {
+                                    hdct.SoLuong = data.SoLuong + Convert.ToInt32(Content);
+                                    hdct.ThanhTien = hdct.SoLuong * _iChiTietSachService.GetAll().Where(x => x.Id == hdct.IdChiTietSach).Select(x => x.GiaBan).FirstOrDefault();
+                                    hdct.DonGia = Convert.ToInt32(cts.GiaBan);
                                     hoaDonChiTietService.Update(hdct);
                                     //update so luong sach con lai
                                     cts.IdSach = cts.IdSach;
@@ -2443,6 +2469,7 @@ namespace _3.PresentationLayers.Views
                                 else
                                 {
                                     MessageBox.Show("Số lượng bạn nhập kho hàng không đáp ứng đủ, số lượng còn lại là:" + " " + cts.SoLuong);
+                                    return;
                                 }
                             }
                         }

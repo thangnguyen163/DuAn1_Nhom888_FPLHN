@@ -488,6 +488,7 @@
             // 
             // cbx_Loc
             // 
+            this.cbx_Loc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_Loc.FormattingEnabled = true;
             this.cbx_Loc.Items.AddRange(new object[] {
             "Đã thanh toán",
@@ -1308,6 +1309,7 @@
             // 
             // dtp_ngaytao
             // 
+            this.dtp_ngaytao.Enabled = false;
             this.dtp_ngaytao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_ngaytao.Location = new System.Drawing.Point(154, 14);
             this.dtp_ngaytao.Name = "dtp_ngaytao";
