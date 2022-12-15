@@ -408,22 +408,22 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[11].Name = "Năm Sinh";
                 dtg_Show.Columns[12].Name = "Trạng thái";
                 dtg_Show.Rows.Clear();
-                foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(tb_Timkiem.Text) || c.Ma.StartsWith(tb_Timkiem.Text) || c.Email.StartsWith(tb_Timkiem.Text) || c.DiaChi.StartsWith(tb_Timkiem.Text)))
+                foreach (var item in _nhanVienService.getViewNhanViens().Where(c => c.nhanVien.Ten.StartsWith(tb_Timkiem.Text) || c.nhanVien.Ma.StartsWith(tb_Timkiem.Text) || c.nhanVien.Email.StartsWith(tb_Timkiem.Text) || c.nhanVien.DiaChi.StartsWith(tb_Timkiem.Text)))
 
                 {
-                    dtg_Show.Rows.Add(item.Id,
-                                        item.Ma,
-                                        item.Ten,
-                                        item.GioiTinh == 0 ? "Nam" : "Nữ",
-                                        item.Cccd,
-                                        item.Sdt,
-                                        item.Email,
-                                        item.MatKhau,
-                                        item.Ten,
-                                        item.Anh,
-                                        item.DiaChi,
-                                        item.NamSinh,
-                                        item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động"
+                    dtg_Show.Rows.Add(item.nhanVien.Id,
+                    item.nhanVien.Ma,
+                    item.nhanVien.Ten,
+                    item.nhanVien.GioiTinh == 0 ? "Nam" : "Nữ",
+                    item.nhanVien.Cccd,
+                    item.nhanVien.Sdt,
+                    item.nhanVien.Email,
+                    item.nhanVien.MatKhau,
+                    item.chucVu.Ten,
+                    item.nhanVien.Anh,
+                    item.nhanVien.DiaChi,
+                    item.nhanVien.NamSinh,
+                    item.nhanVien.TrangThai == 0 ? "Hoạt động" : "Không hoạt động"
                                         );
                 }
             }

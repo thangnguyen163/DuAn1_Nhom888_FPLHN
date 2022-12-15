@@ -57,6 +57,7 @@ namespace _3.PresentationLayers.Views
                     MessageBox.Show("Bạn hãy nhập trùng với mật khẩu cũ đi nào", "Thông Báo");
                     return;
                 }
+                
                 else
                 {
 
@@ -81,6 +82,11 @@ namespace _3.PresentationLayers.Views
                                     MessageBox.Show("Mật khẩu nhập lại chưa chính xác", "Cảnh báo", MessageBoxButtons.OK);
                                     return;
                                 }
+                            }
+                            else if (_inhanVienService.getNhanViensFromDB().Where(x => x.Email == tb_email.Text && x.MatKhau == tb_mkc.Text).Count() == 0)
+                            {
+                                MessageBox.Show("Sai mật khẩu hoặc email, Vui lòng nhập lại","Thông Báo");
+                                return;
                             }
                             //else 
                             //{
