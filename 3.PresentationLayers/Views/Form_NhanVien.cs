@@ -184,7 +184,8 @@ namespace _3.PresentationLayers.Views
                         Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
                         NamSinh = Convert.ToInt32(tb_namsinh.Text),
                         IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
-                        TrangThai = rB_hd.Checked ? 1 : 0,
+                        GioiTinh = cb_Nam.Checked ? 0 : 1,
+                        TrangThai = rB_hd.Checked ? 0 : 1,
                     }));
                     loadData();
                 }
@@ -221,7 +222,8 @@ namespace _3.PresentationLayers.Views
                         Email = tb_email.Text,
                         Anh = (byte[])(new ImageConverter().ConvertTo(pic_Anh.Image, typeof(byte[]))),
                         IdchucVu = cbb_ChucVu.Text != "" ? _chucVuService.getChucVusFromDB().FirstOrDefault(x => x.Ten == cbb_ChucVu.Text).Id : null,
-                        TrangThai = rB_hd.Checked ? 1 : 0,
+                        GioiTinh = cb_Nam.Checked ? 0 : 1,
+                        TrangThai = rB_hd.Checked ? 0 : 1,
                     }));
                     loadData();
                 }
@@ -424,7 +426,25 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-        
+        private void cb_Nam_Click(object sender, EventArgs e)
+        {
+            if (cb_Nu.Checked)
+            {
+                cb_Nu.Checked = false;
+            }
+            cb_Nam.Checked = true;
+        }
+
+        private void cb_Nu_Click(object sender, EventArgs e)
+        {
+            if (cb_Nam.Checked)
+            {
+                cb_Nam.Checked = false;
+            }
+            cb_Nu.Checked = true;
+        }
+
+
         //dđ
     }
 }
