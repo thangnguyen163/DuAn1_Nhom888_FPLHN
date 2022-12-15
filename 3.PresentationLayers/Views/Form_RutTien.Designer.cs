@@ -72,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(126, 270);
+            this.label3.Location = new System.Drawing.Point(126, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 20);
             this.label3.TabIndex = 6;
@@ -80,7 +80,7 @@
             // 
             // tbx_TienRut
             // 
-            this.tbx_TienRut.Location = new System.Drawing.Point(126, 293);
+            this.tbx_TienRut.Location = new System.Drawing.Point(126, 211);
             this.tbx_TienRut.Name = "tbx_TienRut";
             this.tbx_TienRut.Size = new System.Drawing.Size(217, 27);
             this.tbx_TienRut.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             // btn_ruttien
             // 
-            this.btn_ruttien.Location = new System.Drawing.Point(428, 270);
+            this.btn_ruttien.Location = new System.Drawing.Point(148, 266);
             this.btn_ruttien.Name = "btn_ruttien";
             this.btn_ruttien.Size = new System.Drawing.Size(162, 53);
             this.btn_ruttien.TabIndex = 7;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 449);
+            this.ClientSize = new System.Drawing.Size(482, 392);
             this.Controls.Add(this.btn_ruttien);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbx_TienRut);

@@ -62,13 +62,13 @@ namespace _3.PresentationLayers.Views
             NhanVien nv = new NhanVien();
             nv = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(x => x.Email == a);
             MemoryStream memstr = new MemoryStream(nv.Anh);
-            //Image img2 = Image.FromStream(memstr);
+            Image img2 = Image.FromStream(memstr);
             //img2 = resizeImage(img2, new Size(80, 110));
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
             gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
             Region rg = new Region(gp);
             pictureBox1.Region = rg;
-            //pictureBox1.Image = img2;
+            pictureBox1.Image = img2;
             lb_chucvu.Text = _ichucVuService.getChucVusFromDB().Where(x => x.Id == nv.IdchucVu).Select(x => x.Ten).FirstOrDefault();
             LastTK = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
             CheckTk = _iNhanVienService.getNhanViensFromDB().Where(p => p.Email == a).FirstOrDefault().Id;
@@ -273,6 +273,10 @@ namespace _3.PresentationLayers.Views
                 //lb_TongTien.Text = Form_GiaoCa.TienGiao.ToString();
                 var x = _iNhanVienService.getNhanViensFromDB().FirstOrDefault(c => c.Email == Form_GiaoCa.emailgiao);
                 lb_XinChao.Text = x.Ten;
+                lb_chucvu.Text = _ichucVuService.getChucVusFromDB().Where(z => z.Id == x.IdchucVu).Select(z => z.Ten).FirstOrDefault();
+                MemoryStream memstr = new MemoryStream(x.Anh);
+                Image img2 = Image.FromStream(memstr);
+                pictureBox1.Image = img2;
                 var idqt = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Quản trị".ToLower()).Select(c => c.Id).FirstOrDefault();
                 var idnv = _ichucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Nhân viên".ToLower()).Select(c => c.Id).FirstOrDefault();
                 if (x.IdchucVu == idqt)
