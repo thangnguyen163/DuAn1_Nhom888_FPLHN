@@ -252,7 +252,7 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[12].Name = "Số lượng";
                 dtg_Show.Columns[13].Name = "Giá nhập";
                 dtg_Show.Columns[14].Name = "Giá bán";
-                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[15].Name = "Trạng thái"
                 dtg_Show.Columns[16].Name = "Đường Dẫn";
                 //dtg_Show.Columns[16].Visible = false;
                 dtg_Show.Columns[17].Name = "Mã vạch";
