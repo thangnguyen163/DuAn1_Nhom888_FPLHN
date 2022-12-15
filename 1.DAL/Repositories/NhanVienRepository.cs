@@ -28,7 +28,7 @@ namespace _1.DAL.Repositories
         {
             if (Id == null) return false;
             var a = _DBContext.NhanViens.FirstOrDefault(p => p.Id == Id);
-            //a.TrangThai = 1;
+            _DBContext.Remove(a);
             _DBContext.SaveChanges();
             return true;
         }
