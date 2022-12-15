@@ -71,6 +71,7 @@ namespace _2.BUS.Serivces
                                Sodt = b.Sdt,
                               Madiemtieudung = a.Ma,
                                Trangthai = b.TrangThai,
+                               DiaChi = b.DiaChi,
                            }).ToList();
             return templst;
         }
