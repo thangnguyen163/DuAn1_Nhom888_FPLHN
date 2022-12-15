@@ -302,8 +302,8 @@ namespace _3.PresentationLayers.Views
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-        //    try
-        //    {
+            try
+            {
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa không", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -314,11 +314,11 @@ namespace _3.PresentationLayers.Views
                 {
                     return;
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
+            }
 
         }
 
