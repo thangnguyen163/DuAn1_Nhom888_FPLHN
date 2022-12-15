@@ -44,7 +44,6 @@
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -63,7 +62,6 @@
             this.ipb_AddSach = new FontAwesome.Sharp.IconPictureBox();
             this.rdt_KhongBan = new System.Windows.Forms.RadioButton();
             this.rdt_ConBan = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -83,7 +81,6 @@
             this.tbt_GiaNhap = new System.Windows.Forms.TextBox();
             this.tbt_MoTa = new System.Windows.Forms.TextBox();
             this.tbt_MaVach = new System.Windows.Forms.TextBox();
-            this.tbt_KichThuoc = new System.Windows.Forms.TextBox();
             this.tbt_SoTrang = new System.Windows.Forms.TextBox();
             this.tbt_GiaBan = new System.Windows.Forms.TextBox();
             this.tbt_SoLuong = new System.Windows.Forms.TextBox();
@@ -101,6 +98,10 @@
             this.dtg_Show = new System.Windows.Forms.DataGridView();
             this.tbt_Search = new System.Windows.Forms.TextBox();
             this.Lọc = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tbt_GiaMax = new System.Windows.Forms.TextBox();
+            this.tbt_GiaMin = new System.Windows.Forms.TextBox();
             this.ptb_PDF = new System.Windows.Forms.PictureBox();
             this.cbb_LocTacGia = new System.Windows.Forms.ComboBox();
             this.cbb_LocNXB = new System.Windows.Forms.ComboBox();
@@ -114,10 +115,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.tbt_GiaMin = new System.Windows.Forms.TextBox();
-            this.tbt_GiaMax = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).BeginInit();
@@ -146,7 +143,6 @@
             this.groupBox1.Controls.Add(this.panel15);
             this.groupBox1.Controls.Add(this.panel13);
             this.groupBox1.Controls.Add(this.panel11);
-            this.groupBox1.Controls.Add(this.panel16);
             this.groupBox1.Controls.Add(this.panel14);
             this.groupBox1.Controls.Add(this.panel12);
             this.groupBox1.Controls.Add(this.panel10);
@@ -165,7 +161,6 @@
             this.groupBox1.Controls.Add(this.ipb_AddSach);
             this.groupBox1.Controls.Add(this.rdt_KhongBan);
             this.groupBox1.Controls.Add(this.rdt_ConBan);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label13);
@@ -185,7 +180,6 @@
             this.groupBox1.Controls.Add(this.tbt_GiaNhap);
             this.groupBox1.Controls.Add(this.tbt_MoTa);
             this.groupBox1.Controls.Add(this.tbt_MaVach);
-            this.groupBox1.Controls.Add(this.tbt_KichThuoc);
             this.groupBox1.Controls.Add(this.tbt_SoTrang);
             this.groupBox1.Controls.Add(this.tbt_GiaBan);
             this.groupBox1.Controls.Add(this.tbt_SoLuong);
@@ -209,7 +203,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(353, 494);
+            this.panel9.Location = new System.Drawing.Point(738, 69);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(310, 2);
             this.panel9.TabIndex = 4;
@@ -273,7 +267,7 @@
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.Black;
-            this.panel17.Location = new System.Drawing.Point(741, 444);
+            this.panel17.Location = new System.Drawing.Point(733, 438);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(310, 2);
             this.panel17.TabIndex = 4;
@@ -281,7 +275,7 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Black;
-            this.panel15.Location = new System.Drawing.Point(742, 336);
+            this.panel15.Location = new System.Drawing.Point(741, 387);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(310, 2);
             this.panel15.TabIndex = 4;
@@ -289,7 +283,7 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Black;
-            this.panel13.Location = new System.Drawing.Point(743, 245);
+            this.panel13.Location = new System.Drawing.Point(742, 296);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(310, 2);
             this.panel13.TabIndex = 4;
@@ -297,23 +291,15 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.Black;
-            this.panel11.Location = new System.Drawing.Point(745, 130);
+            this.panel11.Location = new System.Drawing.Point(744, 181);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(310, 2);
             this.panel11.TabIndex = 4;
             // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.Black;
-            this.panel16.Location = new System.Drawing.Point(742, 391);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(310, 2);
-            this.panel16.TabIndex = 4;
-            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.Black;
-            this.panel14.Location = new System.Drawing.Point(743, 290);
+            this.panel14.Location = new System.Drawing.Point(742, 341);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(310, 2);
             this.panel14.TabIndex = 4;
@@ -321,7 +307,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.Black;
-            this.panel12.Location = new System.Drawing.Point(746, 195);
+            this.panel12.Location = new System.Drawing.Point(745, 246);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(310, 2);
             this.panel12.TabIndex = 4;
@@ -329,7 +315,7 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.Black;
-            this.panel10.Location = new System.Drawing.Point(745, 70);
+            this.panel10.Location = new System.Drawing.Point(744, 121);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(310, 2);
             this.panel10.TabIndex = 4;
@@ -347,7 +333,7 @@
             this.btn_Reset.BackColor = System.Drawing.Color.LawnGreen;
             this.btn_Reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reset.Image")));
             this.btn_Reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Reset.Location = new System.Drawing.Point(920, 538);
+            this.btn_Reset.Location = new System.Drawing.Point(889, 507);
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(122, 50);
             this.btn_Reset.TabIndex = 0;
@@ -361,7 +347,7 @@
             this.btn_NgungKinhDoanh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_NgungKinhDoanh.Image = ((System.Drawing.Image)(resources.GetObject("btn_NgungKinhDoanh.Image")));
             this.btn_NgungKinhDoanh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_NgungKinhDoanh.Location = new System.Drawing.Point(612, 538);
+            this.btn_NgungKinhDoanh.Location = new System.Drawing.Point(581, 507);
             this.btn_NgungKinhDoanh.Name = "btn_NgungKinhDoanh";
             this.btn_NgungKinhDoanh.Size = new System.Drawing.Size(174, 50);
             this.btn_NgungKinhDoanh.TabIndex = 0;
@@ -376,7 +362,7 @@
             this.btn_Delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete.Image")));
             this.btn_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Delete.Location = new System.Drawing.Point(792, 538);
+            this.btn_Delete.Location = new System.Drawing.Point(761, 507);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(122, 50);
             this.btn_Delete.TabIndex = 0;
@@ -401,7 +387,7 @@
             this.btn_Update.BackColor = System.Drawing.Color.LawnGreen;
             this.btn_Update.Image = ((System.Drawing.Image)(resources.GetObject("btn_Update.Image")));
             this.btn_Update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Update.Location = new System.Drawing.Point(484, 538);
+            this.btn_Update.Location = new System.Drawing.Point(453, 507);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(122, 50);
             this.btn_Update.TabIndex = 0;
@@ -414,7 +400,7 @@
             this.btn_Add.BackColor = System.Drawing.Color.LawnGreen;
             this.btn_Add.Image = ((System.Drawing.Image)(resources.GetObject("btn_Add.Image")));
             this.btn_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Add.Location = new System.Drawing.Point(356, 538);
+            this.btn_Add.Location = new System.Drawing.Point(325, 507);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(122, 50);
             this.btn_Add.TabIndex = 0;
@@ -521,7 +507,7 @@
             // rdt_KhongBan
             // 
             this.rdt_KhongBan.AutoSize = true;
-            this.rdt_KhongBan.Location = new System.Drawing.Point(927, 421);
+            this.rdt_KhongBan.Location = new System.Drawing.Point(919, 415);
             this.rdt_KhongBan.Name = "rdt_KhongBan";
             this.rdt_KhongBan.Size = new System.Drawing.Size(153, 24);
             this.rdt_KhongBan.TabIndex = 4;
@@ -532,7 +518,7 @@
             // rdt_ConBan
             // 
             this.rdt_ConBan.AutoSize = true;
-            this.rdt_ConBan.Location = new System.Drawing.Point(821, 422);
+            this.rdt_ConBan.Location = new System.Drawing.Point(813, 416);
             this.rdt_ConBan.Name = "rdt_ConBan";
             this.rdt_ConBan.Size = new System.Drawing.Size(85, 24);
             this.rdt_ConBan.TabIndex = 4;
@@ -540,19 +526,10 @@
             this.rdt_ConBan.Text = "Còn bán";
             this.rdt_ConBan.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(737, 365);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Kích thước";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(353, 471);
+            this.label17.Location = new System.Drawing.Point(738, 46);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 20);
             this.label17.TabIndex = 3;
@@ -570,7 +547,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(737, 421);
+            this.label13.Location = new System.Drawing.Point(729, 415);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 3;
@@ -579,7 +556,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(737, 313);
+            this.label12.Location = new System.Drawing.Point(736, 364);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 20);
             this.label12.TabIndex = 3;
@@ -597,7 +574,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(737, 267);
+            this.label11.Location = new System.Drawing.Point(736, 318);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 3;
@@ -615,7 +592,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(738, 169);
+            this.label14.Location = new System.Drawing.Point(737, 220);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 20);
             this.label14.TabIndex = 3;
@@ -624,7 +601,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(737, 222);
+            this.label10.Location = new System.Drawing.Point(736, 273);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
             this.label10.TabIndex = 3;
@@ -642,7 +619,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(738, 98);
+            this.label9.Location = new System.Drawing.Point(737, 149);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 3;
@@ -678,7 +655,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(738, 47);
+            this.label8.Location = new System.Drawing.Point(737, 98);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 20);
             this.label8.TabIndex = 3;
@@ -698,7 +675,7 @@
             // 
             this.tbt_GiaNhap.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_GiaNhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_GiaNhap.Location = new System.Drawing.Point(858, 267);
+            this.tbt_GiaNhap.Location = new System.Drawing.Point(857, 318);
             this.tbt_GiaNhap.Name = "tbt_GiaNhap";
             this.tbt_GiaNhap.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaNhap.TabIndex = 2;
@@ -708,7 +685,7 @@
             // 
             this.tbt_MoTa.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_MoTa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_MoTa.Location = new System.Drawing.Point(859, 102);
+            this.tbt_MoTa.Location = new System.Drawing.Point(858, 153);
             this.tbt_MoTa.Name = "tbt_MoTa";
             this.tbt_MoTa.Size = new System.Drawing.Size(196, 20);
             this.tbt_MoTa.TabIndex = 2;
@@ -717,25 +694,16 @@
             // 
             this.tbt_MaVach.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_MaVach.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_MaVach.Location = new System.Drawing.Point(463, 463);
+            this.tbt_MaVach.Location = new System.Drawing.Point(844, 47);
             this.tbt_MaVach.Name = "tbt_MaVach";
             this.tbt_MaVach.Size = new System.Drawing.Size(168, 20);
             this.tbt_MaVach.TabIndex = 2;
-            // 
-            // tbt_KichThuoc
-            // 
-            this.tbt_KichThuoc.BackColor = System.Drawing.Color.LightBlue;
-            this.tbt_KichThuoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_KichThuoc.Location = new System.Drawing.Point(857, 365);
-            this.tbt_KichThuoc.Name = "tbt_KichThuoc";
-            this.tbt_KichThuoc.Size = new System.Drawing.Size(196, 20);
-            this.tbt_KichThuoc.TabIndex = 2;
             // 
             // tbt_SoTrang
             // 
             this.tbt_SoTrang.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_SoTrang.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_SoTrang.Location = new System.Drawing.Point(859, 169);
+            this.tbt_SoTrang.Location = new System.Drawing.Point(858, 220);
             this.tbt_SoTrang.Name = "tbt_SoTrang";
             this.tbt_SoTrang.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoTrang.TabIndex = 2;
@@ -745,7 +713,7 @@
             // 
             this.tbt_GiaBan.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_GiaBan.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_GiaBan.Location = new System.Drawing.Point(858, 313);
+            this.tbt_GiaBan.Location = new System.Drawing.Point(857, 364);
             this.tbt_GiaBan.Name = "tbt_GiaBan";
             this.tbt_GiaBan.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaBan.TabIndex = 2;
@@ -755,7 +723,7 @@
             // 
             this.tbt_SoLuong.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_SoLuong.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_SoLuong.Location = new System.Drawing.Point(858, 222);
+            this.tbt_SoLuong.Location = new System.Drawing.Point(857, 273);
             this.tbt_SoLuong.Name = "tbt_SoLuong";
             this.tbt_SoLuong.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoLuong.TabIndex = 2;
@@ -765,7 +733,7 @@
             // 
             this.tbt_NamXuatBan.BackColor = System.Drawing.Color.LightBlue;
             this.tbt_NamXuatBan.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbt_NamXuatBan.Location = new System.Drawing.Point(859, 43);
+            this.tbt_NamXuatBan.Location = new System.Drawing.Point(858, 94);
             this.tbt_NamXuatBan.Name = "tbt_NamXuatBan";
             this.tbt_NamXuatBan.Size = new System.Drawing.Size(196, 20);
             this.tbt_NamXuatBan.TabIndex = 2;
@@ -928,10 +896,45 @@
             this.Lọc.TabStop = false;
             this.Lọc.Text = "Lọc";
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(181, 394);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(36, 20);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "Đến";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 398);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(26, 20);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Từ";
+            // 
+            // tbt_GiaMax
+            // 
+            this.tbt_GiaMax.Location = new System.Drawing.Point(223, 391);
+            this.tbt_GiaMax.MaxLength = 9;
+            this.tbt_GiaMax.Name = "tbt_GiaMax";
+            this.tbt_GiaMax.Size = new System.Drawing.Size(125, 27);
+            this.tbt_GiaMax.TabIndex = 6;
+            this.tbt_GiaMax.TextChanged += new System.EventHandler(this.tbt_GiaMax_TextChanged);
+            // 
+            // tbt_GiaMin
+            // 
+            this.tbt_GiaMin.Location = new System.Drawing.Point(48, 391);
+            this.tbt_GiaMin.MaxLength = 9;
+            this.tbt_GiaMin.Name = "tbt_GiaMin";
+            this.tbt_GiaMin.Size = new System.Drawing.Size(125, 27);
+            this.tbt_GiaMin.TabIndex = 6;
+            // 
             // ptb_PDF
             // 
             this.ptb_PDF.Image = ((System.Drawing.Image)(resources.GetObject("ptb_PDF.Image")));
-            this.ptb_PDF.Location = new System.Drawing.Point(5, 538);
+            this.ptb_PDF.Location = new System.Drawing.Point(11, 507);
             this.ptb_PDF.Name = "ptb_PDF";
             this.ptb_PDF.Size = new System.Drawing.Size(109, 50);
             this.ptb_PDF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1047,41 +1050,6 @@
             this.label22.TabIndex = 3;
             this.label22.Text = "Lọc theo loại bìa";
             // 
-            // tbt_GiaMin
-            // 
-            this.tbt_GiaMin.Location = new System.Drawing.Point(48, 391);
-            this.tbt_GiaMin.MaxLength = 9;
-            this.tbt_GiaMin.Name = "tbt_GiaMin";
-            this.tbt_GiaMin.Size = new System.Drawing.Size(125, 27);
-            this.tbt_GiaMin.TabIndex = 6;
-            // 
-            // tbt_GiaMax
-            // 
-            this.tbt_GiaMax.Location = new System.Drawing.Point(223, 391);
-            this.tbt_GiaMax.MaxLength = 9;
-            this.tbt_GiaMax.Name = "tbt_GiaMax";
-            this.tbt_GiaMax.Size = new System.Drawing.Size(125, 27);
-            this.tbt_GiaMax.TabIndex = 6;
-            this.tbt_GiaMax.TextChanged += new System.EventHandler(this.tbt_GiaMax_TextChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(5, 398);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(26, 20);
-            this.label24.TabIndex = 7;
-            this.label24.Text = "Từ";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(181, 394);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(36, 20);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "Đến";
-            // 
             // Form_ChiTietSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1118,7 +1086,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdt_KhongBan;
         private System.Windows.Forms.RadioButton rdt_ConBan;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -1133,7 +1100,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbt_GiaNhap;
         private System.Windows.Forms.TextBox tbt_MoTa;
-        private System.Windows.Forms.TextBox tbt_KichThuoc;
         private System.Windows.Forms.TextBox tbt_GiaBan;
         private System.Windows.Forms.TextBox tbt_SoLuong;
         private System.Windows.Forms.TextBox tbt_NamXuatBan;
@@ -1185,7 +1151,6 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel10;
