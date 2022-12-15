@@ -34,7 +34,6 @@
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -43,13 +42,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.cb_Nu = new System.Windows.Forms.CheckBox();
             this.cb_Nam = new System.Windows.Forms.CheckBox();
             this.rB_khd = new System.Windows.Forms.RadioButton();
             this.rB_hd = new System.Windows.Forms.RadioButton();
             this.tb_namsinh = new System.Windows.Forms.TextBox();
-            this.tb_Anh = new System.Windows.Forms.TextBox();
             this.cbb_ChucVu = new System.Windows.Forms.ComboBox();
             this.tb_diaChi = new System.Windows.Forms.TextBox();
             this.tb_ten = new System.Windows.Forms.TextBox();
@@ -140,7 +137,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel9);
             this.groupBox2.Controls.Add(this.panel8);
             this.groupBox2.Controls.Add(this.panel7);
             this.groupBox2.Controls.Add(this.panel6);
@@ -150,7 +146,6 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.btn_reset);
-            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.btn_xoa);
             this.groupBox2.Controls.Add(this.cb_Nu);
             this.groupBox2.Controls.Add(this.btn_sua);
@@ -159,7 +154,6 @@
             this.groupBox2.Controls.Add(this.rB_khd);
             this.groupBox2.Controls.Add(this.rB_hd);
             this.groupBox2.Controls.Add(this.tb_namsinh);
-            this.groupBox2.Controls.Add(this.tb_Anh);
             this.groupBox2.Controls.Add(this.cbb_ChucVu);
             this.groupBox2.Controls.Add(this.tb_diaChi);
             this.groupBox2.Controls.Add(this.tb_ten);
@@ -185,14 +179,6 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Nhân Viên";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(501, 179);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(373, 1);
-            this.panel9.TabIndex = 39;
             // 
             // panel8
             // 
@@ -258,19 +244,10 @@
             this.panel1.Size = new System.Drawing.Size(389, 1);
             this.panel1.TabIndex = 32;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(501, 149);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 20);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "Đường dẫn :";
-            // 
             // cb_Nu
             // 
             this.cb_Nu.AutoSize = true;
-            this.cb_Nu.Location = new System.Drawing.Point(772, 194);
+            this.cb_Nu.Location = new System.Drawing.Point(772, 153);
             this.cb_Nu.Name = "cb_Nu";
             this.cb_Nu.Size = new System.Drawing.Size(51, 24);
             this.cb_Nu.TabIndex = 30;
@@ -281,7 +258,7 @@
             // cb_Nam
             // 
             this.cb_Nam.AutoSize = true;
-            this.cb_Nam.Location = new System.Drawing.Point(601, 197);
+            this.cb_Nam.Location = new System.Drawing.Point(601, 156);
             this.cb_Nam.Name = "cb_Nam";
             this.cb_Nam.Size = new System.Drawing.Size(63, 24);
             this.cb_Nam.TabIndex = 29;
@@ -292,7 +269,7 @@
             // rB_khd
             // 
             this.rB_khd.AutoSize = true;
-            this.rB_khd.Location = new System.Drawing.Point(741, 322);
+            this.rB_khd.Location = new System.Drawing.Point(587, 326);
             this.rB_khd.Name = "rB_khd";
             this.rB_khd.Size = new System.Drawing.Size(146, 24);
             this.rB_khd.TabIndex = 28;
@@ -304,7 +281,7 @@
             // rB_hd
             // 
             this.rB_hd.AutoSize = true;
-            this.rB_hd.Location = new System.Drawing.Point(589, 324);
+            this.rB_hd.Location = new System.Drawing.Point(587, 272);
             this.rB_hd.Name = "rB_hd";
             this.rB_hd.Size = new System.Drawing.Size(102, 24);
             this.rB_hd.TabIndex = 27;
@@ -316,23 +293,15 @@
             // tb_namsinh
             // 
             this.tb_namsinh.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_namsinh.Location = new System.Drawing.Point(587, 88);
+            this.tb_namsinh.Location = new System.Drawing.Point(588, 95);
             this.tb_namsinh.Name = "tb_namsinh";
             this.tb_namsinh.Size = new System.Drawing.Size(286, 20);
             this.tb_namsinh.TabIndex = 26;
             // 
-            // tb_Anh
-            // 
-            this.tb_Anh.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_Anh.Location = new System.Drawing.Point(621, 142);
-            this.tb_Anh.Name = "tb_Anh";
-            this.tb_Anh.Size = new System.Drawing.Size(252, 20);
-            this.tb_Anh.TabIndex = 25;
-            // 
             // cbb_ChucVu
             // 
             this.cbb_ChucVu.FormattingEnabled = true;
-            this.cbb_ChucVu.Location = new System.Drawing.Point(587, 253);
+            this.cbb_ChucVu.Location = new System.Drawing.Point(587, 204);
             this.cbb_ChucVu.Name = "cbb_ChucVu";
             this.cbb_ChucVu.Size = new System.Drawing.Size(286, 28);
             this.cbb_ChucVu.TabIndex = 20;
@@ -340,7 +309,7 @@
             // tb_diaChi
             // 
             this.tb_diaChi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_diaChi.Location = new System.Drawing.Point(587, 26);
+            this.tb_diaChi.Location = new System.Drawing.Point(588, 33);
             this.tb_diaChi.Name = "tb_diaChi";
             this.tb_diaChi.Size = new System.Drawing.Size(286, 20);
             this.tb_diaChi.TabIndex = 18;
@@ -348,7 +317,7 @@
             // tb_ten
             // 
             this.tb_ten.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_ten.Location = new System.Drawing.Point(145, 88);
+            this.tb_ten.Location = new System.Drawing.Point(145, 95);
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(276, 20);
             this.tb_ten.TabIndex = 17;
@@ -356,7 +325,7 @@
             // tb_cccd
             // 
             this.tb_cccd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_cccd.Location = new System.Drawing.Point(145, 142);
+            this.tb_cccd.Location = new System.Drawing.Point(145, 149);
             this.tb_cccd.Name = "tb_cccd";
             this.tb_cccd.Size = new System.Drawing.Size(276, 20);
             this.tb_cccd.TabIndex = 16;
@@ -364,7 +333,7 @@
             // tb_email
             // 
             this.tb_email.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_email.Location = new System.Drawing.Point(145, 194);
+            this.tb_email.Location = new System.Drawing.Point(145, 205);
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(276, 20);
             this.tb_email.TabIndex = 15;
@@ -372,7 +341,7 @@
             // tb_sdt
             // 
             this.tb_sdt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_sdt.Location = new System.Drawing.Point(145, 254);
+            this.tb_sdt.Location = new System.Drawing.Point(145, 261);
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(276, 20);
             this.tb_sdt.TabIndex = 14;
@@ -380,7 +349,7 @@
             // tb_matkhau
             // 
             this.tb_matkhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_matkhau.Location = new System.Drawing.Point(145, 312);
+            this.tb_matkhau.Location = new System.Drawing.Point(145, 319);
             this.tb_matkhau.Name = "tb_matkhau";
             this.tb_matkhau.Size = new System.Drawing.Size(276, 20);
             this.tb_matkhau.TabIndex = 13;
@@ -396,7 +365,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(501, 326);
+            this.label12.Location = new System.Drawing.Point(499, 274);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 20);
             this.label12.TabIndex = 11;
@@ -405,7 +374,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(501, 201);
+            this.label10.Location = new System.Drawing.Point(501, 160);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 20);
             this.label10.TabIndex = 9;
@@ -414,7 +383,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(501, 261);
+            this.label9.Location = new System.Drawing.Point(501, 212);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 8;
@@ -459,7 +428,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 201);
+            this.label4.Location = new System.Drawing.Point(29, 206);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 20);
             this.label4.TabIndex = 3;
@@ -477,7 +446,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 95);
+            this.label2.Location = new System.Drawing.Point(32, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 1;
@@ -602,7 +571,6 @@
         private System.Windows.Forms.RadioButton rB_khd;
         private System.Windows.Forms.RadioButton rB_hd;
         private System.Windows.Forms.TextBox tb_namsinh;
-        private System.Windows.Forms.TextBox tb_Anh;
         private System.Windows.Forms.ComboBox cbb_ChucVu;
         private System.Windows.Forms.TextBox tb_diaChi;
         private System.Windows.Forms.TextBox tb_ten;
@@ -628,7 +596,6 @@
         private System.Windows.Forms.CheckBox cb_Nam;
         private System.Windows.Forms.Button btn_Anh;
         private System.Windows.Forms.PictureBox pic_Anh;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tb_Timkiem;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel7;
@@ -638,7 +605,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel10;
     }

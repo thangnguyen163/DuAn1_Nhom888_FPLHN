@@ -36,7 +36,7 @@ namespace _3.PresentationLayers.Views
             _lstNhanVien = new List<NhanVienView>();
             loadCombobox();
             loadData();
-            
+
         }
         public void loadCombobox()
         {
@@ -59,6 +59,7 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[7].Name = "Mật khẩu";
             dtg_Show.Columns[8].Name = "Chức vụ";
             dtg_Show.Columns[9].Name = "Ảnh";
+            dtg_Show.Columns[9].Visible = false;
             dtg_Show.Columns[10].Name = "Địa chỉ";
             dtg_Show.Columns[11].Name = "Năm Sinh";
             dtg_Show.Columns[12].Name = "Trạng thái";
@@ -94,12 +95,11 @@ namespace _3.PresentationLayers.Views
             tb_sdt.Text = "";
             tb_diaChi.Text = "";
             tb_email.Text = "";
-            tb_Anh.Text = "";
             tb_namsinh.Text = "";
             cbb_ChucVu.Text = "";
-            cb_Nam.Checked = true;
+            cb_Nam.Checked = false;
             cb_Nu.Checked = false;
-            rB_hd.Checked = true;
+            rB_hd.Checked = false;
             rB_khd.Checked = false;
         }
 
@@ -131,11 +131,11 @@ namespace _3.PresentationLayers.Views
                     pic_Anh.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
-            } 
-            
+            }
+
         }
         public static string vietHoaChuCaiDau(string text)
         {
@@ -164,12 +164,70 @@ namespace _3.PresentationLayers.Views
         {
             try
             {
+                Regex validatePhoneNumberRegex = new Regex("^\\+?[0-0][0-9]{7,14}$");
+            if (string.IsNullOrEmpty(tb_ten.Text))
+            {
+                MessageBox.Show("Không được để trống tên nhân viên", "Thông Báo");
+                return;
+            }
+            else if (tb_cccd.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống cccd", "Thông Báo");
+                return;
+            }
+            else if (tb_matkhau.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống mật khẩu", "Thông Báo");
+                return;
+            }
+            else if (string.IsNullOrEmpty(tb_sdt.Text))
+            {
+                MessageBox.Show("Không được để trống số điện thoại", "Thông Báo");
+                return;
+            }
+            else if (validatePhoneNumberRegex.IsMatch(tb_sdt.Text) == false)
+            {
+                MessageBox.Show("Hãy nhập đúng số điện thoại", "Thông Báo");
+                return;
+            }
+            else if (tb_diaChi.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống địa chỉ", "Thông Báo");
+                return;
+            }
+            else if (tb_email.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống email", "Thông Báo");
+                return;
+            }
+            else if (tb_namsinh.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống năm sinh", "Thông Báo");
+                return;
+            }
+            else if (cb_Nam.Checked == false &&  cb_Nu.Checked == false)
+            {
+                MessageBox.Show("Không được để trống giới tính", "Thông Báo");
+                return;
+            }
+            else if (cbb_ChucVu.Text == String.Empty)
+            {
+                MessageBox.Show("Không được để trống chức vụ", "Thông Báo");
+                return;
+            }
+            else if (rB_hd.Checked == false && rB_khd.Checked == false)
+            {
+                MessageBox.Show("Không được để trống trạng thái", "Thông Báo");
+                return;
+            }
+            else
+            {
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm không", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Random r = new Random();
                     string ten = zenMaFpoly(convertToUnSign3(tb_ten.Text), Convert.ToString(r.Next(1000, 9999)));
-                    
+
                     MessageBox.Show(_nhanVienService.addNhanVien(new NhanVien()
                     {
 
@@ -196,12 +254,13 @@ namespace _3.PresentationLayers.Views
 
                 }
             }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
-            
-        }
+
+}
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
@@ -238,13 +297,13 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
-            
+
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            try
-            {
+        //    try
+        //    {
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa không", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -255,12 +314,12 @@ namespace _3.PresentationLayers.Views
                 {
                     return;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
-            }
-            
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
+            //}
+
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
@@ -349,7 +408,7 @@ namespace _3.PresentationLayers.Views
                 dtg_Show.Columns[11].Name = "Năm Sinh";
                 dtg_Show.Columns[12].Name = "Trạng thái";
                 dtg_Show.Rows.Clear();
-                foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(tb_Timkiem.Text) ||c.Ma.StartsWith(tb_Timkiem.Text) || c.Email.StartsWith(tb_Timkiem.Text) || c.DiaChi.StartsWith(tb_Timkiem.Text)))
+                foreach (var item in _nhanVienService.getNhanViensFromDB().Where(c => c.Ten.StartsWith(tb_Timkiem.Text) || c.Ma.StartsWith(tb_Timkiem.Text) || c.Email.StartsWith(tb_Timkiem.Text) || c.DiaChi.StartsWith(tb_Timkiem.Text)))
 
                 {
                     dtg_Show.Rows.Add(item.Id,
@@ -372,7 +431,7 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show(Convert.ToString(ex.Message), "Liên hệ với nhóm 888 để khắc phục");
             }
-            
+
         }
         private void tb_Timkiem_Leave(object sender, EventArgs e)
         {
@@ -391,19 +450,15 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("ERROR");
             }
         }
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-        void loadimg(ref string imgname)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                imgname = fileDialog.FileName;
-                tb_Anh.Text = fileDialog.FileName;
-            }
-        }
+        //void loadimg(ref string imgname)
+        //{
+        //    OpenFileDialog fileDialog = new OpenFileDialog();
+        //    if (fileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        imgname = fileDialog.FileName;
+        //        tb_Anh.Text = fileDialog.FileName;
+        //    }
+        //}
         private void btn_Anh_Click(object sender, EventArgs e)
         {
             //loadimg(ref FileImageNam);
