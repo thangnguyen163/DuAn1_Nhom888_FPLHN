@@ -70,9 +70,11 @@ namespace _3.PresentationLayers.Views
                     var LastTK = _igiaoCaService.GetAll().Where(c => c.Ma == "GC" + _igiaoCaService.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault().IdNhanVien;
                     var CheckTk = _iNhanVienSercvice.getNhanViensFromDB().Where(p => p.Email == tb_tendangnhap.Text).FirstOrDefault().Id;
                     var idchucvu = _iChucVuService.getChucVusFromDB().Where(c => c.Ten.ToLower() == "Nhân viên".ToLower()).Select(c => c.Id).FirstOrDefault();
+                    var manvht = _iNhanVienSercvice.getNhanViensFromDB().Where(c => c.Id == cahientai.IdNhanVien).Select(c => c.Ma).FirstOrDefault();
+                    var tennvht = _iNhanVienSercvice.getNhanViensFromDB().Where(c => c.Id == cahientai.IdNhanVien).Select(c => c.Ten).FirstOrDefault();
                     if ( LastTK != CheckTk && cahientai.ThoiGianReset.ToString() == string.Empty &&  _iNhanVienSercvice.getNhanViensFromDB()[i].IdchucVu == idchucvu)
                     {
-                        MessageBox.Show("Ca trước chưa kết thúc, vui lòng liên hệ nhân viên ca trước để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show($"Ca trước chưa kết thúc, vui lòng liên hệ nhân viên ca trước ({manvht} - {tennvht}) để kết thúc ca", "Thông báo", MessageBoxButtons.OK);
                         return;
                     }
                     
