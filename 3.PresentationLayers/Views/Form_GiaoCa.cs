@@ -181,5 +181,14 @@ namespace _3.PresentationLayers.Views
         {
 
         }
+
+        private void hienthi_Click(object sender, EventArgs e)
+        {
+            if (tb_matkhau.PasswordChar == '*')
+            {
+                tb_matkhau.PasswordChar = '\0';
+            }
+            else tb_matkhau.PasswordChar = '*';
+        }
     }
 }
