@@ -25,7 +25,7 @@ namespace _3.PresentationLayers.Views
         {
             InitializeComponent();
             Loaddata();
-
+           
             rd_conhd.Checked = true;
         }
         public void Loaddata()
@@ -95,7 +95,7 @@ namespace _3.PresentationLayers.Views
                 kh.Ma = ten;
                 kh.Ten = tb_ten.Text;
                 kh.Sdt = tb_sdt.Text;
-                kh.DiaChi = tbt_DiaChi.Text;
+                kh.DiaChi = tb_diachi.Text;
                 kh.IddiemTieuDung = a;
                 if (rd_conhd.Checked == true)
                 {
@@ -134,7 +134,7 @@ namespace _3.PresentationLayers.Views
                 rd_dadung.Checked = true;
             }
             SelectID = Guid.Parse(Convert.ToString(dtg_Show.CurrentRow.Cells[1].Value.ToString()));
-            tbt_DiaChi.Text = dtg_Show.CurrentRow.Cells[6].Value.ToString();
+            tb_diachi.Text = dtg_Show.CurrentRow.Cells[6].Value.ToString();
         }
 
         private void Form_KhachHang_Load(object sender, EventArgs e)
@@ -172,7 +172,7 @@ namespace _3.PresentationLayers.Views
                     kh.Ten = tb_ten.Text;
                     kh.Sdt = tb_sdt.Text;
                     // kh.IddiemTieuDung = a;
-                    kh.DiaChi = tbt_DiaChi.Text;
+                    kh.DiaChi = tb_diachi.Text;
                     if (rd_conhd.Checked == true)
                     {
                         kh.TrangThai = 1;
