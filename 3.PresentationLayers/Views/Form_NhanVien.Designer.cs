@@ -276,6 +276,7 @@
             this.cb_Nu.TabIndex = 30;
             this.cb_Nu.Text = "Nữ";
             this.cb_Nu.UseVisualStyleBackColor = true;
+            this.cb_Nu.Click += new System.EventHandler(this.cb_Nu_Click);
             // 
             // cb_Nam
             // 
@@ -286,6 +287,7 @@
             this.cb_Nam.TabIndex = 29;
             this.cb_Nam.Text = "Nam";
             this.cb_Nam.UseVisualStyleBackColor = true;
+            this.cb_Nam.Click += new System.EventHandler(this.cb_Nam_Click);
             // 
             // rB_khd
             // 
