@@ -31,7 +31,7 @@ namespace _3.PresentationLayers.Views
             _iNhanVienServicel = new NhanVienService();
             _gc = new GiaoCa();
             var caht = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
-            lb_tongtien.Text = caht.TongTienTrongCa.ToString();
+            lb_tienmat.Text = caht.TongTienTrongCa.ToString();
             lb_tienmat.Text = caht.TongTienMat.ToString();
             lb_tienkhac.Text = caht.TongTienKhac.ToString();
 
@@ -47,7 +47,7 @@ namespace _3.PresentationLayers.Views
                 _gc.ThoiGianGiaoCa = DateTime.Now;
                 _gc.TongTienMat = Convert.ToDecimal(lb_tienmat.Text);
                 _gc.TongTienKhac = Convert.ToDecimal(lb_tienkhac.Text);
-                _gc.TongTienTrongCa = Convert.ToDecimal(lb_tongtien.Text);
+                _gc.TongTienTrongCa = Convert.ToDecimal(lb_tienmat.Text);
                 _gc.IdNhanVienCaTiep = nv.Id;
                 _gc.ThoiGianReset = DateTime.Now;
             };
@@ -98,7 +98,7 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Bạn cần phải xác nhận trước khi giao ca","Cảnh báo",MessageBoxButtons.OK);
                 return;
             }
-            DialogResult dialogResult = MessageBox.Show("Mời bạn xác nhận số tiền trong két" + Environment.NewLine + lb_tongtien.Text + " VND", "Xác nhận", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Mời bạn xác nhận số tiền trong két" + Environment.NewLine + lb_tienmat.Text + " VND", "Xác nhận", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 
@@ -115,7 +115,7 @@ namespace _3.PresentationLayers.Views
                         var nv = _iNhanVienServicel.getNhanViensFromDB().FirstOrDefault(c => c.Email == tb_email.Text);
                         emailgiao = tb_email.Text;
                         passgiao = tb_matkhau.Text;
-                        TienGiao = Convert.ToDecimal(lb_tongtien.Text);
+                        TienGiao = Convert.ToDecimal(lb_tienmat.Text);
                         _iGiaoCaServicel.Add(CaMoi());
                         MessageBox.Show($"Xin chào: {nv.Ten}", "Giao ca thành công", MessageBoxButtons.OK);
                         this.Close();
@@ -160,7 +160,7 @@ namespace _3.PresentationLayers.Views
                 }
                 MessageBox.Show(_iGiaoCaServicel.UpdateTienPhatSinh(TienPhatSinh()));
                 var capnhat = _iGiaoCaServicel.GetAll().Where(c => c.Ma == "GC" + _iGiaoCaServicel.GetAll().Max(c => Convert.ToInt32(c.Ma.Substring(2))).ToString()).FirstOrDefault();
-                lb_tongtien.Text = capnhat.TongTienTrongCa.ToString();
+                lb_tienmat.Text = capnhat.TongTienTrongCa.ToString();
                 lb_tienmat.Text = capnhat.TongTienMat.ToString();
                 lb_tienkhac.Text = capnhat.TongTienKhac.ToString();
                 tb_phatsinhtienmat.Text = string.Empty;
