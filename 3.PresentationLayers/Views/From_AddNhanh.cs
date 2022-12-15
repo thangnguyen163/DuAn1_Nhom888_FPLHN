@@ -22,7 +22,6 @@ namespace _3.PresentationLayers.Views
         private ITacGiaService _iTacGiaService;
         private ILoaiBiaService _iLoaiBiaService;
         private ITheLoaiService _iTheLoaiService;
-        //private IChiTietTheLoaiService _iChiTietTheLoaiService;
         public Form_AddNhanh()
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace _3.PresentationLayers.Views
             _iNhaPhatHanhService = new NhaPhatHanhService();
             _iLoaiBiaService = new LoaiBiaService();
             _iTheLoaiService = new TheLoaiService();
-            //_iChiTietTheLoaiService = new ChiTietTheLoaiService();
         }
         public Form_AddNhanh(string a)
         {
