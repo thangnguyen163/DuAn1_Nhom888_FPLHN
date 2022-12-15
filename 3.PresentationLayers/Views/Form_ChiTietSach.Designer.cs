@@ -54,7 +54,6 @@
             this.btn_Delete = new System.Windows.Forms.Button();
             this.ptb_AnhSach = new System.Windows.Forms.PictureBox();
             this.btn_Update = new System.Windows.Forms.Button();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.btn_Add = new System.Windows.Forms.Button();
             this.ipb_AddLoaiBia = new FontAwesome.Sharp.IconPictureBox();
             this.ipb_AddNhaPhatHanh = new FontAwesome.Sharp.IconPictureBox();
@@ -115,9 +114,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.tbt_GiaMin = new System.Windows.Forms.TextBox();
+            this.tbt_GiaMax = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).BeginInit();
@@ -154,7 +156,6 @@
             this.groupBox1.Controls.Add(this.btn_Delete);
             this.groupBox1.Controls.Add(this.ptb_AnhSach);
             this.groupBox1.Controls.Add(this.btn_Update);
-            this.groupBox1.Controls.Add(this.iconPictureBox1);
             this.groupBox1.Controls.Add(this.btn_Add);
             this.groupBox1.Controls.Add(this.ipb_AddLoaiBia);
             this.groupBox1.Controls.Add(this.ipb_AddNhaPhatHanh);
@@ -407,22 +408,6 @@
             this.btn_Update.Text = "Sửa";
             this.btn_Update.UseVisualStyleBackColor = false;
             this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.LightBlue;
-            this.iconPictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("iconPictureBox1.BackgroundImage")));
-            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 30;
-            this.iconPictureBox1.Location = new System.Drawing.Point(634, 463);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.iconPictureBox1.TabIndex = 5;
-            this.iconPictureBox1.TabStop = false;
-            this.iconPictureBox1.Click += new System.EventHandler(this.ipb_AddLoaiBia_Click);
             // 
             // btn_Add
             // 
@@ -717,6 +702,7 @@
             this.tbt_GiaNhap.Name = "tbt_GiaNhap";
             this.tbt_GiaNhap.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaNhap.TabIndex = 2;
+            this.tbt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_GiaNhap_KeyPress);
             // 
             // tbt_MoTa
             // 
@@ -753,6 +739,7 @@
             this.tbt_SoTrang.Name = "tbt_SoTrang";
             this.tbt_SoTrang.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoTrang.TabIndex = 2;
+            this.tbt_SoTrang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_SoTrang_KeyPress);
             // 
             // tbt_GiaBan
             // 
@@ -762,6 +749,7 @@
             this.tbt_GiaBan.Name = "tbt_GiaBan";
             this.tbt_GiaBan.Size = new System.Drawing.Size(196, 20);
             this.tbt_GiaBan.TabIndex = 2;
+            this.tbt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_GiaBan_KeyPress);
             // 
             // tbt_SoLuong
             // 
@@ -771,6 +759,7 @@
             this.tbt_SoLuong.Name = "tbt_SoLuong";
             this.tbt_SoLuong.Size = new System.Drawing.Size(196, 20);
             this.tbt_SoLuong.TabIndex = 2;
+            this.tbt_SoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_SoLuong_KeyPress);
             // 
             // tbt_NamXuatBan
             // 
@@ -915,6 +904,10 @@
             // 
             // Lọc
             // 
+            this.Lọc.Controls.Add(this.label25);
+            this.Lọc.Controls.Add(this.label24);
+            this.Lọc.Controls.Add(this.tbt_GiaMax);
+            this.Lọc.Controls.Add(this.tbt_GiaMin);
             this.Lọc.Controls.Add(this.ptb_PDF);
             this.Lọc.Controls.Add(this.cbb_LocTacGia);
             this.Lọc.Controls.Add(this.cbb_LocNXB);
@@ -1054,6 +1047,41 @@
             this.label22.TabIndex = 3;
             this.label22.Text = "Lọc theo loại bìa";
             // 
+            // tbt_GiaMin
+            // 
+            this.tbt_GiaMin.Location = new System.Drawing.Point(48, 391);
+            this.tbt_GiaMin.MaxLength = 9;
+            this.tbt_GiaMin.Name = "tbt_GiaMin";
+            this.tbt_GiaMin.Size = new System.Drawing.Size(125, 27);
+            this.tbt_GiaMin.TabIndex = 6;
+            // 
+            // tbt_GiaMax
+            // 
+            this.tbt_GiaMax.Location = new System.Drawing.Point(223, 391);
+            this.tbt_GiaMax.MaxLength = 9;
+            this.tbt_GiaMax.Name = "tbt_GiaMax";
+            this.tbt_GiaMax.Size = new System.Drawing.Size(125, 27);
+            this.tbt_GiaMax.TabIndex = 6;
+            this.tbt_GiaMax.TextChanged += new System.EventHandler(this.tbt_GiaMax_TextChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 398);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(26, 20);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Từ";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(181, 394);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(36, 20);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "Đến";
+            // 
             // Form_ChiTietSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1068,7 +1096,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddLoaiBia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddNhaPhatHanh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ipb_AddTacGia)).EndInit();
@@ -1138,7 +1165,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbb_TheLoai2;
         private System.Windows.Forms.ComboBox cbb_TheLoai;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbt_MaVach;
         private System.Windows.Forms.Button btn_Reset;
@@ -1171,5 +1197,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox ptb_PDF;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox tbt_GiaMax;
+        private System.Windows.Forms.TextBox tbt_GiaMin;
     }
 }

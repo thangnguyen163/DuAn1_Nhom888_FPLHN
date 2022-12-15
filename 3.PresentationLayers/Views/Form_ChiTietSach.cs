@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using Microsoft.VisualBasic;
 using _3_GUI_PresentaionLayers;
+using _2.BUS.IServices;
+using _2.BUS.Serivces;
 
 namespace _3.PresentationLayers.Views
 {
@@ -25,6 +27,7 @@ namespace _3.PresentationLayers.Views
         private List<ChiTietSachView> _lstChiTietSachView;
         private Guid? SelectedID;
         private ISachService _iSachService;
+        private IHoaDonChiTietService _ihoaDonchitietService= new HoaDonChiTietService();
         private ITacGiaService _iTacGiaService;
         private ITheLoaiService _iTheLoaiService;
         private INXBService _iNXBService;
@@ -118,9 +121,17 @@ namespace _3.PresentationLayers.Views
 
         public void LoadCbb()
         {
+            cbb_Sach.Items.Clear();
+            cbb_NXB.Items.Clear();
+            cbb_TacGia.Items.Clear();
+            cbb_NhaPhatHanh.Items.Clear();
+            cbb_LoaiBia.Items.Clear();
+            cbb_TheLoai.Items.Clear();
+            cbb_TheLoai2.Items.Clear();
             foreach (var a in _iSachService.GetAll())
             {
                 cbb_Sach.Items.Add(a.Ten);
+
             }
             foreach (var a in _iNXBService.GetAllNoView())
             {
@@ -148,6 +159,7 @@ namespace _3.PresentationLayers.Views
             }
             cbb_LocTrangThai.Items.Add("Còn bán");
             cbb_LocTrangThai.Items.Add("Ngừng kinh doanh");
+
 
 
         }
@@ -309,10 +321,20 @@ namespace _3.PresentationLayers.Views
                 MessageBox.Show("Trạng thái không được để trống!!!!", "ERROR");
                 return;
             }
+            else if (Convert.ToInt32(tbt_SoLuong.Text) == 0)
+            {
+                MessageBox.Show("Số lượng không được = 0!!!!", "ERROR");
+                return;
+            }
+            else if(Convert.ToInt32(tbt_GiaBan.Text)< Convert.ToInt32(tbt_GiaNhap.Text))
+            {
+                MessageBox.Show("Giá bán không được nhỏ hơn giá nhập!!!!", "ERROR");
+                return;
+            }
 
             #endregion
 
-            else
+                    else
             {
                 Guid idTheLoai = Guid.Empty;
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thêm chi tiết cho sách", "Thông báo ", MessageBoxButtons.YesNo);
@@ -444,6 +466,16 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show("Chọn hoá đơn muốn sửa, PLEAR", "ERROR");
             }
+            else if (Convert.ToInt32(tbt_SoLuong.Text) == 0)
+            {
+                MessageBox.Show("Số lượng không được = 0!!!!", "ERROR");
+                return;
+            }
+            else if (Convert.ToInt32(tbt_GiaBan.Text) < Convert.ToInt32(tbt_GiaNhap.Text))
+            {
+                MessageBox.Show("Giá bán không được nhỏ hơn giá nhập!!!!", "ERROR");
+                return;
+            }
 
             #endregion
             else
@@ -498,8 +530,17 @@ namespace _3.PresentationLayers.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn  XOÁ  sách này ", "Thông báo ", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show(_iChiTietSachService.Delete(SelectedID));
-                LoadData();
+                if (_ihoaDonchitietService.GetAllloadformsp().Where(x=>x.IdChiTietSach==SelectedID).Count()==0)
+                {
+                    MessageBox.Show(_iChiTietSachService.Delete(SelectedID));
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Sách hiện tại không thể xoá");
+                    return;
+                }    
+               
             }
             if (dialogResult == DialogResult.No) return;
 
@@ -533,6 +574,12 @@ namespace _3.PresentationLayers.Views
             cbb_LoaiBia.Items.Clear();
             cbb_TheLoai.Items.Clear();
             cbb_TheLoai2.Items.Clear();
+            cbb_LocLoaiBia.Items.Clear();
+            cbb_LocNXB.Items.Clear();
+            cbb_LocTacGia.Items.Clear();
+            cbb_NhaPhatHanh.Items.Clear();
+            cbb_LocTrangThai.Items.Clear();
+            cbb_LocNhaPhatHanh.Items.Clear();
             LoadCbb();
         }
         private void ipb_AddSach_Click(object sender, EventArgs e)
@@ -612,6 +659,8 @@ namespace _3.PresentationLayers.Views
             tbt_SoLuong.Clear();
             tbt_GiaNhap.Clear();
             tbt_GiaBan.Clear();
+            tbt_GiaMin.Clear();
+            tbt_GiaMax.Clear();
             tbt_KichThuoc.Clear();
             rdt_ConBan.Checked = false;
             rdt_KhongBan.Checked = false;
@@ -656,6 +705,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocLoaiBia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
                 cbb_LocTrangThai.Text = string.Empty;
+                tbt_GiaMax.Text = string.Empty;
+                tbt_GiaMin.Text = string.Empty;
 
             }
 
@@ -698,6 +749,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocLoaiBia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
                 cbb_LocTrangThai.Text = string.Empty;
+                tbt_GiaMax.Text = string.Empty;
+                tbt_GiaMin.Text = string.Empty;
             }
         }
 
@@ -738,6 +791,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocLoaiBia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
                 cbb_LocTrangThai.Text = string.Empty;
+                tbt_GiaMax.Text = string.Empty;
+                tbt_GiaMin.Text = string.Empty;
             }
         }
 
@@ -778,6 +833,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocTacGia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
                 cbb_LocTrangThai.Text = string.Empty;
+                tbt_GiaMax.Text = string.Empty;
+                tbt_GiaMin.Text = string.Empty;
             }
         }
 
@@ -817,6 +874,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocNhaPhatHanh.Text = string.Empty;
                 cbb_LocTacGia.Text = string.Empty;
                 cbb_LocTrangThai.Text = string.Empty;
+                tbt_GiaMax.Text = string.Empty;
+                tbt_GiaMin.Text = string.Empty;
             }
         }
 
@@ -864,6 +923,8 @@ namespace _3.PresentationLayers.Views
                 cbb_LocNhaPhatHanh.Text = string.Empty;
                 cbb_LocTacGia.Text = string.Empty;
                 cbb_LocTheLoai.Text = string.Empty;
+                tbt_GiaMax.Text=string.Empty;
+                tbt_GiaMin.Text = string.Empty;
 
             }
         }
@@ -885,6 +946,74 @@ namespace _3.PresentationLayers.Views
 
             if (dialogResult == DialogResult.No)
             {
+                return;
+            }
+        }
+
+        private void tbt_SoTrang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_SoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_GiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_GiaBan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_GiaMax_TextChanged(object sender, EventArgs e)
+        {
+            if (tbt_GiaMax.Text != string.Empty)
+            {
+                int stt = 1;
+                dtg_Show.ColumnCount = 19;
+                dtg_Show.Columns[0].Name = "STT";
+                dtg_Show.Columns[1].Name = "Id";
+                dtg_Show.Columns[1].Visible = false;
+                dtg_Show.Columns[2].Name = "Sách";
+                dtg_Show.Columns[3].Name = "NXB";
+                dtg_Show.Columns[4].Name = "Tác giả";
+                dtg_Show.Columns[5].Name = "NPH";
+                dtg_Show.Columns[6].Name = "Loại bìa";
+                dtg_Show.Columns[7].Name = "Mã";
+                dtg_Show.Columns[8].Name = "Kích thước";
+                dtg_Show.Columns[9].Name = "Năm xuất bản";
+                dtg_Show.Columns[10].Name = "Mô tả";
+                dtg_Show.Columns[11].Name = "Số trang";
+                dtg_Show.Columns[12].Name = "Số lượng";
+                dtg_Show.Columns[13].Name = "Giá nhập";
+                dtg_Show.Columns[14].Name = "Giá bán";
+                dtg_Show.Columns[15].Name = "Trạng thái";
+                dtg_Show.Columns[16].Name = "Đường Dẫn";
+                dtg_Show.Columns[16].Visible = false;
+                dtg_Show.Columns[17].Name = "Mã vạch";
+                dtg_Show.Columns[18].Name = "Thể loại ";
+                dtg_Show.Rows.Clear();
+                foreach (var a in _iChiTietSachService.GetAllChiTietSachView().Where(x => x.GiaBan<=Convert.ToInt32(tbt_GiaMax.Text) && x.GiaBan >= Convert.ToInt32(tbt_GiaMin.Text)))
+                {
+                    dtg_Show.Rows.Add(stt++, a.Id, a.TenSach, a.TenNxb, a.TenTacGia, a.TenNhaPhatHanh, a.TenLoaiBia, a.Ma, a.KichThuoc, a.NamXuatBan, a.MoTa, a.SoTrang, a.SoLuong, a.GiaNhap, a.GiaBan, a.TrangThai == 0 ? "Ngừng kinh doanh" : "Còn bán", a.Anh, a.MaVach, a.TenTheLoai);
+                }
+                cbb_LocNXB.Text = string.Empty;
+                cbb_LocNhaPhatHanh.Text = string.Empty;
+                cbb_LocTacGia.Text = string.Empty;
+                cbb_LocTrangThai.Text = string.Empty;
+            }
+            else if (Convert.ToInt32(tbt_GiaMax.Text) < Convert.ToInt32(tbt_GiaMin.Text))
+            {
+                MessageBox.Show("Giá max không được nhỏ hơn giá min");
                 return;
             }
         }
