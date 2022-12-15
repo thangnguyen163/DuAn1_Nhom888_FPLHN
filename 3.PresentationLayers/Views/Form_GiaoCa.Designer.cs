@@ -33,7 +33,6 @@
             this.tbx_ghichu = new System.Windows.Forms.TextBox();
             this.tb_phatsinhtienmat = new System.Windows.Forms.TextBox();
             this.btn_CapNhatTienPhatSinh = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_xacnhan = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -47,6 +46,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ck_confirm = new System.Windows.Forms.CheckBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -55,11 +55,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ck_confirm = new System.Windows.Forms.CheckBox();
             this.lb_tienmat = new System.Windows.Forms.TextBox();
             this.lb_tienkhac = new System.Windows.Forms.TextBox();
-            this.lb_tongtien = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -108,16 +105,6 @@
             this.btn_CapNhatTienPhatSinh.Text = "Cập nhật tiền phát sinh";
             this.btn_CapNhatTienPhatSinh.UseVisualStyleBackColor = false;
             this.btn_CapNhatTienPhatSinh.Click += new System.EventHandler(this.btn_tienphatsinh_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(444, 209);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tổng tiền : ";
             // 
             // btn_xacnhan
             // 
@@ -175,7 +162,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(418, 124);
+            this.label8.Location = new System.Drawing.Point(418, 180);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 20);
             this.label8.TabIndex = 19;
@@ -185,7 +172,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(412, 164);
+            this.label10.Location = new System.Drawing.Point(412, 220);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(118, 20);
             this.label10.TabIndex = 21;
@@ -244,6 +231,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(215, 2);
             this.panel2.TabIndex = 124;
+            // 
+            // ck_confirm
+            // 
+            this.ck_confirm.AutoSize = true;
+            this.ck_confirm.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.ck_confirm.ForeColor = System.Drawing.Color.Blue;
+            this.ck_confirm.Location = new System.Drawing.Point(29, 401);
+            this.ck_confirm.Name = "ck_confirm";
+            this.ck_confirm.Size = new System.Drawing.Size(97, 24);
+            this.ck_confirm.TabIndex = 25;
+            this.ck_confirm.Text = "Xác nhận";
+            this.ck_confirm.UseVisualStyleBackColor = true;
             // 
             // panel13
             // 
@@ -304,7 +303,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(723, 117);
+            this.label5.Location = new System.Drawing.Point(723, 173);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 20);
             this.label5.TabIndex = 24;
@@ -314,39 +313,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(723, 157);
+            this.label6.Location = new System.Drawing.Point(723, 213);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 20);
             this.label6.TabIndex = 24;
             this.label6.Text = "VND";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(723, 206);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 20);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "VND";
-            // 
-            // ck_confirm
-            // 
-            this.ck_confirm.AutoSize = true;
-            this.ck_confirm.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.ck_confirm.ForeColor = System.Drawing.Color.Blue;
-            this.ck_confirm.Location = new System.Drawing.Point(29, 401);
-            this.ck_confirm.Name = "ck_confirm";
-            this.ck_confirm.Size = new System.Drawing.Size(97, 24);
-            this.ck_confirm.TabIndex = 25;
-            this.ck_confirm.Text = "Xác nhận";
-            this.ck_confirm.UseVisualStyleBackColor = true;
-            // 
             // lb_tienmat
             // 
             this.lb_tienmat.BackColor = System.Drawing.SystemColors.Control;
             this.lb_tienmat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lb_tienmat.Location = new System.Drawing.Point(545, 117);
+            this.lb_tienmat.Location = new System.Drawing.Point(545, 173);
             this.lb_tienmat.Name = "lb_tienmat";
             this.lb_tienmat.ReadOnly = true;
             this.lb_tienmat.Size = new System.Drawing.Size(172, 20);
@@ -357,33 +334,20 @@
             // 
             this.lb_tienkhac.BackColor = System.Drawing.SystemColors.Control;
             this.lb_tienkhac.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lb_tienkhac.Location = new System.Drawing.Point(545, 157);
+            this.lb_tienkhac.Location = new System.Drawing.Point(545, 213);
             this.lb_tienkhac.Name = "lb_tienkhac";
             this.lb_tienkhac.ReadOnly = true;
             this.lb_tienkhac.Size = new System.Drawing.Size(172, 20);
             this.lb_tienkhac.TabIndex = 26;
             this.lb_tienkhac.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lb_tongtien
-            // 
-            this.lb_tongtien.BackColor = System.Drawing.SystemColors.Control;
-            this.lb_tongtien.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lb_tongtien.Location = new System.Drawing.Point(545, 206);
-            this.lb_tongtien.Name = "lb_tongtien";
-            this.lb_tongtien.ReadOnly = true;
-            this.lb_tongtien.Size = new System.Drawing.Size(172, 20);
-            this.lb_tongtien.TabIndex = 26;
-            this.lb_tongtien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Form_GiaoCa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 496);
-            this.Controls.Add(this.lb_tongtien);
             this.Controls.Add(this.lb_tienkhac);
             this.Controls.Add(this.lb_tienmat);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -395,7 +359,6 @@
             this.Controls.Add(this.tb_phatsinhtienmat);
             this.Controls.Add(this.tbx_ghichu);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "Form_GiaoCa";
             this.Text = "KetCa";
             this.panel1.ResumeLayout(false);
@@ -416,7 +379,6 @@
         private System.Windows.Forms.TextBox tbx_ghichu;
         private System.Windows.Forms.TextBox tb_phatsinhtienmat;
         private System.Windows.Forms.Button btn_CapNhatTienPhatSinh;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_xacnhan;
         private System.Windows.Forms.Label label4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -435,11 +397,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox ck_confirm;
         private System.Windows.Forms.TextBox lb_tienmat;
         private System.Windows.Forms.TextBox lb_tienkhac;
-        private System.Windows.Forms.TextBox lb_tongtien;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
