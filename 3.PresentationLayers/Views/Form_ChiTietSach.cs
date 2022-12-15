@@ -274,7 +274,6 @@ namespace _3.PresentationLayers.Views
             {
                 MessageBox.Show(Convert.ToString(ex), "Liên hệ Thắng để khắc phục");
                 return;
-
             }
         }
 
