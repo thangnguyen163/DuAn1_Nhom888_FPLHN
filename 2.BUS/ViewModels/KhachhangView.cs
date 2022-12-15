@@ -14,6 +14,7 @@ namespace _2.BUS.ViewModels
         public string  Sodt { get; set; }
         public Guid Idiemtieudung { get; set; }
         public string Madiemtieudung { get; set; }
+        public string DiaChi { get; set; }
         public int? Trangthai { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace _3.PresentationLayers.Views
         public void Loaddata()
         {
             int i = 1;
-            dtg_Show.ColumnCount = 7;
+            dtg_Show.ColumnCount = 8;
             dtg_Show.Columns[0].Name = "STT";
             dtg_Show.Columns[1].Name = "Id Khách hàng";
             dtg_Show.Columns[1].Visible = false;
@@ -39,11 +39,12 @@ namespace _3.PresentationLayers.Views
             dtg_Show.Columns[3].Name = "Tên ";
             dtg_Show.Columns[4].Name = "Số điện thoại";
             dtg_Show.Columns[5].Name = "Mã điểm tiêu dùng";
-            dtg_Show.Columns[6].Name = "Trạng thái";
+            dtg_Show.Columns[6].Name = "Địa chỉ";
+            dtg_Show.Columns[7].Name = "Trạng thái";
             dtg_Show.Rows.Clear();
             foreach (var x in _ikhachHangService.getKhachHangFromDB().OrderBy(x => x.Ma))
             {
-                dtg_Show.Rows.Add(i++, x.ID, x.Ma, x.Ten, x.Sodt, x.Madiemtieudung, x.Trangthai == 1 ? "Còn hoạt động" : "Đã tạm dừng");
+                dtg_Show.Rows.Add(i++, x.ID, x.Ma, x.Ten, x.Sodt, x.Madiemtieudung,x.DiaChi, x.Trangthai == 1 ? "Còn hoạt động" : "Đã tạm dừng");
             }
         }
         public static string vietHoaChuCaiDau(string text)
@@ -95,6 +96,7 @@ namespace _3.PresentationLayers.Views
                 kh.Ma = ten;
                 kh.Ten = tb_ten.Text;
                 kh.Sdt = tb_sdt.Text;
+                kh.DiaChi = tbt_DiaChi.Text;
                 kh.IddiemTieuDung = a;
                 if (rd_conhd.Checked == true)
                 {
@@ -124,7 +126,7 @@ namespace _3.PresentationLayers.Views
             tb_ten.Text = dtg_Show.CurrentRow.Cells[3].Value.ToString();
             tb_sdt.Text = dtg_Show.CurrentRow.Cells[4].Value.ToString();
             cbb_iddtd.Text = dtg_Show.CurrentRow.Cells[5].Value.ToString();
-            if (Convert.ToString(dtg_Show.CurrentRow.Cells[6].Value.ToString())== "Còn hoạt động")
+            if (Convert.ToString(dtg_Show.CurrentRow.Cells[7].Value.ToString())== "Còn hoạt động")
             {
                 rd_conhd.Checked = true;
             }
@@ -133,6 +135,7 @@ namespace _3.PresentationLayers.Views
                 rd_dadung.Checked = true;
             }
             SelectID = Guid.Parse(Convert.ToString(dtg_Show.CurrentRow.Cells[1].Value.ToString()));
+            tbt_DiaChi.Text = dtg_Show.CurrentRow.Cells[6].Value.ToString();
         }
 
         private void Form_KhachHang_Load(object sender, EventArgs e)
@@ -170,6 +173,7 @@ namespace _3.PresentationLayers.Views
                     kh.Ten = tb_ten.Text;
                     kh.Sdt = tb_sdt.Text;
                     // kh.IddiemTieuDung = a;
+                    kh.DiaChi = tbt_DiaChi.Text;
                     if (rd_conhd.Checked == true)
                     {
                         kh.TrangThai = 1;
@@ -211,6 +215,11 @@ namespace _3.PresentationLayers.Views
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
