@@ -89,7 +89,6 @@ namespace _3.PresentationLayers.Views
             {
                 Random r = new Random();
                 string ten = zenMaFpoly(convertToUnSign3(tb_ten.Text), Convert.ToString(r.Next(1000, 9999)));
-                MessageBox.Show(ten);
                 var a = Guid.NewGuid();
                 var kh = new KhachHang();
                 kh.Id = Guid.NewGuid();
