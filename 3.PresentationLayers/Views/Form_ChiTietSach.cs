@@ -277,7 +277,6 @@ namespace _3.PresentationLayers.Views
             }
         }
 
-
         private void label8_Click(object sender, EventArgs e)
         {
 
